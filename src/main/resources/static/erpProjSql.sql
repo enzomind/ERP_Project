@@ -57,6 +57,7 @@ CREATE TABLE `erpprojectdb`.`menu_table` (
   `ac` VARCHAR(100) NOT NULL,
   `nt` VARCHAR(100) NOT NULL,
   `mp` VARCHAR(100) NOT NULL,
+  `ec` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`hr`));
 
 
@@ -200,7 +201,7 @@ CREATE TABLE `erpprojectdb`.`acctamt` (
     REFERENCES `erpprojectdb`.`acctinfo` (`det_code`));
 
 
--- 권한 부서 직급 본부 네개 
+-- 권한 부서 직급 본부 네개 샘플데이터
 
 INSERT INTO `erpprojectdb`.`auth_table` (`auth_code`, `auth_name`) VALUES ('SJAU_0001', '직원');
 INSERT INTO `erpprojectdb`.`auth_table` (`auth_code`, `auth_name`) VALUES ('SJAU_0002', '임원');
