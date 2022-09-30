@@ -7,11 +7,12 @@ CREATE TABLE `erpprojectdb`.`emp_table` (
   `emp_id` VARCHAR(100) NOT NULL,
   `pw` VARCHAR(100) NOT NULL,
   `emp_name` VARCHAR(100) NOT NULL,
+  `gender` VARCHAR(10) NOT NULL,
   `tel` VARCHAR(50) NOT NULL,
   `idp_num` VARCHAR(20) NOT NULL,
-  `birth` VARCHAR(8) NOT NULL,
+  `birth` VARCHAR(100) NOT NULL,
   `hire_date` DATE NOT NULL,
-  `res_date` DATE NOT NULL,
+  `res_date` DATE NULL,
   `salary` INT NOT NULL,
   `wage` INT NOT NULL,
   `res_yn` VARCHAR(4) NOT NULL,
@@ -27,7 +28,6 @@ CREATE TABLE `erpprojectdb`.`emp_table` (
   `account` VARCHAR(100) NOT NULL,
   `hq_code` VARCHAR(200) NOT NULL,
   `job_code` VARCHAR(100) NOT NULL,
-  `bank_code` VARCHAR(100) NOT NULL,
   `auth_code` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`emp_id`));
 
