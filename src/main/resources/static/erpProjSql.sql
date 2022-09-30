@@ -39,11 +39,10 @@ CREATE TABLE `erpprojectdb`.`prohistory_table` (
   `pro_date` DATE NOT NULL,
   PRIMARY KEY (`pro_num`),
   INDEX `emp_id_idx` (`emp_id` ASC) VISIBLE,
-  CONSTRAINT `emp_id`
     FOREIGN KEY (`emp_id`)
     REFERENCES `erpprojectdb`.`emp_table` (`emp_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
 
 --  권한테이블
 CREATE TABLE `erpprojectdb`.`auth_table` (
@@ -78,11 +77,10 @@ CREATE TABLE `erpprojectdb`.`lev_table` (
   `rej_res` VARCHAR(2000) NULL,
   PRIMARY KEY (`lev_num`),
   INDEX `emp_id_idx` (`emp_id` ASC) VISIBLE,
-  CONSTRAINT `emp_id2`
     FOREIGN KEY (`emp_id`)
     REFERENCES `erpprojectdb`.`emp_table` (`emp_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
 
 
 -- 급여지급이력
@@ -143,7 +141,6 @@ CREATE TABLE `erpprojectdb`.`expreport` (
   PRIMARY KEY (`exp_num`),
   UNIQUE INDEX `exp_num_UNIQUE` (`exp_num` ASC) VISIBLE,
   UNIQUE INDEX `emp_id_UNIQUE` (`emp_id` ASC) VISIBLE,
-   CONSTRAINT `emp_id3`
     FOREIGN KEY (`emp_id`)
     REFERENCES `erpprojectdb`.`emp_table` (`emp_id`));
 
@@ -193,10 +190,8 @@ CREATE TABLE `erpprojectdb`.`acctamt` (
   `remk` VARCHAR(2000) NULL,
   `man_id` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`stat_num`),
-	CONSTRAINT `maj_code`
 	FOREIGN KEY (`maj_code`)
     REFERENCES `erpprojectdb`.`acctinfo` (`maj_code`),
-    CONSTRAINT `det_code`
 	FOREIGN KEY (`det_code`)
     REFERENCES `erpprojectdb`.`acctinfo` (`det_code`));
 
