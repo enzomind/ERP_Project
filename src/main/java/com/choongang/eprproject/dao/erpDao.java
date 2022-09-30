@@ -1,6 +1,6 @@
-package com.choongang.dao;
+package com.choongang.eprproject.dao;
 
-import com.choongang.TestDto;
+import com.choongang.eprproject.test.TestDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

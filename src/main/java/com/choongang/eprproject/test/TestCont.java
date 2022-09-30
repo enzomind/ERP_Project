@@ -1,6 +1,6 @@
-package com.choongang;
+package com.choongang.eprproject.test;
 
-import com.choongang.dao.erpDao;
+import com.choongang.eprproject.dao.erpDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

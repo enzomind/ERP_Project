@@ -1,4 +1,4 @@
-package com.choongang;
+package com.choongang.eprproject.test;
 
 import lombok.Data;
 

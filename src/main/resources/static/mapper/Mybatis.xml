@@ -3,14 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.demo.mapper.TestMapper">
-    <select id="selectAll" resultType="com.choongang.TestDto"> >
-        SELECT
-        *
-        FROM
-        `erpprojectdb`.`auth_table`
-        WHERE
-        auth_code = SJAU_0001
-
+<mapper namespace="com.choongang.eprproject.dao.erpDao">
+    <select id="selectAll" resultType="com.choongang.eprproject.test.TestDto">
+    SELECT * FROM auth_table
     </select>
 </mapper>
