@@ -7,7 +7,6 @@ CREATE TABLE `erpprojectdb`.`emp_table` (
   `emp_id` VARCHAR(100) NOT NULL,
   `pw` VARCHAR(100) NOT NULL,
   `emp_name` VARCHAR(100) NOT NULL,
-  `gender` VARCHAR(10) NOT NULL,
   `tel` VARCHAR(50) NOT NULL,
   `idp_num` VARCHAR(20) NOT NULL,
   `birth` VARCHAR(100) NOT NULL,
@@ -29,6 +28,7 @@ CREATE TABLE `erpprojectdb`.`emp_table` (
   `hq_code` VARCHAR(200) NOT NULL,
   `job_code` VARCHAR(100) NOT NULL,
   `auth_code` VARCHAR(100) NOT NULL,
+  `gender` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`emp_id`));
 
 -- 승진내역관리 , 노랑표
@@ -194,38 +194,4 @@ CREATE TABLE `erpprojectdb`.`acctamt` (
     REFERENCES `erpprojectdb`.`acctinfo` (`maj_code`),
 	FOREIGN KEY (`det_code`)
     REFERENCES `erpprojectdb`.`acctinfo` (`det_code`));
-
-
--- 권한 부서 직급 본부 네개 샘플데이터
-
-INSERT INTO `erpprojectdb`.`auth_table` (`auth_code`, `auth_name`) VALUES ('SJAU_0001', '직원');
-INSERT INTO `erpprojectdb`.`auth_table` (`auth_code`, `auth_name`) VALUES ('SJAU_0002', '임원');
-INSERT INTO `erpprojectdb`.`auth_table` (`auth_code`, `auth_name`) VALUES ('SJAU_0003', '인사담당자');
-INSERT INTO `erpprojectdb`.`auth_table` (`auth_code`, `auth_name`) VALUES ('SJAU_0004', '회계담당자');
-INSERT INTO `erpprojectdb`.`auth_table` (`auth_code`, `auth_name`) VALUES ('SJAU_0005', '시스템관리자');
-
-
-
-INSERT INTO `erpprojectdb`.`hdqrt_code` (`hq_code`, `hq_name`) VALUES ('SJHQ_0001', 'HR본부');
-INSERT INTO `erpprojectdb`.`hdqrt_code` (`hq_code`, `hq_name`) VALUES ('SJHQ_0002', 'ICT개발본부');
-INSERT INTO `erpprojectdb`.`hdqrt_code` (`hq_code`, `hq_name`) VALUES ('SJHQ_0003', '솔루션사업본부');
-
-
-INSERT INTO `erpprojectdb`.`pstn_code` (`job_code`, `job_name`) VALUES ('SJPS_0001', '사원');
-INSERT INTO `erpprojectdb`.`pstn_code` (`job_code`, `job_name`) VALUES ('SJPS_0002', '대리');
-INSERT INTO `erpprojectdb`.`pstn_code` (`job_code`, `job_name`) VALUES ('SJPS_0003', '과장');
-INSERT INTO `erpprojectdb`.`pstn_code` (`job_code`, `job_name`) VALUES ('SJPS_0004', '팀장');
-INSERT INTO `erpprojectdb`.`pstn_code` (`job_code`, `job_name`) VALUES ('SJPS_0005', '부장');
-INSERT INTO `erpprojectdb`.`pstn_code` (`job_code`, `job_name`) VALUES ('SJPS_0006', '상무');
-INSERT INTO `erpprojectdb`.`pstn_code` (`job_code`, `job_name`) VALUES ('SJPS_0007', '전무');
-INSERT INTO `erpprojectdb`.`pstn_code` (`job_code`, `job_name`) VALUES ('SJPS_0008', '부대표');
-INSERT INTO `erpprojectdb`.`pstn_code` (`job_code`, `job_name`) VALUES ('SJPS_0009', '대표');
-
-
-INSERT INTO `erpprojectdb`.`dep_code` (`dep_no`, `dep_name`) VALUES ('SJDP_0001', '경영관리부');
-INSERT INTO `erpprojectdb`.`dep_code` (`dep_no`, `dep_name`) VALUES ('SJDP_0002', '솔루션개발부');
-INSERT INTO `erpprojectdb`.`dep_code` (`dep_no`, `dep_name`) VALUES ('SJDP_0003', 'SI개발부');
-INSERT INTO `erpprojectdb`.`dep_code` (`dep_no`, `dep_name`) VALUES ('SJDP_0004', '영업부');
-INSERT INTO `erpprojectdb`.`dep_code` (`dep_no`, `dep_name`) VALUES ('SJDP_0005', '전략기획부');
-INSERT INTO `erpprojectdb`.`dep_code` (`dep_no`, `dep_name`) VALUES ('SJDP_0006', '인사관리부');
 
