@@ -10,12 +10,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- 템플릿 주소 -->
-    <link href="/etc/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/etc/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
-    <link href="/etc/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="/etc/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="/static/etc/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/static/etc/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -176,7 +176,12 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Employees Table</h6>
+                        <h4 class="m-0 font-weight-bold text-primary">Employees Table</h4>
+                        <input class="btn btn-primary float-right mb-3" type="button" value="등록" onclick="showPopup();" />
+                        <script language="javascript">
+                            function showPopup() {
+                                window.open("hr_emp.html", "a", "width=800, height=700, left=0, top=0"); }
+                        </script>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
