@@ -28,4 +28,8 @@ public class TestCont {
         return "test";
     }
 
+    @RequestMapping(value="login")
+    public String loginpage(){
+        return "login";
+    }
 }
