@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:fragment="mainHeader">
+    <title>SJHT ERP System</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- 템플릿 주소 -->
+    <link href="/etc/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+    <link href="/etc/css/sb-admin-2.min.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+<!-- 사이드바 -->
+<div id="wrapper">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <div class="sidebar-brand-text mx-3">SJHT</div>
+        </a>
+
+        <!-- 구분선 -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- 메인 페이지 -->
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">
+                <span>메인</span></a>
+        </li>
+
+        <!-- 구분선 -->
+        <hr class="sidebar-divider">
+
+        <!-- 인사 페이지(슬라이드) -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+               aria-expanded="true" aria-controls="collapseTwo">
+                <span>인사</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">인사 관리</h6>
+                    <a class="collapse-item" href="hr.html">직원 조회</a>
+                    <a class="collapse-item" href="hr.html">승진 관리</a>
+                    <a class="collapse-item" href="hr.html">급여 관리</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- 회계 페이지(슬라이드) -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+               aria-expanded="true" aria-controls="collapseUtilities">
+                <span>회계</span>
+            </a>
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">회계 관리</h6>
+                    <a class="collapse-item" href="ac.html">전표 관리</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- 전자결재 페이지(슬라이드) -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+               aria-expanded="true" aria-controls="collapsePages">
+                <span>전자결재</span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">전자결재 관리</h6>
+                    <a class="collapse-item" href="ec.html">결재상신함</a>
+                    <a class="collapse-item" href="ec.html">결재수신함</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- 공지사항 페이지 -->
+        <li class="nav-item">
+            <a class="nav-link" href="nt.html">
+                <span>공지사항</span></a>
+        </li>
+
+        <!-- 마이페이지(슬라이드로 변경함) -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#myPages"
+               aria-expanded="true" aria-controls="collapsePages">
+                <span>마이페이지</span>
+            </a>
+            <div id="myPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">내 정보 관리</h6>
+                    <a class="collapse-item" href="mp.html">내 정보 변경</a>
+                    <a class="collapse-item" href="mp2.html">비밀번호 변경</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- 구분선 -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- 사이드바 작게 만드는 화살표 -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+    </ul>
+
+    <!-- Content 박스 -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- 메인 Content -->
+        <div id="content">
+
+            <!-- 상단 -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown no-arrow d-sm-none"></li>
+
+                    <!-- 로그인 정보(프로필, 로그아웃) -->
+                    <div class="topbar-divider d-none d-sm-block"></div>
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">님 안녕하세요.</span>
+                        </a>
+                        <!-- Dropdown - 프로필, 로그아웃 -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Profile
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <!-- 상단 끝 -->
+
+            <div layout:fragment="content">
+                <!-- 각자 <div layout:fragment="content"> <- 태그 안에 콘텐츠 삽입하면 됨.  -->
+            </div>
+
+
+        </div>
+    </div> <!-- Content 끝 -->
+
+
+    <!-- User 클릭 후 로그아웃 버튼-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">로그아웃하시겠습니까?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">현재 세션을 종료할 준비가 되었으면 아래의 "로그아웃"을 선택하십시오.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!-- 부트스트랩 -->
+<!-- Bootstrap core JavaScript-->
+<script src="/etc/vendor/jquery/jquery.min.js"></script>
+<script src="/etc/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/etc/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/etc/js/sb-admin-2.min.js"></script>
+
+</body>
+
+
+</html>

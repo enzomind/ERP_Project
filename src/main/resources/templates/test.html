@@ -3,13 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <style>
+
+        li {
+            font-size : xx-small;
+        }
+    </style>
 </head>
 <body>
-<ul>
-    <li th:each="dto : ${users}">
-        [[${dto.auth_code}]] / [[${dto.auth_name}]]<br>
-    </li>
-</ul>
 
+<h1>
+    emp_table 명단
+</h1>
+<hr>
+<ul>
+    <table>
+        <li th:each="dto : ${users}">
+            [[${dto.emp_id}]]/
+            [[${dto.pw}]]/
+            [[${dto.emp_name}]] /
+            [[${dto.tel}]] /
+            [[${dto.idp_num}]] /
+            [[${dto.birth}]] /
+            [[${dto.hire_date}]] /
+            [[${dto.res_date}]] /
+            [[${dto.salary}]] /
+            [[${dto.wage}]] /
+            [[${dto.res_yn}]] /
+            [[${dto.vct_yn}]] /
+            [[${dto.filename}]] /
+            [[${dto.filepath}]] /
+            [[${dto.filesize}]] /
+            [[${dto.dep_no}]] /
+            [[${dto.tot_lev}]] /
+            [[${dto.use_lev}]] /
+            [[${dto.email}]] /
+            [[${dto.bankname}]] /
+            [[${dto.account}]] /
+            [[${dto.hq_code}]] /
+            [[${dto.job_code}]] /
+            [[${dto.auth_code}]] /
+            [[${dto.gender}]]<br>
+        </li>
+    </table>
+</ul>
 </body>
 </html>

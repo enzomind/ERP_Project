@@ -5,6 +5,6 @@
 
 <mapper namespace="com.choongang.eprproject.dao.erpDao">
     <select id="selectAll" resultType="com.choongang.eprproject.test.TestDto">
-    SELECT * FROM auth_table
+    SELECT * FROM erpprojectdb.emp_table
     </select>
 </mapper>
