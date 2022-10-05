@@ -157,22 +157,116 @@
         <!-- Head -->
         <div class="row">
           <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-70 w-421 py-2">
-              <div class="col mr-2">
-                <div class="h5 mb-0 font-weight-bold text-gray-800">Electronic Approval</div>
+            <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                      Electronic Approval</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">전자 결재</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
         <!-- 박스 시작-->
         <div class="card shadow col-lg-auto p-0">
           <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary float-left">전자결재 > 결재상신함</h6>
           </div>
-          <div class="card-body">
-            <div class="table-responsive">
+          <div class="card-body container">
+            <h3 class="text-center mb-3">지출결의서</h3></br>
+            <div class="float-left">결의번호</div>
+            <input class="form-control col-2 ml-2 float-left" id="exp_num" type="text" disabled>
+            <!-- 테이블1 (결재자정보)-->
+            <table class="table table-bordered text-center align-middle col-8 ml-2 float-right">
+              <thead>
+              <tr>
+                <th rowspan="2" class="align-middle">결재</th>
+                <th>작성자</th>
+                <th>결재자</th>
+              </tr>
+              <tr>
+                <td>홍길동 사원</td>
+                <td>-</td>
+              </tr>
+              </thead>
+            </table>
+            <div>
+              <!--  테이블2 (제목입력) -->
+              <table class="table table-bordered text-center col-auto">
+                <thead>
+                <tr>
+                  <th>소속</th>
+                  <td>성진하이텍지주 글로벌전략부</td>
+                  <th>상신일자</th>
+                  <td>2022-01-01</td>
+                </tr>
+                <tr>
+                  <th class="align-middle">제목</th>
+                  <td colspan="3"><input type="text" id="title" class="form-control" placeholder="제목을 입력하세요"></td>
+                </tr>
+                </thead>
+              </table>
             </div>
+            <div>
+              <!-- 테이블3 (과목 등등 선택)-->
+              <table class="table table-bordered text-center col-auto">
+                <thead>
+                <tr>
+                  <th>계정과목</th>
+                  <th>적요</th>
+                  <th>카드/계좌</th>
+                  <th>금액(원)</th>
+                </tr>
+                </thead>
+                <tr>
+                  <td>
+                    <select class="form-control" id="select1">
+                      <option selected>선택</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                    </select>
+                  </td>
+                  <td><input type="text" id="summary" class="form-control"></td>
+                  <td>
+                    <select class="form-control" id="select2">
+                      <option selected>선택</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                    </select>
+                  </td>
+                  <td><input type="text" id="sum" class="form-control"></td>
+                </tr>
+
+              </table>
+
+            </div>
+            <div>
+              <!-- 테이블4(파일등록) -->
+              <table class="table table-bordered text-center col-auto">
+                <thead>
+                <tr>
+                  <th>증빙서류</th>
+                  <td><form>
+                      <input type="file" class="form-control-file" id="file">
+                  </form></td>
+                </td>
+                </tr>
+                </thead>
+              </table>
+            </div>
+
+            <!-- 아래 버튼들-->
+            <button class="btn btn-secondary">결재선 등록</button>
+            <div class="text-center">
+            <button class="btn btn-primary" style="width: 100px">등록</button>
+            <button class="btn btn-primary" style="width: 100px">취소</button>
+            </div>
+
           </div>
         </div>
       </div>
