@@ -10,11 +10,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- 템플릿 주소 -->
-    <link href="/etc/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/etc/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <link href="/etc/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/static/etc/css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -195,14 +195,14 @@
                         <!-- Modal 모달 -->
                         <div class="modal fade" id="ecmodal" data-backdrop="static" data-keyboard="false"
                              tabindex="-1" aria-labelledby="결재등록창띄움" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="staticBackdropLabel">결재 문서 선택</h5>
                                         <!--x버튼 없앰 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>-->
                                     </div>
                                     <div class="modal-body">
-                                        <table class="table table-bordered">
+                                        <table class="table table-bordered table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>결재 구분</th>
@@ -211,12 +211,12 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
+                                            <tr onclick="window.location='이동할링크'">
                                                 <td>회계</td>
                                                 <td>SJDO-0001</td>
                                                 <td>지출결의서</td>
                                             </tr>
-                                            <tr>
+                                            <tr onclick="window.location='이동할링크'">
                                                 <td>인사</td>
                                                 <td>SJDO-0003</td>
                                                 <td>휴가신청서</td>
@@ -225,8 +225,8 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary">확인</button>
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                                        <button type="button" class="btn btn-primary col-2">확인</button>
+                                        <button type="button" class="btn btn-secondary col-2" data-dismiss="modal">취소</button>
                                     </div>
                                 </div>
                             </div>
@@ -249,19 +249,30 @@
                             <tr>
                                 <td>회계</td>
                                 <td>SJCD-0001</td>
-                                <td>ERP 구축 프로젝트 - 12월 지출 결의서</td>
+                                <td><a href="결제상세페이지링크">ERP 구축 프로젝트 - 12월 지출 결의서</a></td>
                                 <td>2022-10-04</td>
                                 <td>반려</td>
                             </tr>
                             <tr>
                                 <td>인사</td>
                                 <td>SJCD-0002</td>
-                                <td>홍길동 12/24 휴가신청서</td>
+                                <td><a href="휴가페이지링크">홍길동 12/24 휴가신청서</a></td>
                                 <td>2022-10-04</td>
                                 <td>승인</td>
                             </tr>
                             </tbody>
                         </table>
+                        <!--페이지-->
+                        <nav aria-label="Page navigation" class="text-center p-3">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item"><a class="page-link" href="#">이전</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">다음</a></li>
+                            </ul>
+                        </nav>
+
                     </div>
                 </div>
             </div>
@@ -299,11 +310,11 @@
 
     <!-- 부트스트랩 -->
     <!-- Bootstrap core JavaScript-->
-    <script src="/etc/vendor/jquery/jquery.min.js"></script>
-    <script src="/etc/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/etc/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/static/etc/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/etc/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/etc/vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Custom scripts for all pages-->
-    <script src="/etc/js/sb-admin-2.min.js"></script>
+    <script src="/static/etc/js/sb-admin-2.min.js"></script>
 
 </body>
 
