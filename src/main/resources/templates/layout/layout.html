@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-<head>
+<head th:fragment="mainHeader">
     <title>SJHT ERP System</title>
 
     <meta charset="utf-8">
@@ -17,8 +17,7 @@
     <link href="/etc/css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 
-<body th:fragment="main-body" id="page-top">
-<!--<body id="page-top">-->
+<body id="page-top">
 <!-- 사이드바 -->
 <div id="wrapper">
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -153,29 +152,35 @@
             </nav>
             <!-- 상단 끝 -->
 
+            <div layout:fragment="content">
+                <!-- 각자 <div layout:fragment="content"> <- 태그 안에 콘텐츠 삽입하면 됨.  -->
+            </div>
 
-        </div> <!-- Content 끝 -->
 
-        <!-- User 클릭 후 로그아웃 버튼-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">로그아웃하시겠습니까?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">현재 세션을 종료할 준비가 되었으면 아래의 "로그아웃"을 선택하십시오.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
-                    </div>
+        </div>
+    </div> <!-- Content 끝 -->
+
+
+    <!-- User 클릭 후 로그아웃 버튼-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">로그아웃하시겠습니까?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">현재 세션을 종료할 준비가 되었으면 아래의 "로그아웃"을 선택하십시오.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 
@@ -188,5 +193,6 @@
 <script src="/etc/js/sb-admin-2.min.js"></script>
 
 </body>
+
 
 </html>
