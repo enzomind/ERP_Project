@@ -23,19 +23,17 @@
   <!-- form body -->
   <div class="form-body">
 
-    <!-- Firstname and Lastname -->
     <div class="horizontal-group">
       <div class="form-group left">
         <label for="firstname" class="label-title">이름 *</label>
         <input type="text" id="firstname" class="form-input" placeholder="enter your name" required="required" />
       </div>
       <div class="form-group right">
-        <label for="birth" class="label-title">생년월일*</label>
+        <label for="birth" class="label-title">생년월일 *</label>
         <input type="text" id="birth" class="form-input" placeholder="Ex)19000101" required="required">
       </div>
     </div>
 
-    <!-- Email -->
     <div class="horizontal-group">
       <div class="form-group left">
         <label for="email" class="label-title">이메일 *</label>
@@ -48,16 +46,8 @@
     </div>
 
     <div class="form-group">
-      <label for="phone" class="label-title">휴대전화*</label>
+      <label for="phone" class="label-title">휴대전화 *</label>
       <input type="email" id="phone" class="form-input" placeholder="enter your phone number" required="required">
-    </div>
-
-    <div class="form-group" >
-      <label for="gender" class="label-title">성별</label>
-      <div class="input-group" id="gender">
-        <label for="male"><input type="radio" name="gender" value="male" id="male"> Male</label>
-        <label for="female"><input type="radio" name="gender" value="female" id="female"> Female</label>
-      </div>
     </div>
 
     <div class="form-group">
@@ -65,9 +55,16 @@
       <input type="date" id="startdate" min="18" max="80" class="form-input">
     </div>
 
+    <div class="form-group" >
+        <label for="hdqrt" class="label-title">본부</label>
+        <select class="form-input" id="hdqrt" >
+          <option value="">본부</option>
+          <option value="hr">HR본부</option>
+          <option value="ict">ICT개발본부</option>
+          <option value="sol">솔루션사업본부</option>
+        </select>
+      </div>
 
-
-    <!-- Source of Income and Income -->
     <div class="horizontal-group">
       <div class="form-group left" >
         <label for="department" class="label-title">부서</label>
@@ -97,9 +94,6 @@
       </div>
     </div>
 
-    <!-- Profile picture and Age -->
-
-
     <div class="horizontal-group">
       <div class="form-group left">
         <label for="bank" class="label-title">급여통장</label>
@@ -123,15 +117,12 @@
       <input type="file" id="choose-file" size="80">
     </div>
 
-
-    <!-- Bio -->
     <div class="form-group">
       <label for="others" class="label-title">참고사항</label>
       <textarea class="form-input" id="others" rows="4" cols="50" style="height:auto"></textarea>
     </div>
   </div>
 
-  <!-- form-footer -->
   <div class="form-footer">
     <span> </span>
     <button type="button" class="btn">취소</button>
@@ -140,7 +131,6 @@
 
 </form>
 
-<!-- Script for range input label -->
 <script>
   var rangeLabel = document.getElementById("range-label");
   var experience = document.getElementById("experience");
