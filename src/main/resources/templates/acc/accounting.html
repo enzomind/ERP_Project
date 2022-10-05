@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+
+<th:block layout:fragment="mainHeader">
+    <title>회계 전표</title>
+</th:block>
+
+<th:block>
+    <div layout:fragment="content">
+        <div class="container-fluid">
+
+
+
+
+            <!-- Head -->
+            <div class="row">
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-70 w-421 py-2">
+                        <div class="col mr-2">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">Accounting</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 글목록 -->
+            <div class="card shadow m-4 col-lg-auto">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary float-left">회계 > 회계전표</h6>
+                </div>
+
+                <!-- 조회기간 박스-->
+                <div class="card-body ">
+                    <div class="table-responsive border p-3">
+                        조회 기간
+                        <form
+                                class="d-none d-sm-inline-block form-inline navbar-search mb-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control bg-light border-1 small" placeholder=""
+                                       aria-label="start" aria-describedby="조회시작">~
+                                <input type="text" class="form-control bg-light border-1 small" placeholder=""
+                                       aria-label="end" aria-describedby="조회끝">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary float-right" type="button">
+                                        검색
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <!--총 목록 박스-->
+                <div class="card-body">
+                    <div class="table-responsive">
+                        총 1건
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>전표번호</th>
+                                <th>거래자명</th>
+                                <th>전표 생성일자</th>
+                                <th>지출 금액</th>
+                                <th>수입 금액</th>
+                            </tr>
+                            </thead>
+
+                            <!-- 데이터 연결시 수정-->
+                            <tbody>
+                            <tr>
+                                <td>SJCT-0001</td>
+                                <td>기업은행 110-110-111111</td>
+                                <td>2022-09-30</td>
+                                <td>1,000,000</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <th colspan="3">합계</th>
+                                <td>1,000,000</td>
+                                <td>0</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <!--상세건수 박스-->
+                <div class="card-body">
+                    <div class="table-responsive">
+                        상세 건 수 : 3건
+                        <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>전표번호</th>
+                                <th>거래자명</th>
+                                <th>전표 생성일자</th>
+                                <th>지출 금액</th>
+                                <th>수입 금액</th>
+                            </tr>
+                            </thead>
+
+                            <!-- 데이터 연결시 수정-->
+                            <tbody>
+                            <tr>
+                                <td>SJCT-0001</td>
+                                <td>기업은행 110-110-111111</td>
+                                <td>2022-09-30</td>
+                                <td>1,000,000</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <th colspan="3">합계</th>
+                                <td>1,000,000</td>
+                                <td>0</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</th:block>
+
+</html>
