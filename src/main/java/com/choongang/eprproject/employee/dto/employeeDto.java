@@ -1,11 +1,11 @@
-package com.choongang.eprproject.test;
+package com.choongang.eprproject.employee.dto;
 
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
-public class TestDto {
+public class employeeDto {
     String emp_id;
     String pw;
     String emp_name;
