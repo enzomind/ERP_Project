@@ -168,16 +168,16 @@
         <!-- 박스 시작-->
         <div class="card shadow col-lg-auto p-0">
           <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary float-left">전자결재 > 결재상신함</h6>
+            <h6 class="m-0 font-weight-bold text-primary float-left">결재상신함 > 휴가신청서</h6>
           </div>
-          <div class="card-body container">
-            <h5 class="text-center mb-3">휴가신청서</h5>
+          <div class="card-body container"><br>
+            <h3 class="text-center mb-3">휴가신청서</h3></br>
             <div class="row">
               결의번호 <input class="form-control col-3 " id="exp_num" type="text" disabled>
-              <table class="table table-bordered text-center col-8 ml-3">
+              <table class="table table-bordered text-center col-8 ml-3" >
                 <thead>
                 <tr>
-                  <th rowspan="2">결제</th>
+                  <th rowspan="2">결재</th>
                   <th>작성자</th>
                   <th>결재자</th>
                 </tr>
@@ -199,59 +199,37 @@
                 </tr>
                 <tr>
                   <th>제목</th>
-                  <td colspan="3"><input type="text" id="title" class="form-input" placeholder="제목을 입력하세요"></td>
+                  <td colspan="3">
+                    <input type="text" id="title" class="form-control"></td>
                 </tr>
                 </thead>
               </table>
             </div>
             <div>
               <table class="table table-bordered text-center col-auto">
-                <thead>
-                <tr>
-                  <th>계정과목</th>
-                  <th>적요</th>
-                  <th>카드/계좌</th>
-                  <th>금액(원)</th>
-                </tr>
-                </thead>
-                <tr>
-                  <td>
-                    <select class="form-select" id="account">
-                      <option selected>선택</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </select>
-                  </td>
-                  <td><input type="text" id="summary" class="form-input"></td>
-                  <td>
-                    <select class="form-select" id="card">
-                      <option selected>선택</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </select>
-                  </td>
-                  <td><input type="text" id="sum" class="form-input"></td>
-                </tr>
 
-              </table>
-
-            </div>
-            <div>
-              <table class="table table-bordered text-center col-auto">
-                <thead>
                 <tr>
-                  <th>증빙서류</th>
-                  <td><input type="file"></td>
+                  <th>휴가구분</th>
+                  <td>
+                    <select class="form-control" id="account">
+                      <option selected>선택</option>
+                      <option value="1">오전반차</option>
+                      <option value="2">오후반차</option>
+                      <option value="3">연차</option>
+                    </select>
                 </tr>
-                </thead>
+                <tr>
+                  <th style="width: 150px; height: 500px;">내용</th>
+                  <td>
+                    <textarea type="text" class="form-control" style="height: 500px"></textarea></td>
+                </tr>
               </table>
             </div>
-            <button class="btn btn-primary">결재선 등록</button>
-            <button class="btn btn-primary">등록</button>
-            <button class="btn btn-primary">취소</button>
-
+            <button class="btn btn-secondary">결재선 등록</button>
+            <div class="text-center">
+              <button class="btn btn-primary" style="width: 100px">등록</button>
+              <button class="btn btn-primary" style="width: 100px">취소</button>
+            </div>
 
           </div>
         </div>
@@ -284,11 +262,11 @@
 
 <!-- 부트스트랩 -->
 <!-- Bootstrap core JavaScript-->
-<script src="/etc/vendor/jquery/jquery.min.js"></script>
-<script src="/etc/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/etc/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="/static/etc/vendor/jquery/jquery.min.js"></script>
+<script src="/static/etc/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/static/etc/vendor/jquery-easing/jquery.easing.min.js"></script>
 <!-- Custom scripts for all pages-->
-<script src="/etc/js/sb-admin-2.min.js"></script>
+<script src="/static/etc/js/sb-admin-2.min.js"></script>
 
 </body>
 

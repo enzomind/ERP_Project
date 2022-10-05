@@ -15,6 +15,7 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
     <link href="/static/etc/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/static/etc/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -174,18 +175,12 @@
             <!-- 박스 시작-->
             <div class="card shadow col-lg-auto p-0">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary float-left">전자결재 > 결재상신함</h6>
+                    <h6 class="m-0 font-weight-bold text-primary float-left">결재상신함</h6>
                 </div>
-
-
                 <div class="card-body">
                     <div class="table-responsive">
-
-
                         <!--검색버튼-->
-                        <button type="button" class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#ecmodal">
-                            결재 등록
-                        </button>
+                        <button type="button" class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#ecmodal">결재 등록</button><br>
                         <!-- Modal 모달 -->
                         <div class="modal fade" id="ecmodal" data-backdrop="static" data-keyboard="false"
                              tabindex="-1" aria-labelledby="결재등록창띄움" aria-hidden="true">
@@ -256,16 +251,6 @@
                             </tr>
                             </tbody>
                         </table>
-                        <!--페이지-->
-                        <nav aria-label="Page navigation" class="text-center p-3">
-                            <ul class="pagination justify-content-center">
-                                <li class="page-item"><a class="page-link" href="#">이전</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">다음</a></li>
-                            </ul>
-                        </nav>
 
                     </div>
                 </div>
@@ -309,6 +294,12 @@
     <script src="/static/etc/vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="/static/etc/js/sb-admin-2.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="/static/etc/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/static/etc/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/static/etc/js/demo/datatables-demo.js"></script>
 
 </body>
 
