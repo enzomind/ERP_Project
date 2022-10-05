@@ -252,19 +252,91 @@
                 <tr>
                   <th>증빙서류</th>
                   <td><form>
-                      <input type="file" class="form-control-file" id="file">
+                    <input type="file" class="form-control-file" id="file">
                   </form></td>
-                </td>
+                  </td>
                 </tr>
                 </thead>
               </table>
             </div>
 
-            <!-- 아래 버튼들-->
-            <button class="btn btn-secondary">결재선 등록</button>
+            <!--결재선 버튼-->
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal1">
+              결재선 등록
+            </button>
+            <!-- Modal 모달 -->
+            <div class="modal fade" id="modal1" data-backdrop="static" data-keyboard="false"
+                 tabindex="-1" aria-labelledby="결재자리스트띄움" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <div class="input-group mt-3">
+                      <input type="text" id="list" class="form-control bg-light" placeholder="이름을 입력하세요">
+                      <button type="button" class="btn btn-primary">검색</button>
+                    </div></br>
+                    <table class="table table-bordered table-hover text-center">
+                      <thead>
+                      <tr>
+                        <th>본부</th>
+                        <th>부서</th>
+                        <th>직급</th>
+                        <th>성명</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td>HR본부</td>
+                        <td>경영관리팀</td>
+                        <td>과장</td>
+                        <td>홍길동</td>
+                      </tr>
+                      <tr>
+                        <td>솔루션사업본부</td>
+                        <td>ICT개발팀</td>
+                        <td>대리</td>
+                        <td>홍길순</td>
+                      </tr>
+                      <tr>
+                        <td>솔루션사업본부</td>
+                        <td>ICT개발팀</td>
+                        <td>대리</td>
+                        <td>홍길순</td>
+                      </tr>
+                      <tr>
+                        <td>솔루션사업본부</td>
+                        <td>ICT개발팀</td>
+                        <td>대리</td>
+                        <td>홍길순</td>
+                      </tr>
+                      <tr>
+                        <td>솔루션사업본부</td>
+                        <td>ICT개발팀</td>
+                        <td>대리</td>
+                        <td>홍길순</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                    <nav aria-label="Page navigation" class="text-center pt-3">
+                      <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link" href="#">이전</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">다음</a></li>
+                      </ul>
+                    </nav>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-primary">확인</button>
+                    <button class="btn btn-secondary" data-dismiss="modal">취소</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div class="text-center">
-            <button class="btn btn-primary" style="width: 100px">등록</button>
-            <button class="btn btn-primary" style="width: 100px">취소</button>
+              <button class="btn btn-primary" style="width: 100px">등록</button>
+              <button class="btn btn-primary" style="width: 100px">취소</button>
             </div>
 
           </div>
@@ -298,11 +370,13 @@
 
 <!-- 부트스트랩 -->
 <!-- Bootstrap core JavaScript-->
-<script src="/etc/vendor/jquery/jquery.min.js"></script>
-<script src="/etc/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/etc/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="/static/etc/vendor/jquery/jquery.min.js"></script>
+<script src="/static/etc/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/static/etc/vendor/jquery-easing/jquery.easing.min.js"></script>
 <!-- Custom scripts for all pages-->
-<script src="/etc/js/sb-admin-2.min.js"></script>
+<script src="/static/etc/js/sb-admin-2.min.js"></script>
+
+
 
 </body>
 
