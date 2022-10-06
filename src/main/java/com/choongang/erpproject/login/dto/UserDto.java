@@ -38,8 +38,6 @@ public class UserDto implements UserDetails{
         return this.emp_id;
     }
 
-
-
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Override
     public boolean isAccountNonExpired() {
