@@ -15,8 +15,7 @@ body {
 /*---------------------------------------*/
 
 .form-header  {
-    border-bottom-width: 40px;
-
+    border-bottom:1px solid #d6d6d6;
 }
 
 .form-header h1 {
@@ -24,8 +23,7 @@ body {
     font-weight: bold;
     text-align:center;
     color:#576ba6;
-    padding:20px 0;
-    border-bottom:1px solid #d6d6d6;
+    padding:30px 0;
 }
 
 /*---------------------------------------*/
@@ -91,9 +89,6 @@ body {
     outline: none;
 }
 
-
-
-
 .horizontal-group .left{
     float:left;
     width:49%;
@@ -156,11 +151,19 @@ input[type="file"] {
     width: 163px;
 }
 
-#dash {
+.dash {
     margin: 0 5px;
 }
 
-#birth {
+.birth {
+    color:#576ba6;
+    font-size: 17px;
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: 8px;
+}
+
+#birth2 {
     color:#576ba6;
     font-size: 17px;
     font-weight: bold;

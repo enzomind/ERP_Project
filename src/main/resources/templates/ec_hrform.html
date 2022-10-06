@@ -15,6 +15,7 @@
           href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
   <link href="/static/etc/css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="/static/etc/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">`
 </head>
 
 <body id="page-top">
@@ -47,8 +48,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">인사 관리</h6>
           <a class="collapse-item" href="hr_emp.html">직원 조회</a>
-          <a class="collapse-item" href="hr_emp.html">승진 관리</a>
-          <a class="collapse-item" href="hr_emp.html">급여 관리</a>
+          <a class="collapse-item" href="hr_sal.html">급여(승진) 관리</a>
         </div>
       </div>
     </li>
@@ -77,8 +77,8 @@
       <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">전자결재 관리</h6>
-          <a class="collapse-item" href="ec.html">결재상신함</a>
-          <a class="collapse-item" href="ec.html">결재수신함</a>
+          <a class="collapse-item" href="ec_1.html">결재상신함</a>
+          <a class="collapse-item" href="ec_2.html">결재수신함</a>
         </div>
       </div>
     </li>
@@ -168,16 +168,16 @@
         <!-- 박스 시작-->
         <div class="card shadow col-lg-auto p-0">
           <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary float-left">결재상신함 > 휴가신청서</h6>
+            <h6 class="m-0 font-weight-bold text-primary float-left">전자결재 > 결재상신함</h6>
           </div>
-          <div class="card-body container"><br>
+          <div class="card-body container">
             <h3 class="text-center mb-3">휴가신청서</h3></br>
-            <div class="row">
-              결의번호 <input class="form-control col-3 " id="exp_num" type="text" disabled>
-              <table class="table table-bordered text-center col-8 ml-3" >
+            <div class="float-left">결의번호</div>
+            <input class="form-control col-2 ml-2 float-left" id="exp_num" type="text" disabled>
+            <table class="table table-bordered text-center align-middle col-8 ml-2 float-right">
                 <thead>
                 <tr>
-                  <th rowspan="2">결재</th>
+                  <th rowspan="2" class="align-middle">결재</th>
                   <th>작성자</th>
                   <th>결재자</th>
                 </tr>
@@ -187,7 +187,7 @@
                 </tr>
                 </thead>
               </table>
-            </div>
+
             <div>
               <table class="table table-bordered text-center col-auto">
                 <thead>
@@ -198,7 +198,7 @@
                   <td>2022-01-01</td>
                 </tr>
                 <tr>
-                  <th>제목</th>
+                  <th class="align-middle">제목</th>
                   <td colspan="3">
                     <input type="text" id="title" class="form-control"></td>
                 </tr>
@@ -207,25 +207,62 @@
             </div>
             <div>
               <table class="table table-bordered text-center col-auto">
-
                 <tr>
-                  <th>휴가구분</th>
+                  <th class="align-middle">휴가구분</th>
                   <td>
-                    <select class="form-control" id="account">
+                    <select class="form-control" id="select1">
                       <option selected>선택</option>
                       <option value="1">오전반차</option>
                       <option value="2">오후반차</option>
                       <option value="3">연차</option>
                     </select>
+                  </td>
                 </tr>
                 <tr>
-                  <th style="width: 150px; height: 500px;">내용</th>
+                  <th class="align-middle" style="width: 150px; height: 500px;">내용</th>
                   <td>
                     <textarea type="text" class="form-control" style="height: 500px"></textarea></td>
                 </tr>
               </table>
             </div>
-            <button class="btn btn-secondary">결재선 등록</button>
+            <!-- 결제선 모달 시작 -->
+            <button class="btn btn-secondary" data-toggle="modal" data-target="#modal1">결재선 등록</button>
+            <div class="modal fade" id="modal1" data-backdrop="static" data-keyboard="false"
+                 tabindex="-1" aria-labelledby="결재자리스트띄움" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <div class="input-group mt-3">
+                      <input type="text" id="list" class="form-control bg-light" placeholder="이름을 입력하세요">　
+                      <button type="button" class="btn btn-primary">검색</button>
+                    </div></br>
+                    <table class="table table-bordered table-hover text-center" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                      <tr>
+                        <th>본부</th>
+                        <th>부서</th>
+                        <th>직급</th>
+                        <th>성명</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td>HR본부</td>
+                        <td>경영관리팀</td>
+                        <td>과장</td>
+                        <td>홍길동</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-primary">확인</button>
+                    <button class="btn btn-secondary" data-dismiss="modal">취소</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div class="text-center">
               <button class="btn btn-primary" style="width: 100px">등록</button>
               <button class="btn btn-primary" style="width: 100px">취소</button>
@@ -237,6 +274,7 @@
     </div>
   </div>
   <!-- Content 끝 -->
+
 
 
   <!-- User 클릭 후 로그아웃 버튼-->
@@ -267,6 +305,13 @@
 <script src="/static/etc/vendor/jquery-easing/jquery.easing.min.js"></script>
 <!-- Custom scripts for all pages-->
 <script src="/static/etc/js/sb-admin-2.min.js"></script>
+<!-- Page level plugins -->
+<script src="/static/etc/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="/static/etc/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="/static/etc/js/demo/datatables-demo.js"></script>
+
 
 </body>
 

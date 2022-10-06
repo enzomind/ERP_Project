@@ -15,7 +15,6 @@
           href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
   <link href="/static/etc/css/sb-admin-2.min.css" rel="stylesheet">
-  <link href="/static/etc/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">`
 </head>
 
 <body id="page-top">
@@ -171,25 +170,24 @@
             <h6 class="m-0 font-weight-bold text-primary float-left">전자결재 > 결재상신함</h6>
           </div>
           <div class="card-body container">
-            <h3 class="text-center mb-3">지출결의서</h3></br>
+            <h3 class="text-center mb-3">휴가신청서</h3></br>
             <div class="float-left">결의번호</div>
             <input class="form-control col-2 ml-2 float-left" id="exp_num" type="text" disabled>
-            <!-- 테이블1 (결재자정보)-->
             <table class="table table-bordered text-center align-middle col-8 ml-2 float-right">
-              <thead>
-              <tr>
-                <th rowspan="2" class="align-middle">결재</th>
-                <th>작성자</th>
-                <th>결재자</th>
-              </tr>
-              <tr>
-                <td>홍길동 사원</td>
-                <td>-</td>
-              </tr>
-              </thead>
-            </table>
+                <thead>
+                <tr>
+                  <th rowspan="2" class="align-middle">결재</th>
+                  <th>작성자</th>
+                  <th>결재자</th>
+                </tr>
+                <tr>
+                  <td>홍길동 사원</td>
+                  <td>-</td>
+                </tr>
+                </thead>
+              </table>
+
             <div>
-              <!--  테이블2 (제목입력) -->
               <table class="table table-bordered text-center col-auto">
                 <thead>
                 <tr>
@@ -200,105 +198,41 @@
                 </tr>
                 <tr>
                   <th class="align-middle">제목</th>
-                  <td colspan="3"><input type="text" id="title" class="form-control" placeholder="제목을 입력하세요"></td>
+                  <td colspan="3">
+                    <input type="text" id="title" class="form-control"></td>
                 </tr>
                 </thead>
               </table>
             </div>
             <div>
-              <!-- 테이블3 (과목 등등 선택)-->
               <table class="table table-bordered text-center col-auto">
-                <thead>
                 <tr>
-                  <th>계정과목</th>
-                  <th>적요</th>
-                  <th>카드/계좌</th>
-                  <th>금액(원)</th>
-                </tr>
-                </thead>
-                <tr>
+                  <th class="align-middle">휴가구분</th>
                   <td>
                     <select class="form-control" id="select1">
                       <option selected>선택</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
+                      <option value="1">오전반차</option>
+                      <option value="2">오후반차</option>
+                      <option value="3">연차</option>
                     </select>
                   </td>
-                  <td><input type="text" id="summary" class="form-control"></td>
-                  <td>
-                    <select class="form-control" id="select2">
-                      <option selected>선택</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                    </select>
-                  </td>
-                  <td><input type="text" id="sum" class="form-control"></td>
                 </tr>
-
-              </table>
-
-            </div>
-            <div>
-              <!-- 테이블4(파일등록) -->
-              <table class="table table-bordered text-center col-auto">
-                <thead>
                 <tr>
-                  <th>증빙서류</th>
-                  <td><form>
-                    <input type="file" class="form-control-file" id="file">
-                  </form></td>
-                  </td>
+                  <th class="align-middle" style="width: 150px; height: 500px;">내용</th>
+                  <td>
+                    <textarea type="text" class="form-control" style="height: 500px"></textarea></td>
                 </tr>
-                </thead>
+                <tr>
+                  <th class="align-middle">상태</th>
+                  <td>
+                    <input type="text" class="form-control"></td>
+                </tr>
               </table>
-            </div>
-
-            <!--결재선 버튼-->
-            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal1">
-              결재선 등록
-            </button>
-            <!-- Modal 모달 -->
-            <div class="modal fade" id="modal1" data-backdrop="static" data-keyboard="false"
-                 tabindex="-1" aria-labelledby="결재자리스트띄움" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                  <div class="modal-body">
-                    <div class="input-group mt-3">
-                      <input type="text" id="list" class="form-control bg-light" placeholder="이름을 입력하세요">　
-                      <button type="button" class="btn btn-primary">검색</button>
-                    </div></br>
-                    <table class="table table-bordered table-hover text-center" id="dataTable" width="100%" cellspacing="0">
-                      <thead>
-                      <tr>
-                        <th>본부</th>
-                        <th>부서</th>
-                        <th>직급</th>
-                        <th>성명</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <tr>
-                        <td>HR본부</td>
-                        <td>경영관리팀</td>
-                        <td>과장</td>
-                        <td>홍길동</td>
-                      </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="modal-footer">
-                    <button class="btn btn-primary">확인</button>
-                    <button class="btn btn-secondary" data-dismiss="modal">취소</button>
-                  </div>
-                </div>
-              </div>
             </div>
 
             <div class="text-center">
-              <button class="btn btn-primary" style="width: 100px">등록</button>
-              <button class="btn btn-primary" style="width: 100px">취소</button>
+              <button class="btn btn-primary" style="width: 100px">승인</button>
+              <button class="btn btn-primary" style="width: 100px">반려</button>
             </div>
 
           </div>
@@ -307,6 +241,7 @@
     </div>
   </div>
   <!-- Content 끝 -->
+
 
 
   <!-- User 클릭 후 로그아웃 버튼-->
@@ -337,13 +272,6 @@
 <script src="/static/etc/vendor/jquery-easing/jquery.easing.min.js"></script>
 <!-- Custom scripts for all pages-->
 <script src="/static/etc/js/sb-admin-2.min.js"></script>
-<!-- Page level plugins -->
-<script src="/static/etc/vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="/static/etc/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="/static/etc/js/demo/datatables-demo.js"></script>
-
 
 </body>
 
