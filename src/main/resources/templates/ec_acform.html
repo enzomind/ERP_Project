@@ -175,9 +175,170 @@
           <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary float-left">전자결재 > 결재상신함</h6>
           </div>
-          <div class="card-body">
-            <div class="table-responsive">
+          <div class="card-body container">
+            <h3 class="text-center mb-3">지출결의서</h3></br>
+            <div class="float-left">결의번호</div>
+            <input class="form-control col-2 ml-2 float-left" id="exp_num" type="text" disabled>
+            <!-- 테이블1 (결재자정보)-->
+            <table class="table table-bordered text-center align-middle col-8 ml-2 float-right">
+              <thead>
+              <tr>
+                <th rowspan="2" class="align-middle">결재</th>
+                <th>작성자</th>
+                <th>결재자</th>
+              </tr>
+              <tr>
+                <td>홍길동 사원</td>
+                <td>-</td>
+              </tr>
+              </thead>
+            </table>
+            <div>
+              <!--  테이블2 (제목입력) -->
+              <table class="table table-bordered text-center col-auto">
+                <thead>
+                <tr>
+                  <th>소속</th>
+                  <td>성진하이텍지주 글로벌전략부</td>
+                  <th>상신일자</th>
+                  <td>2022-01-01</td>
+                </tr>
+                <tr>
+                  <th class="align-middle">제목</th>
+                  <td colspan="3"><input type="text" id="title" class="form-control" placeholder="제목을 입력하세요"></td>
+                </tr>
+                </thead>
+              </table>
             </div>
+            <div>
+              <!-- 테이블3 (과목 등등 선택)-->
+              <table class="table table-bordered text-center col-auto">
+                <thead>
+                <tr>
+                  <th>계정과목</th>
+                  <th>적요</th>
+                  <th>카드/계좌</th>
+                  <th>금액(원)</th>
+                </tr>
+                </thead>
+                <tr>
+                  <td>
+                    <select class="form-control" id="select1">
+                      <option selected>선택</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                    </select>
+                  </td>
+                  <td><input type="text" id="summary" class="form-control"></td>
+                  <td>
+                    <select class="form-control" id="select2">
+                      <option selected>선택</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                    </select>
+                  </td>
+                  <td><input type="text" id="sum" class="form-control"></td>
+                </tr>
+
+              </table>
+
+            </div>
+            <div>
+              <!-- 테이블4(파일등록) -->
+              <table class="table table-bordered text-center col-auto">
+                <thead>
+                <tr>
+                  <th>증빙서류</th>
+                  <td><form>
+                    <input type="file" class="form-control-file" id="file">
+                  </form></td>
+                  </td>
+                </tr>
+                </thead>
+              </table>
+            </div>
+
+            <!--결재선 버튼-->
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal1">
+              결재선 등록
+            </button>
+            <!-- Modal 모달 -->
+            <div class="modal fade" id="modal1" data-backdrop="static" data-keyboard="false"
+                 tabindex="-1" aria-labelledby="결재자리스트띄움" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <div class="input-group mt-3">
+                      <input type="text" id="list" class="form-control bg-light" placeholder="이름을 입력하세요">
+                      <button type="button" class="btn btn-primary">검색</button>
+                    </div></br>
+                    <table class="table table-bordered table-hover text-center">
+                      <thead>
+                      <tr>
+                        <th>본부</th>
+                        <th>부서</th>
+                        <th>직급</th>
+                        <th>성명</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td>HR본부</td>
+                        <td>경영관리팀</td>
+                        <td>과장</td>
+                        <td>홍길동</td>
+                      </tr>
+                      <tr>
+                        <td>솔루션사업본부</td>
+                        <td>ICT개발팀</td>
+                        <td>대리</td>
+                        <td>홍길순</td>
+                      </tr>
+                      <tr>
+                        <td>솔루션사업본부</td>
+                        <td>ICT개발팀</td>
+                        <td>대리</td>
+                        <td>홍길순</td>
+                      </tr>
+                      <tr>
+                        <td>솔루션사업본부</td>
+                        <td>ICT개발팀</td>
+                        <td>대리</td>
+                        <td>홍길순</td>
+                      </tr>
+                      <tr>
+                        <td>솔루션사업본부</td>
+                        <td>ICT개발팀</td>
+                        <td>대리</td>
+                        <td>홍길순</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                    <nav aria-label="Page navigation" class="text-center pt-3">
+                      <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link" href="#">이전</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">다음</a></li>
+                      </ul>
+                    </nav>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-primary">확인</button>
+                    <button class="btn btn-secondary" data-dismiss="modal">취소</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <button class="btn btn-primary" style="width: 100px">등록</button>
+              <button class="btn btn-primary" style="width: 100px">취소</button>
+            </div>
+
           </div>
         </div>
       </div>
@@ -209,11 +370,13 @@
 
 <!-- 부트스트랩 -->
 <!-- Bootstrap core JavaScript-->
-<script src="/etc/vendor/jquery/jquery.min.js"></script>
-<script src="/etc/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/etc/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="/static/etc/vendor/jquery/jquery.min.js"></script>
+<script src="/static/etc/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/static/etc/vendor/jquery-easing/jquery.easing.min.js"></script>
 <!-- Custom scripts for all pages-->
-<script src="/etc/js/sb-admin-2.min.js"></script>
+<script src="/static/etc/js/sb-admin-2.min.js"></script>
+
+
 
 </body>
 

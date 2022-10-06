@@ -1,57 +1,49 @@
-/*---------------------------------------*/
-/* Font */
-/*---------------------------------------*/
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-
-
-/*---------------------------------------*/
-/* Register Form */
-/*---------------------------------------*/
 body {
-  background:linear-gradient(to top, #385D6C 0%, #4e73df 50%);
+    background:linear-gradient(to top, #385D6C 0%, #4e73df 50%);
 }
 
 .signup-form {
-  font-family: "Roboto", sans-serif;
-  width:650px;
-  margin:30px auto;
-  background:linear-gradient(to right, #ffffff 0%, #fafafa 50%, #ffffff 99%);
-  border-radius: 10px;
+    font-family: "Roboto", sans-serif;
+    width:650px;
+    margin:30px auto;
+    background:linear-gradient(to right, #ffffff 0%, #fafafa 50%, #ffffff 99%);
+    border-radius: 10px;
 }
 
 /*---------------------------------------*/
 /* Form Header */
 /*---------------------------------------*/
+
 .form-header  {
-  background-color: #EFF0F1;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+    border-bottom-width: 40px;
+
 }
 
 .form-header h1 {
-  font-size: 30px;
-  text-align:center;
-  color:#666;
-  padding:20px 0;
-  border-bottom:1px solid #cccccc;
+    font-size: 30px;
+    font-weight: bold;
+    text-align:center;
+    color:#576ba6;
+    padding:20px 0;
+    border-bottom:1px solid #d6d6d6;
 }
 
 /*---------------------------------------*/
 /* Form Body */
 /*---------------------------------------*/
 .form-body {
-  padding:10px 40px;
-  color:#666;
+    padding:10px 40px;
+    color:#666;
 }
 
 .form-group{
-  margin-bottom:20px;
+    margin-bottom:20px;
 }
 
 .form-body .label-title {
-  color:#4e73df;
-  font-size: 17px;
-  font-weight: bold;
+    color:#576ba6;
+    font-size: 17px;
+    font-weight: bold;
 }
 
 .form-body .form-input {
@@ -103,75 +95,75 @@ body {
 
 
 .horizontal-group .left{
-  float:left;
-  width:49%;
+    float:left;
+    width:49%;
 }
 
 .horizontal-group .right{
-  float:right;
-  width:49%;
+    float:right;
+    width:49%;
 }
 
 .horizontal-group .center{
     float:center;
     width:49%;
-  }
+}
 
 input[type="file"] {
-  outline: none;
-  cursor:pointer;
-  font-size: 17px;
+    outline: none;
+    cursor:pointer;
+    font-size: 17px;
 }
 
 #range-label {
-  width:15%;
-  padding:5px;
-  background-color: #4e73df;
-  color:white;
-  border-radius: 5px;
-  font-size: 17px;
-  position: relative;
-  top:-8px;
+    width:15%;
+    padding:5px;
+    background-color: #4e73df;
+    color:white;
+    border-radius: 5px;
+    font-size: 17px;
+    position: relative;
+    top:-8px;
 }
 
 
 ::-webkit-input-placeholder  {
-  color:#d9d9d9;
+    color:#d9d9d9;
 }
 
 /*---------------------------------------*/
 /* Form Footer */
 /*---------------------------------------*/
 .signup-form .form-footer  {
-  background-color: #EFF0F1;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  padding:10px 40px;
-  text-align: right;
-  border-top: 1px solid #cccccc;
-  clear:both;
+    background-color: #EFF0F1;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding:10px 40px;
+    text-align: right;
+    border-top: 1px solid #cccccc;
+    clear:both;
 }
 
 .form-footer span {
-  float:left;
-  margin-top: 10px;
-  color:#999;  
-  font-style: italic;
-  font-weight: thin;
+    float:left;
+    margin-top: 10px;
+    color:#999;
+    font-style: italic;
+    font-weight: thin;
 }
 
-.btn {
-   display:inline-block;
-   padding:10px 20px;
-   background-color: #4e73df;
-   font-size:17px;
-   border:none;
-   border-radius:5px;
-   color: white;
-   cursor:pointer;
+.form-input.birth {
+    width: 163px;
 }
 
-.btn:hover {
-  background-color: #2e4172;
-  color:white;
+#dash {
+    margin: 0 5px;
+}
+
+#birth {
+    color:#576ba6;
+    font-size: 17px;
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: 8px;
 }
