@@ -12,4 +12,6 @@ public interface AccMapper {
     public List<AccDto> selectAccDetail(Long stat_num);
     public int getExp_num(Long stat_num);
 
+    public int insertAcc(AccDto params);
+
 }
