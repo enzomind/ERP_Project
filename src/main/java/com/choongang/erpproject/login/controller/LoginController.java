@@ -136,8 +136,8 @@ public class LoginController {
     @GetMapping("/users")
     public String findUserByUsername(final Authentication authentication, Model model){
 
-        String emp_id = ((UserDto)authentication.getPrincipal()).getEmp_id();
-        UserDto findUser = loginService.findById(emp_id);
+        String empId = ((UserDto)authentication.getPrincipal()).getEmpId();
+        UserDto findUser = loginService.findById(empId);
 
 
         model.addAttribute("user", findUser);

@@ -19,14 +19,14 @@ public class CustomUserDetailsService implements UserDetailsService {
     private final UserMapper userMapper;
 
     @Override
-    public UserDetails loadUserByUsername(String emp_id) throws UsernameNotFoundException {
-        return userMapper.findById(emp_id)
+    public UserDetails loadUserByUsername(String empId) throws UsernameNotFoundException {
+        return userMapper.findById(empId)
                 .map(user -> addAuthorities(user))
-                .orElseThrow(() -> new UserNotFoundException(emp_id + ">찾을 수 없습니다."));
+                .orElseThrow(() -> new UserNotFoundException(empId + ">찾을 수 없습니다."));
     }
 
     private UserDto addAuthorities(UserDto userDto){
-        userDto.setAuthorities(Arrays.asList(new SimpleGrantedAuthority(userDto.getAuth_code())));
+        userDto.setAuthorities(Arrays.asList(new SimpleGrantedAuthority(userDto.getAuthCode())));
 
         return userDto;
     }

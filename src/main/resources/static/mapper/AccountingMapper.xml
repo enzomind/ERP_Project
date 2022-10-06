@@ -3,9 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.choongang.erpproject.accounting.dao.AccMapper">
+<mapper namespace="com.choongang.erpproject.accounting.mapper.AccMapper">
 
-    <sql id="accColumns">
+    <sql id="accInsertColumns">
+        stat_num
+        , stat_date
+        , exp_num
+        , emp_id
+    </sql>
+
+    <sql id="accReturnColumns">
         stat_num
         , stat_date
         , com_acc
@@ -19,7 +26,18 @@
         , income
     </sql>
 
-    <select id="selectAccList" resultType="accDto">
+    <insert id="insertAccInfo" parameterType="AccRequestDto">
+        Insert INTO acv (<include refid="accInsertColumns"/>)
+        VALUES (
+                #{stat_num}
+                , NOW()
+                , #{exp_num}
+                , #{emp_id}
+        )
+
+    </insert>
+
+    <select id="selectAccList" resultType="AccResponseDto">
         SELECT stat_num
              , com_acc
              , stat_date
@@ -30,7 +48,7 @@
         ON acv.exp_num = expreport.exp_num
     </select>
 
-    <select id="selectAccDetail" parameterType="long" resultType="accDto">
+    <select id="selectAccDetail" parameterType="long" resultType="AccResponseDto">
         SELECT emp_name
              , appr
              , appr_date
@@ -44,7 +62,7 @@
         WHERE stat_num = #{stat_num};
     </select>
 
-    <select id="getExp_num" parameterType="long" resultType="accDto">
+    <select id="getExp_num" parameterType="long" resultType="AccResponseDto">
         SELECT exp_num
         FROM acv
         WHERE stat_num = #{stat_num}

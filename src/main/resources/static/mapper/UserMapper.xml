@@ -13,11 +13,11 @@
     <select id="findById" resultType="UserDto">
         SELECT emp_id, emp_name, pw, auth_code
         FROM erpprojectdb.emp_table
-        WHERE emp_id = #{emp_id}
+        WHERE emp_id = #{empId}
     </select>
 
     <insert id="save" parameterType="UserDto">
         INSERT INTO erpprojectdb.emp_table (emp_id, emp_name, pw, auth_code)
-        VALUES ( #{emp_id}, #{emp_name}, #{pw}, #{auth_code} )
+        VALUES ( #{empId}, #{empName}, #{pw}, #{authCode} )
     </insert>
 </mapper>

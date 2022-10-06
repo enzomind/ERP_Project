@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
 
 <th:block layout:fragment="mainHeader">
     <title>회계 전표</title>
@@ -8,8 +9,6 @@
 <th:block>
     <div layout:fragment="content">
         <div class="container-fluid">
-
-
 
 
             <!-- Head -->
@@ -26,27 +25,24 @@
             <!-- 글목록 -->
             <div class="card shadow m-4 col-lg-auto">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary float-left">회계 > 회계전표</h6>
+                    <h6 class="m-0 font-weight-bold text-primary float-left">회계전표</h6>
                 </div>
 
                 <!-- 조회기간 박스-->
                 <div class="card-body ">
-                    <div class="table-responsive border p-3">
+                    <div class="table-responsive border p-3 row">
                         조회 기간
                         <form
                                 class="d-none d-sm-inline-block form-inline navbar-search mb-3">
-                            <div class="input-group">
-                                <input type="text" class="form-control bg-light border-1 small" placeholder=""
-                                       aria-label="start" aria-describedby="조회시작">~
-                                <input type="text" class="form-control bg-light border-1 small" placeholder=""
+                            <div class="input-group" style="width: 600px">
+                                <input type="date" class="form-control bg-light border-1 mx-2"
+                                       aria-label="start"> ~
+                                <input type="date" class="form-control bg-light border-1 small ml-2"
                                        aria-label="end" aria-describedby="조회끝">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary float-right" type="button">
-                                        검색
-                                    </button>
-                                </div>
                             </div>
                         </form>
+                        <button class="btn btn-primary float-right" style="width: 80px" type="button">검색</button>
+
                     </div>
                 </div>
 
@@ -97,7 +93,6 @@
                                 <th>거래자명</th>
                                 <th>전표 생성일자</th>
                                 <th>지출 금액</th>
-                                <th>수입 금액</th>
                             </tr>
                             </thead>
 
@@ -108,12 +103,10 @@
                                 <td>기업은행 110-110-111111</td>
                                 <td>2022-09-30</td>
                                 <td>1,000,000</td>
-                                <td>0</td>
                             </tr>
                             <tr>
                                 <th colspan="3">합계</th>
                                 <td>1,000,000</td>
-                                <td>0</td>
                             </tr>
                             </tbody>
                         </table>
@@ -121,10 +114,9 @@
                 </div>
             </div>
         </div>
+    </div><!-- Content 끝 -->
 
 
-
-    </div>
 </th:block>
 
 </html>

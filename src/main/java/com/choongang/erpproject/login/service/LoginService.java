@@ -36,19 +36,19 @@ public class LoginService {
     }
 
     public String login(LoginDto loginDto){
-        UserDto userDto = userMapper.findById(loginDto.getEmp_id())
+        UserDto userDto = userMapper.findById(loginDto.getEmpId())
                 .orElseThrow(() -> new LoginFailedException("잘못된 아이디입니다."));
 
         if(!passwordEncoder.matches(loginDto.getPw(), userDto.getPassword())){
             throw new LoginFailedException("잘못된 비밀번호 입니다.");
         }
 
-        return jwtTokenProvider.createToken(userDto.getEmp_id(), Collections.singletonList(userDto.getAuth_code()));
+        return jwtTokenProvider.createToken(userDto.getEmpId(), Collections.singletonList(userDto.getAuthCode()));
 
     }
 
-    public UserDto findById(String emp_id){
-        return userMapper.findById(emp_id)
+    public UserDto findById(String empId){
+        return userMapper.findById(empId)
                 .orElseThrow(() -> new UserNotFoundException("없는 유저입니다."));
     }
 }

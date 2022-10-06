@@ -1,12 +1,12 @@
 package com.choongang.erpproject.accounting.dto;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 
-@Data
-public class AccDto {
+@Getter
+public class AccResponseDto {
 
 
 //    회계전표 리스트
@@ -22,8 +22,8 @@ public class AccDto {
     private String com_acc; // 카드/계좌(거래처명)
 
     //유저테이블 정보
-    private String emp_id; //사번
-    private String emp_name; //기안자
+    private String empId; //사번
+    private String empName; //기안자
 
     //지출결의서 정보
     private String exp_num; //결의번호
