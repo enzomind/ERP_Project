@@ -19,7 +19,7 @@
         , income
     </sql>
 
-    <select id="selectAccList" resultType="com.choongang.eprproject.accounting.dto.accDto">
+    <select id="selectAccList" resultType="accDto">
         SELECT stat_num
              , com_acc
              , stat_date
@@ -30,7 +30,7 @@
         ON acv.exp_num = expreport.exp_num
     </select>
 
-    <select id="selectAccDetail" parameterType="long" resultType="com.choongang.eprproject.accounting.dto.accDto">
+    <select id="selectAccDetail" parameterType="long" resultType="accDto">
         SELECT emp_name
              , appr
              , appr_date
@@ -44,7 +44,7 @@
         WHERE stat_num = #{stat_num};
     </select>
 
-    <select id="getExp_num" parameterType="long" resultType="com.choongang.eprproject.accounting.dto.accDto">
+    <select id="getExp_num" parameterType="long" resultType="accDto">
         SELECT exp_num
         FROM acv
         WHERE stat_num = #{stat_num}
