@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.choongang.eprproject.accounting.dao.accMapper">
+
+    <sql id="accColumns">
+        stat_num
+        , stat_date
+        , com_acc
+        , emp_id
+        , emp_name
+        , exp_num
+        , appl_date
+        , appr_date
+        , appr
+        , expense
+        , income
+    </sql>
+
+    <select id="selectAccList" resultType="accDto">
+        SELECT stat_num
+             , com_acc
+             , stat_date
+             , expense
+             , income
+        FROM acv
+        LEFT JOIN expreport
+        ON acv.exp_num = expreport.exp_num
+    </select>
+
+    <select id="selectAccDetail" parameterType="long" resultType="accDto">
+        SELECT emp_name
+             , appr
+             , appr_date
+             , com_acc
+             , expense
+        FROM acv
+        INNER JOIN expreport
+        ON acv.exp_num = expreport.exp_num
+        INNER JOIN emp_table
+        ON acv.emp_id = emp_table.emp_id
+        WHERE stat_num = #{stat_num};
+    </select>
+
+    <select id="getExp_num" parameterType="long" resultType="accDto">
+        SELECT exp_num
+        FROM acv
+        WHERE stat_num = #{stat_num}
+    </select>
+
+</mapper>
