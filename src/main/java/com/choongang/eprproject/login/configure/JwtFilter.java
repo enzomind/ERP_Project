@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.NoSuchElementException;
+
 
 @RequiredArgsConstructor
 public class JwtFilter extends GenericFilterBean {
@@ -27,7 +27,7 @@ public class JwtFilter extends GenericFilterBean {
     private final JwtTokenProvider jwtTokenProvider;
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException, NoSuchElementException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException{
 
         Cookie[] cookies = ((HttpServletRequest) request).getCookies();
         if(cookies==null){
