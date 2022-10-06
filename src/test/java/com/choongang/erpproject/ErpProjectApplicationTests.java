@@ -9,22 +9,6 @@ import org.springframework.context.ApplicationContext;
 @SpringBootTest
 class ErpProjectApplicationTests {
 
-    @Autowired
-    private ApplicationContext context;
-
-    @Autowired
-    private SqlSessionFactory sessionFactory;
-
-    @Test
-    public void testByApplicationContext(){
-        try{
-            System.out.println("========================");
-            System.out.println(context.getBean("sqlSessionFactory"));
-            System.out.println("========================");
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     @Test
     void contextLoads() {

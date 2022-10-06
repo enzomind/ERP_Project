@@ -1,7 +1,6 @@
 package com.choongang.erpproject.login.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,9 +12,7 @@ import com.choongang.erpproject.login.dto.LoginDto;
 import com.choongang.erpproject.login.dto.UserDto;
 import com.choongang.erpproject.login.repository.UserMapper;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -31,15 +28,12 @@ public class LoginService {
         if(userMapper.findById(userDto.getUsername()).isPresent()){
             throw new DuplicatedUsernameException("이미 가입된 유저입니다.");
         }
-        List<GrantedAuthority> authorities = new ArrayList<>();
 
         userDto.setPw(passwordEncoder.encode(userDto.getPassword()));
         userMapper.save(userDto);
 
         return userMapper.findById(userDto.getUsername()).get();
     }
-
-
 
     public String login(LoginDto loginDto){
         UserDto userDto = userMapper.findById(loginDto.getEmp_id())
@@ -57,7 +51,4 @@ public class LoginService {
         return userMapper.findById(emp_id)
                 .orElseThrow(() -> new UserNotFoundException("없는 유저입니다."));
     }
-
-
-
 }

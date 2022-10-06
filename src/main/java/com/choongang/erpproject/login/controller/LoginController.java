@@ -9,7 +9,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -56,7 +55,7 @@ public class LoginController {
     @PostMapping("/join")
     public String join(@ModelAttribute UserDto userDto){
 
-        UserDetails savedUser = loginService.join(userDto);
+        UserDto savedUser = loginService.join(userDto);
 
         return "redirect:/";
     }
@@ -135,7 +134,7 @@ public class LoginController {
 
     //thymeleaf
     @GetMapping("/users")
-    public String findUserByUsername(Authentication authentication, Model model){
+    public String findUserByUsername(final Authentication authentication, Model model){
 
         String emp_id = ((UserDto)authentication.getPrincipal()).getEmp_id();
         UserDto findUser = loginService.findById(emp_id);
