@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -134,10 +135,10 @@ public class LoginController {
 
     //thymeleaf
     @GetMapping("/users")
-    public String findUserByUsername(UserDto userDto, Model model){
+    public String findUserByUsername(Authentication authentication, Model model){
 
-//        String emp_id = ((UserDto)authentication.getPrincipal()).getEmp_id();
-        UserDto findUser = loginService.findById(userDto.getUsername());
+        String emp_id = ((UserDto)authentication.getPrincipal()).getEmp_id();
+        UserDto findUser = loginService.findById(emp_id);
 
 
         model.addAttribute("user", findUser);
