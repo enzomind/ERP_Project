@@ -48,7 +48,8 @@
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">인사 관리</h6>
           <a class="collapse-item" href="hr_emp.html">직원 조회</a>
-          <a class="collapse-item" href="hr_sal.html">급여(승진) 관리</a>
+          <a class="collapse-item" href="hr_emp.html">승진 관리</a>
+          <a class="collapse-item" href="hr_emp.html">급여 관리</a>
         </div>
       </div>
     </li>
@@ -77,8 +78,8 @@
       <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">전자결재 관리</h6>
-          <a class="collapse-item" href="ec_1.html">결재상신함</a>
-          <a class="collapse-item" href="ec_2.html">결재수신함</a>
+          <a class="collapse-item" href="ec.html">결재상신함</a>
+          <a class="collapse-item" href="ec.html">결재수신함</a>
         </div>
       </div>
     </li>
@@ -157,14 +158,19 @@
         <!-- Head -->
         <div class="row">
           <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-70 w-421 py-2">
-              <div class="col mr-2">
-                <div class="h5 mb-0 font-weight-bold text-gray-800">Electronic Approval</div>
+            <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                      Electronic Approval</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">전자 결재</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
         <!-- 박스 시작-->
         <div class="card shadow col-lg-auto p-0">
           <div class="card-header py-3">
@@ -247,9 +253,9 @@
                 <tr>
                   <th>증빙서류</th>
                   <td><form>
-                    <input type="file" class="form-control-file" id="file">
+                      <input type="file" class="form-control-file" id="file">
                   </form></td>
-                  </td>
+                </td>
                 </tr>
                 </thead>
               </table>
@@ -266,10 +272,10 @@
                 <div class="modal-content">
                   <div class="modal-body">
                     <div class="input-group mt-3">
-                      <input type="text" id="list" class="form-control bg-light" placeholder="이름을 입력하세요">　
+                      <input type="text" id="list" class="form-control bg-light" placeholder="이름을 입력하세요">
                       <button type="button" class="btn btn-primary">검색</button>
                     </div></br>
-                    <table class="table table-bordered table-hover text-center" id="dataTable" width="100%" cellspacing="0">
+                      <table class="table table-bordered table-hover text-center" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                       <tr>
                         <th>본부</th>
@@ -285,6 +291,30 @@
                         <td>과장</td>
                         <td>홍길동</td>
                       </tr>
+                      <tr>
+                        <td>솔루션사업본부</td>
+                        <td>ICT개발팀</td>
+                        <td>대리</td>
+                        <td>홍길순</td>
+                      </tr>
+                      <tr>
+                        <td>솔루션사업본부</td>
+                        <td>ICT개발팀</td>
+                        <td>대리</td>
+                        <td>홍길순</td>
+                      </tr>
+                      <tr>
+                        <td>솔루션사업본부</td>
+                        <td>ICT개발팀</td>
+                        <td>대리</td>
+                        <td>홍길순</td>
+                      </tr>
+                      <tr>
+                        <td>솔루션사업본부</td>
+                        <td>ICT개발팀</td>
+                        <td>대리</td>
+                        <td>홍길순</td>
+                      </tr>
                       </tbody>
                     </table>
                   </div>
@@ -297,8 +327,8 @@
             </div>
 
             <div class="text-center">
-              <button class="btn btn-primary" style="width: 100px">등록</button>
-              <button class="btn btn-primary" style="width: 100px">취소</button>
+            <button class="btn btn-primary" style="width: 100px">등록</button>
+            <button class="btn btn-primary" style="width: 100px">취소</button>
             </div>
 
           </div>
