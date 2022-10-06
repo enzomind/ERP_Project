@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class accDto {
+public class AccDto {
 
 
 //    회계전표 리스트
@@ -23,7 +23,7 @@ public class accDto {
     private String com_acc; // 카드/계좌(거래처명)
 
     //유저테이블 정보
-    private int emp_id; //사번
+    private String emp_id; //사번
     private String emp_name; //기안자
 
     //지출결의서 정보
