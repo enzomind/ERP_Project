@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.choongang.eprproject.employee.dao.employeeDao">
+<mapper namespace="com.choongang.erpproject.employee.dao.employeeDao">
     <select id="selectAll" resultType="employeeDto">
     SELECT * FROM erpprojectdb.emp_table
     </select>
