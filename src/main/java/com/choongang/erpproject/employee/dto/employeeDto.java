@@ -6,9 +6,9 @@ import lombok.Data;
 @Data
 @Builder
 public class employeeDto {
-    String emp_id;
+    String empId;
     String pw;
-    String emp_name;
+    String empName;
     String tel;
     String idp_num;
     String birth;
@@ -29,6 +29,6 @@ public class employeeDto {
     String account;
     String hq_code;
     String job_code;
-    String auth_code;
+    String authCode;
     String gender;
 }
