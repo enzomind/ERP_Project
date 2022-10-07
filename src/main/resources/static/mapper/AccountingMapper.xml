@@ -5,14 +5,14 @@
 
 <mapper namespace="com.choongang.erpproject.accounting.mapper.AccMapper">
 
-    <sql id="accInsertColumns">
+    <sql id="accRequestColumns">
         stat_num
         , stat_date
         , exp_num
         , emp_id
     </sql>
 
-    <sql id="accReturnColumns">
+    <sql id="accColumns">
         stat_num
         , stat_date
         , com_acc
@@ -27,17 +27,17 @@
     </sql>
 
     <insert id="insertAccInfo" parameterType="AccRequestDto">
-        Insert INTO acv (<include refid="accInsertColumns"/>)
-        VALUES (
-                #{stat_num}
+        INSERT INTO acv (
+        <include refid="accRequestColumns" />
+        ) VALUES (
+                  #{statNum}
                 , NOW()
-                , #{exp_num}
-                , #{emp_id}
+                , #{expNum}
+                , #{empId}
         )
-
     </insert>
 
-    <select id="selectAccList" resultType="AccResponseDto">
+    <select id="getAccList" resultType="AccResponseDto">
         SELECT stat_num
              , com_acc
              , stat_date
@@ -48,7 +48,7 @@
         ON acv.exp_num = expreport.exp_num
     </select>
 
-    <select id="selectAccDetail" parameterType="long" resultType="AccResponseDto">
+    <select id="getAccDetail" parameterType="long" resultType="AccResponseDto">
         SELECT emp_name
              , appr
              , appr_date
@@ -59,13 +59,20 @@
         ON acv.exp_num = expreport.exp_num
         INNER JOIN emp_table
         ON acv.emp_id = emp_table.emp_id
-        WHERE stat_num = #{stat_num};
+        WHERE stat_num = #{statNum};
     </select>
 
     <select id="getExp_num" parameterType="long" resultType="AccResponseDto">
         SELECT exp_num
         FROM acv
-        WHERE stat_num = #{stat_num}
+        WHERE stat_num = #{statNum}
+    </select>
+
+    <select id="listCount" parameterType="AccResponseDto" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM
+            acv
     </select>
 
 </mapper>

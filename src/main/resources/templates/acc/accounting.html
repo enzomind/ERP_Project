@@ -9,8 +9,6 @@
 <th:block>
     <div layout:fragment="content">
         <div class="container-fluid">
-
-
             <!-- Head -->
             <div class="row">
                 <div class="col-xl-3 col-md-6 mb-4">
@@ -56,28 +54,18 @@
                             <tr>
                                 <th>전표번호</th>
                                 <th>거래자명</th>
-                                <th>전표 생성일자</th>
-                                <th>지출 금액</th>
-                                <th>수입 금액</th>
+                                <th>생성일자</th>
+                                <th>지출금액</th>
+                                <th>수입금액</th>
                             </tr>
                             </thead>
 
-                            <!-- 데이터 연결시 수정-->
-                            <tbody>
-                            <tr>
-                                <td>SJCT-0001</td>
-                                <td>기업은행 110-110-111111</td>
-                                <td>2022-09-30</td>
-                                <td>1,000,000</td>
-                                <td>0</td>
-                            </tr>
-                            <tr>
-                                <th colspan="3">합계</th>
-                                <td>1,000,000</td>
-                                <td>0</td>
-                            </tr>
+                            <tbody id="list">
+
                             </tbody>
+
                         </table>
+
                     </div>
                 </div>
 
@@ -116,7 +104,49 @@
         </div>
     </div><!-- Content 끝 -->
 
-
 </th:block>
 
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+
+        console.log("start");
+        window.onload = () => {
+            findAll();
+        }
+        function findAll() {
+            fetch('/accapi/accounting').then(response => {
+
+                console.log("response : ", response);
+
+                if(response.ok) {
+                    return response.json();
+                }
+            }).then(json => {
+                let html='';
+
+                if(!json.length) {
+                    html = '<td colspan="5"> 등록된 게시글이 없습니다.</td>';
+                } else {
+                    json.forEach((obj, idx) => {
+                        html += `
+                        <tr>
+                            <td>${json.length - idx}</td>
+                            <td>${obj.statNum}</td>
+                            <td>${obj.comAcc}</td>
+                            <td>${obj.statDate}</td>
+                            <td>${obj.expense}</td>
+                            <td>${obj.income}</td>
+                            </tr>
+                        `;
+                    });
+                }
+
+                document.getElementById('list').innerHTML = html;
+            })
+        }
+
+        /*]]>*/
+    </script>
+</th:block>
 </html>
