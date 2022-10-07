@@ -1,9 +1,35 @@
 package com.choongang.erpproject.accounting.service;
 
+import com.choongang.erpproject.accounting.dto.AccRequestDto;
+import com.choongang.erpproject.accounting.dto.AccResponseDto;
+import com.choongang.erpproject.accounting.mapper.AccMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
-public class AccServiceImpl {
+public class AccServiceImpl implements AccService {
+
+    private final AccMapper accMapper;
+
+    @Override
+    public List<AccResponseDto> getAccList() {
+
+        List<AccResponseDto> list = Collections.emptyList();
+
+        int listCount = accMapper.listCount();
+
+        if(listCount > 0) {
+            list = accMapper.getAccList();
+        }
+        return list;
+    }
+
+    @Override
+    public List<AccResponseDto> getAccDetail(Long statNum) {
+        return null;
+    }
 }
