@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>SJHT ERP System</title>
@@ -356,9 +356,11 @@
                                 <th>재직구분</th>
                             </tr>
                             </thead>
-                            <tbody>
+<!--                            csh, 밑 테이블-->
+
+                            <tbody th:each="hrTbodyFor : ${hrTbodyFor}">
                             <tr>
-                                <td>test</td>
+                                <td>[[${hrTbodyFor.emp_id}]]</td>
                                 <td>test</td>
                                 <td>
                                     <button data-toggle="modal" data-target="#ecmodal2"
@@ -374,6 +376,8 @@
                                 <td>test</td>
                             </tr>
                             </tbody>
+
+<!--                            csh, 밑 테이블 여기까지-->
                         </table>
                         <!--모달 2. 해당 직원 조회 -->
                         <div class="modal fade" id="ecmodal2" data-backdrop="static" data-keyboard="false"
