@@ -26,8 +26,11 @@ public class JwtFilter extends GenericFilterBean {
     private static final Logger logger = LoggerFactory.getLogger(JwtFilter.class);
     private final JwtTokenProvider jwtTokenProvider;
 
+    public static final String AUTHORIZATION_HEADER = "Authorization";
+
+    //filter를 통해 JWT토큰이 유효한지 검증
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException, NoSuchElementException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
         Cookie[] cookies = ((HttpServletRequest) request).getCookies();
         if(cookies==null){
@@ -53,6 +56,15 @@ public class JwtFilter extends GenericFilterBean {
         }
 
         chain.doFilter(request, response);
+    }
+
+    //Http Request 헤더에서 토큰만 추출
+    private String resolveToken(HttpServletRequest request) {
+        String bearerToken = request.getHeader(AUTHORIZATION_HEADER);
+        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
+            return bearerToken.substring(7);
+        }
+        return null;
     }
 }
 

@@ -12,7 +12,7 @@ import java.util.NoSuchElementException;
 
 @Component
 public class CustomAccessDeniedHandler implements AccessDeniedHandler {
-
+//인가 실패 시 처리를 위한 클래스
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException, NoSuchElementException {
         response.sendError(HttpServletResponse.SC_FORBIDDEN);
