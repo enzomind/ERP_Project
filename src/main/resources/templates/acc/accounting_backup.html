@@ -3,11 +3,7 @@
       layout:decorate="~{layout/layout}">
 
 <th:block layout:fragment="mainHeader">
-
     <title>회계 전표</title>
-
-    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-
 </th:block>
 
 <th:block>
@@ -107,7 +103,48 @@
             </div>
         </div>
 
-        <script type="text/javascript" th:src="@{/js/accounting/acc.js}"></script>
+        <th:block layout:fragment="script">
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+
+                console.log("start");
+                window.onload = () => {
+                    findAll();
+                }
+                function findAll() {
+                    fetch('/accapi/accounting').then(response => {
+
+                        console.log("response : ", response);
+
+                        if(response.ok) {
+                            return response.json();
+                        }
+                    }).then(json => {
+                        let html='';
+
+                        if(!json.length) {
+                            html = '<td colspan="5"> 등록된 게시글이 없습니다.</td>';
+                        } else {
+                            json.forEach((obj, idx) => {
+                                html += `
+                        <tr>
+                            <td>${obj.statNum}</td>
+                            <td>${obj.comAcc}</td>
+                            <td>${obj.statDate}</td>
+                            <td>${obj.expense}</td>
+                            <td>${obj.income}</td>
+                            </tr>
+                        `;
+                            });
+                        }
+
+                        document.getElementById('list').innerHTML = html;
+                    })
+                }
+
+                /*]]>*/
+            </script>
+        </th:block>
 
     </div><!-- Content 끝 -->
 
