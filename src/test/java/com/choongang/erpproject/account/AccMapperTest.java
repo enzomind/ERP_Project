@@ -32,4 +32,15 @@ public class AccMapperTest {
         System.out.println("전체 개시글 수 : " + data.size() + "건");
     }
 
+    @Test
+    void getExpNum() {
+
+        Long num = 1L;
+
+        String expNum = accMapper.getExpNum(num);
+
+        System.out.println("전표번호(statNum)는 " + num + "이고 이에 해당하는 결의번호(expNum)는 " + expNum);
+
+    }
+
 }
