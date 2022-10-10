@@ -1,3 +1,5 @@
+let listTotalCount=0;
+
 console.log("start");
 window.onload = () => {
     findAccAll();
@@ -18,11 +20,12 @@ function findAccAll() {
             html = '<td colspan="5"> 등록된 게시글이 없습니다.</td>';
         } else {
             json.forEach((obj, idx) => {
+                listTotalCount = listTotalCount + 1;
                 var formatExpense = obj.expense.toString()
                     .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 
                 html += `
-                        <tr>
+                        <tr style="cursor:pointer;" onclick="location.href='naver.com'" onmouseover="this.style.background='lightgrey'" onmouseout="this.style.background='white'">
                             <td>${obj.statNum}</td>
                             <td>${obj.comAcc}</td>
                             <td>${obj.statDate}</td>
@@ -32,8 +35,15 @@ function findAccAll() {
                         `;
             });
         }
-
+        listTotalView(listTotalCount);
         document.getElementById('list').innerHTML = html;
     })
 }
 
+
+function listTotalView(listTotalCount) {
+
+    html = `<span>총 ${listTotalCount}건</span>`;
+
+    document.getElementById('listTotal').innerHTML = html;
+}
