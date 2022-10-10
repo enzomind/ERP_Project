@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class AccMapperTest {
         AccRequestDto accRequestDto = new AccRequestDto();
 
         accRequestDto.setStatNum(3);
-        accRequestDto.setStatDate(LocalDateTime.now());
+        accRequestDto.setStatDate(LocalDate.now());
         accRequestDto.setExpNum("SJCD-0187");
         accRequestDto.setEmpId("SJ-0074");
 
