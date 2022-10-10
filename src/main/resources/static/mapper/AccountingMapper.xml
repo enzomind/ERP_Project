@@ -62,7 +62,7 @@
         WHERE stat_num = #{statNum};
     </select>
 
-    <select id="getExp_num" parameterType="long" resultType="AccResponseDto">
+    <select id="getExpNum" parameterType="long" resultType="String">
         SELECT exp_num
         FROM acv
         WHERE stat_num = #{statNum}

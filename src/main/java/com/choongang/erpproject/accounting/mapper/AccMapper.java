@@ -19,7 +19,7 @@ public interface AccMapper {
     List<AccResponseDto> getAccDetail(Long statNum);
 
     //결의번호 조회
-    int getExp_num(Long statNum);
+    String getExpNum(Long statNum);
 
     int listCount();
 
