@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
-<taglib xmlns="http://java.sun.com/xml/ns/javaee"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
-        version="2.1">
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-    <tlib-version>1.0</tlib-version>
-    <short-name>myshortname</short-name>
-    <uri>http://mycompany.com</uri>
+<mapper namespace="com.choongang.erpproject.edms.Repository.Hr_Mapper">
 
-    <!-- Invoke 'Generate' action to add tags or functions -->
+    <select id="levCount" resultType="int">
+        SELECT count(lev_num) as cnt from lev_table;
+    </select>
 
-</taglib>
+    <select id="findAll" resultType="com.choongang.erpproject.edms.dto.Hr_ReportDto">
+        SELECT * FROM lev_table;
+    </select>
+
+
+</mapper>

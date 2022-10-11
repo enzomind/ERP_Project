@@ -1,6 +1,6 @@
 <!DOCTYPE html>
+<html lang ="en" xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
-
 <head>
     <title>SJHT ERP System</title>
 
@@ -241,12 +241,12 @@
                                 <td>2022-10-04</td>
                                 <td>반려</td>
                             </tr>
-                            <tr>
+                            <tr th:each="Hr_ReportDto : ${hrform}">
                                 <td>인사</td>
-                                <td>SJCD-0002</td>
-                                <td><a href="ec_hrform_2.html">홍길동 12/24 휴가신청서</a></td>
+                                <td th:text="${Hr_ReportDto.lev_num}"></td>
+                                <td><a href="ec_hrform_2.html" th:href="@{/ec_hrform/{emp_id}(emp_id=${Hr_ReportDto.emp_id})}" th:text="${Hr_ReportDto.emp_id}"></a></td>
                                 <td>2022-10-04</td>
-                                <td>승인</td>
+                                <td th:text="${Hr_ReportDto.appr_yn}"></td>
                             </tr>
                             </tbody>
                         </table>
