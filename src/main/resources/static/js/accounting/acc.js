@@ -22,7 +22,7 @@ function findAccAll() {
         let htmlTotal = '';
 
         if (!json.length) {
-            html = '<td colspan="5"> 등록된 게시글이 없습니다.</td>';
+            html = '<td colspan="5"> 해당 기간에 조회된 데이터가 없습니다.</td>';
         } else {
             json.forEach((obj, idx) => {
                 listTotalCount = listTotalCount + 1;
@@ -59,6 +59,8 @@ function findAccAll() {
         }
 
         document.getElementById('list').innerHTML = html + htmlTotal;
+        var tempDetail = '<td colspan="6">전표 리스트에서 상세 조회할 항목을 선택해 주세요.</td>';
+        document.getElementById('detailList').innerHTML = tempDetail;
         listTotalCount = 0;
         listTotalSum = 0;
     })
