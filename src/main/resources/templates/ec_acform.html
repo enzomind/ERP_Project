@@ -20,15 +20,7 @@
           src="https://code.jquery.com/jquery-3.6.1.js"
           integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
           crossorigin="anonymous"></script>
-  <script>
-    $(document).ready(function (){
-      $('#dataTable tr').click(function(){
-        var tr = $(this).find("td:last");
-        $("#result").text(tr.text());
-        $('#modal1').modal('hide')
-      })
-    });
-  </script>
+
 </head>
 
 <body id="page-top">
@@ -178,6 +170,8 @@
           </div>
         </div>
         <!-- 박스 시작-->
+        <form action="ec_1.html" method="post">
+
         <div class="card shadow col-lg-auto p-0">
           <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary float-left">전자결재 > 결재상신함</h6>
@@ -334,13 +328,16 @@
             </div>
 
             <div class="text-center">
-            <button class="btn btn-primary" style="width: 100px">등록</button>
-            <button class="btn btn-primary" style="width: 100px">취소</button>
+            <button type="submit" id="submit" class="btn btn-primary" style="width: 100px">등록</button>
+            <button class="btn btn-primary" style="width: 100px" onclick="location.href='ec_1.html'">취소</button>
             </div>
 
           </div>
         </div>
+        </form>
+
       </div>
+
     </div>
   </div>
   <!-- Content 끝 -->
@@ -381,6 +378,9 @@
 <!-- Page level custom scripts -->
 <script src="/static/etc/js/demo/datatables-demo.js"></script>
 
+
+<!--ec_acform.js-->
+<script src="/static/js.edms/ec_acform.js"></script>
 </body>
 
 </html>
