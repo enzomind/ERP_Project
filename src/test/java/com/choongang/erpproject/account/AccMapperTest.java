@@ -21,7 +21,7 @@ public class AccMapperTest {
     void InsertTest() {
         AccRequestDto accRequestDto = new AccRequestDto();
 
-        accRequestDto.setStatNum(3);
+        accRequestDto.setStatNum(3L);
         accRequestDto.setStatDate(LocalDate.now());
         accRequestDto.setExpNum("SJCD-0187");
         accRequestDto.setEmpId("SJ-0074");
@@ -34,12 +34,15 @@ public class AccMapperTest {
 
     @Test
     void getExpNum() {
+        String expNum = accMapper.getExpNum(1L);
+        System.out.println("전표번호(statNum)는 " + 1L + "이고 이에 해당하는 결의번호(expNum)는 " + expNum);
+    }
 
-        Long num = 1L;
-
-        String expNum = accMapper.getExpNum(num);
-
-        System.out.println("전표번호(statNum)는 " + num + "이고 이에 해당하는 결의번호(expNum)는 " + expNum);
+    @Test
+    void getDetailList() {
+        Long statNum = 1L;
+        List<AccResponseDto> data = accMapper.getAccDetail(statNum);
+        System.out.println("상세 건 수 : " + data.size() + "건");
 
     }
 

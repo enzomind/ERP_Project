@@ -30,6 +30,14 @@ public class AccServiceImpl implements AccService {
 
     @Override
     public List<AccResponseDto> getAccDetail(Long statNum) {
-        return null;
+        List<AccResponseDto> detailList = Collections.emptyList();
+
+        int detailListCount = accMapper.listCount();
+
+        if(detailListCount > 0) {
+            detailList = accMapper.getAccDetail(statNum);
+        }
+        return detailList;
     }
+
 }

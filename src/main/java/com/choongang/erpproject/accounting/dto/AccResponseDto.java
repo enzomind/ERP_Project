@@ -6,7 +6,7 @@ import lombok.Getter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Getter
+@Data
 public class AccResponseDto {
 
 
@@ -27,6 +27,7 @@ public class AccResponseDto {
     private String empName; //기안자
 
     //지출결의서 정보
+    private int expId;
     private String expNum; //결의번호
     private LocalDate applDate; //신청일자(지출결의서 상신일자)
     private LocalDate apprDate; //지출결의서 승인일자
