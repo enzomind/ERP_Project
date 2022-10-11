@@ -1,4 +1,4 @@
 package com.choongang.erpproject.edms.service;
 
-public class exam {
+public class Hr_SerivceMpl {
 }

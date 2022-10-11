@@ -183,7 +183,7 @@
                 </tr>
                 <tr>
                   <td>홍길동 사원</td>
-                  <td>-</td>
+                  <td id="tr_name"></td>
                 </tr>
                 </thead>
               </table>
@@ -236,7 +236,7 @@
                       <input type="text" id="list" class="form-control bg-light" placeholder="이름을 입력하세요">　
                       <button type="button" class="btn btn-primary">검색</button>
                     </div></br>
-                    <table class="table table-bordered table-hover text-center" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered table-hover text-center" id="modal_click" width="100%" cellspacing="0">
                       <thead>
                       <tr>
                         <th>본부</th>
@@ -250,7 +250,7 @@
                         <td>HR본부</td>
                         <td>경영관리팀</td>
                         <td>과장</td>
-                        <td>홍길동</td>
+                        <td id="td_name">홍길동</td>
                       </tr>
                       </tbody>
                     </table>
@@ -297,6 +297,33 @@
     </div>
   </div>
 </div>
+
+<script>
+  function rowClicked() {
+
+    var table =document.getElementById('modal_click');
+    var rowList = table.rows; // *1)rows collection
+
+    for (i=1; i<rowList.length; i++) {//thead부분 제외.
+
+      var row = rowList[i];
+      var tdsNum = row.childElementCount;// 자식요소 갯수 구하기.
+
+      row.onclick = function(){
+        return function(){
+          var str = "";
+          for (var j = 3; j < tdsNum; j++){//row안에 있는 값 순차대로 가져오기.
+            var row_value = this.cells[j].innerHTML; //*2)cells collection
+            str += row_value+' ';//값을 하나의 text값으로 만듦
+          };//td for
+          document.querySelector('#tr_name').innerText =str; //p태그 안에 값 넣어주기.
+        };//return
+      }(row);//onclick
+    }//for
+  }//function
+  window.onload = rowClicked();
+</script>
+
 
 <!-- 부트스트랩 -->
 <!-- Bootstrap core JavaScript-->
