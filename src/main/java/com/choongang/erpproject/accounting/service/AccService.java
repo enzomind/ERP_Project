@@ -8,7 +8,6 @@ import java.util.List;
 public interface AccService {
 
     List<AccResponseDto> getAccList();
-
     List<AccResponseDto> getAccDetail(Long statNum);
 
 }

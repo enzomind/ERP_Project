@@ -32,6 +32,22 @@ public class AccServiceTest {
                 System.out.println("=====================");
             }
         }
+    }
 
+    @Test
+    public void getDetailListTest() {
+
+        List<AccResponseDto> detailList = accService.getAccDetail(1L);
+        if(CollectionUtils.isEmpty(detailList)==false) {
+            for(AccResponseDto accResponseDto : detailList) {
+                System.out.println("=====================");
+                System.out.println(accResponseDto.getEmpName());
+                System.out.println(accResponseDto.getAppr());
+                System.out.println(accResponseDto.getApprDate());
+                System.out.println(accResponseDto.getComAcc());
+                System.out.println(accResponseDto.getExpense());
+                System.out.println("=====================");
+            }
+        }
     }
 }

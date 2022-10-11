@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Data
 public class AccRequestDto {
 
-    private int statNum; //전표번호
+    private Long statNum; //전표번호
     private LocalDate statDate; //발생날짜
     private String expNum; //결의번호
     private String empId; //사번
