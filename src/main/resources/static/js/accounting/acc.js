@@ -3,17 +3,41 @@ let detailTotalCount=0;
 let listTotalSum=0;
 let detailTotalSum=0;
 
+let letstartDate = new Date();
+let letendDate = new Date();
+let syear = letstartDate.getFullYear();
+let smonth = letstartDate.getMonth() + 1;
+let sdate = letstartDate.getDate() - 2;
+let eyear = letendDate.getFullYear();
+let emonth = letendDate.getMonth() + 1;
+let edate = letendDate.getDate();
+
+let setStartDate;
+let setEndDate;
+
 
 window.onload = () => {
 
-    console.log(syear + '-' + smonth + '-' + sdate);
-    console.log(eyear + '-' + emonth + '-' + edate);
+    setStartDate = syear + '-' + smonth + '-' + sdate;
+    setEndDate = eyear + '-' + emonth + '-' + edate;
+    console.log("기본빵 " + setStartDate + "부터 " + setEndDate + "까지 기간 조회");
 
-    findAccAll();
+    findAccAll(setStartDate, setEndDate);
 }
 
-function findAccAll() {
-    fetch('/accapi/accounting').then(response => {
+function search() {
+    setStartDate = document.getElementById("searchSDate").value;
+    setEndDate = document.getElementById("searchEDate").value;
+
+    findAccAll(setStartDate, setEndDate);
+}
+
+function findAccAll(setSDate, setEDate) {
+
+    const startDate = setSDate;
+    const endDate = setEDate;
+
+    fetch(`/accapi/accounting/${startDate}/${endDate}`).then(response => {
 
         console.log("response : ", response);
 
@@ -27,17 +51,21 @@ function findAccAll() {
         if (!json.length) {
             html = '<td colspan="5"> 해당 기간에 조회된 데이터가 없습니다.</td>';
         } else {
-            json.forEach((obj, idx) => {
-                listTotalCount = listTotalCount + 1;
 
-                var tempExpense = obj.expense;
-                listTotalSum = listTotalSum + tempExpense;
+                json.forEach((obj, idx) => {
+                    var tempComAcc = obj.comAcc;
 
-                // var formatExpense = tempExpense.toString()
-                //     .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-                var formatExpense = tempExpense.toLocaleString();
 
-                html += `
+                    if (tempComAcc == null) {
+                        console.log("<-- 제외된 데이터 수");
+                    } else {
+
+                        listTotalCount = listTotalCount + 1;
+                        var tempExpense = obj.expense;
+                        listTotalSum = listTotalSum + tempExpense;
+                        var formatExpense = tempExpense.toLocaleString();
+
+                    html += `
                         <tr style="cursor:pointer;" onclick="findAccDetail(${obj.statNum})" onmouseover="this.style.background='lightgrey'" onmouseout="this.style.background='white'">
                             <td>${json.length - idx}</td>
                             <td>${obj.comAcc}</td>
@@ -46,12 +74,12 @@ function findAccAll() {
                             <td>${obj.income}</td>
                             </tr>
                         `;
-            });
+                    }
+                });
         }
         listTotalView(listTotalCount);
 
-        var sum = listTotalSum.toString()
-            .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        var sum = listTotalSum.toLocaleString();
 
         if (listTotalSum>0) {
             htmlTotal = `
@@ -64,6 +92,7 @@ function findAccAll() {
 
         $("#list").empty().append(html + htmlTotal);
         //document.getElementById('list').innerHTML = html + htmlTotal;
+
         var tempDetail = '<td colspan="6">전표 리스트에서 상세 조회할 항목을 선택해 주세요.</td>';
         document.getElementById('detailList').innerHTML = tempDetail;
         listTotalCount = 0;
@@ -98,8 +127,6 @@ function findAccDetail(statNum) {
             var tempExpense = obj.expense;
             detailTotalSum = detailTotalSum + tempExpense;
 
-            // var formatExpense = tempExpense.toString()
-            //     .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
             var formatExpense = tempExpense.toLocaleString();
 
             detail += `
@@ -117,8 +144,7 @@ function findAccDetail(statNum) {
 
         detailTotalView(detailTotalCount);
 
-        var sum = detailTotalSum.toString()
-            .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        var sum = detailTotalSum.toLocaleString();
 
         if (detailTotalSum>0) {
             detailTotal = `
@@ -137,6 +163,6 @@ function findAccDetail(statNum) {
 
 function detailTotalView(detailTotalCount) {
 
-    html = `<span>총 ${detailTotalCount}건</span>`;
+    html = `<span>상세 ${detailTotalCount}건</span>`;
     document.getElementById('listDetailTotal').innerHTML = html;
 }

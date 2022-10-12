@@ -13,4 +13,7 @@ public class AccRequestDto {
     private LocalDate statDate; //발생날짜
     private String expNum; //결의번호
     private String empId; //사번
+
+    private LocalDate startDate;
+    private LocalDate endDate;
 }
