@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang ="en" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
 <head>
     <title>SJHT ERP System</title>
 
@@ -14,8 +13,8 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <link href="/static/etc/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="/static/etc/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="/etc/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/etc/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -241,12 +240,12 @@
                                 <td>2022-10-04</td>
                                 <td>반려</td>
                             </tr>
-                            <tr th:each="Hr_ReportDto : ${hrform}">
+                            <tr th:each="HrResponseDto : ${levlist}">
                                 <td>인사</td>
-                                <td th:text="${Hr_ReportDto.lev_num}"></td>
-                                <td><a href="ec_hrform_2.html" th:href="@{/ec_hrform/{emp_id}(emp_id=${Hr_ReportDto.emp_id})}" th:text="${Hr_ReportDto.emp_id}"></a></td>
-                                <td>2022-10-04</td>
-                                <td th:text="${Hr_ReportDto.appr_yn}"></td>
+                                <td th:text="${HrResponseDto.levNum}"></td>
+                                <td><a th:href="@{/levreport/{levId}(levId= ${HrResponseDto.levId})}">[[${HrResponseDto.levTitle}]]</a></td>
+                                <td th:text="${HrResponseDto.applDate}"></td>
+                                <td th:text="${HrResponseDto.apprState}"></td>
                             </tr>
                             </tbody>
                         </table>
@@ -288,17 +287,17 @@
 
     <!-- 부트스트랩 -->
     <!-- Bootstrap core JavaScript-->
-    <script src="/static/etc/vendor/jquery/jquery.min.js"></script>
-    <script src="/static/etc/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/static/etc/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/etc/vendor/jquery/jquery.min.js"></script>
+    <script src="/etc/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/etc/vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Custom scripts for all pages-->
-    <script src="/static/etc/js/sb-admin-2.min.js"></script>
+    <script src="/etc/js/sb-admin-2.min.js"></script>
     <!-- Page level plugins -->
-    <script src="/static/etc/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="/static/etc/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="/etc/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/etc/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="/static/etc/js/demo/datatables-demo.js"></script>
+    <script src="/etc/js/demo/datatables-demo.js"></script>
 
 </body>
 

@@ -9,14 +9,13 @@ import java.util.List;
 @Mapper
 public interface HrMapper {
 
-    //전표 조회
+    //목록 조회
     List<HrResponseDto> getLevList();
 
-    //전표 상세 조회(전표번호 id) / return 결의번호 리스트
-    List<HrResponseDto> getLevDetail(Long lev_id);
+    // 상세 조회(결의번호 id)
+    HrResponseDto getLevDetail(Long levId);
 
-    //결의번호 조회
-    String getLevNum(Long lev_num);
+
 
     int listCount();
 

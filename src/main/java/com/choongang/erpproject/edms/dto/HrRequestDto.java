@@ -12,11 +12,14 @@ public class HrRequestDto {
     private Long levId;
     private String levNum;
     private String appr;
+    private String apprState;
+    private LocalDate apprDate;
     private LocalDate applDate;
     private String levType;
     private String levTitle;
     private String levContent;
-    private Date startDate;
+    private Date startdate;
     private Date endDate;
-    private Date levTerm;
+    private int levTerm;
+    private String empId;
 }
