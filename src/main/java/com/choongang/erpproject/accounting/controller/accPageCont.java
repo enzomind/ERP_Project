@@ -11,7 +11,14 @@ public class accPageCont {
     @GetMapping("/accounting")
     public String accountPageRoot(){
 
-        return "acc/accounting";
+        return "/acc/accounting";
     }
+
+    @GetMapping("/acc/accounting")
+    public String accountPageSub(){
+
+        return "redirect:/acc/accounting";
+    }
+
 
 }

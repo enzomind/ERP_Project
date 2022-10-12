@@ -44,11 +44,10 @@
              , stat_date
              , sum(expense) AS expense
              , income
-        FROM acv
-        LEFT JOIN expreport
-        ON acv.exp_num = expreport.exp_num
-        GROUP BY com_acc, stat_num, stat_date, income
-        ORDER BY stat_num DESC
+          FROM acv
+               LEFT OUTER JOIN expreport ON acv.exp_num = expreport.exp_num
+         GROUP BY com_acc, stat_num, stat_date, income
+         ORDER BY stat_num DESC
     </select>
 
     <select id="getAccDetail" parameterType="Long" resultType="AccResponseDto">
@@ -72,5 +71,7 @@
         FROM
             acv
     </select>
+
+
 
 </mapper>

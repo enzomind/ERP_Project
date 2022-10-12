@@ -16,7 +16,7 @@ public class accApiCont {
 
     private final AccService accService;
 
-    @GetMapping("/accapi/accounting")
+    @GetMapping("/accapi/accounting/")
     public List<AccResponseDto> accountApiRoot() {
 
         List<AccResponseDto> acclist = accService.getAccList();
