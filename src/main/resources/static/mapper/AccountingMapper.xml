@@ -38,7 +38,7 @@
         )
     </insert>
 
-    <select id="getAccList" resultType="AccResponseDto">
+    <select id="getAccList" parameterType="AccRequestDto" resultType="AccResponseDto">
         SELECT stat_num
              , com_acc
              , stat_date
@@ -46,6 +46,7 @@
              , income
           FROM acv
                LEFT OUTER JOIN expreport ON acv.exp_num = expreport.exp_num
+               <![CDATA[ AND stat_date >= #{startDate} AND stat_date <= #{endDate} ]]>
          GROUP BY com_acc, stat_num, stat_date, income
          ORDER BY stat_num DESC
     </select>

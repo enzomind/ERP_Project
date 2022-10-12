@@ -25,10 +25,12 @@ public class AccMapperTest {
         accRequestDto.setStatDate(LocalDate.now());
         accRequestDto.setExpNum("SJCD-0006");
         accRequestDto.setEmpId("SJ-0014");
+        accRequestDto.setStartDate(LocalDate.now());
+        accRequestDto.setEndDate(LocalDate.now());
 
         accMapper.insertAccInfo(accRequestDto);
 
-        List<AccResponseDto> data = accMapper.getAccList();
+        List<AccResponseDto> data = accMapper.getAccList(accRequestDto);
         System.out.println("전체 개시글 수 : " + data.size() + "건");
     }
 
