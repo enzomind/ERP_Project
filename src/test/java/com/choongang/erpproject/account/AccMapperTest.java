@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 import java.util.List;
 
 @SpringBootTest
@@ -21,10 +21,10 @@ public class AccMapperTest {
     void InsertTest() {
         AccRequestDto accRequestDto = new AccRequestDto();
 
-        accRequestDto.setStatNum(3L);
+        accRequestDto.setStatNum(7L);
         accRequestDto.setStatDate(LocalDate.now());
-        accRequestDto.setExpNum("SJCD-0187");
-        accRequestDto.setEmpId("SJ-0074");
+        accRequestDto.setExpNum("SJCD-0006");
+        accRequestDto.setEmpId("SJ-0014");
 
         accMapper.insertAccInfo(accRequestDto);
 
