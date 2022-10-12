@@ -21,11 +21,30 @@
     </sql>
 
     <select id="getLevList" resultType="HrResponseDto">
-        SELECT lev_num,
+        SELECT lev_id,
+               lev_num,
                lev_title,
                appl_date,
                appr_state
         FROM lev_table
+    </select>
+
+    <select id="getLevDetail" parameterType="Long" resultType="HrResponseDto">
+        SELECT lev_id
+             , lev_num
+             , emp_id
+             , appr
+             , appr_state
+             , appl_date
+             , lev_type
+             , lev_title
+             , lev_content
+        FROM lev_table
+        where lev_id = #{lev_id}
+    </select>
+
+    <select id="listCount" resultType="int">
+        select count(*) from lev_table
     </select>
 
 </mapper>
