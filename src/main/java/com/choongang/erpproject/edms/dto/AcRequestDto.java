@@ -1,4 +1,5 @@
 package com.choongang.erpproject.edms.dto;
 
-public class AcReportDto {
+//insert
+public class AcRequestDto {
 }
