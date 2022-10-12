@@ -1,7 +1,7 @@
 package com.choongang.erpproject.edms;
 
-import com.choongang.erpproject.edms.mapper.HrMapper;
 import com.choongang.erpproject.edms.dto.HrResponseDto;
+import com.choongang.erpproject.edms.mapper.HrMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-public class HrReportMapperTest {
+public class AcMapperTest {
 
     @Autowired
     HrMapper hrmapper;
