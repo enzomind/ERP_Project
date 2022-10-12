@@ -13,7 +13,7 @@ window.onload = () => {
 }
 
 function findAccAll() {
-    fetch('/accapi/accounting').then(response => {
+    fetch(`/accapi/accounting/${startDate},${endDate}`).then(response => {
 
         console.log("response : ", response);
 

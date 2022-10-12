@@ -25,7 +25,7 @@
             </div>
 
             <!-- 글목록 -->
-            <div class="card shadow m-4 col-lg-auto">
+            <div class="card shadow col-lg-auto">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary float-left">회계전표</h6>
                 </div>
@@ -38,12 +38,12 @@
                                 class="d-none d-sm-inline-block form-inline navbar-search mb-3">
                             <div class="input-group" style="width: 600px">
                                 <input type="date" class="form-control bg-light border-1 mx-2"
-                                       aria-label="start"> ~
+                                       aria-label="start" id="startDate"> ~
                                 <input type="date" class="form-control bg-light border-1 small ml-2"
-                                       aria-label="end" aria-describedby="조회끝">
+                                       aria-label="end" aria-describedby="조회끝" id="endDate">
                             </div>
                         </form>
-                        <button class="btn btn-primary float-right" style="width: 80px" type="button">검색</button>
+                        <button class="btn btn-primary float-right" style="width: 80px" type="button" id="dateSearchBtn" onclick="dateSearch()">검색</button>
 
                     </div>
                 </div>
@@ -100,6 +100,7 @@
         </div>
 
         <script type="text/javascript" th:src="@{/js/accounting/acc.js}"></script>
+        <script type="text/javascript" th:src="@{/js/accounting/accDate.js}"></script>
 
     </div><!-- Content 끝 -->
 

@@ -3,9 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.choongang.erpproject.edms.mapper.Hr_Mapper">
+<mapper namespace="com.choongang.erpproject.edms.mapper.HrMapper">
 
-    <sql id="insertColumns">
+    <sql id="insertHrColumns">
         lev_num
         , emp_id
         , appr
@@ -20,8 +20,12 @@
         , lev_term
     </sql>
 
-    <select id="getLevList" resultType="Hr_ResponseDto">
-        select lev_num, lev_title, appl_date, appr_state from lev_table
+    <select id="getLevList" resultType="HrResponseDto">
+        SELECT lev_num,
+               lev_title,
+               appl_date,
+               appr_state
+        FROM lev_table
     </select>
 
 </mapper>
