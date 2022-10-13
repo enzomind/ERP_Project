@@ -43,6 +43,11 @@
         where lev_id = #{lev_id}
     </select>
 
+    <insert id="writeinsert">
+        insert into lev_table(appr, lev_title, lev_type, lev_content)
+            values (#{appr}, #{lev_title}, #{lev_type}, #{lev_content})
+    </insert>
+
     <select id="listCount" resultType="int">
         select count(*) from lev_table
     </select>

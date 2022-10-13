@@ -1,5 +1,6 @@
 package com.choongang.erpproject.edms.service;
 
+import com.choongang.erpproject.edms.dto.HrRequestDto;
 import com.choongang.erpproject.edms.dto.HrResponseDto;
 import com.choongang.erpproject.edms.mapper.HrMapper;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,11 @@ public class HrServiceImpl implements HrService {
     public HrResponseDto getLevDetail(Long levId) {
         HrResponseDto detail = hrMapper.getLevDetail(levId);
         return detail;
+    }
+
+    @Override
+    public void writeinsert(HrRequestDto hrRequestDto) {
+        hrMapper.writeinsert(hrRequestDto);
     }
 
 }
