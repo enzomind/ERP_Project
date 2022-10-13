@@ -1,5 +1,6 @@
 package com.choongang.erpproject.edms.mapper;
 
+import com.choongang.erpproject.edms.dto.HrRequestDto;
 import com.choongang.erpproject.edms.dto.HrResponseDto;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -14,6 +15,8 @@ public interface HrMapper {
 
     // 상세 조회(결의번호 id)
     HrResponseDto getLevDetail(Long levId);
+
+    void writeinsert(HrRequestDto hrRequestDto);
 
 
 

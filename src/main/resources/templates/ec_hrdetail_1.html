@@ -165,13 +165,14 @@
         </div>
 
         <!-- 박스 시작-->
-        <div class="card shadow col-lg-auto p-0">
+        <div style="margin-left: 8%">
+        <div class="card shadow col-lg-11 p-0">
           <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary float-left">전자결재 > 결재상신함</h6>
           </div>
-          <div  th:each="HrResponseDto : ${levdetail}" class="card-body container">
+          <div th:each="HrResponseDto : ${levdetail}" class="card-body container">
             <h3 class="text-center mb-3">휴가신청서</h3></br>
-            <div class="float-left">결의번호</div>
+            <p class="float-left">결의번호</p>
             <input th:value="${HrResponseDto.levNum}" class="form-control col-2 ml-2 float-left" id="exp_num" type="text" disabled>
             <table class="table table-bordered text-center align-middle col-8 ml-2 float-right">
                 <thead>
@@ -194,7 +195,7 @@
                   <th>소속</th>
                   <td>성진하이텍지주 글로벌전략부</td>
                   <th>상신일자</th>
-                  <td th:text="${HrResponseDto.applDate}">/td>
+                  <td th:text="${HrResponseDto.applDate}"></td>
                 </tr>
                 <tr>
                   <th class="align-middle">제목</th>
@@ -207,32 +208,32 @@
               <table class="table table-bordered text-center col-auto">
                 <tr>
                   <th class="align-middle">휴가구분</th>
-                  <td th:text="${HrResponseDto.levType}">
+                  <td class="text-left" th:text="${HrResponseDto.levType}">
 
                   </td>
                 </tr>
                 <tr>
-                  <th class="align-middle" style="width: 150px; height: 500px;">내용</th>
-                  <td th:text="${HrResponseDto.levContent}">
-                    <textarea type="text" class="form-control" style="height: 500px"></textarea></td>
+                  <th class="align-middle" style="width: 150px; height: 300px;">내용</th>
+                  <td class="text-left" th:text="${HrResponseDto.levContent}">
+                    <textarea type="text" class="form-control" style="height: 300px"></textarea></td>
                 </tr>
                 <tr>
                   <th class="align-middle">상태</th>
-                  <td th:text="${HrResponseDto.apprState}">
+                  <td class="text-left" th:text="${HrResponseDto.apprState}">
                     <input type="text" class="form-control"></td>
                 </tr>
               </table>
             </div>
 
             <div class="text-center">
-              <button class="btn btn-primary" style="width: 100px">승인</button>
-              <button class="btn btn-primary" style="width: 100px">반려</button>
+              <button class="btn btn-primary" onclick="location='/levwriteview'" style="width: 100px">목록</button>
             </div>
 
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
   <!-- Content 끝 -->
 

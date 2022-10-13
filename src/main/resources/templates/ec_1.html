@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- 템플릿 주소 -->
-    <link href="/static/etc/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/etc/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -203,7 +203,7 @@
                                                 <td>SJDO-0001</td>
                                                 <td>지출결의서</td>
                                             </tr>
-                                            <tr onclick="window.location='ec_hrform.html'">
+                                            <tr onclick="window.location='/levwrite'">
                                                 <td>인사</td>
                                                 <td>SJDO-0003</td>
                                                 <td>휴가신청서</td>
@@ -243,7 +243,7 @@
                             <tr th:each="HrResponseDto : ${levlist}">
                                 <td>인사</td>
                                 <td th:text="${HrResponseDto.levNum}"></td>
-                                <td><a th:href="@{/levreport/{levId}(levId= ${HrResponseDto.levId})}">[[${HrResponseDto.levTitle}]]</a></td>
+                                <td><a th:href="@{/levreportuser/{levId}(levId= ${HrResponseDto.levId})}">[[${HrResponseDto.levTitle}]]</a></td>
                                 <td th:text="${HrResponseDto.applDate}"></td>
                                 <td th:text="${HrResponseDto.apprState}"></td>
                             </tr>
