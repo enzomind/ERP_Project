@@ -3,33 +3,19 @@ let detailTotalCount=0;
 let listTotalSum=0;
 let detailTotalSum=0;
 
-let letstartDate = new Date();
-let letendDate = new Date();
-let syear = letstartDate.getFullYear();
-let smonth = letstartDate.getMonth() + 1;
-let sdate = letstartDate.getDate() - 2;
-let eyear = letendDate.getFullYear();
-let emonth = letendDate.getMonth() + 1;
-let edate = letendDate.getDate();
-
-let setStartDate;
-let setEndDate;
+let setLocation = 'acc';
 
 
 window.onload = () => {
-
-    setStartDate = syear + '-' + smonth + '-' + sdate;
-    setEndDate = eyear + '-' + emonth + '-' + edate;
-    console.log("기본빵 " + setStartDate + "부터 " + setEndDate + "까지 기간 조회");
-
-    findAccAll(setStartDate, setEndDate);
+    defaultPeriodSet(setLocation);
 }
 
 function search() {
-    setStartDate = document.getElementById("searchSDate").value;
-    setEndDate = document.getElementById("searchEDate").value;
+    var setStartDate = document.getElementById("searchSDate").value;
+    var setEndDate = document.getElementById("searchEDate").value;
 
-    findAccAll(setStartDate, setEndDate);
+    // findAccAll(setStartDate, setEndDate);
+    gateway(setStartDate, setEndDate, setLocation);
 }
 
 function findAccAll(setSDate, setEDate) {
