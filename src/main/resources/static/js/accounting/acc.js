@@ -52,7 +52,7 @@ function findAccAll(setSDate, setEDate) {
                         var formatExpense = tempExpense.toLocaleString();
 
                     html += `
-                        <tr style="cursor:pointer;" onclick="findAccDetail(${obj.statNum})" onmouseover="this.style.background='lightgrey'" onmouseout="this.style.background='white'">
+                        <tr style="cursor:pointer;" onclick="findAccDetail(${obj.statNum})" onmouseover="this.style.background='whitesmoke'" onmouseout="this.style.background='white'">
                             <td>${json.length - idx}</td>
                             <td>${obj.comAcc}</td>
                             <td>${obj.statDate}</td>
@@ -79,7 +79,7 @@ function findAccAll(setSDate, setEDate) {
         $("#list").empty().append(html + htmlTotal);
         //document.getElementById('list').innerHTML = html + htmlTotal;
 
-        var tempDetail = '<td colspan="6">전표 리스트에서 상세 조회할 항목을 선택해 주세요.</td>';
+        var tempDetail = `<td colspan="6">전표 리스트에서 상세 조회할 항목을 선택해 주세요.</td>`;
         document.getElementById('detailList').innerHTML = tempDetail;
         listTotalCount = 0;
         listTotalSum = 0;
@@ -127,6 +127,16 @@ function findAccDetail(statNum) {
                 </tr>
                 `
         });
+
+        if (detailTotalCount < 5) {
+            for(i=detailTotalCount;i<5;i++){
+                detail += `
+                <tr>
+                    <td colspan="6" height="50" style="background: whitesmoke"></td>
+                </tr>
+                `
+            }
+        }
 
         detailTotalView(detailTotalCount);
 
