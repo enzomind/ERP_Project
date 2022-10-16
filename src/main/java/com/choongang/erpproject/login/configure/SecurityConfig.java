@@ -40,8 +40,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .authorizeRequests()
-                .antMatchers("/join", "/api/login", "/api/join", "/", "/error/*", "/css/**", "/**", "/js/**", "/etc/**","/users").permitAll()
-                .anyRequest().hasAnyRole("SJAU_0001","SJAU_0002","SJAU_0003","SJAU_0004", "SJAU_0005")
+                //prefix = ROLE- *hasRole에서 Authority로 변경
+                //0001 : 직원
+                //0002 : 임원
+                //0003 : 회계 담당자
+                //0004 : 인사 담당자
+                //0005 : MASTER
+
+                //인사 관리 메뉴는 인사 담당자만 접근 허용
+                .antMatchers("/employee/**").hasAuthority("SJAU_0004")
+                //회계 전표 메뉴는 회계 담당자만 접근 허용
+                .antMatchers("/acc/**").hasAuthority("SJAU_0003")
+                //결재상신함, 수신함, 공지사항은 인증 정보가 있다면 모두 접근 허용
+                .antMatchers("/edms/**", "/board/**", "/mypage").authenticated()
+
+                .antMatchers("/join", "/api/login", "/api/join", "/error/*", "/css/**", "/**", "/js/**", "/etc/**", "/users").permitAll()
 
                 .and()
                 .logout()
