@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+
+<th:block layout:fragment="mainHeader">
+    <title>결재상신함</title>
+</th:block>
+
+<th:block>
+    <div layout:fragment="content">
+        <div class="container-fluid">
+
+            <!-- 콘텐츠 내용 -->
+
+            <!-- Head -->
+            <div class="row">
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-70 w-421 py-2">
+                        <div class="col mr-2">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">Electronic Approval</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 박스 시작-->
+            <div class="card shadow col-lg-auto p-0">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary float-left">전자결재 > 결재상신함</h6>
+                </div>
+                <div class="card-body container">
+                    <h3 class="text-center mb-3">지출결의서</h3></br>
+                    <div class="float-left">결의번호</div>
+                    <input class="form-control col-2 ml-2 float-left" id="exp_num" type="text" th:value="${acResponseDto[0].expNum}" disabled>
+                    <!-- 테이블1 (결재자정보)-->
+                    <table class="table table-bordered text-center align-middle col-8 ml-2 float-right">
+                        <thead>
+                        <tr>
+                            <th rowspan="2" class="align-middle">결재</th>
+                            <th>작성자</th>
+                            <th>결재자</th>
+                        </tr>
+                        <tr><!-- 반복 안하려고 배열 첫번째 데이터만 가져옴-->
+                            <td th:text="${acResponseDto[0].empName}"></td>
+                            <td th:text="${acResponseDto[0].appr}"></td>
+                        </tr>
+                        </thead>
+                    </table>
+                    <div>
+                        <!--  테이블2 (제목입력) -->
+                        <table class="table table-bordered text-center col-auto">
+                            <thead>
+                            <tr>
+                                <th>소속</th>
+                                <td th:text="${acResponseDto[0].hqName+' '+acResponseDto[0].depName}"></td>
+                                <th>상신일자</th>
+                                <td th:text="${acResponseDto[0].applDate}"></td>
+                            </tr>
+                            <tr>
+                                <th class="align-middle">제목</th>
+                                <td colspan="3" th:text="${acResponseDto[0].expTitle}"></td>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div>
+                        <!-- 테이블3 (과목 등등 선택)-->
+                        <table class="table table-bordered text-center col-auto">
+                            <thead>
+                            <tr>
+                                <th>계정과목</th>
+                                <th>적요</th>
+                                <th>카드/계좌</th>
+                                <th>금액(원)</th>
+                            </tr>
+                            </thead>
+                            <tr th:each="table:${acResponseDto}">
+                                <td th:text="${table.detCode}"></td>
+                                <td th:text="${table.remk}"></td>
+                                <td th:text="${table.comAcc}"></td>
+                                <td th:text="${table.expense}"></td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                    <div>
+                        <!-- 테이블4(파일등록) -->
+                        <table class="table table-bordered text-center col-auto">
+                            <thead>
+                            <tr>
+                                <th>증빙서류</th>
+                                <td th:text="${acResponseDto[0].attFile}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="align-middle">상태</th>
+                                <td th:text="${acResponseDto[0].apprYn}">
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-primary" style="width: 100px" onclick="location.href='/edms/edms_1'">목록</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+
+
+    </div>
+</th:block>
+
+</html>
