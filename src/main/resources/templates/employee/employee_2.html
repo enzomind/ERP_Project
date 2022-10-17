@@ -1,18 +1,371 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}" xmlns="http://www.w3.org/1999/html">
 
 <th:block layout:fragment="mainHeader">
     <title>급여(승진) 관리</title>
+    <link href="/etc/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+    <link href="/etc/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/etc/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="/etc/css/hr_emp.css" rel="stylesheet">
 </th:block>
 
 <th:block>
     <div layout:fragment="content">
+        <!-- Content 시작 -->
         <div class="container-fluid">
 
-            <!-- 콘텐츠 내용 -->
+            <!-- Page Heading -->
+            <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            </div> -->
 
-        </div>
+            <!-- Head -->
+            <div class="row">
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-70 w-421 py-2">
+                        <div class="col mr-2">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">Administration</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- DataTales Example -->
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h5 class="m-0 font-weight-bold text-primary">급여(승진) 관리</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <div class="input-group">　
+                            <input type="date" class="form-control bg-light border-1 small now_date" value="" id="strat"
+                                   aria-label="start">　＿　
+                            <input type="date" class="form-control bg-light border-1 small now_date" value="" id="end"
+                                   aria-label="end">　
+                            <select class="form-control bg-light border-1 small" id="hdqrt">
+                                <option value="">본부</option>
+                                <option value="HR본부">HR본부</option>
+                                <option value="ICT개발본부">ICT개발본부</option>
+                                <option value="솔루션사업본부">솔루션사업본부</option>
+                            </select>　
+                            <select class="form-control bg-light border-1 small" id="dep" name="depName">
+                                <option value="">부서</option>
+                                <option value="경영관리부">경영관리부</option>
+                                <option value="솔루션개발부">솔루션개발부</option>
+                                <option value="SI개발부">SI개발부</option>
+                                <option value="영업부">영업부</option>
+                                <option value="전략기획부">전략기획부</option>
+                                <option value="인사관리부">인사관리부</option>
+                            </select>　
+                            <select class="form-control bg-light border-1 small" id="pstn" name="jobName">
+                                <option value="">직급</option>
+                                <option value="대리">대리</option>
+                                <option value="과장">과장</option>
+                                <option value="팀장">팀장</option>
+                                <option value="부장">부장</option>
+                                <option value="상무">상무</option>
+                                <option value="전무">전무</option>
+                                <!--                            <option value="부대표">부대표</option>-->
+                                <!--                            <option value="대표">대표</option>-->
+                            </select>　
+                            <input type="text" class="form-control bg-light border-1 small" id="empName" name="empName"
+                                   placeholder="이름" aria-label="name">　
+                            <button class="btn btn-primary" type="button" id="search">검색</button>
+                            　
+                            <button data-toggle="modal" data-target="#send2" class="btn btn-success" type="button">
+                                급여이체
+                            </button>
+                            　
+                        </div>
+                        <div id="lastPDay">
+                            <p id="lastPayday"><b>마지막 급여 이체 날짜 : <span th:text="${lastPayday[0].paymdate}">sss</span></b></p>
+                        </div>
+                        <br>
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>직원번호</th>
+                                <th>구분</th>
+                                <th>직급</th>
+                                <th>성명</th>
+                                <th>생년월일</th>
+                                <th>소속</th>
+                                <th>부서</th>
+                                <th>승진</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="item : ${promo}">
+                                <td th:text="${item.empId}" class="empId"></td>
+                                <td th:text="${item.authName}"></td>
+                                <td th:text="${item.jobName}"></td>
+                                <td>
+                                    <button data-toggle="modal" class="payname" data-target="#ecmodal4"
+                                            style="background: none; border: none; color: #4e73df;"
+                                            th:text="${item.empName}">
+                                    </button>
+                                </td>
+                                <td th:text="${item.birth}"></td>
+                                <td th:text="${item.hqName}"></td>
+                                <td th:text="${item.depName}"></td>
+                                <td>
+                                    <button class="btn btn-outline-primary" data-toggle="modal"
+                                            data-target="#ecmodal3" id="promotion">설정
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+
+            <!--모달 - 급여 이체 -->
+            <div class="modal fade" id="send2" data-backdrop="static" data-keyboard="false"
+                 tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5>급여 이체</h5>
+                        </div>
+                        <div class="modal-body"><br>
+                            <p style="text-align: center;">급여 이체를 <br> 완료하시겠습니까?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                    data-dismiss="modal">취소
+                            </button>
+                            <button type="button" class="btn btn-primary" id="payAll">확인</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--끝-->
+
+            <!--모달 1. 승진 설정-->
+            <div class="modal fade" id="ecmodal3" data-backdrop="static" data-keyboard="false"
+                 tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="form-body">
+                            <!-- form header -->
+                            <div class="form-header"><br>
+                                <h1>인사 정보</h1>
+                            </div>
+                            <br>
+                            <div class="horizontal-group">
+                                <div class="form-group left">
+                                    <label class="label-title">직원번호</label>
+                                    <span class="emNum"></span>
+                                </div>
+                                <div class="form-group right">
+                                    <label class="label-title">승진자 성명</label>
+                                    <span class="emName"></span>
+                                </div>
+                            </div>
+
+                            <div class="horizontal-group">
+                                <div class="form-group left">
+                                    <label class="label-title">소속 본부</label>
+                                    <span class="hqNo"></span>
+                                </div>
+                                <div class="form-group right">
+                                    <label class="label-title">부서</label>
+                                    <span class="depNo"></span>
+                                </div>
+                            </div>
+
+                            <div class="horizontal-group">
+                                <div class="form-group left">
+                                    <label class="label-title">기존 직급</label>
+                                    <input type="text" min="18" max="80" class="form-input" id="position" bdisabled/>
+                                </div>
+                                <div class="form-group right">
+                                    <label class="label-title">승진 직급 *</label>
+                                    <select class="form-input" id="proPosition">
+                                        <option value="none">직급</option>
+                                        <option value="SJPS_0001">사원</option>
+                                        <option value="SJPS_0002">대리</option>
+                                        <option value="SJPS_0003">과장</option>
+                                        <option value="SJPS_0004">팀장</option>
+                                        <option value="SJPS_0005">부장</option>
+                                        <option value="SJPS_0006">상무</option>
+                                        <option value="SJPS_0007">전무</option>
+                                        <option value="SJPS_0008">부대표</option>
+                                        <option value="SJPS_0009">대표</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="horizontal-group">
+                                <div class="form-group left">
+                                    <label class="label-title">기존 연봉</label>
+                                    <input type="text" min="18" max="80" class="form-input" id="salary" disabled/>
+                                </div>
+                                <div class="form-group right">
+                                    <label class="label-title">승진 연봉 *</label>
+                                    <input type="text" min="18" max="80" class="form-input"
+                                           onkeyup="inputNumberFormat(this)" id="proSalary"/>
+                                </div>
+                            </div>
+                            <h6 id="noInfo">정보를 입력해주세요</h6>
+                        </div>
+
+                        <!-- form-footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                    data-dismiss="modal">취소
+                            </button>
+                            <button type="submit" class="btn btn-primary" data-toggle="modal" id="confirmFirst"
+                                    data-target="#send1">등록
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <!--모달 1. 끝-->
+            <!--모달 1. 급여 설정 -> 등록 -->
+            <div class="modal fade" id="sss" data-backdrop="static" data-keyboard="false"
+                 tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5>승진 설정</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p style="text-align: center;"> 입력 내용대로 승진 설정을 <br> 완료하시겠습니까? </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                    data-dismiss="modal">취소
+                            </button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="finalConfirm">확인
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--모달 1. 최종 끝-->
+
+
+            <!--모달 2. 급여 명세서-->
+            <div class="modal fade" id="ecmodal4" data-backdrop="static" data-keyboard="false"
+                 tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="form-body" id="paym">
+                            <!-- form header -->
+                            <div class="form-header"><br>
+                                <div><span id="year"></span>
+                                    <button type='button'
+                                            onclick='count("minus")'
+                                            class="searchMonth"/>
+                                    <img src="/etc/image/4781844_arrow_back_chevron_direction_left_icon.svg"/></button>
+                                    <span id="month"></span><span>월</span>
+                                    <button type='button'
+                                            onclick='count("plus")'
+                                            class="searchMonth"/>
+                                    <img src="/etc/image/4781843_arrows_chevron_direction_right_move_icon.png"/></button>
+                                </div>
+                                <h1>급여 명세서</h1>
+                            </div>
+                            <br id="line">
+                            <p id="noData">자료가 없습니다</p>
+                            <div class="horizontal-group">
+                                <div class="form-group left">
+                                    <label class="label-title">직원번호</label>
+                                    <span class="emNum"></span>
+                                </div>
+                                <div class="form-group right">
+                                    <label class="label-title">성명</label>
+                                    <span class="emName"></span>
+                                </div>
+                            </div>
+
+                            <div class="horizontal-group">
+                                <div class="form-group left">
+                                    <label class="label-title">소속 본부</label>
+                                    <span class="hqNo"></span>
+                                </div>
+                                <div class="form-group right">
+                                    <label class="label-title">부서</label>
+                                    <span class="depNo"></span>
+                                </div>
+                            </div>
+
+                            <div class="horizontal-group">
+                                <div class="form-group left">
+                                    <label class="label-title">명세번호</label>
+                                    <span id="seriNo"></span>
+                                </div>
+                                <div class="form-group right">
+                                    <label class="label-title">4대 보험료</label>
+                                    <span id="tax"></span>
+                                </div>
+                            </div>
+
+                            <div class="horizontal-group">
+                                <div class="form-group left">
+                                    <label class="label-title">기본급</label>
+                                    <span id="wage"></span>
+                                </div>
+                                <div class="form-group right">
+                                    <label class="label-title">식대</label>
+                                    <span id="melEx"></span>
+                                </div>
+                            </div>
+
+                            <div class="horizontal-group">
+                                <div class="form-group left">
+                                    <label class="label-title">교통비</label>
+                                    <span id="trnEx"></span>
+                                </div>
+                                <div class="form-group right">
+                                    <label class="label-title">복리후생비</label>
+                                    <span id="welEx"></span>
+                                </div>
+                            </div>
+
+                            <div class="horizontal-group">
+                                <div class="form-group left">
+                                    <label class="label-title">실급여</label>
+                                    <span id="actWage"></span>
+                                </div>
+                                <div class="form-group right">
+                                    <label class="label-title">지급일자</label>
+                                    <span id="paydate"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- form-footer -->
+                        <div class="modal-footer">
+                            귀하의 노고에 감사드립니다.　
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">확인</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <!--모달 끝-->
+
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
+
+        </div> <!-- Content 끝 -->
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="/js.emp/main.js"></script>
+        <script src="/js.emp/payment.js"></script>
+        <script src="/js.emp/promotion.js"></script>
     </div>
 </th:block>
 
 </html>
+

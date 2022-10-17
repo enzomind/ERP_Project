@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .authorizeRequests()
-                .antMatchers("/join", "/api/login", "/api/join", "/", "/error/*", "/css/**", "/**", "/js/**", "/etc/**","/users").permitAll()
+                .antMatchers("/join", "/api/login", "/api/join", "/", "/error/*", "/css/**", "/**", "/js/**", "/etc/**","/users", "/acc/**", "/employee/**").permitAll()
                 .anyRequest().hasAnyRole("SJAU_0001","SJAU_0002","SJAU_0003","SJAU_0004", "SJAU_0005")
 
                 .and()

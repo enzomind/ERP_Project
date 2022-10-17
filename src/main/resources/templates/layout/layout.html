@@ -14,8 +14,16 @@
     <link href="/etc/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-            rel="stylesheet">
-    <link href="/etc/css/sb-admin-2.min.css" rel="stylesheet">
+            rel="stylesheet" type="text/css">
+    <link href="/etc/css/sb-admin-2.min.css" rel="stylesheet" type="text/css">
+    <link href="/etc/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet" type="text/css">
+    <link href="/etc/css/sb-admin-2.min.css" rel="stylesheet" type="text/css">
+    <link href="/etc/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="/etc/css/hr_emp.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body id="page-top">
@@ -47,8 +55,9 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">인사</h6>
-                    <a sec:authorize="hasRole('SJAU_0001')" th:href="@{/admin}" class="collapse-item" href="hr_emp.html">직원 조회</a>
-                    <a sec:authorize="hasRole('SJAU_0001')" th:href="@{/admin}" class="collapse-item" href="hr_sal.html">급여(승진) 관리</a>
+                    <a href="/employee/promo2"class="collapse-item">직원 조회</a>
+                    <a href="/employee/promo" class="collapse-item">급여(승진) 관리</a>
+<!--                    <button type="button" id="promotion" onclick="acyncMovePage('/emp/promo')" class="collapse-item">급여(승진) 관리</button>-->
                 </div>
             </div>
         </li>
@@ -152,7 +161,7 @@
             </nav>
             <!-- 상단 끝 -->
 
-            <div layout:fragment="content">
+            <div layout:fragment="content" id="cont">
                 <!-- 각자 <div layout:fragment="content"> <- 태그 안에 콘텐츠 삽입하면 됨.  -->
             </div>
 
@@ -191,6 +200,18 @@
 <script src="/etc/vendor/jquery-easing/jquery.easing.min.js"></script>
 <!-- Custom scripts for all pages-->
 <script src="/etc/js/sb-admin-2.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="/etc/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="/etc/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="/etc/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script async src="/etc/js/demo/datatables-demo.js"></script>
+
 
 </body>
 
