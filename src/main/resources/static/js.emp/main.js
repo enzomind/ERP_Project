@@ -22,6 +22,7 @@ $(document).ready(function () {
 
                 let promo = '';
                 console.log(data)
+                $('.col-sm-12').css("margin-top", '20px');
                 $('.pagination').remove()
                 $('.dataTables_length').remove()
                 $('#dataTable_info').remove()
