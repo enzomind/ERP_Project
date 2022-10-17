@@ -4,28 +4,37 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.choongang.erpproject.edms.mapper.AcMapper">
+<!--나중에 추가-->
+    <sql id="selectAcColumns">
+        maj_code,
+        exp_num,
+        exp_title,
+        appl_date,
+        appr_yn,
+        emp_id,
+        emp_name,
 
-    <sql id="insertHrColumns">
-        lev_num
-        , emp_id
-        , appr
-        , appr_state
-        , appr_date
-        , appl_date
-        , lev_type
-        , lev_title
-        , lev_content
-        , start_date
-        , end_date
-        , lev_term
+
     </sql>
 
-    <select id="getLevList" resultType="HrResponseDto">
-        SELECT lev_num,
-               lev_title,
-               appl_date,
-               appr_state
-        FROM lev_table
+    <select id="selectList" resultType="AcResponseDto">
+        SELECT maj_code, exp_num, exp_title, appl_date, appr_yn
+        FROM expreport
+        GROUP BY exp_num ORDER BY exp_num DESC
     </select>
 
+    <select id="selectDetail" parameterType="String" resultType="AcResponseDto">
+        select exp_num,emp_table.emp_name, appr, pstn_code.job_name, hdqrt_code.hq_name, dep_code.dep_name , appl_date, exp_title, att_file, appr_yn, det_code, remk, com_acc, expense
+        FROM expreport
+            INNER JOIN emp_table ON expreport.emp_id = emp_table.emp_id
+            INNER JOIN pstn_code ON pstn_code.job_code = emp_table.job_code
+            INNER JOIN hdqrt_code ON hdqrt_code.hq_code = emp_table.hq_code
+            INNER JOIN dep_code ON dep_code.dep_no = emp_table.dep_no
+        WHERE exp_num = #{expNum};
+    </select>
+
+    <insert id="insert" parameterType="AcRequestDto">
+        INSERT INTO expreport (exp_title,det_code, remk, com_acc,expense,exp_num,appr,appl_date,maj_code)
+        VALUES (#{expTitle},#{detCode},#{remk},#{comAcc},#{expense},#{expNum},#{appr},now(),"회계")
+    </insert>
 </mapper>
