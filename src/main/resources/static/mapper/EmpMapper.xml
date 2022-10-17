@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.choongang.erpproject.employee.dao.PromotionMapper">
+    <select id="searchEmp" resultType="hashmap">
+        SELECT emp_id, emp_name, birth, hq_name, dep_name, job_name, auth_name
+        FROM erpprojectdb.promotiondetail
+        <where>
+            <if test="start != null and start != ''">
+                AND hire_date <![CDATA[ >= ]]> #{start}
+            </if>
+            <if test="end != null and end != ''">
+                AND hire_date <![CDATA[ <= ]]> #{end}
+            </if>
+            <if test="hqName != null and hqName != ''">
+                AND hq_name = #{hqName}
+            </if>
+            <if test="depName != null and depName != ''">
+                AND dep_name = #{depName}
+            </if>
+            <if test="jobName != null and jobName != ''">
+                AND job_name = #{jobName}
+            </if>
+            <if test="empName != null and empName != ''">
+                AND emp_name = #{empName}
+            </if>
+        </where>
+    </select>
+
+    <select id="serachPayHistory" resultType="hashmap">
+        SELECT *
+        FROM erpprojectdb.paymentdetail
+        <where>
+            <if test="PayYear != null and PayYear != ''">
+                AND YEAR(paymdate) = #{PayYear}
+            </if>
+            <if test="PayMonth != null and PayMonth != ''">
+                AND MONTH(paymdate) = #{PayMonth}
+            </if>
+            <if test="emNum != null and emNum != ''">
+                AND emp_id = #{emNum}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="serachPayDetail" resultType="hashmap">
+        SELECT *
+        FROM erpprojectdb.paymentdetail
+        <where>
+            <if test="empId != null and empId != ''">
+                AND emp_id = #{empId}
+            </if>
+        </where>
+        order by paymdate desc;
+    </select>
+
+    <insert id="payAll">
+        INSERT INTO payrollhistory(emp_id, paymdate)
+        SELECT emp_id, DATE_FORMAT(now(), '%Y-%m-%d')
+        FROM emp_table WHERE emp_table.res_yn = 'n'
+    </insert>
+    
+    <select id="findLatestPaymdate" resultType="hashmap">
+        SELECT paymdate
+        from payrollhistory
+        WHERE emp_id = 'SJ-0059'
+        order by paymdate desc
+    </select>
+
+    <select id="searchPromotionDetail" resultType="hashmap">
+        select
+              emp_table.emp_id,
+              emp_table.salary,
+              emp_table.emp_name,
+              pstn_code.job_name,
+              hdqrt_code.hq_name,
+              dep_code.dep_name
+        from emp_table
+             left outer join hdqrt_code on emp_table.hq_code = hdqrt_code.hq_code
+             left outer join dep_code on emp_table.dep_no= dep_code.dep_no
+             left outer join pstn_code on emp_table.job_code= pstn_code.job_code
+
+        where emp_id = #{empId};
+
+    </select>
+
+    <update id="ConfirmPromotion">
+    UPDATE emp_table
+    SET job_code = #{jobCode}
+    ,   salary = #{salary}
+    WHERE emp_id = #{empId}
+    </update>
+
+
+</mapper>
+        <!--        &gt; = <   &lt; = >  이상한 마이바티스-->
