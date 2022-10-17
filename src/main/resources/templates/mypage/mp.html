@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<th:block layout:fragment="mainHeader">
+
+    <title>회계 전표</title>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+</th:block>
+<th:block>
+    <div layout:fragment="content">
+        <div class="container-fluid">
+
+            <!-- Head -->
+            <div class="row">
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-70 w-421 py-2">
+                        <div class="col mr-2">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">My page</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--    비밀번호 변경 상자     -->
+            <div class="card shadow col-5">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary float-left">비밀번호 변경</h6>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div>
+                            <div class="row mb-2 mt-3">
+                                <label class="col-md-12">현재 비밀번호<input class="form-control" type="text" placeholder=""></label>
+                            </div>
+                            <div class="row mb-2 mt-3">
+                                <label class="col-md-12">새 비밀번호<input class="form-control" type="text"
+                                                                      placeholder=""></label>
+                            </div>
+                            <div class="row mb-2 mt-3">
+                                <label class="col-md-12">비밀번호 확인<input class="form-control" type="text" placeholder=""></label>
+                            </div>
+                        </div>
+                    </form>
+                    <button class="btn btn-primary mt-3 float-right">변경하기</button>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div><!-- Content 끝 -->
+
+</th:block>
+</html>1

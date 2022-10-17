@@ -132,7 +132,7 @@ function findAccDetail(statNum) {
             for(i=detailTotalCount;i<5;i++){
                 detail += `
                 <tr>
-                    <td colspan="6" height="50" style="background: whitesmoke"></td>
+                    <td colspan="6" height="10" style="background: whitesmoke"></td>
                 </tr>
                 `
             }
