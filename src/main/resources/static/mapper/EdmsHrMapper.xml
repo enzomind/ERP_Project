@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.choongang.erpproject.edms.mapper.HrMapper">
+
+    <sql id="insertHrColumns">
+        lev_num
+        , emp_id
+        , appr
+        , appr_state
+        , appr_date
+        , appl_date
+        , lev_type
+        , lev_title
+        , lev_content
+        , start_date
+        , end_date
+        , lev_term
+    </sql>
+
+    <select id="getLevList" resultType="HrResponseDto">
+        SELECT lev_id,
+               lev_num,
+               lev_title,
+               appl_date,
+               appr_state
+        FROM lev_table
+    </select>
+
+    <select id="getLevDetail" parameterType="Long" resultType="HrResponseDto">
+        SELECT lev_id
+             , lev_num
+             , emp_id
+             , appr
+             , appr_state
+             , appl_date
+             , lev_type
+             , lev_title
+             , lev_content
+        FROM lev_table
+        where lev_id = #{lev_id}
+    </select>
+
+    <insert id="writeinsert">
+        insert into lev_table(appr, lev_title, lev_type, lev_content)
+            values (#{appr}, #{lev_title}, #{lev_type}, #{lev_content})
+    </insert>
+
+    <select id="listCount" resultType="int">
+        select count(*) from lev_table
+    </select>
+
+</mapper>

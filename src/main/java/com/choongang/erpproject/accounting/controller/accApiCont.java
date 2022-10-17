@@ -1,28 +1,40 @@
 package com.choongang.erpproject.accounting.controller;
 
+import com.choongang.erpproject.accounting.dto.AccRequestDto;
 import com.choongang.erpproject.accounting.dto.AccResponseDto;
 import com.choongang.erpproject.accounting.service.AccService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/accapi/*")
 public class accApiCont {
 
     private final AccService accService;
 
-    @GetMapping("/accounting")
-    public List<AccResponseDto> accountApiRoot() {
+    @GetMapping("/accapi/accounting/{startDate}/{endDate}")
+    public List<AccResponseDto> accountApiRoot(@PathVariable final String startDate, @PathVariable final String endDate) {
 
-        List<AccResponseDto> acclist = accService.getAccList();
+        LocalDate sTime = LocalDate.parse(startDate);
+        LocalDate eTime = LocalDate.parse(endDate);
 
+        AccRequestDto params = new AccRequestDto();
+        params.setStartDate(sTime);
+        params.setEndDate(eTime);
+        List<AccResponseDto> acclist = accService.getAccList(params);
         return acclist;
-
     }
 
+    @GetMapping("/acc/accapi/accounting/{statNum}")
+    public List<AccResponseDto> findDetail(@PathVariable final Long statNum) {
+
+        List<AccResponseDto>accDetailList = accService.getAccDetail(statNum);
+        return accDetailList;
+    }
 }

@@ -18,6 +18,7 @@
         , com_acc
         , emp_id
         , emp_name
+        , exp_id
         , exp_num
         , appl_date
         , appr_date
@@ -37,19 +38,22 @@
         )
     </insert>
 
-    <select id="getAccList" resultType="AccResponseDto">
+    <select id="getAccList" parameterType="AccRequestDto" resultType="AccResponseDto">
         SELECT stat_num
              , com_acc
              , stat_date
-             , expense
+             , sum(expense) AS expense
              , income
-        FROM acv
-        LEFT JOIN expreport
-        ON acv.exp_num = expreport.exp_num
+          FROM acv
+               LEFT OUTER JOIN expreport ON acv.exp_num = expreport.exp_num
+               <![CDATA[ AND stat_date >= #{startDate} AND stat_date <= #{endDate} ]]>
+         GROUP BY com_acc, stat_num, stat_date, income
+         ORDER BY stat_num DESC
     </select>
 
-    <select id="getAccDetail" parameterType="long" resultType="AccResponseDto">
-        SELECT emp_name
+    <select id="getAccDetail" parameterType="Long" resultType="AccResponseDto">
+        SELECT expreport.exp_num
+             , emp_name
              , appr
              , appr_date
              , com_acc
@@ -59,13 +63,7 @@
         ON acv.exp_num = expreport.exp_num
         INNER JOIN emp_table
         ON acv.emp_id = emp_table.emp_id
-        WHERE stat_num = #{statNum};
-    </select>
-
-    <select id="getExpNum" parameterType="long" resultType="String">
-        SELECT exp_num
-        FROM acv
-        WHERE stat_num = #{statNum}
+        WHERE acv.stat_num = #{statNum};
     </select>
 
     <select id="listCount" parameterType="AccResponseDto" resultType="int">
@@ -74,5 +72,7 @@
         FROM
             acv
     </select>
+
+
 
 </mapper>

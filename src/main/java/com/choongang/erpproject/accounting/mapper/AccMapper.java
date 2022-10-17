@@ -13,7 +13,7 @@ public interface AccMapper {
     void insertAccInfo(AccRequestDto params);
 
     //전표 조회
-    List<AccResponseDto> getAccList();
+    List<AccResponseDto> getAccList(AccRequestDto params);
 
     //전표 상세 조회(전표번호 id) / return 결의번호 리스트
     List<AccResponseDto> getAccDetail(Long statNum);
