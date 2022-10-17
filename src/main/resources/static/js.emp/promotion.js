@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $('#promotion').click(function () {
+    $('.promotion').click(function () {
         let promoWho = $(this).parent().siblings('.empId').html()
 
         let ProData = {
