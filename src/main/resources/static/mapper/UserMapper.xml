@@ -20,4 +20,10 @@
         INSERT INTO erpprojectdb.emp_table (emp_id, emp_name, pw, auth_code)
         VALUES ( #{empId}, #{empName}, #{pw}, #{authCode} )
     </insert>
+
+    <select id="findByEmpName" parameterType="String" resultType="UserDto">
+        SELECT emp_name
+        FROM emp_table
+        WHERE emp_id = #{empId}
+    </select>
 </mapper>

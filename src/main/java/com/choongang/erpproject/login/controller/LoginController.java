@@ -19,6 +19,7 @@ import com.choongang.erpproject.login.dto.Response.SingleDataResponse;
 import com.choongang.erpproject.login.dto.UserDto;
 import com.choongang.erpproject.login.service.LoginService;
 import com.choongang.erpproject.login.service.ResponseService;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -42,7 +43,7 @@ public class LoginController {
         }
 
         if(Arrays.stream(cookie).filter(c -> c.getName().equals("token")).findAny().isPresent()){
-            return "redirect:/users";
+            return "redirect:/main";
         }
         return "/login";
     }
@@ -55,7 +56,8 @@ public class LoginController {
     @PostMapping("/join")
     public String join(@ModelAttribute UserDto userDto){
 
-        UserDto savedUser = loginService.join(userDto);
+        //UserDto savedUser = loginService.join(userDto);
+        loginService.join(userDto);
 
         return "redirect:/";
     }
@@ -105,7 +107,7 @@ public class LoginController {
             responseEntity = ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
 
-        return "redirect:/users";
+        return "redirect:/main";
     }
 
     //api 방식
@@ -133,15 +135,17 @@ public class LoginController {
     }*/
 
     //thymeleaf
-    @GetMapping("/users")
+    @GetMapping("/main")
     public String findUserByUsername(final Authentication authentication, Model model){
 
         String empId = ((UserDto)authentication.getPrincipal()).getEmpId();
-        UserDto findUser = loginService.findById(empId);
 
+        UserDto empName = loginService.findByEmpName(empId);
 
-        model.addAttribute("user", findUser);
+        model.addAttribute("userName", empName.getEmpName());
+//        UserDto findUser = loginService.findById(empId);
+//        model.addAttribute("user", findUser);
 
-        return "/index";
+        return "/layout/layout";
     }
 }

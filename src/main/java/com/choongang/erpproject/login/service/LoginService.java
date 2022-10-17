@@ -51,4 +51,8 @@ public class LoginService {
         return userMapper.findById(empId)
                 .orElseThrow(() -> new UserNotFoundException("없는 유저입니다."));
     }
+
+    public UserDto findByEmpName(String empId){
+        return userMapper.findByEmpName(empId);
+    }
 }

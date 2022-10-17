@@ -11,18 +11,18 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <!-- 템플릿 주소 -->
-  <link href="/etc/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="/static/etc/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link
           href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
-  <link href="/etc/css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="/static/etc/css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
 <!-- 사이드바 -->
 <div id="wrapper">
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../../index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
       <div class="sidebar-brand-text mx-3">SJHT</div>
     </a>
 
@@ -31,7 +31,7 @@
 
     <!-- 메인 페이지 -->
     <li class="nav-item active">
-      <a class="nav-link" href="../../index.html">
+      <a class="nav-link" href="index.html">
         <span>메인</span></a>
     </li>
 
@@ -47,8 +47,8 @@
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">인사 관리</h6>
-          <a class="collapse-item" href="../../hr_emp.html">직원 조회</a>
-          <a class="collapse-item" href="../../hr_sal.html">급여(승진) 관리</a>
+          <a class="collapse-item" href="hr_emp.html">직원 조회</a>
+          <a class="collapse-item" href="hr_sal.html">급여(승진) 관리</a>
         </div>
       </div>
     </li>
@@ -63,7 +63,7 @@
            data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">회계 관리</h6>
-          <a class="collapse-item" href="../ac.html">전표 관리</a>
+          <a class="collapse-item" href="backup/ac.html">전표 관리</a>
         </div>
       </div>
     </li>
@@ -78,14 +78,14 @@
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">전자결재 관리</h6>
           <a class="collapse-item" href="ec_1.html">결재상신함</a>
-          <a class="collapse-item" href="../../ec_2.html">결재수신함</a>
+          <a class="collapse-item" href="ec_2.html">결재수신함</a>
         </div>
       </div>
     </li>
 
     <!-- 공지사항 페이지 -->
     <li class="nav-item">
-      <a class="nav-link" href="../../nt.html">
+      <a class="nav-link" href="nt.html">
         <span>공지사항</span></a>
     </li>
 
@@ -98,8 +98,8 @@
       <div id="myPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">내 정보 관리</h6>
-          <a class="collapse-item" href="../../mp.html">내 정보 변경</a>
-          <a class="collapse-item" href="../../mp2.html">비밀번호 변경</a>
+          <a class="collapse-item" href="mp.html">내 정보 변경</a>
+          <a class="collapse-item" href="mp2.html">비밀번호 변경</a>
         </div>
       </div>
     </li>
@@ -186,7 +186,7 @@
               </tr>
               <tr>
                 <td>홍길동 사원</td>
-                <td>홍길자 본부장</td>
+                <td>-</td>
               </tr>
               </thead>
             </table>
@@ -202,7 +202,7 @@
                 </tr>
                 <tr>
                   <th class="align-middle">제목</th>
-                  <td colspan="3">홍길동_12월 지출결의서</td>
+                  <td colspan="3"><input type="text" id="title" class="form-control" placeholder="제목을 입력하세요"></td>
                 </tr>
                 </thead>
               </table>
@@ -219,16 +219,24 @@
                 </tr>
                 </thead>
                 <tr>
-                  <td>복리후생비</td>
-                  <td>12/14 야근식대</td>
-                  <td>기업은행 110-110-111111</td>
-                  <td>10,000</td>
-                </tr>
-                <tr>
-                  <td>복리후생비</td>
-                  <td>출장비(12/16~22)</td>
-                  <td>기업은행 110-110-111111</td>
-                  <td>152,300</td>
+                  <td>
+                    <select class="form-control" id="select1">
+                      <option selected>선택</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                    </select>
+                  </td>
+                  <td><input type="text" id="summary" class="form-control"></td>
+                  <td>
+                    <select class="form-control" id="select2">
+                      <option selected>선택</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                    </select>
+                  </td>
+                  <td><input type="text" id="sum" class="form-control"></td>
                 </tr>
 
               </table>
@@ -240,15 +248,15 @@
                 <thead>
                 <tr>
                   <th>증빙서류</th>
-                  <td>
-                  <!--<form><input type="file" class="form-control-file" id="file"></form>-->
-                  서류파일~~클릭하면 미리보기 or 다운로드.xlsx
-                  </td>
+                  <td><form>
+                    <input type="file" class="form-control-file" id="file">
+                  </form></td>
                   </td>
                 </tr>
                 <tr>
                   <th class="align-middle">상태</th>
-                  <td>미결재</td>
+                  <td>
+                    <input type="text" class="form-control"></td>
                 </tr>
                 </thead>
               </table>
@@ -290,11 +298,11 @@
 
 <!-- 부트스트랩 -->
 <!-- Bootstrap core JavaScript-->
-<script src="/etc/vendor/jquery/jquery.min.js"></script>
-<script src="/etc/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/etc/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="/static/etc/vendor/jquery/jquery.min.js"></script>
+<script src="/static/etc/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/static/etc/vendor/jquery-easing/jquery.easing.min.js"></script>
 <!-- Custom scripts for all pages-->
-<script src="/etc/js/sb-admin-2.min.js"></script>
+<script src="/static/etc/js/sb-admin-2.min.js"></script>
 
 
 
