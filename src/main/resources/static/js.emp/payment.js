@@ -107,6 +107,7 @@ $(document).ready(function () {
 
             success: function (data) {  //비동기통신의 성공일경우 success콜백으로 들어옵니다. 'data'는 응답받은 데이터이다.
                 console.log(data)
+                alert("급여 이체 성공")
 
 
             }

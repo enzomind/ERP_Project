@@ -29,6 +29,7 @@ public class PageController {
         List<PaymentDto> lastPayday = promotionMapper.findLatestPaymdate();
         model.addAttribute("promo", list);
         model.addAttribute("lastPayday", lastPayday);
+        System.out.println(list);
         return "/employee/employee_2";
     }
 

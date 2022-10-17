@@ -78,7 +78,7 @@
                                    placeholder="이름" aria-label="name">　
                             <button class="btn btn-primary" type="button" id="search">검색</button>
                             　
-                            <button data-toggle="modal" data-target="#send2" class="btn btn-success" type="button">
+                            <button data-toggle="modal" data-target="#send2" class="btn btn-success" type="button" >
                                 급여이체
                             </button>
                             　
@@ -102,18 +102,18 @@
                             </thead>
                             <tbody>
                             <tr th:each="item : ${promo}">
-                                <td th:text="${item.empId}" class="empId"></td>
-                                <td th:text="${item.authName}"></td>
-                                <td th:text="${item.jobName}"></td>
+                                <td th:text="${item.emp_id}" class="empId"></td>
+                                <td th:text="${item.auth_name}"></td>
+                                <td th:text="${item.job_name}"></td>
                                 <td>
                                     <button data-toggle="modal" class="payname" data-target="#ecmodal4"
                                             style="background: none; border: none; color: #4e73df;"
-                                            th:text="${item.empName}">
+                                            th:text="${item.emp_name}">
                                     </button>
                                 </td>
                                 <td th:text="${item.birth}"></td>
-                                <td th:text="${item.hqName}"></td>
-                                <td th:text="${item.depName}"></td>
+                                <td th:text="${item.hq_name}"></td>
+                                <td th:text="${item.dep_name}"></td>
                                 <td>
                                     <button class="btn btn-outline-primary promotion" data-toggle="modal"
                                             data-target="#ecmodal3" >설정
@@ -141,7 +141,7 @@
                             <button type="button" class="btn btn-secondary"
                                     data-dismiss="modal">취소
                             </button>
-                            <button type="button" class="btn btn-primary" id="payAll">확인</button>
+                            <button type="button" class="btn btn-primary" id="payAll" data-dismiss="modal">확인</button>
                         </div>
                     </div>
                 </div>
@@ -222,7 +222,7 @@
                                     data-dismiss="modal">취소
                             </button>
                             <button type="submit" class="btn btn-primary" data-toggle="modal" id="confirmFirst"
-                                    data-target="#send1">등록
+                                    data-target="#send1" >등록
                             </button>
                         </div>
                     </div>
