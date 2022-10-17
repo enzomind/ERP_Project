@@ -49,6 +49,13 @@ public class AcController {
         return "redirect:/edms/edms_1";
     }
 
+//    @PostMapping("/edms/edms_1")
+//    public String submitForm(List<AcRequestDto> acList){
+//        System.out.println(acList);
+//        acService.saveList(acList);
+//        return "redirect:/edms/edms_1";
+//    }
+
 
 
 //    @GetMapping("/teest")

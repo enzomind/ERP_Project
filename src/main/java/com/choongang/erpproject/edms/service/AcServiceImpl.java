@@ -1,5 +1,6 @@
 package com.choongang.erpproject.edms.service;
 
+import com.choongang.erpproject.accounting.dto.AccRequestDto;
 import com.choongang.erpproject.edms.dto.AcRequestDto;
 import com.choongang.erpproject.edms.dto.AcResponseDto;
 import com.choongang.erpproject.edms.mapper.AcMapper;
@@ -27,5 +28,10 @@ public class AcServiceImpl implements AcService{
     @Override
     public void save(AcRequestDto acRequestDto) {
         acMapper.insert(acRequestDto);
+    }
+
+    @Override
+    public void saveList(List<AcRequestDto> acList) {
+        acMapper.insertList(acList);
     }
 }

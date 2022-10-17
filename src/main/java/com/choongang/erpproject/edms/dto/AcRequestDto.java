@@ -42,4 +42,7 @@ public class AcRequestDto {
     private String attFilepath;
     private int attFilesize;
 
+
+    private String majCode;
+
 }

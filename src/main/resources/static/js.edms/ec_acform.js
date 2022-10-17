@@ -15,9 +15,9 @@ $(document).ready(function (){
     $('#dataTable tr').click(function(){
         var tr = $(this).find("td:last");
         $("#appr").val(tr.text());
-        $("#result").text(tr.text());
+        $("#apprText").text(tr.text());
         result = true;
-        $('#modal1').modal('hide')
+        $('#modal1').modal('hide');
     })
 
     //경고창 띄우기
