@@ -5,6 +5,48 @@
 
 
 <mapper namespace="com.choongang.erpproject.employee.dao.PromotionMapper">
+
+    <select id="selectProAll1" resultType="hashmap">
+        select
+            emp_table.hire_date,
+            emp_table.auth_code,
+            emp_table.emp_id,
+            emp_table.salary,
+            emp_table.emp_name,
+            substring(emp_table.idp_num, 1,6) as birth,
+            hdqrt_code.hq_name,
+            dep_code.dep_name,
+            pstn_code.job_name,
+            auth_table.auth_name
+        from emp_table
+                 left join hdqrt_code on emp_table.hq_code = hdqrt_code.hq_code
+                 left join dep_code on emp_table.dep_no= dep_code.dep_no
+                 left join pstn_code on emp_table.job_code= pstn_code.job_code
+                 left join auth_table on emp_table.auth_code= auth_table.auth_code
+
+
+    </select>
+
+    <select id="selectProAll" resultType="hashmap">
+        select
+            emp_table.hire_date,
+            emp_table.auth_code,
+            emp_table.emp_id,
+            emp_table.salary,
+            emp_table.emp_name,
+            substring(emp_table.idp_num, 1,6) as birth,
+            hdqrt_code.hq_name,
+            dep_code.dep_name,
+            pstn_code.job_name,
+            auth_table.auth_name
+        from emp_table
+                 left join hdqrt_code on emp_table.hq_code = hdqrt_code.hq_code
+                 left join dep_code on emp_table.dep_no= dep_code.dep_no
+                 left join pstn_code on emp_table.job_code= pstn_code.job_code
+                 left join auth_table on emp_table.auth_code= auth_table.auth_code
+    </select>
+
+
     <select id="searchEmp" resultType="hashmap">
         select  emp_table.hire_date,
                 emp_table.auth_code,
