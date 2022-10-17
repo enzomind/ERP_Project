@@ -18,4 +18,6 @@ public interface AcMapper {
 
     //지결 입력
     void insert(AcRequestDto acRequestDto);
+
+    void insertList(List<AcRequestDto> aclist);
 }
