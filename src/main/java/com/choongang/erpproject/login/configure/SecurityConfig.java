@@ -47,10 +47,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //0004 : 인사 담당자
                 //0005 : MASTER
 
-                //인사 관리 메뉴는 인사 담당자만 접근 허용
-                .antMatchers("/employee/**").hasAuthority("SJAU_0004")
-                //회계 전표 메뉴는 회계 담당자만 접근 허용
-                .antMatchers("/acc/**").hasAuthority("SJAU_0003")
+                //인사 관리 - 직원 조회 메뉴는 임원(2), 인사 담당자(4), Master(5)만 접근 허용
+                .antMatchers("/employee/**").hasAnyAuthority("SJAU_0002", "SJAU_0004","SJAU_0005")
+//                //인사 관리 - 급여(승진) 관리 메뉴는 인사 담당자(4), Master(5)만 접근 허용
+//                .antMatchers("/employee/promo").hasAnyAuthority("SJAU_0002", "SJAU_0004","SJAU_0005")
+                //회계 전표 메뉴는 회계 담당자(3), Master(5)만 접근 허용
+                .antMatchers("/acc/**").hasAnyAuthority("SJAU_0003","SJAU_0005")
                 //결재상신함, 수신함, 공지사항은 인증 정보가 있다면 모두 접근 허용
                 .antMatchers("/edms/**", "/board/**", "/mypage").authenticated()
 
