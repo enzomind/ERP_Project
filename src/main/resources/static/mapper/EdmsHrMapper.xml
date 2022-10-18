@@ -43,9 +43,9 @@
         where lev_id = #{lev_id}
     </select>
 
-    <insert id="writeinsert">
-        insert into lev_table(appr, lev_title, lev_type, lev_content)
-            values (#{appr}, #{lev_title}, #{lev_type}, #{lev_content})
+    <insert id="writeinsert" parameterType="HrRequestDto">
+        insert into lev_table(appr, appl_date, lev_title, lev_type, start_date, end_date, lev_term, lev_content)
+            values (#{appr}, #{applDate}, #{levTitle}, #{levType}, #{startDate}, #{endDate}, #{levTerm}, #{levContent})
     </insert>
 
     <select id="listCount" resultType="int">
