@@ -52,8 +52,8 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">인사</h6>
-                    <a sec:authorize="hasAnyAuthority('SJAU_0002','SJAU_0004','SJAU_0005')" th:href="@{employee/promo2}" class="collapse-item">직원 조회</a>
-                    <a sec:authorize="hasAnyAuthority('SJAU_0004','SJAU_0005')" th:href="@{employee/promo}" class="collapse-item">급여(승진) 관리</a>
+                    <a sec:authorize="hasAnyAuthority('SJAU_0002','SJAU_0004','SJAU_0005')" href="employee/promo2" class="collapse-item">직원 조회</a>
+                    <a sec:authorize="hasAnyAuthority('SJAU_0004','SJAU_0005')" href="employee/promo" class="collapse-item">급여(승진) 관리</a>
                     <!--                    <button type="button" id="promotion" onclick="acyncMovePage('/emp/promo')" class="collapse-item">급여(승진) 관리</button>-->
                 </div>
             </div>
@@ -69,7 +69,7 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">회계 관리</h6>
-                    <a class="collapse-item" th:href="@{acc/accounting}">전표 관리</a>
+                    <a class="collapse-item" href="acc/accounting">전표 관리</a>
                 </div>
             </div>
         </li>
@@ -139,7 +139,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><div th:text="${userName}"></div>님 안녕하세요.</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small" sec:authentication="name"></span>
                         </a>
                         <!-- Dropdown - 프로필, 로그아웃 -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

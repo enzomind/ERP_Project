@@ -3,6 +3,7 @@ package com.choongang.erpproject.login.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -136,15 +137,9 @@ public class LoginController {
 
     //thymeleaf
     @GetMapping("/main")
-    public String findUserByUsername(final Authentication authentication, Model model){
+    public String findUserByUsername(final Authentication authentication){
 
-        String empId = ((UserDto)authentication.getPrincipal()).getEmpId();
-
-        UserDto empName = loginService.findByEmpName(empId);
-
-        model.addAttribute("userName", empName.getEmpName());
-//        UserDto findUser = loginService.findById(empId);
-//        model.addAttribute("user", findUser);
+//        String empId = ((UserDto)authentication.getPrincipal()).getEmpId();
 
         return "/layout/layout";
     }
