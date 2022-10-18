@@ -5,20 +5,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/acc")
 public class accPageCont {
 
-    @GetMapping("/accounting")
+    @GetMapping("/acc/accounting")
     public String accountPageRoot(){
 
         return "/acc/accounting";
     }
 
-    @GetMapping("/acc/accounting")
+    @GetMapping("/acc/acc/accounting")
     public String accountPageSub(){
 
         return "redirect:/acc/accounting";
     }
 
+    @GetMapping("/employee/acc/accounting")
+    public String prepixAccountRoot(){
+
+        return "redirect:/acc/accounting";
+    }
 
 }

@@ -16,12 +16,10 @@ function defaultPeriodSet(location) {
     var formatSDate = year+"-"+(("00"+month.toString()).slice(-2))+"-"+(("00"+sDate.toString()).slice(-2));
     var formatEDate = year+"-"+(("00"+month.toString()).slice(-2))+"-"+(("00"+eDate.toString()).slice(-2));
 
-    setStartDate = formatSDate;
-    setEndDate = formatEDate;
 
-    console.log("기본빵 " + setStartDate + "부터 " + setEndDate + "까지 기간 조회");
+    console.log("기본빵 " + formatSDate + "부터 " + formatEDate + "까지 기간 조회");
 
-    gateway(setStartDate, setEndDate, location);
+    gateway(formatSDate, formatEDate, location);
 }
 
 
