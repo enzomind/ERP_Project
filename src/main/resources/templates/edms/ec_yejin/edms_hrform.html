@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}" xmlns="http://www.w3.org/1999/html">
+
+<body>
+<th:block layout:fragment="mainHeader">
+  <title>휴가신청서 작성</title>
+</th:block>
+
+<th:block>
+  <div layout:fragment="content">
+    <!-- Content 시작 -->
+    <div class="container-fluid">
+      <!-- Head -->
+      <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-left-primary shadow h-70 w-421 py-2">
+            <div class="col mr-2">
+              <div class="h5 mb-0 font-weight-bold text-gray-800">Electronic Approval</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 박스 시작-->
+
+      <div style="margin-left: 8%">
+        <form action="/levwriteinsert" method="POST">
+
+          <div class="card shadow col-lg-11 p-0">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary float-left">전자결재 > 결재상신함</h6>
+            </div>
+            <div class="card-body container">
+              <h3 class="text-center mb-3">휴가신청서</h3></br>
+              <div class="float-left">결의번호</div>
+              <input class="form-control col-2 ml-2 float-left" id="exp_num" name="levNum" type="text" value="SJLD-0011" readonly>
+              <table class="table table-bordered text-center align-middle col-8 ml-2 float-right">
+                <thead>
+                <tr>
+                  <th rowspan="2" class="align-middle">결재</th>
+                  <th>작성자</th>
+                  <th>결재자</th>
+                </tr>
+                <tr>
+                  <td name="empId">사원이름</td>
+                  <td name="appr" id="tr_name"></td>
+                </tr>
+                </thead>
+              </table>
+
+              <div>
+                <table class="table table-bordered text-center col-auto">
+                  <thead>
+                  <tr>
+                    <th class="align-middle">소속</th>
+                    <td class="align-middle">test</td>
+                    <th class="align-middle">상신일자</th>
+                    <td><input type="date" id="now_date" name="applDate" class="form-control col-lg-5"></td>
+                    <th class="align-middle">기간</th>
+                    <td class="align-middle" name="levTerm">1</td>
+                  </tr>
+                  <tr>
+                    <th class="align-middle">제목</th>
+                    <td colspan="5"><input type="text" id="title" name="levTitle" class="form-control"></td>
+                  </tr>
+                  </thead>
+                </table>
+              </div>
+              <div>
+                <table class="table table-bordered text-center col-auto">
+                  <tr>
+                    <th class="align-middle">휴가구분</th>
+                    <td>
+                      <select class="form-control" id="select1" name="levType">
+                        <option selected>선택</option>
+                        <option value="오전반차">오전반차</option>
+                        <option value="오후반차">오후반차</option>
+                        <option value="연차">연차</option>
+                      </select>
+                    <th class="align-middle">날짜</th>
+                    <td>
+                      <div class="input-group input-daterange">
+                        <input type="date" name="startDate" class="form-control col-lg-6">
+                        <div class="input-group-addon">＿</div>
+                        <input type="date" name="endDate" class="form-control col-lg-6">
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="align-middle" style="width: 150px; height: 250px;">내용</th>
+                    <td colspan="3">
+                      <textarea type="text" name="levContent" class="form-control" style="height: 250px"></textarea></td>
+                  </tr>
+                </table>
+              </div>
+              <!-- 결제선 모달 시작 -->
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal1">결재선 등록</button>
+              <div class="modal fade" id="modal1" data-backdrop="static" data-keyboard="false"
+                   tabindex="-1" aria-labelledby="결재자리스트띄움" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <div class="input-group mt-3">
+                        <input type="text" id="list" class="form-control bg-light" placeholder="이름을 입력하세요">　
+                        <button type="button" class="btn btn-primary">검색</button>
+                      </div></br>
+                      <table class="table table-bordered table-hover text-center" id="modal_click" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                          <th>본부</th>
+                          <th>부서</th>
+                          <th>직급</th>
+                          <th>성명</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td>HR본부</td>
+                          <td>경영관리팀</td>
+                          <td>과장</td>
+                          <td id="td_name">홍길동</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="modal-footer">
+                      <input type="hidden" id="hidden">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">확인</button>
+                      <button type="button" class="btn btn-secondary">취소</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-center">
+                <button type="submit" id="submit" class="btn btn-primary" style="width: 100px">등록</button>
+                <button type="button" class="btn btn-danger" onclick="location.href='/writelistview'" style="width: 100px">취소</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Content 끝 -->
+</th:block>
+
+<script>
+  document.getElementById('now_date').valueAsDate = new Date();
+
+  function rowClicked() {
+
+    var table =document.getElementById('modal_click');
+    var rowList = table.rows; // *1)rows collection
+
+    for (i=1; i<rowList.length; i++) {//thead부분 제외.
+
+      var row = rowList[i];
+      var tdsNum = row.childElementCount;// 자식요소 갯수 구하기.
+
+      row.onclick = function(){
+        return function(){
+          var str = "";
+          for (var j = 3; j < tdsNum; j++){//row안에 있는 값 순차대로 가져오기.
+            var row_value = this.cells[j].innerHTML; //*2)cells collection
+            str += row_value+' ';//값을 하나의 text값으로 만듦
+          };//td for
+          document.querySelector('#tr_name').innerText =str; //p태그 안에 값 넣어주기.
+        };//return
+      }(row);//onclick
+    }//for
+  }//function
+  window.onload = rowClicked();
+
+</script>
+</body>
+
+</html>

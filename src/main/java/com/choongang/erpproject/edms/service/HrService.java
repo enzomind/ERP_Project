@@ -13,4 +13,5 @@ public interface HrService {
 
     void writeinsert(HrRequestDto hrRequestDto);
 
+    void save(HrRequestDto hrRequestDto);
 }

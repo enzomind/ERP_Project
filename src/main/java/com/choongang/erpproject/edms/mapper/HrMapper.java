@@ -19,7 +19,6 @@ public interface HrMapper {
     void writeinsert(HrRequestDto hrRequestDto);
 
 
-
     int listCount();
 
 }

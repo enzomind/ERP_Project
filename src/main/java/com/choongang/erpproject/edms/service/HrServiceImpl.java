@@ -35,4 +35,9 @@ public class HrServiceImpl implements HrService {
         hrMapper.writeinsert(hrRequestDto);
     }
 
+    @Override
+    public void save(HrRequestDto hrRequestDto) {
+        hrMapper.writeinsert(hrRequestDto);
+    }
+
 }

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+
+<th:block layout:fragment="mainHeader">
+  <title>결재수신함</title>
+</th:block>
+
+<th:block>
+  <div layout:fragment="content">
+    <!-- Content 시작 -->
+    <div class="container-fluid">
+      <!-- Head -->
+      <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-left-primary shadow h-70 w-421 py-2">
+            <div class="col mr-2">
+              <div class="h5 mb-0 font-weight-bold text-gray-800">Electronic Approval</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 박스 시작-->
+      <div style="margin-left: 8%">
+        <div class="card shadow col-lg-11 p-0">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary float-left">전자결재 > 결재상신함</h6>
+          </div>
+          <div th:each="HrResponseDto : ${levdetail2}" class="card-body container">
+            <h3 class="text-center mb-3">휴가신청서</h3></br>
+            <p class="float-left">결의번호</p>
+            <input th:value="${HrResponseDto.levNum}" class="form-control col-2 ml-2 float-left" id="exp_num" type="text" disabled>
+            <table class="table table-bordered text-center align-middle col-8 ml-2 float-right">
+              <thead>
+              <tr>
+                <th rowspan="2" class="align-middle">결재</th>
+                <th>이름</th>
+                <th>결재자</th>
+              </tr>
+              <tr>
+                <td th:text="${HrResponseDto.empId}"></td>
+                <td th:text="${HrResponseDto.appr}"></td>
+              </tr>
+              </thead>
+            </table>
+
+            <div>
+              <table class="table table-bordered text-center col-auto">
+                <thead>
+                <tr>
+                  <th>소속</th>
+                  <td>성진하이텍지주 글로벌전략부</td>
+                  <th>상신일자</th>
+                  <td th:text="${HrResponseDto.applDate}"></td>
+                </tr>
+                <tr>
+                  <th class="align-middle">제목</th>
+                  <td th:text="${HrResponseDto.levTitle}" colspan="3"></td>
+                </tr>
+                </thead>
+              </table>
+            </div>
+            <div>
+              <table class="table table-bordered text-center col-auto">
+                <tr>
+                  <th class="align-middle">휴가구분</th>
+                  <td class="text-left" th:text="${HrResponseDto.levType}">
+
+                  </td>
+                </tr>
+                <tr>
+                  <th class="align-middle" style="width: 150px; height: 300px;">내용</th>
+                  <td class="text-left" th:text="${HrResponseDto.levContent}">
+                    <textarea type="text" class="form-control" style="height: 300px"></textarea></td>
+                </tr>
+                <tr>
+                  <th class="align-middle">상태</th>
+                  <td class="text-left" th:text="${HrResponseDto.apprState}">
+                    <div class="input-group input-daterange">
+                      <input id="state" class="form-control col-lg-1">
+                      <input id="time" class="form-control col-lg-3">
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <form action="" method="post">
+              <div class="text-center" id="state_click">
+                <button type="button" class="btn btn-primary" name="apprState" onclick="Ystate()" style="width: 100px">승인</button>　
+                <button type="button" class="btn btn-danger" name="apprState" onclick="Nstate()" style="width: 100px">반려</button>
+              </div>
+              <div class="text-right">
+                <button type="submit" class="btn btn-dark" style="width: 100px">등록</button>　
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- Content 끝 -->
+
+</th:block>
+
+<script>
+  function Ystate()  {
+    const btnElement
+            = document.getElementById('state');
+    btnElement.value = "승인";
+
+    var s = new Date(); //현재 시간
+    var e = document.getElementById('time');
+    e.value = s.toLocaleString();
+  }
+
+  function Nstate()  {
+    const btnElement
+            = document.getElementById('state');
+    btnElement.value = "반려";
+
+    var s = new Date(); //현재 시간
+    var e = document.getElementById('time');
+    e.value = s.toLocaleString();
+  }
+
+</script>
+
+</html>

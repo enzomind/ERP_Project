@@ -23,7 +23,7 @@
 <!-- 사이드바 -->
 <div id="wrapper">
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="layout/layout.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../../layout/layout.html">
       <div class="sidebar-brand-text mx-3">SJHT</div>
     </a>
 
@@ -32,7 +32,7 @@
 
     <!-- 메인 페이지 -->
     <li class="nav-item active">
-      <a class="nav-link" href="layout/layout.html">
+      <a class="nav-link" href="../../layout/layout.html">
         <span>메인</span></a>
     </li>
 
@@ -48,8 +48,8 @@
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">인사 관리</h6>
-          <a class="collapse-item" href="hr_emp.html">직원 조회</a>
-          <a class="collapse-item" href="hr_sal.html">급여(승진) 관리</a>
+          <a class="collapse-item" href="../../hr_emp.html">직원 조회</a>
+          <a class="collapse-item" href="../../hr_sal.html">급여(승진) 관리</a>
         </div>
       </div>
     </li>
@@ -64,7 +64,7 @@
            data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">회계 관리</h6>
-          <a class="collapse-item" href="backup/ac.html">전표 관리</a>
+          <a class="collapse-item" href="../ac.html">전표 관리</a>
         </div>
       </div>
     </li>
@@ -78,7 +78,7 @@
       <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">전자결재 관리</h6>
-          <a class="collapse-item" href="backup/ec_hanul/ec_1.html">결재상신함</a>
+          <a class="collapse-item" href="../ec_hanul/ec_1.html">결재상신함</a>
           <a class="collapse-item" href="ec_2.html">결재수신함</a>
         </div>
       </div>
@@ -86,7 +86,7 @@
 
     <!-- 공지사항 페이지 -->
     <li class="nav-item">
-      <a class="nav-link" href="nt.html">
+      <a class="nav-link" href="../../nt.html">
         <span>공지사항</span></a>
     </li>
 
@@ -99,8 +99,8 @@
       <div id="myPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">내 정보 관리</h6>
-          <a class="collapse-item" href="mp.html">내 정보 변경</a>
-          <a class="collapse-item" href="mp2.html">비밀번호 변경</a>
+          <a class="collapse-item" href="../../mp.html">내 정보 변경</a>
+          <a class="collapse-item" href="../../mp2.html">비밀번호 변경</a>
         </div>
       </div>
     </li>
@@ -167,16 +167,18 @@
         </div>
 
         <!-- 박스 시작-->
+
         <div style="margin-left: 8%">
+          <form action="/levwriteinsert" method="POST">
+
           <div class="card shadow col-lg-11 p-0">
           <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary float-left">전자결재 > 결재상신함</h6>
           </div>
           <div class="card-body container">
             <h3 class="text-center mb-3">휴가신청서</h3></br>
-            <form action="" name="hrRequestDto">
             <div class="float-left">결의번호</div>
-            <input class="form-control col-2 ml-2 float-left" id="exp_num" type="text" disabled>
+            <input class="form-control col-2 ml-2 float-left" id="exp_num" name="levNum" type="text" value="SJLD-0011" readonly>
             <table class="table table-bordered text-center align-middle col-8 ml-2 float-right">
                 <thead>
                 <tr>
@@ -185,8 +187,8 @@
                   <th>결재자</th>
                 </tr>
                 <tr>
-                  <td>홍길동 사원</td>
-                  <td id="tr_name"></td>
+                  <td name="empId">사원이름</td>
+                  <td name="appr" id="tr_name"></td>
                 </tr>
                 </thead>
               </table>
@@ -195,14 +197,16 @@
               <table class="table table-bordered text-center col-auto">
                 <thead>
                 <tr>
-                  <th>소속</th>
-                  <td>성진하이텍지주 글로벌전략부</td>
-                  <th>상신일자</th>
-                  <td>2022-01-01</td>
+                  <th class="align-middle">소속</th>
+                  <td class="align-middle">test</td>
+                  <th class="align-middle">상신일자</th>
+                  <td><input type="date" id="now_date" name="applDate" class="form-control col-lg-5"></td>
+                  <th class="align-middle">기간</th>
+                  <td class="align-middle" name="levTerm">1</td>
                 </tr>
                 <tr>
                   <th class="align-middle">제목</th>
-                  <td colspan="3"><input type="text" id="title" class="form-control"></td>
+                  <td colspan="5"><input type="text" id="title" name="levTitle" class="form-control"></td>
                 </tr>
                 </thead>
               </table>
@@ -212,25 +216,25 @@
                 <tr>
                   <th class="align-middle">휴가구분</th>
                   <td>
-                    <select class="form-control" id="select1">
+                    <select class="form-control" id="select1" name="levType">
                       <option selected>선택</option>
-                      <option value="1">오전반차</option>
-                      <option value="2">오후반차</option>
-                      <option value="3">연차</option>
+                      <option value="오전반차">오전반차</option>
+                      <option value="오후반차">오후반차</option>
+                      <option value="연차">연차</option>
                     </select>
                     <th class="align-middle">날짜</th>
                     <td>
                       <div class="input-group input-daterange">
-                        <input type="date" class="form-control col-lg-6">
+                        <input type="date" name="startDate" class="form-control col-lg-6">
                         <div class="input-group-addon">＿</div>
-                        <input type="date" class="form-control col-lg-6">
+                        <input type="date" name="endDate" class="form-control col-lg-6">
                       </div>
                     </td>
                 </tr>
                 <tr>
                   <th class="align-middle" style="width: 150px; height: 250px;">내용</th>
                   <td colspan="3">
-                    <textarea type="text" class="form-control" style="height: 250px"></textarea></td>
+                    <textarea type="text" name="levContent" class="form-control" style="height: 250px"></textarea></td>
                 </tr>
               </table>
             </div>
@@ -266,20 +270,20 @@
                   </div>
                   <div class="modal-footer">
                     <input type="hidden" id="hidden">
-                    <button class="btn btn-primary" data-dismiss="modal">확인</button>
-                    <button class="btn btn-secondary">취소</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">확인</button>
+                    <button type="button" class="btn btn-secondary">취소</button>
                   </div>
                 </div>
               </div>
             </div>
 
             <div class="text-center">
-              <input type="submit" class="btn btn-primary" value="등록" style="width: 100px"/>
-              <button class="btn btn-danger" style="width: 100px">취소</button>
+              <button type="submit" id="submit" class="btn btn-primary" style="width: 100px">등록</button>
+              <button type="button" class="btn btn-danger" onclick="location.href='/writelistview'" style="width: 100px">취소</button>
             </div>
-            </form>
           </div>
         </div>
+        </form>
       </div>
     </div>
   </div>
@@ -333,6 +337,9 @@
     }//for
   }//function
   window.onload = rowClicked();
+
+  document.getElementById('now_date').valueAsDate = new Date();
+
 </script>
 
 

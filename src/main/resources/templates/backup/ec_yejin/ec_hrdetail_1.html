@@ -21,7 +21,7 @@
 <!-- 사이드바 -->
 <div id="wrapper">
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="layout/layout.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../../layout/layout.html">
       <div class="sidebar-brand-text mx-3">SJHT</div>
     </a>
 
@@ -30,7 +30,7 @@
 
     <!-- 메인 페이지 -->
     <li class="nav-item active">
-      <a class="nav-link" href="layout/layout.html">
+      <a class="nav-link" href="../../layout/layout.html">
         <span>메인</span></a>
     </li>
 
@@ -46,8 +46,8 @@
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">인사 관리</h6>
-          <a class="collapse-item" href="hr_emp.html">직원 조회</a>
-          <a class="collapse-item" href="hr_sal.html">급여(승진) 관리</a>
+          <a class="collapse-item" href="../../hr_emp.html">직원 조회</a>
+          <a class="collapse-item" href="../../hr_sal.html">급여(승진) 관리</a>
         </div>
       </div>
     </li>
@@ -62,7 +62,7 @@
            data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">회계 관리</h6>
-          <a class="collapse-item" href="backup/ac.html">전표 관리</a>
+          <a class="collapse-item" href="../ac.html">전표 관리</a>
         </div>
       </div>
     </li>
@@ -84,7 +84,7 @@
 
     <!-- 공지사항 페이지 -->
     <li class="nav-item">
-      <a class="nav-link" href="nt.html">
+      <a class="nav-link" href="../../nt.html">
         <span>공지사항</span></a>
     </li>
 
@@ -97,8 +97,8 @@
       <div id="myPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">내 정보 관리</h6>
-          <a class="collapse-item" href="mp.html">내 정보 변경</a>
-          <a class="collapse-item" href="mp2.html">비밀번호 변경</a>
+          <a class="collapse-item" href="../../mp.html">내 정보 변경</a>
+          <a class="collapse-item" href="../../mp2.html">비밀번호 변경</a>
         </div>
       </div>
     </li>
@@ -220,18 +220,13 @@
                 <tr>
                   <th class="align-middle">상태</th>
                   <td class="text-left" th:text="${HrResponseDto.apprState}">
-                    <div class="input-group input-daterange">
-                      <input id="state" class="form-control col-lg-1">
-                      <input id="time" class="form-control col-lg-3">
-                    </div>
-                  </td>
+                    <input type="text" class="form-control"></td>
                 </tr>
               </table>
             </div>
 
-            <div class="text-center" id="state_click">
-              <button class="btn btn-primary" onclick="Ystate()" style="width: 100px">승인</button>　
-              <button class="btn btn-danger" onclick="Nstate()" style="width: 100px">반려</button>
+            <div class="text-center">
+              <button class="btn btn-primary" onclick="location='/levwriteview'" style="width: 100px">목록</button>
             </div>
 
           </div>
@@ -264,29 +259,6 @@
     </div>
   </div>
 </div>
-
-<script>
-  function Ystate()  {
-    const btnElement
-            = document.getElementById('state');
-    btnElement.value = "승인";
-
-    var s = new Date(); //현재 시간
-    var e = document.getElementById('time');
-    e.value = s.toLocaleString();
-  }
-
-  function Nstate()  {
-    const btnElement
-            = document.getElementById('state');
-    btnElement.value = "반려";
-
-    var s = new Date(); //현재 시간
-    var e = document.getElementById('time');
-    e.value = s.toLocaleString();
-  }
-
-</script>
 
 <!-- 부트스트랩 -->
 <!-- Bootstrap core JavaScript-->

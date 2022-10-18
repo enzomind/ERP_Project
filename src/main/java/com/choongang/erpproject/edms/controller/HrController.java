@@ -20,43 +20,55 @@ public class HrController {
     public String writelist(Model model) {
        List<HrResponseDto> levlist = hrService.getLevList();
        model.addAttribute("levlist", levlist);
-       return "/ec_1";
+       return "/edms/ec_yejin/edms_1";
    }
 
+    //결제수신함 : 리스트 확인
     @GetMapping("/levapprview")
     public String apprlist(Model model) {
         List<HrResponseDto> levlist = hrService.getLevList();
         model.addAttribute("levlist", levlist);
-        return "/ec_2";
+        return "/edms/ec_yejin/edms_2";
     }
 
-   //결제수신함 : 작성글
+   //결제상신함 : 작성글 확인
    @GetMapping("/levreportuser/{levId}")
     public String hrform1(@PathVariable("levId") Long levId, Model model) {
-       HrResponseDto levdetail = hrService.getLevDetail(levId);
-       model.addAttribute("levdetail", levdetail);
-       System.out.println(levdetail.getLevNum());
-       return "/ec_hrdetail_1";
+       HrResponseDto levdetail1 = hrService.getLevDetail(levId);
+       model.addAttribute("levdetail1", levdetail1);
+       System.out.println(levdetail1.getLevNum());
+       return "/edms/ec_yejin/edms_hr_detail_1";
    }
 
+    //결제수신함 : 작성글 확인
     @GetMapping("/levreportappr/{levId}")
     public String hrform2(@PathVariable("levId") Long levId, Model model) {
-        HrResponseDto levdetail = hrService.getLevDetail(levId);
-        model.addAttribute("levdetail", levdetail);
-        System.out.println(levdetail.getLevNum());
-        return "/ec_hrdetail_2";
+        HrResponseDto levdetail2 = hrService.getLevDetail(levId);
+        model.addAttribute("levdetail2", levdetail2);
+        System.out.println(levdetail2.getLevNum());
+        return "/edms/ec_yejin/edms_hr_detail_2";
     }
 
+
+    //결제상신함 : 글 작성페이지
    @GetMapping("/levwrite")
     public String writeform() throws Exception {
-       return "/ec_hrform";
+       return "/edms/ec_yejin/edms_hrform";
    }
 
-   @RequestMapping("/levwriteinsert")
-    public String levwriteinsert(@ModelAttribute("hrRequestDto") HrRequestDto hrRequestDto, Model model) {
-       hrService.writeinsert(hrRequestDto);
-       return "/ec_1";
-   }
+   //작성글 insert
+    @PostMapping("/levwriteinsert")
+    public String levwriteinsert(HrRequestDto hrRequestDto) {
+       hrService.save(hrRequestDto);
+       return "redirect:/levwriteview";
+    }
+
+//   @RequestMapping("/levwriteinsert")
+//    public String levwriteinsert(@ModelAttribute("hrRequestDto") HrRequestDto hrRequestDto, Model model) {
+//       System.out.println("--------------------------------"+hrRequestDto);
+//       hrService.writeinsert(hrRequestDto);
+//       return "/ec_1";
+//   }
 
 
 
