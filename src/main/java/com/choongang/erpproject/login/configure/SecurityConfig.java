@@ -56,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //결재상신함, 수신함, 공지사항은 인증 정보가 있다면 모두 접근 허용
                 .antMatchers("/edms/**", "/board/**", "/mypage").authenticated()
 
-                .antMatchers("/join", "/api/login", "/api/join", "/error/*", "/css/**", "/**", "/js/**", "/etc/**", "/users").permitAll()
+                .antMatchers("/join", "/api/login", "/api/join", "/error/*", "/css/**", "/**", "/js/**", "/etc/**", "/users", "lib").permitAll()
 
                 .and()
                 .logout()

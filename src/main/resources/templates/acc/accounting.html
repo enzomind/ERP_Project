@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/layout_noPlugin}" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      layout:decorate="~{layout/layout}" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <th:block layout:fragment="mainHeader">
 
@@ -23,9 +23,9 @@
             </div>
 
             <!-- 글목록 -->
-            <div class="card shadow col-lg-auto">
+            <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary float-left">회계전표</h6>
+                    <h5 class="m-0 font-weight-bold text-primary">회계 전표</h5>
                 </div>
 
                 <!-- 조회기간 박스-->
@@ -53,7 +53,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <div id="listTotal"></div>
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered">
                             <thead>
                             <tr>
                                 <th>전표번호</th>
@@ -101,12 +101,9 @@
 
         <script type="text/javascript" th:src="@{/js/accounting/acc.js}"></script>
         <script type="text/javascript" th:src="@{/js/common/validPeriod.js}"></script>
+
     </div>
-</th:block>
 
-</div><!-- Content 끝 -->
-
-</body>>
 </th:block>
 
 </html>
