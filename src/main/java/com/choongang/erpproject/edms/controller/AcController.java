@@ -7,12 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -44,24 +42,23 @@ public class AcController {
 
     //지결 입력
     @PostMapping("/edms/edms_1")
-    public String submitForm(AcRequestDto acRequestDto){
-        acService.save(acRequestDto);
+    public String submitForm(AcRequestDto acRequestDto) {
+        List<AcRequestDto> list = acRequestDto.getAcRequestDtoList();
+        List<AcRequestDto> listReal = new ArrayList<>();
+        for (int i=0; i < 5; i++) {
+            if(list.get(i).getExpense() != 0){
+                listReal.add(list.get(i));
+            }
+        }
+        acService.saveList(listReal);
         return "redirect:/edms/edms_1";
     }
 
+
 //    @PostMapping("/edms/edms_1")
-//    public String submitForm(List<AcRequestDto> acList){
-//        System.out.println(acList);
-//        acService.saveList(acList);
+//    public String submitForm(AcRequestDto acRequestDto){
+//        acService.save(acRequestDto);
 //        return "redirect:/edms/edms_1";
 //    }
-
-
-
-//    @GetMapping("/teest")
-//    public List<AcResponseDto> test(){
-//        return acService.findAll();
-//    }
-
 
 }

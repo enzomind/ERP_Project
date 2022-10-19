@@ -1,6 +1,5 @@
 package com.choongang.erpproject.edms.service;
 
-import com.choongang.erpproject.accounting.dto.AccRequestDto;
 import com.choongang.erpproject.edms.dto.AcRequestDto;
 import com.choongang.erpproject.edms.dto.AcResponseDto;
 import com.choongang.erpproject.edms.mapper.AcMapper;
@@ -8,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static java.time.LocalDate.now;
 
 @Service
 public class AcServiceImpl implements AcService{
@@ -31,7 +32,8 @@ public class AcServiceImpl implements AcService{
     }
 
     @Override
-    public void saveList(List<AcRequestDto> acList) {
-        acMapper.insertList(acList);
+    public void saveList(List<AcRequestDto> acRequestDtoList) {
+        acMapper.insertList(acRequestDtoList);
     }
+
 }

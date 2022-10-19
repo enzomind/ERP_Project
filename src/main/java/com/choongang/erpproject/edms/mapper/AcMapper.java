@@ -15,9 +15,9 @@ public interface AcMapper {
     //지결 상세페이지 조회
     List<AcResponseDto> selectDetail(String expNum);
 
-
-    //지결 입력
+    //지결 입력(안쓸듯)
     void insert(AcRequestDto acRequestDto);
 
-    void insertList(List<AcRequestDto> aclist);
+    //지결 여러개 입력
+    void insertList(List<AcRequestDto> acRequestDtoList);
 }
