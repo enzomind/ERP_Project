@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.parameters.P;
 
 import java.time.LocalDate;
+import java.util.List;
 
 //insert
 @Data
@@ -45,4 +46,12 @@ public class AcRequestDto {
 
     private String majCode;
 
+    //insert용 dto
+    private List<AcRequestDto> acRequestDtoList;
+    public List<AcRequestDto> getAcRequestDtoList() {
+        return acRequestDtoList;
+    }
+    public void setAcRequestDtoList(List<AcRequestDto> acRequestDtoList) {
+        this.acRequestDtoList = acRequestDtoList;
+    }
 }

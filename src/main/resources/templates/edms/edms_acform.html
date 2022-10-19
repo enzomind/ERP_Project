@@ -42,7 +42,12 @@
                             </tr>
                             <tr>
                                 <td>로그인된 사람</td>
-                                <td><div id="apprText"></div><input type="hidden" name="appr" id="appr"></td>
+                                <td><div id="apprText"></div>
+                                    <input type="hidden" name="acRequestDtoList[0].appr" id="appr1">
+                                    <input type="hidden" name="acRequestDtoList[1].appr" id="appr2">
+                                    <input type="hidden" name="acRequestDtoList[2].appr" id="appr3">
+                                    <input type="hidden" name="acRequestDtoList[3].appr" id="appr4">
+                                    <input type="hidden" name="acRequestDtoList[4].appr" id="appr5"></td>
                                                     <!--div input 밖에다 닫았더니 에러났음 -->
 
                             </tr>
@@ -60,14 +65,19 @@
                                 </tr>
                                 <tr>
                                     <th class="align-middle">제목</th>
-                                    <td colspan="3"><input type="text" name="expTitle" id="exp_title" class="form-control" placeholder="제목을 입력하세요"></td>
+                                    <td colspan="3"><input type="text" name="acRequestDtoList[0].expTitle" id="exp_title1" class="form-control" placeholder="제목을 입력하세요">
+                                        <input type="hidden" name="acRequestDtoList[1].expTitle" id =exp_title2>
+                                        <input type="hidden" name="acRequestDtoList[2].expTitle" id =exp_title3>
+                                        <input type="hidden" name="acRequestDtoList[3].expTitle" id =exp_title4>
+                                        <input type="hidden" name="acRequestDtoList[4].expTitle" id =exp_title5>
+                                    </td>
                                 </tr>
                                 </thead>
                             </table>
                         </div>
                         <div>
                             <!-- 테이블3 (과목 등등 선택)-->
-                            <table class="table table-bordered text-center col-auto">
+                            <table class="table table-bordered text-center col-auto" id="info">
                                 <thead>
                                 <tr>
                                     <th>계정과목</th>
@@ -76,42 +86,92 @@
                                     <th>금액(원)</th>
                                 </tr>
                                 </thead>
-                                <tr>
+                                <tr id="row1">
                                     <td>
-                                        <select class="form-control" name="detCode" id="det_code">
+                                        <select class="form-control sel1" name="acRequestDtoList[0].detCode" id="det_code1">
                                             <option value="선택" selected>선택</option>
                                             <option value="복리후생비">복리후생비</option>
                                         </select>
                                     </td>
-                                    <td><input type="text" name="remk" id="remk" class="form-control"></td>
+                                    <td><input type="text" name="acRequestDtoList[0].remk" id="remk1" class="form-control sel2"></td>
                                     <td>
-                                        <select class="form-control" name="comAcc" id="com_acc">
+                                        <select class="form-control sel3" name="acRequestDtoList[0].comAcc" id="com_acc1">
                                             <option value="선택" selected>선택</option>
                                             <option value="기업은행 110-110-111111">기업은행 110-110-111111</option>
                                         </select>
                                     </td>
-                                    <td><input type="text" name="expense" id="expense" class="form-control"></td>
+                                    <td><input type="text" name="acRequestDtoList[0].expense" id="expense1" class="form-control sel4" value="0"></td>
                                 </tr>
-                                <tr>
+                                <tr id="row2">
                                     <td>
-                                        <select class="form-control" name="detCode" id="det_code2">
+                                        <select class="form-control" name="acRequestDtoList[1].detCode" id="det_code2">
                                             <option value="선택" selected>선택</option>
                                             <option value="복리후생비">복리후생비</option>
                                         </select>
                                     </td>
-                                    <td><input type="text" name="remk" id="remk2" class="form-control"></td>
+                                    <td><input type="text" name="acRequestDtoList[1].remk" id="remk2" class="form-control"></td>
                                     <td>
-                                        <select class="form-control" name="comAcc" id="com_acc2">
+                                        <select class="form-control" name="acRequestDtoList[1].comAcc" id="com_acc2">
                                             <option value="선택" selected>선택</option>
                                             <option value="기업은행 110-110-111111">기업은행 110-110-111111</option>
                                         </select>
                                     </td>
-                                    <td><input type="text" name="expense" id="expense2" class="form-control"></td>
+                                    <td><input type="text" name="acRequestDtoList[1].expense" id="expense2" class="form-control" value="0"></td>
+                                </tr>
+                                <tr id="row3">
+                                    <td>
+                                        <select class="form-control" name="acRequestDtoList[2].detCode" id="det_code3">
+                                            <option value="선택" selected>선택</option>
+                                            <option value="복리후생비">복리후생비</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="text" name="acRequestDtoList[2].remk" id="remk3" class="form-control"></td>
+                                    <td>
+                                        <select class="form-control" name="acRequestDtoList[2].comAcc" id="com_acc3">
+                                            <option value="선택" selected>선택</option>
+                                            <option value="기업은행 110-110-111111">기업은행 110-110-111111</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="text" name="acRequestDtoList[2].expense" id="expense3" class="form-control" value="0"></td>
+                                </tr>
+                                <tr id="row4">
+                                    <td>
+                                        <select class="form-control" name="acRequestDtoList[3].detCode" id="det_code4">
+                                            <option value="선택" selected>선택</option>
+                                            <option value="복리후생비">복리후생비</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="text" name="acRequestDtoList[3].remk" id="remk4" class="form-control"></td>
+                                    <td>
+                                        <select class="form-control" name="acRequestDtoList[3].comAcc" id="com_acc4">
+                                            <option value="선택" selected>선택</option>
+                                            <option value="기업은행 110-110-111111">기업은행 110-110-111111</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="text" name="acRequestDtoList[3].expense" id="expense4" class="form-control" value="0"></td>
+                                </tr>
+                                <tr id="row5">
+                                    <td>
+                                        <select class="form-control" name="acRequestDtoList[4].detCode" id="det_code5">
+                                            <option value="선택" selected>선택</option>
+                                            <option value="복리후생비">복리후생비</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="text" name="acRequestDtoList[4].remk" id="remk5" class="form-control"></td>
+                                    <td>
+                                        <select class="form-control" name="acRequestDtoList[4].comAcc" id="com_acc5">
+                                            <option value="선택" selected>선택</option>
+                                            <option value="기업은행 110-110-111111">기업은행 110-110-111111</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="text" name="acRequestDtoList[4].expense" id="expense5" class="form-control" value="0"></td>
                                 </tr>
 
 
                             </table>
                         </div>
+                        <!--<button type="button" id="plusBtn" onclick="rowInsert()">+</button>
+                        <script type="text/javascript" th:src="@{/js.edms/rowInsert.js}"></script>-->
                         <div>
                             <!-- 테이블4(파일등록) -->
                             <table class="table table-bordered text-center col-auto">
@@ -119,7 +179,6 @@
                                 <tr>
                                     <th>증빙서류</th>
                                     <td><input type="file" class="form-control-file" id="file"></td>
-                                    </td>
                                 </tr>
                                 </thead>
                             </table>
@@ -184,7 +243,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" id="hidden">
-                                        <!--                    <button class="btn btn-primary" id="btn">확인</button>-->
+<!--                                                            <button class="btn btn-primary" id="btn">확인</button>-->
                                         <button class="btn btn-secondary" data-dismiss="modal">취소</button>
                                     </div>
                                 </div>
@@ -195,7 +254,6 @@
                             <button type="submit" id="submit" class="btn btn-primary" style="width: 100px">등록</button>
                             <button type="button" class="btn btn-primary" style="width: 100px" onclick="location.href='/edms/edms_1'">취소</button>
                         </div>
-
                     </div>
                 </div>
             </form>
