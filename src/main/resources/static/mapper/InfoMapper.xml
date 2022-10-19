@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.choongang.erpproject.info.dao.NoticeMapper">
+
+    <select id="searchnotice" resultType="com.choongang.erpproject.info.dto.NoticeDto">
+        select ntc_num, title, writer, DATE_FORMAT(date, '%Y-%m-%d') as date, content, cbnNum
+        from notice
+        <where>
+            <if test="start != null and start != ''">
+                AND DATE_FORMAT(date, '%Y-%m-%d') <![CDATA[ >= ]]> #{start}
+            </if>
+            <if test="end != null and end != ''">
+                AND DATE_FORMAT(date, '%Y-%m-%d') <![CDATA[ <= ]]> #{end}
+            </if>
+            <if test="title != null and title != ''">
+                AND title LIKE CONCAT('%',#{title},'%')
+            </if>
+        </where>
+    </select>
+
+    <update id="updateViewCnt">
+        update notice
+        set cbnNum = cbnNum + 1
+        where ntc_num = #{ntcNum}
+    </update>
+
+
+    <select id="selectNoticeList" resultType="com.choongang.erpproject.info.dto.NoticeDto">
+        select ntc_num, title, writer, DATE_FORMAT(date, '%Y-%m-%d') as date, content, cbnNum
+        from notice
+    </select>
+
+    <select id="selectNotice" resultType="com.choongang.erpproject.info.dto.NoticeDto">
+        select title, writer, DATE_FORMAT(date, '%Y-%m-%d') as date, content, uuid, file_name
+        from notice
+        WHERE ntc_num = #{ntcNum}
+    </select>
+
+    <insert id="insertNotice">
+        INSERT INTO notice(title, content, uuid, file_name)
+        values (#{title}, #{content}, #{uuid}, #{fileName})
+    </insert>
+
+
+</mapper>

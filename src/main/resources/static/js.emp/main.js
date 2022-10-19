@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#collapseTwo').stop().slideDown(200);
+    // $('#collapseTwo').stop().slideDown(200);
     $('#search').click(function () {
 
         let empdata = {

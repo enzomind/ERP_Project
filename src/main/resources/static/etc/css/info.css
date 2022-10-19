@@ -1,0 +1,41 @@
+#table-writing {text-align: left}
+
+#table-writing tbody tr td:first-child {font-weight: 700; text-align: center; font-size: 18px; background: whitesmoke; line-height: 45px;}
+
+#table-writing tbody tr td input { height: 40px; font-size: 20px;}
+#table-writing tbody tr:first-child td input { width: 70%;}
+#table-writing tbody tr:nth-child(2) td input { width: 30%;}
+
+#table-writing tbody tr td textarea {width: 100%; font-size: 20px;}
+
+/* 테이블 관련 css*/
+#table-top {padding: 0; border-top: none;}
+
+.nt_table {border-top: lightgray 3px solid; border-bottom: lightgray 2px solid; border-right: none; }
+.nt_table-tbody {border-right: none}
+/*.nt_table-tbody>tr>td {border-right: lightgray 1px solid;}*/
+.nt_table>tr {border-bottom: lightgray 1px solid}
+.nt_table>tr>td { border-bottom: lightgray 1px solid}
+/*border-right:lightgray 1px solid;*/
+.nt_table>tr>td:last-child{border-right: none}
+.left-tab {font-weight: bold; font-size: 18px;}
+/*.table-in-table td{border-right:lightgray 1px solid;}*/
+.table-in-table td:last-child {border-right: none}
+
+.table-responsive { margin-bottom: 20px;}
+
+.info-table tr:hover {background-color: rgba(103, 141, 255, 0.4)
+}
+
+/* 검색창 */
+.serach-notice {
+    width: 60%;
+    float: right;
+}
+
+
+/*writing-footer*/
+
+.writing-footer { text-align: center; border: none; height: 80px;}
+.writing-footer button {width: 80px; height: 50px; font-size: 20px}
+.writing-footer button:first-child {margin-right: 150px}

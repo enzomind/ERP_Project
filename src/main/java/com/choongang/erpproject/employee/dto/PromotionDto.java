@@ -19,6 +19,7 @@ public class PromotionDto {
     private String authName;
     private String start;
 
+    private String end;
     public PromotionDto(String empId, String empName, String birth, String hqName, String depName, String jobName, String authName) {
         this.empId = empId;
         this.empName = empName;
@@ -29,7 +30,6 @@ public class PromotionDto {
         this.authName = authName;
     }
 
-    private String end;
 
 
 
