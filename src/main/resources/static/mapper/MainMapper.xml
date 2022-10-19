@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.choongang.erpproject.main.mapper.MainMapper">
+
+    <select id="getCalAll" resultType="MainResponseDto">
+        SELECT
+        emp_table.emp_name
+        , lev_type
+        FROM
+        lev_table
+        INNER JOIN emp_table
+        ON lev_table.emp_id = emp_table.emp_id
+    </select>
+
+    <select id="getCalDetail" parameterType="MainRequestDto" resultType="MainResponseDto">
+
+        SELECT dep_code.dep_name, emp_name, pstn_code.job_name, lev_type
+        FROM lev_table
+                 INNER JOIN emp_table ON lev_table.emp_id = emp_table.emp_id
+                 INNER JOIN dep_code ON dep_code.dep_no = emp_table.dep_no
+                 INNER JOIN pstn_code ON pstn_code.job_code = emp_table.job_code
+        WHERE start_date = #{startDate};
+
+    </select>
+
+</mapper>
