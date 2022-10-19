@@ -141,6 +141,6 @@ public class LoginController {
 
 //        String empId = ((UserDto)authentication.getPrincipal()).getEmpId();
 
-        return "/layout/layout";
+        return "/main";
     }
 }
