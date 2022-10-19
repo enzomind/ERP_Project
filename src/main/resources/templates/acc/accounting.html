@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/layout_noPlugin}">
+      layout:decorate="~{layout/layout_noPlugin}" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <th:block layout:fragment="mainHeader">
 
@@ -10,9 +10,6 @@
 
 <th:block>
     <div layout:fragment="content">
-
-
-
         <div class="container-fluid">
             <!-- Head -->
             <div class="row">
@@ -44,7 +41,9 @@
                                        aria-label="end" aria-describedby="조회끝" id="searchEDate">
                             </div>
                         </form>
-                        <button class="btn btn-primary float-right" style="width: 80px" type="button" id="dateSearchBtn" onclick="search()">검색</button>
+                        <button class="btn btn-primary float-right" style="width: 80px" type="button" id="dateSearchBtn"
+                                onclick="search()">검색
+                        </button>
 
                     </div>
                 </div>
@@ -102,11 +101,12 @@
 
         <script type="text/javascript" th:src="@{/js/accounting/acc.js}"></script>
         <script type="text/javascript" th:src="@{/js/common/validPeriod.js}"></script>
-
-    </div><!-- Content 끝 -->
-
+    </div>
 </th:block>
 
+</div><!-- Content 끝 -->
 
+</body>>
+</th:block>
 
 </html>
