@@ -1,5 +1,10 @@
 body {
     background:linear-gradient(to top, #385D6C 0%, #4e73df 50%);
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 .signup-form {
@@ -186,18 +191,13 @@ input[type="file"] {
 
 #result:focus { outline: none; }
 
-#noData {font-size: 32px;
-    text-align: center; display: none; margin: 136px;
-    }
+#noData {font-size: 32px; text-align: center; display: none; margin: 136px; }
 
-.form-header img {width: 45px;
-    height: 45px; border: none}
-
+.form-header img {width: 45px; height: 45px; border: none}
 .form-header>div {position: absolute;}
 .form-header>div>button {float: left; border: none; background: none; margin: 0 -5px;}
 .form-header>div>span {float: left; font-size: 32px;}
-#year {
-    margin-right: 10px;}
+#year {margin-right: 10px;}
 
 #noInfo {color: red; text-align: center; display: none;}
 
@@ -208,3 +208,5 @@ input[type="file"] {
     top: 150px;}
 
 #lastPayday {text-align: right; font-size: 16px;}
+
+.write { margin-left: 10px;}
