@@ -6,11 +6,12 @@ import org.apache.ibatis.annotations.Mapper;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface MainMapper {
 
-    List<MainResponseDto> getCalAll();
+    List<Map<String, Object>> getCalAll();
 
     List<MainResponseDto> getCalDetail(MainRequestDto params);
 

@@ -5,14 +5,15 @@
 
 <mapper namespace="com.choongang.erpproject.main.mapper.MainMapper">
 
-    <select id="getCalAll" resultType="MainResponseDto">
+    <select id="getCalAll" parameterType="String" resultType="Map">
         SELECT
-        emp_table.emp_name
-        , lev_type
-        FROM
-        lev_table
-        INNER JOIN emp_table
-        ON lev_table.emp_id = emp_table.emp_id
+            e.emp_name
+             , l.lev_type
+             , l.start_date
+             , l.end_date
+        FROM lev_table AS l
+        INNER JOIN emp_table AS e
+        ON l.emp_id = e.emp_id
     </select>
 
     <select id="getCalDetail" parameterType="MainRequestDto" resultType="MainResponseDto">

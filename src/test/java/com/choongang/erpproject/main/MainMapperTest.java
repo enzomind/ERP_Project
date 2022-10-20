@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 @SpringBootTest
 public class MainMapperTest {
@@ -23,7 +24,7 @@ public class MainMapperTest {
 
         mainRequestDto.setStartDate(LocalDate.parse("2022-10-15"));
 
-        List<MainResponseDto> allList = mainMapper.getCalAll();
+        List<Map<String, Object>> allList = mainMapper.getCalAll();
         System.out.println("전체 건 수 : " + allList.size() + "건");
 
         List<MainResponseDto> detailList = mainMapper.getCalDetail(mainRequestDto);
