@@ -4,27 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.choongang.erpproject.edms.mapper.AcMapper">
-<!--나중에 추가-->
-    <sql id="selectAcColumns">
-        maj_code,
-        exp_num,
-        exp_title,
-        appl_date,
-        appr_yn,
-        emp_id,
-        emp_name,
-
-
-    </sql>
 
     <select id="selectList" resultType="AcResponseDto">
-        SELECT maj_code, exp_num, exp_title, appl_date, appr_yn
+        SELECT maj_code, exp_num, exp_title, appl_date, appr_state
         FROM expreport
         GROUP BY exp_num ORDER BY exp_num DESC
     </select>
 
     <select id="selectDetail" parameterType="String" resultType="AcResponseDto">
-        select exp_num,emp_table.emp_name, appr, pstn_code.job_name, hdqrt_code.hq_name, dep_code.dep_name , appl_date, exp_title, att_file, appr_yn, det_code, remk, com_acc, expense
+        select exp_num,emp_table.emp_name, appr, pstn_code.job_name, hdqrt_code.hq_name, dep_code.dep_name , appl_date, exp_title, att_file, appr_state, det_code, remk, com_acc, expense, appr_date
         FROM expreport
             INNER JOIN emp_table ON expreport.emp_id = emp_table.emp_id
             INNER JOIN pstn_code ON pstn_code.job_code = emp_table.job_code
@@ -45,4 +33,11 @@
             (#{ac.expTitle},#{ac.detCode},#{ac.remk},#{ac.comAcc},#{ac.expense},#{ac.expNum},#{ac.appr},now(),"회계")
             </foreach>
     </insert>
+
+    <update id="update" parameterType="AcRequestDto">
+        UPDATE expreport
+        SET appr_state = #{apprState}, appr_date = #{apprDate}
+        WHERE exp_num = #{expNum}
+    </update>
+
 </mapper>

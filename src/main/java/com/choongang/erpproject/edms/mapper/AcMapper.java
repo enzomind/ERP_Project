@@ -20,4 +20,7 @@ public interface AcMapper {
 
     //지결 여러개 입력
     void insertList(List<AcRequestDto> acRequestDtoList);
+
+    //지결 수신함 업데이트(apprState,apprDate 변경)
+    void update(AcRequestDto acRequestDto);
 }

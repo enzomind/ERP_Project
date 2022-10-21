@@ -13,4 +13,6 @@ public interface AcService {
 
     void saveList(List<AcRequestDto> acRequestDtoList);
 
+    void updateList(AcRequestDto acRequestDto);
+
 }
