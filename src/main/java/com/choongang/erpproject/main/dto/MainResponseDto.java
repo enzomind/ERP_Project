@@ -14,6 +14,7 @@ public class MainResponseDto {
     private String levType;
 
     //공지사항 제목, 작성일자
+    private int ntcNum;
     private String title;
     private String date;
 }

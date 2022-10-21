@@ -45,7 +45,7 @@
     </select>
 
     <select id="getNoticeDash" resultType="MainResponseDto">
-        SELECT title, SUBSTRING(date, 1, 10) AS date
+        SELECT ntc_num, title, SUBSTRING(date, 1, 10) AS date
         FROM notice
         ORDER BY ntc_num DESC LIMIT 10;
     </select>
