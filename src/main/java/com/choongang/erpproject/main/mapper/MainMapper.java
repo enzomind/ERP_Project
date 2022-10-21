@@ -15,4 +15,12 @@ public interface MainMapper {
 
     List<MainResponseDto> getCalDetail(MainRequestDto params);
 
+    int getHireDash(MainRequestDto params);
+
+    Long getEmpDash();
+
+    int getExpreportDash(MainRequestDto params);
+
+    List<MainResponseDto> getNoticeDash();
+
 }

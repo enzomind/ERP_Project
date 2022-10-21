@@ -1,26 +1,40 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var calendarEl = document.getElementById('calendar');
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        titleFormat: function (date) {
 
-            return `${date.date.year}년 ${date.date.month + 1}월`;
+    $(function () {
+        var request = $.ajax({
+            url: "/main/getCalAll",
+            method: "GET",
+            dataType: "json"
+        });
 
-        },
+        request.done(function (data) {
+            console.log(data);
 
-        //상세 처리 부분 시작
-        selectable: true,
-        dateClick: function(info) {
-            alert('clicked ' + info.dateStr);
+            var calendarEl = document.getElementById('calendar');
 
-        },
-        //상세 처리 부분 끝
+            var calendar = new FullCalendar.Calendar(calendarEl, {
 
-        dayMaxEvents: true, // allow "more" link when too many events
+                headerToolbar: {
+                    left: 'today',
+                    center: 'title',
+                    right: 'prev next'
+                },
+                initialView: 'dayGridMonth',
+                locale: "ko",
+                dayMaxEvents: true,
+                events: data
+
+            });
+
+            calendar.render();
+
+        })
+
+        request.fail(function( jqXHR, textStatus ) {
+            alert( "Request failed: " + textStatus );
+        });
+
+    })
 
 
-
-    });
-
-    calendar.render();
 });

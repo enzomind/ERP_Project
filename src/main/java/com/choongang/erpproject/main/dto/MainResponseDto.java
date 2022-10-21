@@ -2,6 +2,8 @@ package com.choongang.erpproject.main.dto;
 
 import lombok.Getter;
 
+import java.time.LocalDate;
+
 @Getter
 public class MainResponseDto {
 
@@ -11,4 +13,7 @@ public class MainResponseDto {
     private String jobName;
     private String levType;
 
+    //공지사항 제목, 작성일자
+    private String title;
+    private String date;
 }

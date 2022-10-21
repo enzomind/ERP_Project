@@ -4,7 +4,6 @@
 
 <th:block layout:fragment="mainHeader">
     <title>결재수신함</title>
-
 </th:block>
 
 <th:block>
@@ -28,7 +27,7 @@
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         당월 입사자 현황
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">7명</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -47,7 +46,7 @@
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                         전체 직원 수 현황
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">3,152명</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -67,7 +66,7 @@
                                     <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                         결재 대기 현황
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">18건</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -115,44 +114,30 @@
 
             <div class="row">
 
-                <!-- Area Chart -->
+                <!-- 휴가자 현황 -->
                 <div class="col-xl-8 col-lg-7">
                     <div class="card shadow mb-4">
-                        <!-- Card Header - Dropdown -->
-                        <div
-                                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                            <div class="dropdown no-arrow">
-                                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink_noPlugin"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                     aria-labelledby="dropdownMenuLink">
-                                    <div class="dropdown-header">Dropdown Header:</div>
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
+                        <!-- 휴가자 현황 Header -->
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary">휴가자 현황</h6>
                         </div>
-                        <!-- Card Body -->
+                        <!-- 휴가자 현황 Body -->
                         <div class="card-body">
-                            <div class="chart-area">
-                                <canvas id="myAreaChart"></canvas>
+                            <div id = "calendar">
+
+
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Pie Chart -->
+                <!-- 공지사항 -->
                 <div class="col-xl-4 col-lg-5">
                     <div class="card shadow mb-4">
                         <!-- Card Header - Dropdown -->
                         <div
                                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">공지사항</h6>
                             <div class="dropdown no-arrow">
                                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -187,8 +172,14 @@
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
+
+        <script type="text/javascript" th:src="@{/lib/main.js}"></script>
+        <script type="text/javascript" th:src="@{/js/main/main.js}"></script>
+
     </div>
 </th:block>
 

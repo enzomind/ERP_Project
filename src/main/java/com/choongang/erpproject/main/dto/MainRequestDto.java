@@ -6,5 +6,6 @@ import java.time.LocalDate;
 
 @Data
 public class MainRequestDto {
-    private LocalDate startDate;
+    private int month;
+    private String empId;
 }
