@@ -6,14 +6,13 @@
 <mapper namespace="com.choongang.erpproject.main.mapper.MainMapper">
 
     <select id="getCalAll" parameterType="String" resultType="Map">
-        SELECT
-            e.emp_name
-             , l.lev_type
+        SELECT CONCAT(e.emp_name
+            , CONCAT(' ', l.lev_type)) AS emp_name
              , l.start_date
              , l.end_date
         FROM lev_table AS l
-        INNER JOIN emp_table AS e
-        ON l.emp_id = e.emp_id
+                 INNER JOIN emp_table AS e
+                            ON l.emp_id = e.emp_id
     </select>
 
     <select id="getCalDetail" parameterType="MainRequestDto" resultType="MainResponseDto">
@@ -25,6 +24,30 @@
                  INNER JOIN pstn_code ON pstn_code.job_code = emp_table.job_code
         WHERE start_date = #{startDate};
 
+    </select>
+
+    <select id="getHireDash" parameterType="MainRequestDto" resultType="int">
+        SELECT COUNT(*)
+        FROM lev_table
+        WHERE SUBSTRING(end_date, 6, 2) = #{month}
+    </select>
+
+    <select id="getEmpDash" resultType="Long">
+        SELECT count(*)
+        FROM emp_table;
+    </select>
+
+    <select id="getExpreportDash" parameterType="MainRequestDto" resultType="int">
+        SELECT count(*)
+        FROM expreport
+        WHERE appr_id = #{empId}
+          AND appr_yn = 'N'
+    </select>
+
+    <select id="getNoticeDash" resultType="MainResponseDto">
+        SELECT title, SUBSTRING(date, 1, 10) AS date
+        FROM notice
+        ORDER BY ntc_num DESC LIMIT 10;
     </select>
 
 </mapper>
