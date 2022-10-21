@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class AcController {
     @Autowired
     private AcService acService;
 
-    //리스트
+    //상신함 리스트
     @GetMapping("/edms/edms_1")
     public String goEc(Model model){
         List<AcResponseDto> acResponseDtos = acService.findAll();
@@ -26,7 +27,7 @@ public class AcController {
         return "/edms/edms_1";
     }
 
-    //지결 상세
+    //지결 상신함 상세
     @GetMapping("/edms/edms_ac_detail_1/{expNum}")
     public String goDetail(@PathVariable("expNum") String expNum, Model model){
         List<AcResponseDto> acResponseDto = acService.findByNum(expNum);
@@ -52,6 +53,31 @@ public class AcController {
         }
         acService.saveList(listReal);
         return "redirect:/edms/edms_1";
+    }
+
+
+    //수신함 리스트
+    @GetMapping("/edms/edms_2")
+    public String goEc2(Model model){
+        List<AcResponseDto> acResponseDtos = acService.findAll();
+        model.addAttribute("acResponseDtos",acResponseDtos);
+        return "/edms/edms_2";
+    }
+
+    //지결 수신함 상세
+    @GetMapping("/edms/edms_ac_detail_2/{expNum}")
+    public String goDetail2(@PathVariable("expNum") String expNum, Model model){
+        List<AcResponseDto> acResponseDto = acService.findByNum(expNum);
+        model.addAttribute("acResponseDto", acResponseDto);
+        return "/edms/edms_ac_detail_2";
+    }
+
+    //수신함 승인/반려 반영
+    @PostMapping("/edms/edms_2")
+    public String updateAc(AcRequestDto acRequestDto) {
+        System.out.println(acRequestDto);
+        acService.updateList(acRequestDto);
+        return "redirect:/edms/edms_2";
     }
 
 

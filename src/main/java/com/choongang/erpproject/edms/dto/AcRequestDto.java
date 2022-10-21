@@ -8,7 +8,7 @@ import org.springframework.security.core.parameters.P;
 import java.time.LocalDate;
 import java.util.List;
 
-//insert
+//insert & update
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -43,6 +43,10 @@ public class AcRequestDto {
     private String attFilepath;
     private int attFilesize;
 
+    //승인상태& 날짜
+    private String apprState;
+//    private LocalDate apprDate;
+    private String apprDate;
 
     private String majCode;
 

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
-
 <th:block layout:fragment="mainHeader">
-    <title>결재상신함</title>
+    <title>결재수신함</title>
 </th:block>
 
 <th:block>
@@ -25,12 +24,14 @@
             <!-- 박스 시작-->
             <div class="card shadow col-lg-auto p-0">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary float-left">전자결재 > 결재상신함</h6>
+                    <h6 class="m-0 font-weight-bold text-primary float-left">전자결재 > 결재수신함</h6>
                 </div>
                 <div class="card-body container">
                     <h3 class="text-center mb-3">지출결의서</h3></br>
                     <div class="float-left">결의번호</div>
-                    <input class="form-control col-2 ml-2 float-left" id="exp_num" type="text" th:value="${acResponseDto[0].expNum}" disabled>
+
+                    <form  action="/edms/edms_2" method="post">
+                    <input class="form-control col-2 ml-2 float-left" id="exp_num" name="expNum" type="text" th:value="${acResponseDto[0].expNum}" readonly>
                     <!-- 테이블1 (결재자정보)-->
                     <table class="table table-bordered text-center align-middle col-8 ml-2 float-right">
                         <thead>
@@ -93,25 +94,34 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th class="align-middle">상태</th>
-                                <td th:text="${acResponseDto[0].apprState}">
+                                <th>상태</th>
+                                <td>
+                                    <div class="input-group">
+                                        <input id="state" name="apprState" class="form-control col-lg-1 text-center" th:value="${acResponseDto[0].apprState}">
+                                        <input id="time" name="apprDate" class="form-control col-lg-3 text-center" th:value="${acResponseDto[0].apprDate}">
+                                    </div>
+                                </td>
                             </tr>
                             </thead>
                         </table>
                     </div>
-
-                    <div class="text-center">
-                        <button class="btn btn-primary" style="width: 100px" onclick="location.href='/edms/edms_1'">목록</button>
+                    <div id="notDone">
+                        <button type="button" id="ybtn" class="btn btn-primary" style="width: 100px">승인</button>　
+                        <button type="button" id="nbtn" class="btn btn-danger" style="width: 100px">반려</button>
+                        <div class="text-center">
+                            <button class="btn btn-dark mt-5" style="width: 100px" type="submit">확인</button>
+                            <button class="btn btn-secondary mt-5" style="width: 100px" type="button" onclick="location.href='/edms/edms_2'">취소</button>
+                        </div>
                     </div>
+                </form>
 
-                </div>
+                    <div id="done" class="text-center">
+                        <button class="btn btn-secondary mt-5" style="width: 100px" onclick="location.href='/edms/edms_2'">목록</button>
+                    </div>
             </div>
         </div>
 
         </div>
-
-
-
     </div>
 </th:block>
 

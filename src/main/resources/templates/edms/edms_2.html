@@ -11,6 +11,61 @@
 
             <!-- 콘텐츠 내용 -->
 
+            <!-- Head -->
+            <div class="row">
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-70 w-421 py-2">
+                        <div class="col mr-2">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">Electronic Approval</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 박스 시작-->
+            <div class="card shadow col-lg-auto p-0">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary float-left">전자결재 > 결재수신함</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <!--list-->
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>결재 구분</th>
+                                <th>결의 번호</th>
+                                <th>제목</th>
+                                <th>상신 일자</th>
+                                <th>상태</th>
+                            </tr>
+                            </thead>
+
+                            <!-- 데이터 연결시 수정-->
+                            <tbody>
+                            <tr th:each="list : ${acResponseDtos}">
+                                <td th:text="${list.majCode}"></td>
+                                <td th:text="${list.expNum}"></td>
+                                <!--이렇게 하면 ?num 이렇게 말고 /num으로 주소가 나온다-->
+                                <td><a th:text="${list.expTitle}" th:href="@{/edms/edms_ac_detail_2/{expNum}(expNum=${list.expNum})}"></a></td>
+                                <td th:text="${list.applDate}"></td>
+                                <td th:text="${list.apprState}"></td>
+                            </tr>
+
+                            <!--                            <tr th:each="Hr_ReportDto : ${hrform}">
+                                                            <td>인사</td>
+                                                            <td th:text="${Hr_ReportDto.lev_num}"></td>
+                                                            <td><a href="ec_hrform_2.html" th:href="@{/ec_hrform/{emp_id}(emp_id=${Hr_ReportDto.emp_id})}" th:text="${Hr_ReportDto.emp_id}"></a></td>
+                                                            <td>2022-10-04</td>
+                                                            <td th:text="${Hr_ReportDto.appr_yn}"></td>
+                                                        </tr>-->
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </th:block>

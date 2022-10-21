@@ -16,8 +16,9 @@ public class AcResponseDto {
     //상신일자(등록일자)
     private LocalDate applDate;
     //상태
-    private String apprYn;
+    private String apprState;
 
+    private LocalDate apprDate;
 
     //작성자
     private String empName;

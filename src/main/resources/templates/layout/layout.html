@@ -55,9 +55,9 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">인사</h6>
-                    <a sec:authorize="hasAnyAuthority('SJAU_0002','SJAU_0004','SJAU_0005')" href="employee/promo2"
+                    <a sec:authorize="hasAnyAuthority('SJAU_0002','SJAU_0004','SJAU_0005')" href="/employee/promo2"
                        class="collapse-item">직원 조회</a>
-                    <a sec:authorize="hasAnyAuthority('SJAU_0004','SJAU_0005')" href="employee/promo"
+                    <a sec:authorize="hasAnyAuthority('SJAU_0004','SJAU_0005')" href="/employee/promo"
                        class="collapse-item">급여(승진) 관리</a>
                     <!--                    <button type="button" id="promotion" onclick="acyncMovePage('/emp/promo')" class="collapse-item">급여(승진) 관리</button>-->
                 </div>
@@ -74,7 +74,7 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">회계 관리</h6>
-                    <a class="collapse-item" href="acc/accounting">전표 관리</a>
+                    <a class="collapse-item" href="/acc/accounting">전표 관리</a>
                 </div>
             </div>
         </li>
@@ -88,8 +88,8 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">전자결재 관리</h6>
-                    <a class="collapse-item" href="edms/edms_1">결재상신함</a>
-                    <a class="collapse-item" href="ec_2.html">결재수신함</a>
+                    <a class="collapse-item" href="/edms/edms_1">결재상신함</a>
+                    <a class="collapse-item" href="/edms/edms_2">결재수신함</a>
                 </div>
             </div>
         </li>
@@ -218,6 +218,7 @@
 
 <!--지출결의서 js-->
 <script src="/js.edms/ec_acform.js"></script>
+<script src="/js.edms/edms_ac_detail_2.js"></script>
 </body>
 
 

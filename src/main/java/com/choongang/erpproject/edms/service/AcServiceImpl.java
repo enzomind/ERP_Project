@@ -36,4 +36,9 @@ public class AcServiceImpl implements AcService{
         acMapper.insertList(acRequestDtoList);
     }
 
+    @Override
+    public void updateList(AcRequestDto acRequestDto) {
+        acMapper.update(acRequestDto);
+    }
+
 }
