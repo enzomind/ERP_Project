@@ -127,10 +127,13 @@ function getNoticeDash() {
         if(!json.length) {
             html = '<td colspan="3"> 등록된 공지사항이 없습니다.</td>';
         } else {
-            json.forEach((obj, idx) => {
+            json.forEach((obj) => {
+
+                var num = obj.ntcNum;
+
                 html += `
-                <tr>
-                    <td>${idx+1}</td>
+                <tr style="cursor:pointer;" onclick="location.href='http://localhost:8080/info/viewinfo?ntcNum='+${num}" onmouseover="this.style.background='whitesmoke'" onmouseout="this.style.background='white'" >
+                    <td>${num}</td>
                     <td>${obj.title}</td>
                     <td>${obj.date}</td>
                 </tr>
