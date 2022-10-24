@@ -54,17 +54,16 @@ public class BoardController {
 
 
 
-//    @PostMapping("/upload")
-//// 업로드하는 파일들을 MultipartFile 형태의 파라미터로 전달된다.
-//    public String upload(@RequestParam MultipartFile[] fileName, Model model, @RequestParam String title, @RequestParam String content)
-//            throws IllegalStateException, IOException {
-//        List<NoticeDto> list = noticeMapper.selectNoticeList();
-//        fileService.upload(fileName, title, content);
-//        model.addAttribute("info", list);
-//
-//        return "redirect:/info/info";
-//    }
-//
+    @PostMapping("/upload")
+// 업로드하는 파일들을 MultipartFile 형태의 파라미터로 전달된다.
+    public String upload(Model model, BoardDto boardDto)
+            throws IllegalStateException, IOException {
+        boardMapper.insertBoard(boardDto);
+        List<BoardDto> list = boardMapper.selectBoardList();
+        model.addAttribute("info", list);
+        return "redirect:/board/board";
+    }
+
 //
 //    @GetMapping("/download")
 //    public ResponseEntity<Resource> download(@ModelAttribute NoticeDto dto) throws IOException {
