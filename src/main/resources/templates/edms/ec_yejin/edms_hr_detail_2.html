@@ -6,7 +6,31 @@
 </th:block>
 
 <th:block>
+
   <div layout:fragment="content">
+
+    <script>
+      function Ystate()  {
+        const btnElement
+                = document.getElementById('state');
+        btnElement.value = "승인";
+
+        var s = new Date(); //현재 시간
+        var e = document.getElementById('time');
+        e.value = s.toLocaleString();
+      }
+
+      function Nstate()  {
+        const btnElement
+                = document.getElementById('state');
+        btnElement.value = "반려";
+
+        var s = new Date(); //현재 시간
+        var e = document.getElementById('time');
+        e.value = s.toLocaleString();
+      }
+    </script>
+
     <!-- Content 시작 -->
     <div class="container-fluid">
       <!-- Head -->
@@ -75,23 +99,24 @@
                 </tr>
                 <tr>
                   <th class="align-middle">상태</th>
-                  <td class="text-left" th:text="${HrResponseDto.apprState}">
+                  <td class="text-left" >
                     <div class="input-group input-daterange">
-                      <input id="state" class="form-control col-lg-1">
-                      <input id="time" class="form-control col-lg-3">
+                      <input type="text" id="state" class="form-control col-lg-1" th:value="${HrResponseDto.apprState}">
+                      <input type="text" id="time" class="form-control col-lg-3">
                     </div>
                   </td>
                 </tr>
               </table>
             </div>
 
-            <form action="" method="post">
-              <div class="text-center" id="state_click">
+            <form action="/levstateinsert" method="post">
+              <div class="text-left" id="state_click">
                 <button type="button" class="btn btn-primary" name="apprState" onclick="Ystate()" style="width: 100px">승인</button>　
                 <button type="button" class="btn btn-danger" name="apprState" onclick="Nstate()" style="width: 100px">반려</button>
               </div>
-              <div class="text-right">
+              <div class="text-center">
                 <button type="submit" class="btn btn-dark" style="width: 100px">등록</button>　
+                <button type="button" class="btn btn-dark" onclick="location='/levapprview'" style="width: 100px">취소</button>　
               </div>
             </form>
           </div>
@@ -103,28 +128,5 @@
   <!-- Content 끝 -->
 
 </th:block>
-
-<script>
-  function Ystate()  {
-    const btnElement
-            = document.getElementById('state');
-    btnElement.value = "승인";
-
-    var s = new Date(); //현재 시간
-    var e = document.getElementById('time');
-    e.value = s.toLocaleString();
-  }
-
-  function Nstate()  {
-    const btnElement
-            = document.getElementById('state');
-    btnElement.value = "반려";
-
-    var s = new Date(); //현재 시간
-    var e = document.getElementById('time');
-    e.value = s.toLocaleString();
-  }
-
-</script>
 
 </html>

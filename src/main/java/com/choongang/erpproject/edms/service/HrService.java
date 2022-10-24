@@ -11,7 +11,7 @@ public interface HrService {
 
     HrResponseDto getLevDetail(Long levId);
 
-    void writeinsert(HrRequestDto hrRequestDto);
+    void writeSave(HrRequestDto hrRequestDto);
 
-    void save(HrRequestDto hrRequestDto);
+    void stateSave(HrRequestDto hrRequestDto);
 }

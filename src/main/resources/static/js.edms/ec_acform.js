@@ -42,28 +42,41 @@ $(document).ready(function () {
                 alert("결재자를 선택해주세요");
                 return false;
             }
-        })
-
-        $('#submit').click(function () {
             if ($('#exp_title1').val().length < 1) {
                 alert("제목을 입력해주세요.");
                 return false;
             }
-        })
-
-        $('#submit').click(function (){
             if($('#det_code1').val() == "선택" || $('#remk1').val().length < 1 || $('#com_acc1').val() == "선택" || $('#expense1').val() <= 0){
                 alert("지출결의 내역을 한 건이라도 작성해야 합니다.");
                 return false;
             }
-        })
-
-        $('#submit').click(function (){
             if($('#file').val().length < 1){
                 alert("증빙서류를 업로드해주세요.");
                 return false;
             }
         })
+
+        //
+        // $('#submit').click(function () {
+        //     if ($('#exp_title1').val().length < 1) {
+        //         alert("제목을 입력해주세요.");
+        //         return false;
+        //     }
+        // })
+        //
+        // $('#submit').click(function (){
+        //     if($('#det_code1').val() == "선택" || $('#remk1').val().length < 1 || $('#com_acc1').val() == "선택" || $('#expense1').val() <= 0){
+        //         alert("지출결의 내역을 한 건이라도 작성해야 합니다.");
+        //         return false;
+        //     }
+        // })
+        //
+        // $('#submit').click(function (){
+        //     if($('#file').val().length < 1){
+        //         alert("증빙서류를 업로드해주세요.");
+        //         return false;
+        //     }
+        // })
 
     });
 
