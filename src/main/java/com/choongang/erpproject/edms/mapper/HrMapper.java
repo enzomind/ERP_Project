@@ -16,8 +16,9 @@ public interface HrMapper {
     // 상세 조회(결의번호 id)
     HrResponseDto getLevDetail(Long levId);
 
-    void writeinsert(HrRequestDto hrRequestDto);
+    void writesave(HrRequestDto hrRequestDto);
 
+    void statesave(HrRequestDto hrRequestDto);
 
     int listCount();
 

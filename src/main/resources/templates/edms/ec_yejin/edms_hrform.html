@@ -9,6 +9,7 @@
 
 <th:block>
   <div layout:fragment="content">
+
     <!-- Content 시작 -->
     <div class="container-fluid">
       <!-- Head -->
@@ -44,7 +45,7 @@
                 </tr>
                 <tr>
                   <td name="empId">사원이름</td>
-                  <td name="appr" id="tr_name"></td>
+                  <td id="appr_name" name="appr"></td>
                 </tr>
                 </thead>
               </table>
@@ -53,12 +54,12 @@
                 <table class="table table-bordered text-center col-auto">
                   <thead>
                   <tr>
-                    <th class="align-middle">소속</th>
-                    <td class="align-middle">test</td>
-                    <th class="align-middle">상신일자</th>
-                    <td><input type="date" id="now_date" name="applDate" class="form-control col-lg-5"></td>
-                    <th class="align-middle">기간</th>
-                    <td class="align-middle" name="levTerm">1</td>
+                    <th>소속</th>
+                    <td>test</td>
+                    <th>상신일자</th>
+                    <td id="date" name="applDate"></td>
+                    <th>기간</th>
+                    <td name="levTerm">1</td>
                   </tr>
                   <tr>
                     <th class="align-middle">제목</th>
@@ -95,7 +96,7 @@
                 </table>
               </div>
               <!-- 결제선 모달 시작 -->
-              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal1">결재선 등록</button>
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal1" onclick="rowClicked()">결재선 등록</button>
               <div class="modal fade" id="modal1" data-backdrop="static" data-keyboard="false"
                    tabindex="-1" aria-labelledby="결재자리스트띄움" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -127,7 +128,7 @@
                     <div class="modal-footer">
                       <input type="hidden" id="hidden">
                       <button type="button" class="btn btn-primary" data-dismiss="modal">확인</button>
-                      <button type="button" class="btn btn-secondary">취소</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
                     </div>
                   </div>
                 </div>
@@ -141,39 +142,41 @@
           </div>
         </form>
       </div>
+
+      <script>
+        function rowClicked() {
+
+          var table =document.getElementById('modal_click');
+          var rowList = table.rows;
+
+          for (i=1; i<rowList.length; i++) {//thead부분 제외.
+
+            var row = rowList[i];
+            var html = "";
+
+            row.onclick = function(){
+              return function(){
+
+                var name = this.cells[3].innerHTML;
+
+                html = name;
+
+                document.querySelector("#appr_name").innerText =html;
+
+
+              };//return
+            }(row);//onclick
+          }//for
+        }
+      </script>
+
     </div>
   </div>
   <!-- Content 끝 -->
+
 </th:block>
 
-<script>
-  document.getElementById('now_date').valueAsDate = new Date();
 
-  function rowClicked() {
-
-    var table =document.getElementById('modal_click');
-    var rowList = table.rows; // *1)rows collection
-
-    for (i=1; i<rowList.length; i++) {//thead부분 제외.
-
-      var row = rowList[i];
-      var tdsNum = row.childElementCount;// 자식요소 갯수 구하기.
-
-      row.onclick = function(){
-        return function(){
-          var str = "";
-          for (var j = 3; j < tdsNum; j++){//row안에 있는 값 순차대로 가져오기.
-            var row_value = this.cells[j].innerHTML; //*2)cells collection
-            str += row_value+' ';//값을 하나의 text값으로 만듦
-          };//td for
-          document.querySelector('#tr_name').innerText =str; //p태그 안에 값 넣어주기.
-        };//return
-      }(row);//onclick
-    }//for
-  }//function
-  window.onload = rowClicked();
-
-</script>
 </body>
 
 </html>

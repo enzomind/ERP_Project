@@ -31,13 +31,13 @@ public class HrServiceImpl implements HrService {
     }
 
     @Override
-    public void writeinsert(HrRequestDto hrRequestDto) {
-        hrMapper.writeinsert(hrRequestDto);
+    public void writeSave(HrRequestDto hrRequestDto) {
+        hrMapper.writesave(hrRequestDto);
     }
 
     @Override
-    public void save(HrRequestDto hrRequestDto) {
-        hrMapper.writeinsert(hrRequestDto);
+    public void stateSave(HrRequestDto hrRequestDto) {
+        hrMapper.statesave(hrRequestDto);
     }
 
 }
