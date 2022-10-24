@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}" xmlns="http://www.w3.org/1999/html">
+
+<th:block layout:fragment="mainHeader">
+    <title>공지사항</title>
+    <link href="/etc/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+    <link href="/etc/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/etc/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+</th:block>
+
+<th:block>
+    <div layout:fragment="content">
+        <!-- Content 시작 -->
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            </div> -->
+
+            <!-- Head -->
+            <div class="row">
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-70 w-421 py-2">
+                        <div class="col mr-2">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">게시판</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- DataTales Example -->
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h5 class="m-0 font-weight-bold text-primary">사내 게시판</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="nt_table" id="dataTable"  width="100%" cellspacing="0" >
+                            <tbody class="nt_table nt_table-tbody">
+                            <tr>
+                                <td colspan="2" id="table-top"><!--첫째줄 td 시작 colspan 을 빼 먹지 마세요!!-->
+                                    <table class="table-in-table" border-collapse="collapse"  width="100%" height="50" >
+                                            <td width="19.9%%" bgcolor="#f5f5f5" class="left-tab">작성자
+                                            </td>
+                                            <td width="30%" th:text="${view.writer}">
+                                                관리자
+                                            </td>
+                                            <td width="20%" bgcolor="#f5f5f5" class="left-tab">
+                                                작성일
+                                            </td>
+                                            <td width="30%" th:text="${view.date}">
+                                            </td>
+                                    </table>
+
+                                </td>
+                            </tr>
+                            <tr height="50px">
+                                <td width="20%" bgcolor="#f5f5f5" class="left-tab">제목</td>
+                                <td width="80%" th:text="${view.title}"  class="text-left p-2"></td>
+                            </tr>
+                            <tr border-collapse="collapse"  border-bottom="1px">
+                                <td width="20%" height="600px" bgcolor="#f5f5f5" class="left-tab">내용</td>
+                                <td width="80%" th:text="${view.content}" class="text-left p-3"></td>
+                            </tr>
+<!--                            <tr height="70px"   >-->
+<!--                                <td width="20%" bgcolor="#f5f5f5" class="left-tab">첨부파일</td>-->
+<!--                                <td width="80%" class="text-left p-2">-->
+<!--                                    <a href="#" th:text="${view.fileName}"  th:href="${'/info/download?uuid='+view.uuid+'&fileName='+view.fileName}">[download]</a>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="writing-footer">
+                        <button type="button" class="btn btn-primary" onclick="location.href='/info/info'">목록</button>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+
+
+            <!--모달 1. 끝-->
+
+
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
+
+        </div> <!-- Content 끝 -->
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="/js/board/board.js"></script>
+    </div>
+</th:block>
+
+</html>
+
