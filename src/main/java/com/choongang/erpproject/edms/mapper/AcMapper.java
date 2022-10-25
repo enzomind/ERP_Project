@@ -15,6 +15,9 @@ public interface AcMapper {
     //지결 상세페이지 조회
     List<AcResponseDto> selectDetail(String expNum);
 
+    //모달 회계담당자 조회
+    List<AcResponseDto> selectAcList();
+
     //지결 입력(안쓸듯)
     void insert(AcRequestDto acRequestDto);
 

@@ -21,16 +21,27 @@
         WHERE exp_num = #{expNum};
     </select>
 
+    <select id="selectAcList" resultType="AcResponseDto">
+        SELECT hdqrt_code.hq_name,dep_code.dep_name,pstn_code.job_name, emp_name
+        FROM emp_table as aa
+                 INNER JOIN pstn_code ON pstn_code.job_code = aa.job_code
+                 INNER JOIN hdqrt_code ON hdqrt_code.hq_code = aa.hq_code
+                 INNER JOIN dep_code ON dep_code.dep_no = aa.dep_no
+        WHERE aa.auth_code = "SJAU_0004" and aa.res_yn="n"
+    </select>
+
+
+    <!--안쓰임-->
     <insert id="insert" parameterType="AcRequestDto">
         INSERT INTO expreport (exp_title,det_code, remk, com_acc,expense,exp_num,appr,appl_date,maj_code)
         VALUES (#{expTitle},#{detCode},#{remk},#{comAcc},#{expense},#{expNum},#{appr},now(),"회계")
     </insert>
 
     <insert id="insertList" parameterType="List">
-        INSERT INTO expreport (exp_title,det_code, remk, com_acc,expense,exp_num,appr,appl_date,maj_code)
+        INSERT INTO expreport (exp_title,det_code, remk, com_acc,expense,exp_num,appr,appl_date,maj_code,att_file)
         VALUES
             <foreach collection="list" separator="," item="ac">
-            (#{ac.expTitle},#{ac.detCode},#{ac.remk},#{ac.comAcc},#{ac.expense},#{ac.expNum},#{ac.appr},now(),"회계")
+            (#{ac.expTitle},#{ac.detCode},#{ac.remk},#{ac.comAcc},#{ac.expense},#{ac.expNum},#{ac.appr},now(),"회계",#{ac.attFile})
             </foreach>
     </insert>
 
@@ -41,3 +52,4 @@
     </update>
 
 </mapper>
+

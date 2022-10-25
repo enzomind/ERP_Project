@@ -97,8 +97,8 @@
                                 <th>상태</th>
                                 <td>
                                     <div class="input-group">
-                                        <input id="state" name="apprState" class="form-control col-lg-1 text-center" th:value="${acResponseDto[0].apprState}">
-                                        <input id="time" name="apprDate" class="form-control col-lg-3 text-center" th:value="${acResponseDto[0].apprDate}">
+                                        <input id="state" name="apprState" class="form-control col-lg-1 text-center" th:value="${acResponseDto[0].apprState}" readonly>
+                                        <input id="time" name="apprDate" class="form-control col-lg-3 text-center" th:value="${acResponseDto[0].apprDate}" readonly>
                                     </div>
                                 </td>
                             </tr>
@@ -123,6 +123,7 @@
 
         </div>
     </div>
+
 </th:block>
 
 </html>

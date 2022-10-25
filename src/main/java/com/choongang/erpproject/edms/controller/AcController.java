@@ -3,6 +3,7 @@ package com.choongang.erpproject.edms.controller;
 import com.choongang.erpproject.edms.dto.AcRequestDto;
 import com.choongang.erpproject.edms.dto.AcResponseDto;
 import com.choongang.erpproject.edms.service.AcService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
@@ -29,15 +30,18 @@ public class AcController {
 
     //지결 상신함 상세
     @GetMapping("/edms/edms_ac_detail_1/{expNum}")
-    public String goDetail(@PathVariable("expNum") String expNum, Model model){
+    public String goDetail(@PathVariable("expNum") String expNum, Model model1){
         List<AcResponseDto> acResponseDto = acService.findByNum(expNum);
-        model.addAttribute("acResponseDto", acResponseDto);
+        model1.addAttribute("acResponseDto", acResponseDto);
+//        model
         return "/edms/edms_ac_detail_1";
     }
 
     //지결 입력폼 이동
     @GetMapping("/edms/edms_acform")
-    public String goAcform(){
+    public String goAcform(Model model){
+        List<AcResponseDto> acList = acService.findAc();
+        model.addAttribute("acList", acList);
         return "/edms/edms_acform";
     }
 

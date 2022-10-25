@@ -38,6 +38,12 @@ public class AcResponseDto {
     //금액
     private int expense;
 
+    //직급
+    private String jobName;
+
+    //권한코드
+    private String authCode;
+
     //증빙서류
     private String attFile;
     private String attFilepath;

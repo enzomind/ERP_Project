@@ -31,7 +31,13 @@
                     <div class="card-body container">
                         <h3 class="text-center mb-3">지출결의서</h3></br>
                         <div class="float-left">결의번호</div>
-                        <input class="form-control col-2 ml-2 float-left" name="expNum" id="exp_num" type="text" value="SJCD-0008" readonly>
+                        <input class="form-control col-2 ml-2 float-left" name=acRequestDtoList[0].expNum id="exp_num" type="text" readonly>
+                            <input type="hidden" name="acRequestDtoList[1].expNum" id="exp_num2">
+                            <input type="hidden" name="acRequestDtoList[2].expNum" id="exp_num3">
+                            <input type="hidden" name="acRequestDtoList[3].expNum" id="exp_num4">
+                            <input type="hidden" name="acRequestDtoList[4].expNum" id="exp_num5">
+
+
                         <!-- 테이블1 (결재자정보)-->
                         <table class="table table-bordered text-center align-middle col-8 ml-2 float-right">
                             <thead>
@@ -170,15 +176,19 @@
 
                             </table>
                         </div>
-                        <!--<button type="button" id="plusBtn" onclick="rowInsert()">+</button>
-                        <script type="text/javascript" th:src="@{/js.edms/rowInsert.js}"></script>-->
                         <div>
                             <!-- 테이블4(파일등록) -->
                             <table class="table table-bordered text-center col-auto">
                                 <thead>
                                 <tr>
                                     <th>증빙서류</th>
-                                    <td><input type="file" class="form-control-file" id="file"></td>
+                                    <td><input type="file" class="form-control-file" name="acRequestDtoList[0].attFile" id="file">
+                                        <input type="hidden" name="acRequestDtoList[1].attFile" id =file2>
+                                        <input type="hidden" name="acRequestDtoList[2].attFile" id =file3>
+                                        <input type="hidden" name="acRequestDtoList[3].attFile" id =filee4>
+                                        <input type="hidden" name="acRequestDtoList[4].attFile" id =file5>
+
+                                    </td>
                                 </tr>
                                 </thead>
                             </table>
@@ -208,35 +218,11 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td>HR본부</td>
-                                                <td>경영관리팀</td>
-                                                <td>과장</td>
-                                                <td>홍길동</td>
-                                            </tr>
-                                            <tr>
-                                                <td>솔루션사업본부</td>
-                                                <td>ICT개발팀</td>
-                                                <td>대리</td>
-                                                <td>홍길순</td>
-                                            </tr>
-                                            <tr>
-                                                <td>솔루션사업본부</td>
-                                                <td>ICT개발팀</td>
-                                                <td>대리</td>
-                                                <td>홍길형</td>
-                                            </tr>
-                                            <tr>
-                                                <td>솔루션사업본부</td>
-                                                <td>ICT개발팀</td>
-                                                <td>대리</td>
-                                                <td>홍길자</td>
-                                            </tr>
-                                            <tr>
-                                                <td>솔루션사업본부</td>
-                                                <td>ICT개발팀</td>
-                                                <td>대리</td>
-                                                <td>홍길</td>
+                                            <tr th:each="ac : ${acList}">
+                                                <td th:text="${ac.hqName}"></td>
+                                                <td th:text="${ac.depName}"></td>
+                                                <td th:text="${ac.jobName}"></td>
+                                                <td th:text="${ac.empName}"></td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -259,6 +245,8 @@
             </form>
         </div>
     </div>
+
+
 </th:block>
 
 
