@@ -83,6 +83,31 @@ public class InfoController {
     }
 
 
+    @RequestMapping("/deleteNotice")
+    private String DeleteInfo(Model model, long ntcNum) {
+        noticeMapper.deleteNotice(ntcNum);
+        List<NoticeDto> list = noticeMapper.selectNoticeList();
+        model.addAttribute("info", list);
+        return "redirect:/info/info";
+    }
+
+
+    @GetMapping("/updateNotice")
+    private String UpdateInfo(Model model, long ntcNum) {
+        NoticeDto dto = fileService.read(ntcNum);
+        model.addAttribute("view", dto);
+        return "/notice/updateinfo";
+    }
+
+    @PostMapping("/update")
+// 업로드하는 파일들을 MultipartFile 형태의 파라미터로 전달된다.
+    public String update(long ntcNum, @RequestParam MultipartFile[] fileName, Model model, @RequestParam String title, @RequestParam String content)
+            throws IllegalStateException, IOException {
+        List<NoticeDto> list = noticeMapper.selectNoticeList();
+        fileService.update(ntcNum, fileName, title, content);
+        model.addAttribute("info", list);
+        return "redirect:/info/info";
+    }
 }
 
 

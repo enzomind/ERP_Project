@@ -7,8 +7,8 @@ import java.util.List;
 
 @Mapper
 public interface NoticeMapper {
-
-
+    void updateNotice(long ntcNum, String title, String content, String uuid, String fileName);
+    void deleteNotice(long ntcNum);
     void insertNotice(String title, String content,String uuid, String fileName);
 
     List<NoticeDto> selectNoticeList();

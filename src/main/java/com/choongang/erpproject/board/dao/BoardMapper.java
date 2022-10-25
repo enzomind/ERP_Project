@@ -9,6 +9,7 @@ import java.util.List;
 @Mapper
 public interface BoardMapper {
 
+
     void insertBoard(BoardDto boardDto);
     List<BoardDto> selectBoardList();
     BoardDto selectBoard(long boardNum);
