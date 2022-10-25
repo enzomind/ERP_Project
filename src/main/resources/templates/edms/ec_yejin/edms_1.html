@@ -87,13 +87,6 @@
                             </thead>
                             <!-- 데이터 연결시 수정-->
                             <tbody>
-                            <tr>
-                                <td>회계</td>
-                                <td>SJCD-0001</td>
-                                <td><a href="ec_acform_2.html">ERP 구축 프로젝트 - 12월 지출 결의서</a></td>
-                                <td>2022-10-04</td>
-                                <td>반려</td>
-                            </tr>
                             <tr th:each="HrResponseDto : ${levlist}">
                                 <td>인사</td>
                                 <td th:text="${HrResponseDto.levNum}"></td>

@@ -14,9 +14,13 @@ public class HrResponseDto {
     private String empId;
     private String appr;
     private String apprState;
+    private LocalDate apprDate;
     private LocalDate applDate;
     private String levType;
     private String levTitle;
     private String levContent;
+
+    //작성자
+    private String empName;
 
 }
