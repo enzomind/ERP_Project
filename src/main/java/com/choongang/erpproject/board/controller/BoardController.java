@@ -88,5 +88,27 @@ public class BoardController {
         return BoardList;
     }
 
+    @RequestMapping("/deleteBoard")
+    private String DeleteBoard(Model model, long boardNum) {
+        boardMapper.deleteBoard(boardNum);
+        List<BoardDto> list = boardMapper.selectBoardList();
+        model.addAttribute("info", list);
+        return "redirect:/board/board";
+    }
 
+    @GetMapping("/updateBoard")
+    private String UpdateBoard(Model model, long boardNum) {
+        BoardDto dto = boardService.read(boardNum);
+        model.addAttribute("view", dto);
+        return "/board/updateBoard";
+    }
+
+    @PostMapping("/update")
+    public String update(long boardNum, Model model, @RequestParam String title, @RequestParam String content)
+            throws IllegalStateException, IOException {
+        boardMapper.updateBoard(boardNum, title, content);
+        List<BoardDto> list = boardMapper.selectBoardList();
+        model.addAttribute("info", list);
+        return "redirect:/board/board";
+    }
 }

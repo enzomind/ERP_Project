@@ -1,3 +1,8 @@
+// window.onload = () => {
+//     ;
+// }
+
+
 $(document).ready(function () {
 
     $('#search').click(function () {
@@ -41,5 +46,15 @@ $(document).ready(function () {
         });
 
     });
-});
 
+    $('#update').click ( function () {
+        // $('#input-pw').show()
+        let pw = $('#password').val()
+        if(pw === null || pw === '' ||pw === undefined ) {
+            alert("수정하려면 비밀번호를 입력해주세요")
+        } else if (pw === '1234' || pw === 1234) {
+            $('#update').removeAttr("disabled");
+        }
+    })
+});
+// th:onclick="|location.href='@{/board/updateBoard(boardNum=${view.boardNum})}'|"

@@ -108,6 +108,8 @@ public class InfoController {
         model.addAttribute("info", list);
         return "redirect:/info/info";
     }
+
+
 }
 
 
