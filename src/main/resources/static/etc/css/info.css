@@ -39,3 +39,8 @@
 .writing-footer { text-align: center; border: none; height: 80px;}
 .writing-footer button {width: 80px; height: 50px; font-size: 20px}
 .writing-footer button {margin-right: 20px}
+
+/* 비밀번호 입력창*/
+
+#password {width: 300px}
+/*#input-pw {display: none}*/

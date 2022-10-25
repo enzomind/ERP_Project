@@ -9,7 +9,8 @@ import java.util.List;
 @Mapper
 public interface BoardMapper {
 
-
+    void updateBoard(long boardNum, String title, String content);
+    void deleteBoard(long boardNum);
     void insertBoard(BoardDto boardDto);
     List<BoardDto> selectBoardList();
     BoardDto selectBoard(long boardNum);

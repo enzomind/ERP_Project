@@ -38,7 +38,7 @@
     </select>
 
     <select id="selectBoard" resultType="com.choongang.erpproject.board.dto.BoardDto">
-        select title, writer, password, DATE_FORMAT(date, '%Y-%m-%d') as date, content
+        select board_num, title, writer, password, DATE_FORMAT(date, '%Y-%m-%d') as date, content
         from board
         WHERE board_num = #{boardNum}
     </select>
@@ -48,5 +48,17 @@
         values (#{title}, #{writer}, #{content}, #{password})
     </insert>
 
+    <update id="deleteBoard">
+        update board
+        set del_yn = 'y'
+        where board_num = #{boardNum}
+    </update>
+
+
+    <update id="updateBoard">
+        update board
+        set title = #{title}, content = #{content}
+        where board_num = #{boardNum}
+    </update>
 
 </mapper>
