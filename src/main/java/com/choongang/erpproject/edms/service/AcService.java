@@ -9,6 +9,8 @@ public interface AcService {
 
     List<AcResponseDto> findAll();
     List<AcResponseDto> findByNum(String expNum);
+    List<AcResponseDto> findAc();
+
     void save(AcRequestDto acRequestDto);
 
     void saveList(List<AcRequestDto> acRequestDtoList);

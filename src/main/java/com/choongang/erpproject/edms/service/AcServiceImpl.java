@@ -27,6 +27,12 @@ public class AcServiceImpl implements AcService{
     }
 
     @Override
+    public List<AcResponseDto> findAc() {
+        List<AcResponseDto> acList = acMapper.selectAcList();
+        return acList;
+    }
+
+    @Override
     public void save(AcRequestDto acRequestDto) {
         acMapper.insert(acRequestDto);
     }

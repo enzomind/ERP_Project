@@ -34,6 +34,13 @@ $(document).ready(function () {
             $('#appr3').val(apprVal);
             $('#appr4').val(apprVal);
             $('#appr5').val(apprVal);
+
+            //file
+            const fileVal = $("#file").val()
+            $('#file2').val(fileVal);
+            $('#file3').val(fileVal);
+            $('#file4').val(fileVal);
+            $('#file5').val(fileVal);
         })
 
         //경고창 띄우기
@@ -56,29 +63,15 @@ $(document).ready(function () {
             }
         })
 
-        //
-        // $('#submit').click(function () {
-        //     if ($('#exp_title1').val().length < 1) {
-        //         alert("제목을 입력해주세요.");
-        //         return false;
-        //     }
-        // })
-        //
-        // $('#submit').click(function (){
-        //     if($('#det_code1').val() == "선택" || $('#remk1').val().length < 1 || $('#com_acc1').val() == "선택" || $('#expense1').val() <= 0){
-        //         alert("지출결의 내역을 한 건이라도 작성해야 합니다.");
-        //         return false;
-        //     }
-        // })
-        //
-        // $('#submit').click(function (){
-        //     if($('#file').val().length < 1){
-        //         alert("증빙서류를 업로드해주세요.");
-        //         return false;
-        //     }
-        // })
 
     });
 
-
 //alert 추가 : 비용이 음수일 경우"비용은 음수일 수 없습니다", (2번째행부터) 다안채우고 비용만 채웠을경우, 비용을 비워뒀을경우
+
+
+const fileInput = document.getElementById("file");
+fileInput.onchange = () => {
+    const selectFile = fileInput.files[0];
+    console.log(selectFile);
+
+}
