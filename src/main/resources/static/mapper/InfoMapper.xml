@@ -10,6 +10,7 @@
         select ntc_num, title, writer, DATE_FORMAT(date, '%Y-%m-%d') as date, content, cbnNum
         from notice
         <where>
+            del_yn = 'n'
             <if test="start != null and start != ''">
                 AND DATE_FORMAT(date, '%Y-%m-%d') <![CDATA[ >= ]]> #{start}
             </if>
@@ -32,10 +33,11 @@
     <select id="selectNoticeList" resultType="com.choongang.erpproject.info.dto.NoticeDto">
         select ntc_num, title, writer, DATE_FORMAT(date, '%Y-%m-%d') as date, content, cbnNum
         from notice
+        where del_yn = 'n'
     </select>
 
     <select id="selectNotice" resultType="com.choongang.erpproject.info.dto.NoticeDto">
-        select title, writer, DATE_FORMAT(date, '%Y-%m-%d') as date, content, uuid, file_name
+        select ntc_num, title, writer, DATE_FORMAT(date, '%Y-%m-%d') as date, content, uuid, file_name
         from notice
         WHERE ntc_num = #{ntcNum}
     </select>
@@ -45,5 +47,17 @@
         values (#{title}, #{content}, #{uuid}, #{fileName})
     </insert>
 
+    <update id="deleteNotice">
+        update notice
+        set del_yn = 'y'
+        where ntc_num = #{ntcNum}
+    </update>
+
+
+    <update id="updateNotice">
+        update notice
+        set title = #{title}, content = #{content}, uuid=#{uuid}, file_name=#{fileName}
+        where ntc_num = #{ntcNum}
+    </update>
 
 </mapper>

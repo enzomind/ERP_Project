@@ -89,4 +89,30 @@ public class FileService {
         return new ResponseEntity<>(resource, headers, HttpStatus.OK);
     }
 
+    public List<FileDto> update(long ntcNum, MultipartFile[] fileName, String title, String content) throws IllegalStateException, IOException {
+        List<FileDto> list = new ArrayList<>();
+        for (MultipartFile file : fileName) {
+            if (!file.isEmpty()) {
+
+                // UUID를 이용해 unique한 파일 이름을 만들어준다.
+                FileDto dto = new FileDto(UUID.randomUUID().toString(),
+                        file.getOriginalFilename(),
+                        file.getContentType());
+                list.add(dto);
+
+                System.out.println(list);
+                File newFileName = new File(dto.getUuid() + "_" + dto.getFileName());
+                // 전달된 내용을 실제 물리적인 파일로 저장해준다.
+                file.transferTo(newFileName);
+
+                System.out.println("file : ===========" + filePath + newFileName);
+                noticeMapper.updateNotice(ntcNum, title, content, dto.getUuid(),dto.getFileName());
+            }
+
+        }
+
+        return list;
+    }
+
+
 }

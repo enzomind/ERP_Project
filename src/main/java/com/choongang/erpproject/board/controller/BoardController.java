@@ -70,6 +70,16 @@ public class BoardController {
 //        return fileService.download(dto);
 //    }
 
+//    @RequestMapping("/deleteBoard")
+//    private String DeleteBoard(Model model, int boardNum) {
+//        boardMapper.deleteBoard(boardNum);
+//        List<BoardDto> list = boardMapper.selectBoardList();
+//        model.addAttribute("info", list);
+//        return "redirect:/board/board";
+//    }
+
+
+
 
     @RequestMapping("/searchBoard")
     @ResponseBody

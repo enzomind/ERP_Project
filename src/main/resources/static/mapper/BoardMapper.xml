@@ -6,10 +6,11 @@
 
 <mapper namespace="com.choongang.erpproject.board.dao.BoardMapper">
 
-    <select id="searchboard" resultType="com.choongang.erpproject.board.dto.BoardDto">
-        select board_num, title, writer, DATE_FORMAT(date, '%Y-%m-%d') as date, content, cbnNum
-        from notice
+    <select id="searchBoard" resultType="com.choongang.erpproject.board.dto.BoardDto">
+        select board_num, title, writer, DATE_FORMAT(date, '%Y-%m-%d') as date, content, cbn_num
+        from board
         <where>
+                del_yn = 'n'
             <if test="start != null and start != ''">
                 AND DATE_FORMAT(date, '%Y-%m-%d') <![CDATA[ >= ]]> #{start}
             </if>
@@ -23,19 +24,21 @@
     </select>
 
     <update id="updateViewCnt">
-        update notice
-        set cbnNum = cbnNum + 1
-        where ntc_num = #{ntcNum}
+        update board
+        set cbn_num = cbn_num + 1
+        where board_num = #{boardNum}
     </update>
+
 
 
     <select id="selectBoardList" resultType="com.choongang.erpproject.board.dto.BoardDto">
         select board_num, title, writer, DATE_FORMAT(date, '%Y-%m-%d') as date, cbn_num
         from board
+        where del_yn = 'n'
     </select>
 
     <select id="selectBoard" resultType="com.choongang.erpproject.board.dto.BoardDto">
-        select title, writer, DATE_FORMAT(date, '%Y-%m-%d') as date, content
+        select title, writer, password, DATE_FORMAT(date, '%Y-%m-%d') as date, content
         from board
         WHERE board_num = #{boardNum}
     </select>

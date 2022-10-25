@@ -35,10 +35,10 @@
                 </div>
             </div>
 
-            <form action="/board/upload" method="post">
+            <form th:action="@{/info/update(ntcNum=${view.ntcNum})}" method="post" enctype="multipart/form-data">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h4 class="m-0 font-weight-bold text-primary">게시글 작성</h4>
+                        <h4 class="m-0 font-weight-bold text-primary">공지사항 수정</h4>
                     </div>
                     <div class="card-body">
                         <br>
@@ -46,31 +46,28 @@
                             <tbody>
                             <tr>
                                 <td>제목</td>
-                                <td><input type="text" class="form-input" name="title" id="title"/></td>
+                                <td><input type="text" class="form-input" th:value="${view.title}" name="title" id="title"/></td>
                             </tr>
                             <tr>
                                 <td>작성자</td>
-                                <td><input type="text" class="form-input" name="writer"/></td>
-                            </tr>
-                            <tr>
-                                <td>비밀번호</td>
-                                <td><input type="password" class="form-input"name="password"/></td>
+                                <td><input type="text" class="form-input" th:value="${view.writer}"  readonly></td>
                             </tr>
                             <tr>
                                 <td>내용</td>
-                                <td><textarea cols="50" rows="10" name="content" id="content" ></textarea></td>
+                                <td><textarea type="text" cols="50" rows="10" name="content" th:text="${view.content}" id="content"></textarea></td>
                             </tr>
 
-<!--                            <tr>-->
-<!--                                <td>첨부파일</td>-->
-<!--                                <td><input type="file" name="fileName" id="fileName"></td>-->
-<!--                            </tr>-->
+                            <tr>
+                                <td>첨부파일</td>
+                                <td><a href="#" th:text="${view.fileName}"  th:href="${'/info/download?uuid='+view.uuid+'&fileName='+view.fileName}">[download]</a><br/>
+                                    <input type="file" name="fileName" id="fileName"></td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="writing-footer">
                         <button type="button" class="btn btn-secondary">취소</button>
-                        <button type="submit" class="btn btn-primary" id="register">등록</button>
+                        <button type="submit" class="btn btn-primary" placeholder="변경할 자료" id="register">수정</button>
                     </div>
                 </div>
             </form>
@@ -94,7 +91,7 @@
     </div> <!-- Content 끝 -->
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="/js/board/board.js"></script>
+    <script src="/js/notice/notice.js"></script>
 
     </div>
 </th:block>

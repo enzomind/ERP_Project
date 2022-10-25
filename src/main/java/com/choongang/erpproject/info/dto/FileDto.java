@@ -9,6 +9,17 @@ public class FileDto {
     private String fileName;    // 실제 파일 이름
     private String contentType;
 
+    public String getSavedfile() {
+        this.savedfile = this.getUuid() + this.getFileName();
+        return savedfile;
+    }
+
+    public void setSavedfile(String savedfile) {
+        this.savedfile = savedfile;
+    }
+
+    private String savedfile;
+
     public FileDto() {
     }
 
@@ -18,4 +29,6 @@ public class FileDto {
         this.contentType = contentType;
         System.out.println(contentType);
     }
+
+
 }
