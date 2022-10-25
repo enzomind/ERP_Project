@@ -1,5 +1,6 @@
 package com.choongang.erpproject.edms.controller;
 
+import com.choongang.erpproject.edms.dto.AcResponseDto;
 import com.choongang.erpproject.edms.dto.HrRequestDto;
 import com.choongang.erpproject.edms.dto.HrResponseDto;
 import com.choongang.erpproject.edms.service.HrService;
@@ -31,7 +32,8 @@ public class HrController {
         return "/edms/ec_yejin/edms_2";
     }
 
-   //결재상신함 : 작성글 확인
+
+        //결재상신함 : 작성글 확인
    @GetMapping("/levreportuser/{levId}")
     public String hrform1(@PathVariable("levId") Long levId, Model model) {
        HrResponseDto levdetail1 = hrService.getLevDetail(levId);
@@ -63,9 +65,10 @@ public class HrController {
        return "redirect:/levwriteview";
     }
 
-    //결재수신함 상태 insert
-    @PostMapping("/levstateinsert")
-    public String levstateinsert(HrRequestDto hrRequestDto) {
+    //결재수신함 상태 update
+    @PostMapping("/levstate")
+    public String levstate( HrRequestDto hrRequestDto) {
+        System.out.println(hrRequestDto);
        hrService.stateSave(hrRequestDto);
        return "redirect:/levapprview";
     }

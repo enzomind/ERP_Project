@@ -1,9 +1,6 @@
 package com.choongang.erpproject.edms.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -25,7 +22,14 @@ public class HrRequestDto {
     private String startDate;
     private String endDate;
     private int levTerm;
+
+    //작성자
     private String empId;
+    private String empName;
+
+    //소속
+    private String hqName;
+    private String depName;
 
 
 }

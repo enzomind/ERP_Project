@@ -39,19 +39,19 @@ $(document).ready(function () {
 
 //경고창 띄우기
 $('#submit').click(function () {
-    if (result == false) {
+    if ($('#appr_name').val().length < 1) {
         alert("결재자를 선택해주세요");
         return false;
     }
-    if ($('#lev_title').val().length < 1) {
+    if ($('#title').val().length < 1) {
         alert("제목을 입력해주세요.");
         return false;
     }
-    if ($('#lev_type').val().length < 1) {
+    if ($('#type').val().length < 1) {
         alert("휴가구분을 선택해주세요.");
         return false;
     }
-    if($('#lev_content').val().length < 1){
+    if($('#content').val().length < 1){
         alert("내용을 입력해주세요");
         return false;
     }

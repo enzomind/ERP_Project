@@ -1,5 +1,6 @@
 package com.choongang.erpproject.edms.service;
 
+import com.choongang.erpproject.edms.dto.AcResponseDto;
 import com.choongang.erpproject.edms.dto.HrRequestDto;
 import com.choongang.erpproject.edms.dto.HrResponseDto;
 import com.choongang.erpproject.edms.mapper.HrMapper;
@@ -32,12 +33,13 @@ public class HrServiceImpl implements HrService {
 
     @Override
     public void writeSave(HrRequestDto hrRequestDto) {
-        hrMapper.writesave(hrRequestDto);
+        hrMapper.writeSave(hrRequestDto);
     }
 
     @Override
     public void stateSave(HrRequestDto hrRequestDto) {
-        hrMapper.statesave(hrRequestDto);
+        hrMapper.stateSave(hrRequestDto);
+
     }
 
 }

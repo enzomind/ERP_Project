@@ -26,7 +26,7 @@
       <!-- 박스 시작-->
 
       <div style="margin-left: 8%">
-        <form action="/levwriteinsert" method="POST">
+        <form action="/levwriteinsert" method="POST" onsubmit="return submitBtn();" >
 
           <div class="card shadow col-lg-11 p-0">
             <div class="card-header py-3">
@@ -35,7 +35,7 @@
             <div class="card-body container">
               <h3 class="text-center mb-3">휴가신청서</h3></br>
               <div class="float-left">결의번호</div>
-              <input class="form-control col-2 ml-2 float-left" id="exp_num" name="levNum" type="text" value="SJLD-0011" readonly>
+              <input class="form-control col-2 ml-2 float-left" id="exp_num" name="levNum" type="text" readonly>
               <table class="table table-bordered text-center align-middle col-8 ml-2 float-right">
                 <thead>
                 <tr>
@@ -45,7 +45,7 @@
                 </tr>
                 <tr>
                   <td name="empId">사원이름</td>
-                  <td id="appr_name" name="appr"></td>
+                  <td class="appr_name" name="appr"><input type="hidden" class="appr_name" name="appr"/></td>
                 </tr>
                 </thead>
               </table>
@@ -57,7 +57,7 @@
                     <th>소속</th>
                     <td>test</td>
                     <th>상신일자</th>
-                    <td id="date" name="applDate"></td>
+                    <td id="date"></td>
                     <th>기간</th>
                     <td name="levTerm">1</td>
                   </tr>
@@ -73,8 +73,8 @@
                   <tr>
                     <th class="align-middle">휴가구분</th>
                     <td>
-                      <select class="form-control" id="select1" name="levType">
-                        <option selected>선택</option>
+                      <select class="form-control" id="type" name="levType">
+                        <option value="" selected>선택</option>
                         <option value="오전반차">오전반차</option>
                         <option value="오후반차">오후반차</option>
                         <option value="연차">연차</option>
@@ -82,16 +82,16 @@
                     <th class="align-middle">날짜</th>
                     <td>
                       <div class="input-group input-daterange">
-                        <input type="date" name="startDate" class="form-control col-lg-6">
+                        <input type="date" id="startdate" name="startDate" class="form-control col-lg-6">
                         <div class="input-group-addon">＿</div>
-                        <input type="date" name="endDate" class="form-control col-lg-6">
+                        <input type="date" id="enddate" onchange="dateCal()" name="endDate" class="form-control col-lg-6">
                       </div>
                     </td>
                   </tr>
                   <tr>
                     <th class="align-middle" style="width: 150px; height: 250px;">내용</th>
                     <td colspan="3">
-                      <textarea type="text" name="levContent" class="form-control" style="height: 250px"></textarea></td>
+                      <textarea type="text" id="contenttest" name="levContent" class="form-control" style="height: 250px"></textarea></td>
                   </tr>
                 </table>
               </div>
@@ -144,6 +144,31 @@
       </div>
 
       <script>
+        window.onload = function () {
+          var date = new Date()
+          var year = date.getFullYear()
+          var month = date.getMonth() + 1
+          var day = date.getUTCDate()
+          var today = year + '-' + month + '-' + day
+          $('#date').text(today);
+        }
+
+         function dateCal() {
+        //   var datecar = new Date();
+        //   var year = datecar.getFullYear();
+        //   var month = datecar.getMonth()+1;
+        //   var day = datecar.getDate();
+        //
+           var start = $("#startdate").val();
+           var end = $("#enddate").val();
+        //
+           console.log(start);
+           console.log(end);
+        //   var cal = start.getTime() - end.getTime();
+        //   var dt = cal / (1000*60*60*24);
+        //   console.log("차이는?"+ dt);
+         }
+
         function rowClicked() {
 
           var table =document.getElementById('modal_click');
@@ -156,24 +181,42 @@
 
             row.onclick = function(){
               return function(){
-
                 var name = this.cells[3].innerHTML;
-
                 html = name;
 
-                document.querySelector("#appr_name").innerText =html;
-
+                document.querySelector(".appr_name").innerText = html;
+                document.querySelector(".appr_name").value = html;
 
               };//return
             }(row);//onclick
           }//for
         }
+
+
+        function submitBtn() {
+          if ($('.appr_name').val() == "") {
+                alert("결재자를 입력해주세요.");
+                return false;
+          }
+          if($('#title').val() == "") {
+            alert("제목을 입력해주세요.");
+            return false;
+          }
+          if($('#type').val() == "") {
+            alert("휴가구분을 입력해주세요.");
+            return false;
+          }
+          if($('#contenttest').val() == "") {
+            alert("내용을 입력해주세요.");
+            return false;
+          }
+        }
       </script>
+
 
     </div>
   </div>
   <!-- Content 끝 -->
-
 </th:block>
 
 

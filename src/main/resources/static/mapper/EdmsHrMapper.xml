@@ -35,6 +35,7 @@
              , emp_id
              , appr
              , appr_state
+             , appr_date
              , appl_date
              , lev_type
              , lev_title
@@ -43,15 +44,26 @@
         where lev_id = #{lev_id}
     </select>
 
-    <insert id="writesave" parameterType="HrRequestDto">
+    <select id="selectDetail" parameterType="String" resultType="HrResponseDto">
+        select lev_id,emp_table.emp_name, appr, pstn_code.job_name, hdqrt_code.hq_name, dep_code.dep_name, appr_state ,appl_date, appr_date, lev_type, lev_title, lev_content, start_date, end_date, lev_term
+        FROM lev_table
+                 INNER JOIN emp_table ON lev_table.emp_id = emp_table.emp_id
+                 INNER JOIN pstn_code ON pstn_code.job_code = emp_table.job_code
+                 INNER JOIN hdqrt_code ON hdqrt_code.hq_code = emp_table.hq_code
+                 INNER JOIN dep_code ON dep_code.dep_no = emp_table.dep_no
+        WHERE lev_id = #{levId};
+    </select>
+
+    <insert id="writeSave" parameterType="HrRequestDto">
         insert into lev_table(appr, appl_date, lev_title, lev_type, start_date, end_date, lev_term, lev_content)
-            values (#{appr}, #{applDate}, #{levTitle}, #{levType}, #{startDate}, #{endDate}, #{levTerm}, #{levContent})
+            values (#{appr}, now(), #{levTitle}, #{levType}, #{startDate}, #{endDate}, #{levTerm}, #{levContent})
     </insert>
 
-    <insert id="statesave" parameterType="HrRequestDto">
-        insert into lev_table(appr_state)
-        values (#{apprState})
-    </insert>
+    <update id="stateSave" parameterType="HrRequestDto">
+        UPDATE lev_table
+        SET appr_state = #{apprState}, appr_date = #{apprDate}
+        WHERE lev_id = #{levId}
+    </update>
 
     <select id="listCount" resultType="int">
         select count(*) from lev_table

@@ -1,5 +1,6 @@
 package com.choongang.erpproject.edms.service;
 
+import com.choongang.erpproject.edms.dto.AcResponseDto;
 import com.choongang.erpproject.edms.dto.HrRequestDto;
 import com.choongang.erpproject.edms.dto.HrResponseDto;
 
@@ -14,4 +15,5 @@ public interface HrService {
     void writeSave(HrRequestDto hrRequestDto);
 
     void stateSave(HrRequestDto hrRequestDto);
+
 }

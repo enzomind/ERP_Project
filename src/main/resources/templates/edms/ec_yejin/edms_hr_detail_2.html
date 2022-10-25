@@ -10,14 +10,38 @@
   <div layout:fragment="content">
 
     <script>
+      //상태 입력되면 hide 처리
+      window.onload = function () {
+        if($("#state").val() == "승인"){
+          $("#notDone").hide();
+        }
+
+        if($("#state").val() == "반려"){
+          $("#notDone").hide();
+        }
+
+        if($("#state").val() == "미결재"){
+          $("#done").hide();
+        }
+      }
+
+      //상태 처리하기
       function Ystate()  {
         const btnElement
                 = document.getElementById('state');
         btnElement.value = "승인";
 
-        var s = new Date(); //현재 시간
+        //현재 시간
+        var instantDate = new Date();
+        var year = instantDate.getFullYear();
+        var month = instantDate.getMonth() + 1;
+        var setDate = instantDate.getDate();
+
+        var formatDate = year+"-"+(("00"+month.toString()).slice(-2))+"-"+(("00"+setDate.toString()).slice(-2));
+
         var e = document.getElementById('time');
-        e.value = s.toLocaleString();
+        e.value = formatDate;
+
       }
 
       function Nstate()  {
@@ -25,9 +49,32 @@
                 = document.getElementById('state');
         btnElement.value = "반려";
 
-        var s = new Date(); //현재 시간
+        //현재 시간
+        var instantDate = new Date();
+        var year = instantDate.getFullYear();
+        var month = instantDate.getMonth() + 1;
+        var setDate = instantDate.getDate();
+
+        var formatDate = year+"-"+(("00"+month.toString()).slice(-2))+"-"+(("00"+setDate.toString()).slice(-2));
+
         var e = document.getElementById('time');
-        e.value = s.toLocaleString();
+        e.value = formatDate;
+      }
+
+      function btn_confirm() {
+        if ($("#state").val() == "미결재") {
+          alert("승인여부를 선택해주세요");
+          //페이지 이동 안되게 하기
+          var e = window.event;
+          e.preventDefault();
+        }
+
+        if ($("#state").val() == "승인" || $("#state").val() == "반려"){
+          if (confirm("승인여부를 반영합니다") == true) {    //확인
+          } else {   //취소
+            return false;
+          }
+        }
       }
     </script>
 
@@ -46,14 +93,19 @@
 
       <!-- 박스 시작-->
       <div style="margin-left: 8%">
+        <form action="/levstate" method="post">
+
         <div class="card shadow col-lg-11 p-0">
           <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary float-left">전자결재 > 결재상신함</h6>
           </div>
+
           <div th:each="HrResponseDto : ${levdetail2}" class="card-body container">
             <h3 class="text-center mb-3">휴가신청서</h3></br>
             <p class="float-left">결의번호</p>
-            <input th:value="${HrResponseDto.levNum}" class="form-control col-2 ml-2 float-left" id="exp_num" type="text" disabled>
+            <input type="hidden" th:value="${HrResponseDto.levId}" name="levId">
+
+            <input th:value="${HrResponseDto.levNum}" name="levNum" class="form-control col-2 ml-2 float-left" type="text">
             <table class="table table-bordered text-center align-middle col-8 ml-2 float-right">
               <thead>
               <tr>
@@ -101,29 +153,37 @@
                   <th class="align-middle">상태</th>
                   <td class="text-left" >
                     <div class="input-group input-daterange">
-                      <input type="text" id="state" class="form-control col-lg-1" th:value="${HrResponseDto.apprState}">
-                      <input type="text" id="time" class="form-control col-lg-3">
+                      <input type="text" id="state" name="apprState" class="form-control col-lg-1 text-center"  th:value="${HrResponseDto.apprState}">
+                      <input type="text" id="time" name="apprDate"  class="form-control col-lg-3 text-center" th:value="${HrResponseDto.apprDate}">
+
                     </div>
                   </td>
                 </tr>
               </table>
             </div>
 
-            <form action="/levstateinsert" method="post">
+            <div id="notDone">
               <div class="text-left" id="state_click">
-                <button type="button" class="btn btn-primary" name="apprState" onclick="Ystate()" style="width: 100px">승인</button>　
-                <button type="button" class="btn btn-danger" name="apprState" onclick="Nstate()" style="width: 100px">반려</button>
+                <button type="button" class="btn btn-primary" onclick="Ystate()" style="width: 100px">승인</button>　
+                <button type="button" class="btn btn-danger" onclick="Nstate()" style="width: 100px">반려</button>
               </div>
               <div class="text-center">
-                <button type="submit" class="btn btn-dark" style="width: 100px">등록</button>　
+                <button type="submit" class="btn btn-dark" id="btn" onclick="btn_confirm()" style="width: 100px">등록</button>　
                 <button type="button" class="btn btn-dark" onclick="location='/levapprview'" style="width: 100px">취소</button>　
               </div>
-            </form>
+            </div>
+
+            <div id="done" class="text-center">
+              <button class="btn btn-secondary mt-5" style="width: 100px" onclick="location.href='/levapprview'">목록</button>
+            </div>
+
           </div>
         </div>
+        </form>
       </div>
     </div>
   </div>
+
   </div>
   <!-- Content 끝 -->
 
