@@ -11,7 +11,6 @@ public class HrResponseDto {
 
     private Long levId;
     private String levNum;
-    private String empId;
     private String appr;
     private String apprState;
     private LocalDate apprDate;
@@ -21,6 +20,12 @@ public class HrResponseDto {
     private String levContent;
 
     //작성자
+    private String empId;
     private String empName;
+
+    //소속
+    private String hqName;
+    private String depName;
+    private String jobName;
 
 }

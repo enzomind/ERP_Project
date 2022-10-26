@@ -10,7 +10,12 @@ public interface HrService {
 
     List<HrResponseDto> getLevList();
 
-    HrResponseDto getLevDetail(Long levId);
+    List<HrResponseDto> findHr();
+
+    //HrResponseDto getLevDetail(Long levId);
+    HrResponseDto findByNum(Long levId);
+
+
 
     void writeSave(HrRequestDto hrRequestDto);
 

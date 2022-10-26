@@ -25,11 +25,24 @@ public class HrServiceImpl implements HrService {
         return list;
     }
 
+//    @Override
+//    public HrResponseDto getLevDetail(Long levId) {
+//        HrResponseDto detail = hrMapper.getLevDetail(levId);
+//        return detail;
+//    }
+
     @Override
-    public HrResponseDto getLevDetail(Long levId) {
-        HrResponseDto detail = hrMapper.getLevDetail(levId);
-        return detail;
+    public HrResponseDto findByNum(Long levId) {
+        HrResponseDto numDetail = hrMapper.selectDetail(levId);
+        return numDetail;
     }
+
+    @Override
+    public List<HrResponseDto> findHr() {
+        List<HrResponseDto> hrList = hrMapper.selectHrList();
+        return hrList;
+    }
+
 
     @Override
     public void writeSave(HrRequestDto hrRequestDto) {

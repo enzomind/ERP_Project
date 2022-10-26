@@ -44,7 +44,7 @@
         where lev_id = #{lev_id}
     </select>
 
-    <select id="selectDetail" parameterType="String" resultType="HrResponseDto">
+    <select id="selectDetail" parameterType="Long" resultType="HrResponseDto">
         select lev_id,emp_table.emp_name, appr, pstn_code.job_name, hdqrt_code.hq_name, dep_code.dep_name, appr_state ,appl_date, appr_date, lev_type, lev_title, lev_content, start_date, end_date, lev_term
         FROM lev_table
                  INNER JOIN emp_table ON lev_table.emp_id = emp_table.emp_id
@@ -52,6 +52,14 @@
                  INNER JOIN hdqrt_code ON hdqrt_code.hq_code = emp_table.hq_code
                  INNER JOIN dep_code ON dep_code.dep_no = emp_table.dep_no
         WHERE lev_id = #{levId};
+    </select>
+
+    <select id="selectHrList" resultType="HrResponseDto">
+        select hdqrt_code.hq_name,dep_code.dep_name,pstn_code.job_name, emp_name
+        from emp_table as et
+                 INNER JOIN pstn_code ON pstn_code.job_code = et.job_code
+                 INNER JOIN hdqrt_code ON hdqrt_code.hq_code = et.hq_code
+                 INNER JOIN dep_code ON dep_code.dep_no = et.dep_no
     </select>
 
     <insert id="writeSave" parameterType="HrRequestDto">

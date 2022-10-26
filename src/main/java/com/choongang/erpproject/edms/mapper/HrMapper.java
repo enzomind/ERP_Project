@@ -14,8 +14,12 @@ public interface HrMapper {
     //목록 조회
     List<HrResponseDto> getLevList();
 
-    // 상세 조회(결의번호 id)
-    HrResponseDto getLevDetail(Long levId);
+    //상세 조회(결의번호 id)
+    //HrResponseDto getLevDetail(Long levId);
+    HrResponseDto selectDetail(Long levId);
+
+    //담장자 리스트 조회
+    List<HrResponseDto> selectHrList();
 
     void writeSave(HrRequestDto hrRequestDto);
 
