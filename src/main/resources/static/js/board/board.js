@@ -1,6 +1,3 @@
-// window.onload = () => {
-//     ;
-// }
 
 
 $(document).ready(function () {
@@ -47,6 +44,10 @@ $(document).ready(function () {
 
     });
 
+
+
+
+
     $('#update').click ( function () {
         // $('#input-pw').show()
         let pw = $('#password').val()
@@ -57,4 +58,4 @@ $(document).ready(function () {
         }
     })
 });
-// th:onclick="|location.href='@{/board/updateBoard(boardNum=${view.boardNum})}'|"
+

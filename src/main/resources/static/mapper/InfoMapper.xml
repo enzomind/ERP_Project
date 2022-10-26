@@ -21,6 +21,7 @@
                 AND title LIKE CONCAT('%',#{title},'%')
             </if>
         </where>
+        ORDER BY ntc_num DESC
     </select>
 
     <update id="updateViewCnt">
@@ -34,6 +35,7 @@
         select ntc_num, title, writer, DATE_FORMAT(date, '%Y-%m-%d') as date, content, cbnNum
         from notice
         where del_yn = 'n'
+        ORDER BY ntc_num DESC
     </select>
 
     <select id="selectNotice" resultType="com.choongang.erpproject.info.dto.NoticeDto">
