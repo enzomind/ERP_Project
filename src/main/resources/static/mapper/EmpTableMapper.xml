@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.choongang.erpproject.employee.dao.EmpMapper">
+    <!--    employee 테이블 조회 -->
+    <select id="getHrTable" resultType="HrTableDto">
+        SELECT emp_id, auth_code, emp_name, birth, tel, email, hq_code, dep_no, job_code, hire_date, res_yn, note
+        FROM erpprojectdb.emp_table
+        ORDER BY emp_id
+    </select>
+    <!--    직원 등록 -->
+    <insert id="empInput" parameterType="EmpInputDto">
+        INSERT INTO erpprojectdb.emp_table (pw, birth, auth_code, tot_lev, use_lev, res_yn, vct_yn, emp_name, idp_num, email, tel, hire_date, hq_code, dep_no, job_code, bankname, account, note, filename, filepath)
+        VALUES (#{pw}, #{birth}, #{authCode}, #{totLev}, #{useLev}, #{resYn},#{vctYn}, #{empName}, #{IdpNum}, #{email}, #{tel}, #{hireDate}, #{hqCode}, #{depNo}, #{jobCode}, #{bankName}, #{account}, #{note}, #{fileName}, #{filePath})
+    </insert>
+    <!--    모달 직원조회 -->
+    <select id="getEmpTable" parameterType="String" resultType="EmpTableDto">
+        SELECT emp_id, res_yn, res_date, emp_name, idp_num, email, tel, hire_date, hq_code, dep_no, job_code, bankname, account, note, filename, filepath
+        FROM erpprojectdb.emp_table
+        WHERE emp_id = #{empId}
+    </select>
+    <!--    직원정보 수정 -->
+    <update id="empUpdate" parameterType="EmpUpdateDto">
+        UPDATE erpprojectdb.emp_table
+        SET birth = #{birth}, res_yn = #{resYn}, res_date = #{resDate}, emp_name = #{empName}, idp_num = #{IdpNum}, email = #{email}, tel = #{tel}, hire_date = #{hireDate}, hq_code = #{hqCode}, dep_no = #{depNo}, bankname = #{bankName}, account = #{account}, note = #{note}, filename = #{fileName}, filepath = #{filePath}
+        WHERE emp_id = #{empId}
+    </update>
+    <!--    서명파일 조회(미사용) -->
+    <select id="getEmpSign" parameterType="String" resultType="empSignDto">
+        SELECT filename, filepath
+        FROM erpprojectdb.emp_table
+        WHERE emp_id = #{empId}
+    </select>
+
+</mapper>

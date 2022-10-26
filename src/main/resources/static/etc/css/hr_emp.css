@@ -161,6 +161,10 @@ input[type="file"] {
     margin: 0 5px;
 }
 
+.dash2 {
+    clear : both;
+}
+
 .birth {
     color:#576ba6;
     font-size: 17px;
@@ -208,5 +212,24 @@ input[type="file"] {
     top: 150px;}
 
 #lastPayday {text-align: right; font-size: 16px;}
+
+.form-input-resYn {
+    font-size: 17px;
+    box-sizing: border-box;
+    width: 50%;
+    height: 34px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #333333;
+    text-align: left;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    background: white;
+    outline: none;
+}
+
+.resYnRight {
+    margin-top: 30px;
+}
 
 .write { margin-left: 10px;}

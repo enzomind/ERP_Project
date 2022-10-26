@@ -1,560 +1,187 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
 
+
 <th:block layout:fragment="mainHeader">
-    <title>인사 관리</title>
-    <link href="/etc/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-            rel="stylesheet">
-    <link href="/etc/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="/etc/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link href="/etc/css/hr_emp.css" rel="stylesheet">
+
+    <title>급여(승진) 관리</title>
+
 </th:block>
 
 <th:block>
+
     <div layout:fragment="content">
+        <!-- Content 시작 -->
+        <div class="container-fluid">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+           <script src="/js.emp/empJsBox.js"></script>
 
-            <!-- Content 시작 -->
-            <div class="container-fluid">
-
-                <!-- Page Heading -->
-                <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            </div> -->
-
-                <!-- Head -->
-                <div class="row">
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-70 w-421 py-2">
-                            <div class="col mr-2">
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">Administration</div>
-                            </div>
+            <!-- Head -->
+            <div class="row">
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-70 w-421 py-2">
+                        <div class="col mr-2">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">Administration</div>
                         </div>
-                    </div>
-                </div>
-
-                <!--직원 테이블 -->
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h4 class="m-0 font-weight-bold text-primary">직원 조회</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <div class="input-group">　
-                                <input type="date" class="form-control bg-light border-1 small"
-                                       aria-label="start">　＿　
-                                <input type="date" class="form-control bg-light border-1 small" aria-label="end">　
-                                <select class="form-control bg-light border-1 small" id="hq">
-                                    <option value="">본부</option>
-                                    <option value="hr">HR본부</option>
-                                    <option value="ict">ICT개발본부</option>
-                                    <option value="sol">솔루션사업본부</option>
-                                </select>　
-                                <select class="form-control bg-light border-1 small" id="dep">
-                                    <option value="">부서</option>
-                                    <option value="경영">경영관리부</option>
-                                    <option value="솔루션개발">솔루션개발부</option>
-                                    <option value="si개발">SI개발부</option>
-                                    <option value="영업">영업부</option>
-                                    <option value="전략기획">전략기획부</option>
-                                    <option value="인사관리">인사관리부</option>
-                                </select>　
-                                <select class="form-control bg-light border-1 small" id="pstn">
-                                    <option value="">직급</option>
-                                    <option value="대리">대리</option>
-                                    <option value="과장">과장</option>
-                                    <option value="팀장">팀장</option>
-                                    <option value="부장">부장</option>
-                                    <option value="상무">상무</option>
-                                    <option value="전무">전무</option>
-                                    <option value="부대표">부대표</option>
-                                    <option value="대표">대표</option>
-                                </select>　
-                                <input type="text" class="form-control bg-light border-1 small" placeholder="이름"
-                                       aria-label="name">　
-                                <button class="btn btn-primary float-right mb-3" type="button">검색</button>　
-                                <button type="button" class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#ecmodal">등록</button>
-
-                                <!--모달 1. 직원등록 -->
-                                <div class="modal fade" id="ecmodal" data-backdrop="static" data-keyboard="false"
-                                     tabindex="-1" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                                        <div class="modal-content">
-                                            <div class="form-body">
-                                                <!-- form header -->
-                                                <div class="form-header"><br>
-                                                    <h1>직원 등록</h1>
-                                                </div>
-                                                <br>
-                                                <!-- Firstname and Lastname -->
-                                                <div class="horizontal-group">
-                                                    <div class="form-group left">
-                                                        <label class="label-title">이름 *</label>
-                                                        <input type="text" class="form-input"
-                                                               placeholder="enter your name" required="required"/>
-                                                    </div>
-                                                    <div class="form-group right">
-                                                        <p class="birth">주민번호 *</p>
-                                                        <input type="text" class="form-input birth"
-                                                               placeholder="ex) 900101" required="required">
-                                                        <span class="dash">-</span>
-                                                        <input type="text" class="form-input birth"
-                                                               placeholder="1101011" required="required">
-                                                    </div>
-                                                </div>
-
-                                                <div class="horizontal-group">
-                                                    <div class="form-group left">
-                                                        <label class="label-title">이메일 *</label>
-                                                        <input type="email" class="form-email"
-                                                               placeholder="enter your email" required="required">
-                                                    </div>
-                                                    <div class="form-group right">
-                                                        <label class="label-title email-bh" >　</label>
-                                                        <input type="email" class="form-email"
-                                                               placeholder="@sjht.ac.kr" required="required">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="label-title">휴대전화 *</label>
-                                                    <input type="email" class="form-input"
-                                                           placeholder="enter your phone number" required="required">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="label-title">입사일</label>
-                                                    <input type="date" min="18" max="80"
-                                                           class="form-input">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="label-title">본부</label>
-                                                    <select class="form-input">
-                                                        <option value="">본부</option>
-                                                        <option value="hr">HR본부</option>
-                                                        <option value="ict">ICT개발본부</option>
-                                                        <option value="sol">솔루션사업본부</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="horizontal-group">
-                                                    <div class="form-group left">
-                                                        <label class="label-title">부서</label>
-                                                        <select class="form-input" >
-                                                            <option value=" ">부서</option>
-                                                            <option value="경영">경영관리부</option>
-                                                            <option value="솔루션개발">솔루션개발부</option>
-                                                            <option value="si개발">SI개발부</option>
-                                                            <option value="영업">영업부</option>
-                                                            <option value="전략기획">전략기획부</option>
-                                                            <option value="인사관리">인사관리부</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group right">
-                                                        <label class="label-title">직급</label>
-                                                        <select class="form-input">
-                                                            <option value=" ">직급</option>
-                                                            <option value="대리">대리</option>
-                                                            <option value="과장">과장</option>
-                                                            <option value="팀장">팀장</option>
-                                                            <option value="부장">부장</option>
-                                                            <option value="상무">상무</option>
-                                                            <option value="전무">전무</option>
-                                                            <option value="부대표">부대표</option>
-                                                            <option value="대표">대표</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="horizontal-group">
-                                                    <div class="form-group left">
-                                                        <label class="label-title">급여통장</label>
-                                                        <select class="form-option">
-                                                            <option value="">은행</option>
-                                                            <option value="nh">농협</option>
-                                                            <option value="sh">신한</option>
-                                                            <option value="kb">국민</option>
-                                                            <option value="ha">하나</option>
-                                                            <option value="ibk">기업</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group right">
-                                                        <label class="label-title">　</label>
-                                                        <input type="text" min="18" max="80"
-                                                               class="form-input"/>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="label-title">서명 파일 업로드</label><br>
-                                                    <input type="file" size="80">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="label-title">참고사항</label>
-                                                    <textarea class="form-input" rows="4" cols="50"
-                                                              style="height:auto"></textarea>
-                                                </div>
-                                            </div>
-                                            <!-- form-footer -->
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">취소
-                                                </button>
-                                                <button type="button" class="btn btn-primary">등록</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                            <tr>
-                                <th>직원번호</th>
-                                <th>구분</th>
-                                <th>성명</th>
-                                <th>생년월일</th>
-                                <th>휴대전화</th>
-                                <th>이메일</th>
-                                <th>부서</th>
-                                <th>직급</th>
-                                <th>입사일</th>
-                                <th>재직구분</th>
-                            </tr>
-                            </thead>
-                            <!--                            csh, 밑 테이블-->
-
-                            <tbody th:each="pr : ${promo}">
-                            <tr>
-                                <td th:text="${pr.salary}"></td>
-                                <td th:text="${pr.salary}">test</td>
-                                <td>
-                                    <button data-toggle="modal" data-target="#ecmodal2"
-                                            style="background: none; border: none; color: #4e73df;">test
-                                    </button>
-                                </td>
-                                <td th:text="${pr.salary}">test</td>
-                                <td th:text="${pr.salary}">test</td>
-                                <td th:text="${pr.salary}">test</td>
-                                <td th:text="${pr.salary}">test</td>
-                                <td th:text="${pr.salary}">test</td>
-                                <td th:text="${pr.salary}">test</td>
-                                <td th:text="${pr.salary}">test</td>
-                            </tr>
-                            </tbody>
-
-                            <!--                            csh, 밑 테이블 여기까지-->
-                        </table>
-                        <!--모달 2. 해당 직원 조회 -->
-                        <div class="modal fade" id="ecmodal2" data-backdrop="static" data-keyboard="false"
-                             tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-lg">
-                                <div class="modal-content">
-                                    <div class="form-body">
-                                        <!-- form header -->
-                                        <div class="form-header"><br>
-                                            <h1>인사 정보</h1>
-                                        </div>
-                                        <br>
-
-                                        <div class="form-group">
-                                            <label class="label-title">재직 상태</label>
-                                        </div>
-
-                                        <div class="horizontal-group">
-                                            <div class="form-group left">
-                                                <label class="label-title">이름 *</label>
-                                                <input type="text" class="form-input"
-                                                       placeholder="enter your name" required="required"/>
-                                            </div>
-                                            <div class="form-group right">
-                                                <p class="birth">주민번호 *</p>
-                                                <input type="text" class="form-input birth"
-                                                       placeholder="ex) 900101" required="required">
-                                                <span class="dash">-</span>
-                                                <input type="text" class="form-input birth"
-                                                       placeholder="1101011" required="required">
-                                            </div>
-                                        </div>
-
-                                        <div class="horizontal-group">
-                                            <div class="form-group left">
-                                                <label class="label-title">이메일 *</label>
-                                                <input type="email" class="form-email"
-                                                       placeholder="enter your email" required="required">
-                                            </div>
-                                            <div class="form-group right">
-                                                <label class="label-title">　</label>
-                                                <input type="email" class="form-email"
-                                                       placeholder="@sjht.ac.kr" required="required">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="label-title">휴대전화 *</label>
-                                            <input type="email" class="form-input"
-                                                   placeholder="enter your phone number"
-                                                   required="required">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="label-title">입사일</label>
-                                            <input type="date" min="18" max="80"
-                                                   class="form-input">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="label-title">본부</label>
-                                            <select class="form-input">
-                                                <option value="">본부</option>
-                                                <option value="hr">HR본부</option>
-                                                <option value="ict">ICT개발본부</option>
-                                                <option value="sol">솔루션사업본부</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="horizontal-group">
-                                            <div class="form-group left">
-                                                <label class="label-title">부서</label>
-                                                <select class="form-input">
-                                                    <option value=" ">부서</option>
-                                                    <option value="경영">경영관리부</option>
-                                                    <option value="솔루션개발">솔루션개발부</option>
-                                                    <option value="si개발">SI개발부</option>
-                                                    <option value="영업">영업부</option>
-                                                    <option value="전략기획">전략기획부</option>
-                                                    <option value="인사관리">인사관리부</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group right">
-                                                <label class="label-title">직급</label>
-                                                <select class="form-input">
-                                                    <option value=" ">직급</option>
-                                                    <option value="대리">대리</option>
-                                                    <option value="과장">과장</option>
-                                                    <option value="팀장">팀장</option>
-                                                    <option value="부장">부장</option>
-                                                    <option value="상무">상무</option>
-                                                    <option value="전무">전무</option>
-                                                    <option value="부대표">부대표</option>
-                                                    <option value="대표">대표</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="horizontal-group">
-                                            <div class="form-group left">
-                                                <label class="label-title">급여통장</label>
-                                                <select class="form-option">
-                                                    <option value="">은행</option>
-                                                    <option value="nh">농협</option>
-                                                    <option value="sh">신한</option>
-                                                    <option value="kb">국민</option>
-                                                    <option value="ha">하나</option>
-                                                    <option value="ibk">기업</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group right">
-                                                <label class="label-title">　</label>
-                                                <input type="text" min="18" max="80"
-                                                       class="form-input"/>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="label-title">서명 파일
-                                                업로드</label><br>
-                                            <input type="file" size="80">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="label-title">참고사항</label>
-                                            <textarea class="form-input" rows="4" cols="50"
-                                                      style="height:auto"></textarea>
-                                        </div>
-                                    </div>
-                                    <!-- form-footer -->
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">목록
-                                        </button>
-                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ecmodal3">수정</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--모달 끝-->
-                        <!--모달 3. 해당 직원 수정 -->
-                        <div class="modal fade" id="ecmodal3" data-backdrop="static" data-keyboard="false"
-                             tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-lg">
-                                <div class="modal-content">
-                                    <div class="form-body">
-                                        <!-- form header -->
-                                        <div class="form-header"><br>
-                                            <h1>인사 정보</h1>
-                                        </div>
-                                        <br>
-
-                                        <div class="form-group">
-                                            <label class="label-title">재직 상태</label>
-                                        </div>
-
-                                        <div class="horizontal-group">
-                                            <div class="form-group left">
-                                                <label for="name" class="label-title">이름 *</label>
-                                                <input type="text" id="name" class="form-input"
-                                                       placeholder="enter your name" required="required"/>
-                                            </div>
-                                            <div class="form-group right">
-                                                <p class="birth">주민번호 *</p>
-                                                <input type="text" class="form-input birth"
-                                                       placeholder="ex) 900101" required="required">
-                                                <span class="dash">-</span>
-                                                <input type="text" class="form-input birth"
-                                                       placeholder="1101011" required="required">
-                                            </div>
-                                        </div>
-
-                                        <div class="horizontal-group">
-                                            <div class="form-group left">
-                                                <label for="email2" class="label-title">이메일 *</label>
-                                                <input type="email" id="email2" class="form-email"
-                                                       placeholder="enter your email" required="required">
-                                            </div>
-                                            <div class="form-group right">
-                                                <label for="emailad2" class="label-title">　</label>
-                                                <input type="email" id="emailad2" class="form-email"
-                                                       placeholder="@sjht.ac.kr" required="required">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="phone2" class="label-title">휴대전화 *</label>
-                                            <input type="email" id="phone2" class="form-input"
-                                                   placeholder="enter your phone number"
-                                                   required="required">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="startdate2" class="label-title">입사일</label>
-                                            <input type="date" id="startdate2" min="18" max="80"
-                                                   class="form-input">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="hdqrt2" class="label-title">본부</label>
-                                            <select class="form-input" id="hdqrt2">
-                                                <option value="">본부</option>
-                                                <option value="hr">HR본부</option>
-                                                <option value="ict">ICT개발본부</option>
-                                                <option value="sol">솔루션사업본부</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="horizontal-group">
-                                            <div class="form-group left">
-                                                <label for="department2" class="label-title">부서</label>
-                                                <select class="form-input" id="department2">
-                                                    <option value=" ">부서</option>
-                                                    <option value="경영">경영관리부</option>
-                                                    <option value="솔루션개발">솔루션개발부</option>
-                                                    <option value="si개발">SI개발부</option>
-                                                    <option value="영업">영업부</option>
-                                                    <option value="전략기획">전략기획부</option>
-                                                    <option value="인사관리">인사관리부</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group right">
-                                                <label for="level2" class="label-title">직급</label>
-                                                <select class="form-input" id="level2">
-                                                    <option value=" ">직급</option>
-                                                    <option value="대리">대리</option>
-                                                    <option value="과장">과장</option>
-                                                    <option value="팀장">팀장</option>
-                                                    <option value="부장">부장</option>
-                                                    <option value="상무">상무</option>
-                                                    <option value="전무">전무</option>
-                                                    <option value="부대표">부대표</option>
-                                                    <option value="대표">대표</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="horizontal-group">
-                                            <div class="form-group left">
-                                                <label for="bank2" class="label-title">급여통장</label>
-                                                <select class="form-option" id="bank2">
-                                                    <option value="">은행</option>
-                                                    <option value="nh">농협</option>
-                                                    <option value="sh">신한</option>
-                                                    <option value="kb">국민</option>
-                                                    <option value="ha">하나</option>
-                                                    <option value="ibk">기업</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group right">
-                                                <label for="banknumber2" class="label-title">　</label>
-                                                <input type="text" id="banknumber2" min="18" max="80"
-                                                       class="form-input"/>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="choose-file2" class="label-title">서명 파일
-                                                업로드</label><br>
-                                            <input type="file" id="choose-file2" size="80">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="others2" class="label-title">참고사항</label>
-                                            <textarea class="form-input" id="others2" rows="4" cols="50"
-                                                      style="height:auto"></textarea>
-                                        </div>
-                                    </div>
-                                    <!-- form-footer -->
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">취소
-                                        </button>
-                                        <button type="button" class="btn btn-primary">완료</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><br>
-                        <!--모달 끝-->
                     </div>
                 </div>
             </div>
+
+            <!--직원 테이블 -->
+            <div class="card shadow mb-4">
+
+                <div class="card-header py-3">
+                    <h4 class="m-0 font-weight-bold text-primary">직원 조회</h4>
+                </div>
+
+                <div class="card-body">
+                    <!-- 직원조회 테이블 검색 기능(등록버튼포함) -->
+                    <div class="table-responsive">
+                        <div class="input-group">　
+                            <input type="date" class="form-control bg-light border-1 small"
+                                   aria-label="start">
+                            <input type="date" class="form-control bg-light border-1 small" aria-label="end">　
+                            <select class="form-control bg-light border-1 small" id="hq">
+                                <option value="">본부</option>
+                                <option value="hr">HR본부</option>
+                                <option value="ict">ICT개발본부</option>
+                                <option value="sol">솔루션사업본부</option>
+                            </select>　
+                            <select class="form-control bg-light border-1 small" id="dep">
+                                <option value="">부서</option>
+                                <option value="경영">경영관리부</option>
+                                <option value="솔루션개발">솔루션개발부</option>
+                                <option value="si개발">SI개발부</option>
+                                <option value="영업">영업부</option>
+                                <option value="전략기획">전략기획부</option>
+                                <option value="인사관리">인사관리부</option>
+                            </select>　
+                            <select class="form-control bg-light border-1 small" id="pstn">
+                                <option value="">직급</option>
+                                <option value="대리">대리</option>
+                                <option value="과장">과장</option>
+                                <option value="팀장">팀장</option>
+                                <option value="부장">부장</option>
+                                <option value="상무">상무</option>
+                                <option value="전무">전무</option>
+                                <option value="부대표">부대표</option>
+                                <option value="대표">대표</option>
+                            </select>　
+                            <input type="text" class="form-control bg-light border-1 small searchHrName" placeholder="이름"
+                                   aria-label="name">　
+                            <button class="btn btn-primary float-right mb-3 searchHrTable" type="button">검색</button>　
+                            <button type="button" class="btn btn-primary float-right mb-3 hiddenEmpInput" data-toggle="modal" data-target="#ecmodal">등록</button>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- 직원조회 테이블 검색 기능(등록버튼포함) 끝 -->
+                    <!-- 직원조회 테이블 -->
+
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>직원번호</th>
+                            <th>구분</th>
+                            <th>성명</th>
+                            <th>생년월일</th>
+                            <th>휴대전화</th>
+                            <th>이메일</th>
+                            <th>부서</th>
+                            <th>직급</th>
+                            <th>입사일</th>
+                            <th>재직구분</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="hrTable : ${hrTable}">
+<!--                            <div style="display:block;" th:attrappend="id=${hrTableStat.index}" >-->
+
+                            <td class="hiddenEmpId" th:text="${hrTable.empId}"></td>
+                            <td>
+                                <!--                                    <span th:text="${hrTable.authCode}"></span> 권한코드-->
+                                <span th:if="${hrTable.authCode == 'SJAU_0001'}">직원</span>
+                                <span th:if="${hrTable.authCode == 'SJAU_0002'}">임원</span>
+                                <span th:if="${hrTable.authCode == 'SJAU_0003' or hrTable.authCode == 'SJAU_0004'}">담당</span>
+                                <span th:if="${hrTable.authCode == 'SJAU_0005'}">관리자</span>
+                            </td>
+                            <td>
+                                <button class="hiddenEmpName"
+                                        data-toggle="modal" data-target="#ecmodal2"
+                                        style="background: none; border: none; color: #4e73df;"₩
+                                        th:text="${hrTable.empName}">
+                                </button>
+                            </td>
+                            <td><span th:text="${hrTable.birth}"></span></td>
+                            <td><span th:text="${hrTable.tel}"></span></td>
+                            <td><span th:text="${hrTable.email}"></span></td>
+                            <td>
+                                <!--                                    <span th:text="${hrTable.depNo}"></span>  부서코드-->
+                                <span th:if="${hrTable.depNo == 'SJDP_0001'}">경영관리부</span>
+                                <span th:if="${hrTable.depNo == 'SJDP_0002'}">솔루션개발부</span>
+                                <span th:if="${hrTable.depNo == 'SJDP_0003'}">SI개발부</span>
+                                <span th:if="${hrTable.depNo == 'SJDP_0004'}">영업부</span>
+                                <span th:if="${hrTable.depNo == 'SJDP_0005'}">전략기획부</span>
+                                <span th:if="${hrTable.depNo == 'SJDP_0006'}">인사관리부</span>
+                            </td>
+                            <td>
+                                <!--                                    <span th:text="${hrTable.jobCode}"></span>  직급코드-->
+                                <span th:if="${hrTable.jobCode == 'SJPS_0001'}">사원</span>
+                                <span th:if="${hrTable.jobCode == 'SJPS_0002'}">대리</span>
+                                <span th:if="${hrTable.jobCode == 'SJPS_0003'}">과장</span>
+                                <span th:if="${hrTable.jobCode == 'SJPS_0004'}">팀장</span>
+                                <span th:if="${hrTable.jobCode == 'SJPS_0005'}">부장</span>
+                                <span th:if="${hrTable.jobCode == 'SJPS_0006'}">상무</span>
+                                <span th:if="${hrTable.jobCode == 'SJPS_0007'}">전무</span>
+                                <span th:if="${hrTable.jobCode == 'SJPS_0008'}">부대표</span>
+                                <span th:if="${hrTable.jobCode == 'SJPS_0009'}">대표</span>
+                            </td>
+                            <td><span th:text="${hrTable.hireDate}"></span></td>
+                            <td>
+                                <!--                                    <span th:text="${hrTable.resYn}"></span 퇴직유무yn-->
+                                <span th:if="${hrTable.resYn == 'y'}">퇴사</span>
+                                <span th:if="${hrTable.resYn == 'n'}">재직</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- 직원조회 테이블 끝 -->
+                    <!--모달 1. 직원등록 -->
+                    <div class="modal fade" id="ecmodal" data-backdrop="static" data-keyboard="false"
+                         tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content modal-inputEmp">
+                            </div>
+                        </div>
+                    </div>
+                    <!--모달 1. 끝 -->
+                    <!--모달 2. 해당 직원 조회 -->
+                    <div class="modal fade" id="ecmodal2" data-backdrop="static" data-keyboard="false"
+                         tabindex="-1" aria-hidden="true" >
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <!--empTable.js  자바스크립트사용-->
+                            <div class="modal-content modal-searchEmp" >
+                            </div>
+                        </div>
+                    </div>
+                    <!--모달 2. 끝-->
+                    <!--모달 3. 해당 직원 수정 -->
+                    <div class="modal fade" id="ecmodal3" data-backdrop="static" data-keyboard="false"
+                         tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <!--empUpdate.js  자바스크립트사용-->
+                            <div class="modal-content modal-updateEmp" >
+                            </div>
+                        </div>
+                    </div><br>
+                    <!--모달 3. 끝-->
+                </div>
+            </div>
         </div>
-        <!-- /.container-fluid -->
-
-    </div> <!-- Content 끝 -->
-            <!-- 콘텐츠 내용 -->
-
-        </div>
-        <!-- Bootstrap core JavaScript-->
-        <script src="/etc/vendor/jquery/jquery.min.js"></script>
-        <script src="/etc/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-        <!-- Core plugin JavaScript-->
-        <script src="/etc/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-        <!-- Custom scripts for all pages-->
-        <script src="/etc/js/sb-admin-2.min.js"></script>
-
-        <!-- Page level plugins -->
-        <script src="/etc/vendor/datatables/jquery.dataTables.min.js"></script>
-        <script src="/etc/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-        <!-- Page level custom scripts -->
-        <script src="/etc/js/demo/datatables-demo.js"></script>
+        <!-- Content 끝 -->
     </div>
+
+
 </th:block>
 
 </html>
