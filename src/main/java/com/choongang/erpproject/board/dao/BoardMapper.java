@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface BoardMapper {
-
+    List<BoardDto> findEmpName(String empId);
     void updateBoard(long boardNum, String title, String content);
     void deleteBoard(long boardNum);
     void insertBoard(BoardDto boardDto);

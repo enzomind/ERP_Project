@@ -21,6 +21,7 @@
                 AND title LIKE CONCAT('%',#{title},'%')
             </if>
         </where>
+        ORDER BY board_num DESC
     </select>
 
     <update id="updateViewCnt">
@@ -35,6 +36,7 @@
         select board_num, title, writer, DATE_FORMAT(date, '%Y-%m-%d') as date, cbn_num
         from board
         where del_yn = 'n'
+        ORDER BY board_num DESC
     </select>
 
     <select id="selectBoard" resultType="com.choongang.erpproject.board.dto.BoardDto">
@@ -61,4 +63,10 @@
         where board_num = #{boardNum}
     </update>
 
+
+    <select id="findEmpName" resultType="hashmap">
+        select emp_name
+        from emp_table
+        where emp_id= #{empId}
+    </select>
 </mapper>

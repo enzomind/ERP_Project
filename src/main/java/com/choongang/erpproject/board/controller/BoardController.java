@@ -111,4 +111,12 @@ public class BoardController {
         model.addAttribute("info", list);
         return "redirect:/board/board";
     }
+
+
+    @RequestMapping("/searchEmpName")
+    @ResponseBody
+    private List<BoardDto> searchEmpName(@RequestParam String empId) {
+        List<BoardDto> BoardList = boardMapper.findEmpName(empId);
+        return BoardList;
+    }
 }
