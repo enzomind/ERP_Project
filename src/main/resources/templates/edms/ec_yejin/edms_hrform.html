@@ -45,7 +45,7 @@
                 </tr>
                 <tr>
                   <td name="empId">사원이름</td>
-                  <td class="appr_name" name="appr"><input type="hidden" class="appr_name" name="appr"/></td>
+                  <td class="appr_name"><input type="hidden" class="appr_name" name="appr"/></td>
                 </tr>
                 </thead>
               </table>
@@ -106,7 +106,7 @@
                         <input type="text" id="list" class="form-control bg-light" placeholder="이름을 입력하세요">　
                         <button type="button" class="btn btn-primary">검색</button>
                       </div></br>
-                      <table class="table table-bordered table-hover text-center" id="modal_click" width="100%" cellspacing="0">
+                      <table class="modal_click table table-bordered table-hover text-center" id="dataTable"  width="100%" cellspacing="0">
                         <thead>
                         <tr>
                           <th>본부</th>
@@ -116,15 +116,15 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                          <td>HR본부</td>
-                          <td>경영관리팀</td>
-                          <td>과장</td>
-                          <td id="td_name">홍길동</td>
+                        <tr th:each="hr : ${hrList}">
+                          <td th:text="${hr.hqName}"></td>
+                          <td th:text="${hr.depName}"></td>
+                          <td th:text="${hr.jobName}"></td>
+                          <td id="td_name" th:text="${hr.empName}"></td>
                         </tr>
                         </tbody>
                       </table>
-                    </div>
+                      </div>
                     <div class="modal-footer">
                       <input type="hidden" id="hidden">
                       <button type="button" class="btn btn-primary" data-dismiss="modal">확인</button>
@@ -171,32 +171,33 @@
 
         function rowClicked() {
 
-          var table =document.getElementById('modal_click');
+          var table = document.getElementById('modal_click');
           var rowList = table.rows;
+          console.log(rowList);
 
-          for (i=1; i<rowList.length; i++) {//thead부분 제외.
+          for (i=1; i<rowList; i++) {//thead부분 제외.
 
             var row = rowList[i];
             var html = "";
 
-            row.onclick = function(){
-              return function(){
+            onclick = function () {
+              return function () {
                 var name = this.cells[3].innerHTML;
                 html = name;
-
                 document.querySelector(".appr_name").innerText = html;
                 document.querySelector(".appr_name").value = html;
 
-              };//return
-            }(row);//onclick
-          }//for
+                console.log($(".appr_name").val());
+              };
+            }(row);
+          }
         }
 
 
         function submitBtn() {
           if ($('.appr_name').val() == "") {
-                alert("결재자를 입력해주세요.");
-                return false;
+            alert("결재자를 입력해주세요.");
+            return false;
           }
           if($('#title').val() == "") {
             alert("제목을 입력해주세요.");

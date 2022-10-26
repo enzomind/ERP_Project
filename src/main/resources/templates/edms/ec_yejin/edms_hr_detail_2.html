@@ -100,12 +100,11 @@
             <h6 class="m-0 font-weight-bold text-primary float-left">전자결재 > 결재상신함</h6>
           </div>
 
-          <div th:each="HrResponseDto : ${levdetail2}" class="card-body container">
+          <div th:each="HrResponseDto : ${numDetail}" class="card-body container">
             <h3 class="text-center mb-3">휴가신청서</h3></br>
             <p class="float-left">결의번호</p>
-            <input type="hidden" th:value="${HrResponseDto.levId}" name="levId">
-
-            <input th:value="${HrResponseDto.levNum}" name="levNum" class="form-control col-2 ml-2 float-left" type="text">
+            <input type="hidden" th:value="${numDetail.levId}" name="levId">
+            <input th:value="${numDetail.levNum}" name="levNum" class="form-control col-2 ml-2 float-left" type="text" readonly>
             <table class="table table-bordered text-center align-middle col-8 ml-2 float-right">
               <thead>
               <tr>
@@ -114,8 +113,8 @@
                 <th>결재자</th>
               </tr>
               <tr>
-                <td th:text="${HrResponseDto.empId}"></td>
-                <td th:text="${HrResponseDto.appr}"></td>
+                <td th:text="${numDetail.empName}"></td>
+                <td th:text="${numDetail.appr}"></td>
               </tr>
               </thead>
             </table>
@@ -125,13 +124,13 @@
                 <thead>
                 <tr>
                   <th>소속</th>
-                  <td>성진하이텍지주 글로벌전략부</td>
+                  <td th:text="${numDetail.hqName+' '+numDetail.depName}"></td>
                   <th>상신일자</th>
-                  <td th:text="${HrResponseDto.applDate}"></td>
+                  <td th:text="${numDetail.applDate}"></td>
                 </tr>
                 <tr>
                   <th class="align-middle">제목</th>
-                  <td th:text="${HrResponseDto.levTitle}" colspan="3"></td>
+                  <td th:text="${numDetail.levTitle}" colspan="3"></td>
                 </tr>
                 </thead>
               </table>
@@ -140,21 +139,21 @@
               <table class="table table-bordered text-center col-auto">
                 <tr>
                   <th class="align-middle">휴가구분</th>
-                  <td class="text-left" th:text="${HrResponseDto.levType}">
+                  <td class="text-left" th:text="${numDetail.levType}">
 
                   </td>
                 </tr>
                 <tr>
                   <th class="align-middle" style="width: 150px; height: 300px;">내용</th>
-                  <td class="text-left" th:text="${HrResponseDto.levContent}">
+                  <td class="text-left" th:text="${numDetail.levContent}">
                     <textarea type="text" class="form-control" style="height: 300px"></textarea></td>
                 </tr>
                 <tr>
                   <th class="align-middle">상태</th>
                   <td class="text-left" >
                     <div class="input-group input-daterange">
-                      <input type="text" id="state" name="apprState" class="form-control col-lg-1 text-center"  th:value="${HrResponseDto.apprState}">
-                      <input type="text" id="time" name="apprDate"  class="form-control col-lg-3 text-center" th:value="${HrResponseDto.apprDate}">
+                      <input type="text" id="state" name="apprState" class="form-control col-lg-1 text-center"  th:value="${numDetail.apprState}">
+                      <input type="text" id="time" name="apprDate"  class="form-control col-lg-3 text-center" th:value="${numDetail.apprDate}">
 
                     </div>
                   </td>

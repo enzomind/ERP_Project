@@ -30,6 +30,7 @@ public class HrRequestDto {
     //소속
     private String hqName;
     private String depName;
+    private String jobName;
 
 
 }
