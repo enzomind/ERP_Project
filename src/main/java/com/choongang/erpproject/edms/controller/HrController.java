@@ -62,6 +62,7 @@ public class HrController {
    //작성글 insert
     @PostMapping("/levwriteinsert")
     public String levwriteinsert(HrRequestDto hrRequestDto) {
+        System.out.println(hrRequestDto.getAppr());
        hrService.writeSave(hrRequestDto);
        return "redirect:/levwriteview";
     }
