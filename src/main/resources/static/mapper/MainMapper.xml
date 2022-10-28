@@ -41,7 +41,7 @@
         SELECT count(*)
         FROM expreport
         WHERE appr_id = #{empId}
-          AND appr_yn = 'N'
+          AND appr_state = 'N'
     </select>
 
     <select id="getNoticeDash" resultType="MainResponseDto">
