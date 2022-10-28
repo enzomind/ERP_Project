@@ -41,7 +41,10 @@ $(document).ready(function () {
             $('#file3').val(fileVal);
             $('#file4').val(fileVal);
             $('#file5').val(fileVal);
+
         })
+
+
 
         //경고창 띄우기
         $('#submit').click(function () {
@@ -70,8 +73,13 @@ $(document).ready(function () {
 
 
 const fileInput = document.getElementById("file");
-fileInput.onchange = () => {
+fileInput.onchange = (e) => {
     const selectFile = fileInput.files[0];
-    console.log(selectFile);
+    const fileReader = new FileReader();
+
+    fileReader.readAsDataURL(selectFile);
+    fileReader.onload = function (){
+        document.getElementById("preview").src = fileReader.result;
+    };
 
 }

@@ -1,11 +1,13 @@
 package com.choongang.erpproject.edms.dto;
 
 import lombok.Getter;
+import lombok.ToString;
 
 import java.time.LocalDate;
 
 //select
 @Getter
+@ToString
 public class AcResponseDto {
     //결재구분
     private String majCode;
@@ -21,6 +23,10 @@ public class AcResponseDto {
     private LocalDate apprDate;
 
     //작성자
+    private String empId;
+    public void setEmpId(String empId) {
+        this.empId = empId;
+    }
     private String empName;
     //결재자
     private String appr;
