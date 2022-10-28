@@ -30,6 +30,16 @@ public class EmpServiceImpl implements EmpService {
         return Hrlist;
     }
 
+    @Override
+    public List<HrTableDto> getHrTable(HrTableDto hrTableDto) {
+
+        List<HrTableDto> Hrlist = Collections.emptyList();
+
+        Hrlist = empMapper.getHrTable(hrTableDto);
+
+        return Hrlist;
+    }
+
     //직원정보 조회
     @Override
     public List<EmpTableDto> getEmpTable(String empId) {

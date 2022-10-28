@@ -9,6 +9,7 @@ public interface EmpService {
 
     //직원조회 화면 정보
     List<HrTableDto> getHrTable();
+    List<HrTableDto> getHrTable(HrTableDto hrTableDto);
     //직원열람 모달 정보
     List<EmpTableDto> getEmpTable(String empId);
     //서명 정보

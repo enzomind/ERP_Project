@@ -4,28 +4,15 @@ import com.choongang.erpproject.employee.dto.*;
 
 import com.choongang.erpproject.employee.service.EmpService;
 import com.choongang.erpproject.employee.service.EmpServiceImpl;
-import jdk.internal.loader.Resource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -41,8 +28,20 @@ public class EmpPageCont {
     //기본 루트
     @GetMapping("hr_emp")
     public String empPageRoot(Model model) {
+
         model.addAttribute("hrTable", empService.getHrTable());
+
         return "employee/employee_1";
+    }
+
+    //검색 루트
+    @PostMapping("/filter")
+    public String filter(HrTableDto hrTableDto, Model model) {
+
+        List<HrTableDto> list = empService.getHrTable(hrTableDto);
+        model.addAttribute("hrTable", list);
+
+        return "employee/employee_1_FilterResult";
     }
 
     //버튼 반복 시 발생하는 url 중복 제거
@@ -90,7 +89,7 @@ public class EmpPageCont {
         empInputDto.setFilePath(String.valueOf(map.get("inputFilePath")));
 
         empService.empInput(empInputDto);
-        return "/employee/employee_1";
+        return "/employee/employee_1_FilterResult.html";
     }
 
     //직원 수정

@@ -16,6 +16,8 @@ public class HrTableDto {
     String hireDate; // 입사일
     String resYn; // 퇴직여부..지만 재직/퇴사로 구분지어야함
     String note;
+    String start;
+    String end;
 
     /* 인사관리에서 안쓰는 부분
     String pw; //암호

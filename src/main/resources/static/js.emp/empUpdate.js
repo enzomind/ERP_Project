@@ -150,48 +150,48 @@ function empUpdateModal(e) {
 
                                     <div class="horizontal-group">
                                         <div class="form-group left">
-                                            <label class="label-title">이름 *</label><br>
-                                            <input type="text" class="form-input" name="empUpdateName"
+                                            <label class="label-title">이름 *</label><span class="ValiVali"></span><br>
+                                            <input type="text" class="form-input checkVali" name="empUpdateName"
                                                            required="required" value="${empName}"/>
                                         </div>
                                         <div class="form-group right">
-                                            <p class="birth">주민번호 *</p>
-                                             <input type="text" class="form-input birth" name="empUpdateIdpNum1"
+                                            <label class="birth">주민번호 *</label><span class="ValiVali"></span><br>
+                                             <input type="text" class="form-input birth checkVali" name="empUpdateIdpNum1"
                                                            required="required" value="${idpNum1}">
                                                     <data class="dash">-</data>
-                                                    <input type="password" class="form-input birth" name="empUpdateIdpNum2"
+                                                    <input type="password" class="form-input birth checkVali" name="empUpdateIdpNum2"
                                                            required="required" value="${idpNum2}">
                                         </div>
                                     </div>
 
                                     <div class="horizontal-group">
                                         <div class="form-group left">
-                                            <label class="label-title">이메일 *</label>
-                                            <input type="email" class="form-email" name="empUpdateEmail1"
+                                            <label class="label-title">이메일 *</label><span class="ValiVali"></span><br>
+                                            <input type="email" class="form-email checkVali" name="empUpdateEmail1"
                                                    value="${email1}" required="required">
                                         </div>
                                         <div class="form-group right">
                                             <label class="label-title">　</label>
-                                            <input type="email" class="form-email" name="empUpdateEmail2"
+                                            <input type="email" class="form-email checkVali" name="empUpdateEmail2"
                                                    value="${email2}" required="required">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="label-title">휴대전화 *</label>
-                                        <input type="email" class="form-input" name="empUpdateTel"
+                                        <label class="label-title">휴대전화 *</label><span class="ValiVali"></span><br>
+                                        <input type="email" class="form-input checkVali" name="empUpdateTel"
                                                value="${tel}" required="required">
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="label-title">입사일</label>
+                                        <label class="label-title">입사일</label><span class="ValiVali"></span><br>
                                         <input type="date" min="18" max="80" name="empUpdateHireDate"
-                                               class="form-input" value="${hireDate}">
+                                               class="form-input checkVali" value="${hireDate}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="label-title">본부</label>
-                                        <select class="form-input" name="empUpdateHqCode">
+                                        <label class="label-title">본부</label><span class="ValiVali"></span><br>
+                                        <select class="form-input checkVali" name="empUpdateHqCode">
                                             <option value="${hqCode}">${hqCode} (현재)</option>
                                              <option value="SJHQ_0001">HR본부</option>
                                                     <option value="SJHQ_0002">ICT개발본부</option>
@@ -201,8 +201,8 @@ function empUpdateModal(e) {
 
                                     <div class="horizontal-group">
                                         <div class="form-group left">
-                                            <label class="label-title">부서</label>
-                                            <select class="form-input" name="empUpdateDepNo">
+                                            <label class="label-title">부서</label><span class="ValiVali"></span><br>
+                                            <select class="form-input checkVali" name="empUpdateDepNo">
                                                 <option value="${depNo}">${depNo} (현재)</option>
                                                 <option value="SJDP_0001">경영관리부</option>
                                                         <option value="SJDP_0002">솔루션개발부</option>
@@ -213,8 +213,8 @@ function empUpdateModal(e) {
                                             </select>
                                         </div>
                                         <div class="form-group right">
-                                            <label class="label-title">직급</label>
-                                            <select class="form-input" name="empUpdateJobCode" readonly>
+                                            <label class="label-title">직급</label><span class="ValiVali"></span><br>
+                                            <select class="form-input checkVali" name="empUpdateJobCode" readonly>
                                                 <option>${jobCode}</option>
                                             </select>
                                         </div>
@@ -222,8 +222,8 @@ function empUpdateModal(e) {
 
                                     <div class="horizontal-group">
                                         <div class="form-group left">
-                                            <label class="label-title">급여통장</label>
-                                            <select class="form-option" name="empUpdateBankName" >
+                                            <label class="label-title">급여통장</label><span class="ValiVali"></span><br>
+                                            <select class="form-option checkVali" name="empUpdateBankName" >
                                                 <option value="${bankName}">${bankName} (현재)</option>
                                                 <option value="한국은행">한국은행</option>
                                                         <option value="국민은행">국민은행</option>
@@ -243,14 +243,14 @@ function empUpdateModal(e) {
                                             </select>
                                         </div>
                                         <div class="form-group right">
-                                            <label class="label-title">　</label>
+                                            <label class="label-title">&nbsp;</label><span class="ValiVali"></span><br>
                                             <input type="text" min="18" max="80" name="empUpdateAccount"
-                                                   class="form-input" value = "${account}"/>
+                                                   class="form-input checkVali" value = "${account}"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                       <label class="label-title">서명 파일 업로드</label><br>
+                                       <label class="label-title">서명 파일 업로드</label><span class="ValiVali"></span><br>
                                        <img class="empUpdateSignImg" width="180" alt="첨부이미지 미리보기" src="${fileFakePath}"/><br>
                                        <input type="file" class="empUpdateSign float-left" size="80" accept="image/*" multiple/> <br>
                                     </div>
@@ -344,42 +344,61 @@ function empUpdate(e) {
         transResYnVal = 'y';
         transResDateVal = attrResDate;
     }
-    $.ajax({
-        url: "/employee/empUpdate",
-        type: 'post',
-        datatype: 'json',
-        data: {
-            empIdUp: e,
-            empNameUp: $('input[name=empUpdateName]').val(),
-            idpNum1Up: $('input[name=empUpdateIdpNum1]').val(),
-            idpNum2Up: $('input[name=empUpdateIdpNum2]').val(),
-            emailUp: $('input[name=empUpdateEmail1]').val() + $('input[name=empUpdateEmail2]').val(),
-            telUp: $('input[name=empUpdateTel]').val(),
-            hireDateUp: $('input[name=empUpdateHireDate]').val(),
-            hqCodeUp: hqCodeVal,
-            // $('select[name=empUpdateHqCode]').val(),
-            depNoUp: depNoVal,
-            // $('select[name=empUpdateDepNo]').val(),
-            bankNameUp: $('select[name=empUpdateBankName]').val(),
-            accountUp: $('input[name=empUpdateAccount]').val(),
-            noteUp: $('textarea[name=empUpdateNote]').val(),
-            resYnUp: transResYnVal,
-            resDateUp: transResDateVal,
-            fileNameUp : fileSaveName,
-            filePathUp : filePath,
-        },
-        success: function () {
-            console.log("성공");
+//여기부터 null 체크
+    $('.checkVali').each(function (){
+        let thisVal = $(this).val();
+        if(thisVal.length == 0){
+            $(this).siblings('.ValiVali').text("재확인 요망");
+            $(this).siblings('.ValiVali').css("color", "red");
 
-            $('#ecmodal3').modal('hide');
-            $('#ecmodal2').modal('hide');
-            location.reload();
-
-        },
-        error: function () {
-            console.log("error");
+        } else {
+            $(this).siblings('.ValiVali').empty();
+            $(this).siblings('.ValiVali').css("color", "black");
         }
     })
+
+    if($('.ValiVali').text().length != 0){
+        alert("빈 칸이 존재합니다.");
+    } else if ($('.ValiVali').text() == 0){
+//여기까지 null 체크
+        $.ajax({
+                url: "/employee/empUpdate",
+                type: 'post',
+                datatype: 'json',
+                data: {
+                    empIdUp: e,
+                    empNameUp: $('input[name=empUpdateName]').val(),
+                    idpNum1Up: $('input[name=empUpdateIdpNum1]').val(),
+                    idpNum2Up: $('input[name=empUpdateIdpNum2]').val(),
+                    emailUp: $('input[name=empUpdateEmail1]').val() + $('input[name=empUpdateEmail2]').val(),
+                    telUp: $('input[name=empUpdateTel]').val(),
+                    hireDateUp: $('input[name=empUpdateHireDate]').val(),
+                    hqCodeUp: hqCodeVal,
+                    // $('select[name=empUpdateHqCode]').val(),
+                    depNoUp: depNoVal,
+                    // $('select[name=empUpdateDepNo]').val(),
+                    bankNameUp: $('select[name=empUpdateBankName]').val(),
+                    accountUp: $('input[name=empUpdateAccount]').val(),
+                    noteUp: $('textarea[name=empUpdateNote]').val(),
+                    resYnUp: transResYnVal,
+                    resDateUp: transResDateVal,
+                    fileNameUp : fileSaveName,
+                    filePathUp : filePath,
+                },
+            success: function () {
+                console.log("성공");
+
+                $('#ecmodal3').modal('hide');
+                $('#ecmodal2').modal('hide');
+                location.reload();
+
+            },
+            error: function () {
+                console.log("error");
+            }
+        })
+
+    }
 
 
 }

@@ -8,8 +8,27 @@
     <select id="getHrTable" resultType="HrTableDto">
         SELECT emp_id, auth_code, emp_name, birth, tel, email, hq_code, dep_no, job_code, hire_date, res_yn, note
         FROM erpprojectdb.emp_table
-        ORDER BY emp_id
+        <where>
+            <if test="start != null and start != ''">
+                AND emp_table.hire_date <![CDATA[ >= ]]> #{start}
+            </if>
+            <if test="end != null and end != ''">
+                AND emp_table.hire_date <![CDATA[ <= ]]> #{end}
+            </if>
+            <if test="depNo != null and depNo != ''">
+                AND emp_table.dep_no = #{depNo}
+            </if>
+            <if test="jobCode != null and jobCode != ''">
+                AND emp_table.job_code = #{jobCode}
+            </if>
+            <if test="empName != null and empName != ''">
+                AND emp_table.emp_name = #{empName}
+            </if>
+        </where>
     </select>
+
+
+
     <!--    직원 등록 -->
     <insert id="empInput" parameterType="EmpInputDto">
         INSERT INTO erpprojectdb.emp_table (pw, birth, auth_code, tot_lev, use_lev, res_yn, vct_yn, emp_name, idp_num, email, tel, hire_date, hq_code, dep_no, job_code, bankname, account, note, filename, filepath)

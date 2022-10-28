@@ -39,36 +39,32 @@
                     <div class="table-responsive">
                         <div class="input-group">　
                             <input type="date" class="form-control bg-light border-1 small"
-                                   aria-label="start">
-                            <input type="date" class="form-control bg-light border-1 small" aria-label="end">　
-                            <select class="form-control bg-light border-1 small" id="hq">
-                                <option value="">본부</option>
-                                <option value="hr">HR본부</option>
-                                <option value="ict">ICT개발본부</option>
-                                <option value="sol">솔루션사업본부</option>
-                            </select>　
+                                   aria-label="start" id="searchDateStart">
+                            <data class="dash">-</data>
+                            <input type="date" class="form-control bg-light border-1 small" aria-label="end" id="searchDateEnd">　
                             <select class="form-control bg-light border-1 small" id="dep">
                                 <option value="">부서</option>
-                                <option value="경영">경영관리부</option>
-                                <option value="솔루션개발">솔루션개발부</option>
-                                <option value="si개발">SI개발부</option>
-                                <option value="영업">영업부</option>
-                                <option value="전략기획">전략기획부</option>
-                                <option value="인사관리">인사관리부</option>
+                                <option value="SJDP_0001">경영관리부</option>
+                                <option value="SJDP_0002">솔루션개발부</option>
+                                <option value="SJDP_0003">SI개발부</option>
+                                <option value="SJDP_0004">영업부</option>
+                                <option value="SJDP_0005">전략기획부</option>
+                                <option value="SJDP_0006">인사관리부</option>
                             </select>　
                             <select class="form-control bg-light border-1 small" id="pstn">
                                 <option value="">직급</option>
-                                <option value="대리">대리</option>
-                                <option value="과장">과장</option>
-                                <option value="팀장">팀장</option>
-                                <option value="부장">부장</option>
-                                <option value="상무">상무</option>
-                                <option value="전무">전무</option>
-                                <option value="부대표">부대표</option>
-                                <option value="대표">대표</option>
+                                <option value="SJPS_0001">사원</option>
+                                <option value="SJPS_0002">대리</option>
+                                <option value="SJPS_0003">과장</option>
+                                <option value="SJPS_0004">팀장</option>
+                                <option value="SJPS_0005">부장</option>
+                                <option value="SJPS_0006">상무</option>
+                                <option value="SJPS_0007">전무</option>
+                                <option value="SJPS_0008">부대표</option>
+                                <option value="SJPS_0009">대표</option>
                             </select>　
                             <input type="text" class="form-control bg-light border-1 small searchHrName" placeholder="이름"
-                                   aria-label="name">　
+                                   aria-label="name" id="empName"> 　
                             <button class="btn btn-primary float-right mb-3 searchHrTable" type="button">검색</button>　
                             <button type="button" class="btn btn-primary float-right mb-3 hiddenEmpInput" data-toggle="modal" data-target="#ecmodal">등록</button>
                         </div>
@@ -76,7 +72,7 @@
                     <br>
                     <!-- 직원조회 테이블 검색 기능(등록버튼포함) 끝 -->
                     <!-- 직원조회 테이블 -->
-
+                    <div id="filterDiv">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
@@ -144,7 +140,7 @@
                         </tr>
                         </tbody>
                     </table>
-
+                    </div>
                     <!-- 직원조회 테이블 끝 -->
                     <!--모달 1. 직원등록 -->
                     <div class="modal fade" id="ecmodal" data-backdrop="static" data-keyboard="false"

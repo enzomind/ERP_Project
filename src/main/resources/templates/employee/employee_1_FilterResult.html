@@ -1,0 +1,70 @@
+<div id ="selectFilter" >
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <thead>
+    <tr>
+        <th>직원번호</th>
+        <th>구분</th>
+        <th>성명</th>
+        <th>생년월일</th>
+        <th>휴대전화</th>
+        <th>이메일</th>
+        <th>부서</th>
+        <th>직급</th>
+        <th>입사일</th>
+        <th>재직구분</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="hrTable : ${hrTable}">
+        <!--                            <div style="display:block;" th:attrappend="id=${hrTableStat.index}" >-->
+
+        <td class="hiddenEmpId" th:text="${hrTable.empId}"></td>
+        <td>
+            <!--                                    <span th:text="${hrTable.authCode}"></span> 권한코드-->
+            <span th:if="${hrTable.authCode == 'SJAU_0001'}">직원</span>
+            <span th:if="${hrTable.authCode == 'SJAU_0002'}">임원</span>
+            <span th:if="${hrTable.authCode == 'SJAU_0003'}">담당</span>
+            <span th:if="${hrTable.authCode == 'SJAU_0004'}">담당</span>
+            <span th:if="${hrTable.authCode == 'SJAU_0005'}">관리자</span>
+        </td>
+        <td>
+            <button class="hiddenEmpName"
+                    data-toggle="modal" data-target="#ecmodal2"
+                    style="background: none; border: none; color: #4e73df;"
+                    th:text="${hrTable.empName}">
+            </button>
+        </td>
+        <td><span th:text="${hrTable.birth}"></span></td>
+        <td><span th:text="${hrTable.tel}"></span></td>
+        <td><span th:text="${hrTable.email}"></span></td>
+        <td>
+            <!--                                    <span th:text="${hrTable.depNo}"></span>  부서코드-->
+            <span th:if="${hrTable.depNo == 'SJDP_0001'}">경영관리부</span>
+            <span th:if="${hrTable.depNo == 'SJDP_0002'}">솔루션개발부</span>
+            <span th:if="${hrTable.depNo == 'SJDP_0003'}">SI개발부</span>
+            <span th:if="${hrTable.depNo == 'SJDP_0004'}">영업부</span>
+            <span th:if="${hrTable.depNo == 'SJDP_0005'}">전략기획부</span>
+            <span th:if="${hrTable.depNo == 'SJDP_0006'}">인사관리부</span>
+        </td>
+        <td>
+            <!--                                    <span th:text="${hrTable.jobCode}"></span>  직급코드-->
+            <span th:if="${hrTable.jobCode == 'SJPS_0001'}">사원</span>
+            <span th:if="${hrTable.jobCode == 'SJPS_0002'}">대리</span>
+            <span th:if="${hrTable.jobCode == 'SJPS_0003'}">과장</span>
+            <span th:if="${hrTable.jobCode == 'SJPS_0004'}">팀장</span>
+            <span th:if="${hrTable.jobCode == 'SJPS_0005'}">부장</span>
+            <span th:if="${hrTable.jobCode == 'SJPS_0006'}">상무</span>
+            <span th:if="${hrTable.jobCode == 'SJPS_0007'}">전무</span>
+            <span th:if="${hrTable.jobCode == 'SJPS_0008'}">부대표</span>
+            <span th:if="${hrTable.jobCode == 'SJPS_0009'}">대표</span>
+        </td>
+        <td><span th:text="${hrTable.hireDate}"></span></td>
+        <td>
+            <!--                                    <span th:text="${hrTable.resYn}"></span 퇴직유무yn-->
+            <span th:if="${hrTable.resYn == 'y'}">퇴사</span>
+            <span th:if="${hrTable.resYn == 'n'}">재직</span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
