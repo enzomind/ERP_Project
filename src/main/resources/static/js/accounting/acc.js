@@ -38,6 +38,7 @@ function findAccAll(setSDate, setEDate) {
             html = '<td colspan="5"> 해당 기간에 조회된 데이터가 없습니다.</td>';
         } else {
 
+
                 json.forEach((obj, idx) => {
                     var tempComAcc = obj.comAcc;
 
@@ -77,7 +78,7 @@ function findAccAll(setSDate, setEDate) {
 
 
         $("#list").empty().append(html + htmlTotal);
-        //document.getElementById('list').innerHTML = html + htmlTotal;
+        // document.getElementById('list').innerHTML = html + htmlTotal;
 
         var tempDetail = `<td colspan="6">전표 리스트에서 상세 조회할 항목을 선택해 주세요.</td>`;
         document.getElementById('detailList').innerHTML = tempDetail;
