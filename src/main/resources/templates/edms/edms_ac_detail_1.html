@@ -89,7 +89,7 @@
                             <thead>
                             <tr>
                                 <th>증빙서류</th>
-                                <td th:text="${acResponseDto[0].attFile}">
+                                <td><a th:text="${acResponseDto[0].attFile}" th:href="${acResponseDto[0].attFilepath}" download=""></a></td>
                                 </td>
                             </tr>
                             <tr>

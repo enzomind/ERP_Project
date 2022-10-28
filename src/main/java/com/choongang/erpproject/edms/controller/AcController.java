@@ -5,12 +5,14 @@ import com.choongang.erpproject.edms.dto.AcResponseDto;
 import com.choongang.erpproject.edms.service.AcService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,10 +40,14 @@ public class AcController {
     }
 
     //지결 입력폼 이동
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/edms/edms_acform")
-    public String goAcform(Model model){
+    public String goAcform(Model model, Model model2,Principal principal){
         List<AcResponseDto> acList = acService.findAc();
         model.addAttribute("acList", acList);
+        String id = principal.getName();
+        System.out.println(acService.findWriter(id));
+        model2.addAttribute("empInfo",acService.findWriter(id));
         return "/edms/edms_acform";
     }
 
@@ -50,12 +56,15 @@ public class AcController {
     public String submitForm(AcRequestDto acRequestDto) {
         List<AcRequestDto> list = acRequestDto.getAcRequestDtoList();
         List<AcRequestDto> listReal = new ArrayList<>();
+
         for (int i=0; i < 5; i++) {
             if(list.get(i).getExpense() != 0){
                 listReal.add(list.get(i));
             }
         }
         acService.saveList(listReal);
+        acService.updateNum(listReal);
+        System.out.println(listReal);
         return "redirect:/edms/edms_1";
     }
 

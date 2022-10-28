@@ -33,6 +33,12 @@ public class AcServiceImpl implements AcService{
     }
 
     @Override
+    public AcResponseDto findWriter(String id) {
+        AcResponseDto writerInfo = acMapper.selectWriter(id);
+        return writerInfo;
+    }
+
+    @Override
     public void save(AcRequestDto acRequestDto) {
         acMapper.insert(acRequestDto);
     }
@@ -40,6 +46,11 @@ public class AcServiceImpl implements AcService{
     @Override
     public void saveList(List<AcRequestDto> acRequestDtoList) {
         acMapper.insertList(acRequestDtoList);
+    }
+
+    @Override
+    public void updateNum(List<AcRequestDto> acRequestDtoList) {
+        acMapper.updateExpNum(acRequestDtoList);
     }
 
     @Override

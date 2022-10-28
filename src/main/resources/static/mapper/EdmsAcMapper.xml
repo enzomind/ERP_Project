@@ -30,6 +30,13 @@
         WHERE aa.auth_code = "SJAU_0004" and aa.res_yn="n"
     </select>
 
+    <select id="selectWriter" resultType="AcResponseDto">
+        SELECT emp_id, emp_name, hdqrt_code.hq_name, dep_code.dep_name
+        FROM emp_table as bb
+                 INNER JOIN hdqrt_code ON hdqrt_code.hq_code = bb.hq_code
+                 INNER JOIN dep_code ON dep_code.dep_no = bb.dep_no
+        WHERE bb.emp_id = #{empId}
+    </select>
 
     <!--안쓰임-->
     <insert id="insert" parameterType="AcRequestDto">
@@ -38,12 +45,19 @@
     </insert>
 
     <insert id="insertList" parameterType="List">
-        INSERT INTO expreport (exp_title,det_code, remk, com_acc,expense,exp_num,appr,appl_date,maj_code,att_file)
+        INSERT INTO expreport (exp_title,det_code, remk, com_acc,expense,appr,appl_date,maj_code,att_file,emp_id)
         VALUES
             <foreach collection="list" separator="," item="ac">
-            (#{ac.expTitle},#{ac.detCode},#{ac.remk},#{ac.comAcc},#{ac.expense},#{ac.expNum},#{ac.appr},now(),"회계",#{ac.attFile})
+            (#{ac.expTitle},#{ac.detCode},#{ac.remk},#{ac.comAcc},#{ac.expense},#{ac.appr},now(),"회계",#{ac.attFile},#{ac.empId})
             </foreach>
     </insert>
+
+    <update id="updateExpNum" parameterType="List">
+        update expreport
+        set exp_num  = (SELECT concat("SJCD-",LPAD((MAX(CONVERT(SUBSTRING(exp_num,6,10),signed integer)))+1,4,0)) from
+                (SELECT * from expreport) as a)
+        where exp_num is null
+    </update>
 
     <update id="update" parameterType="AcRequestDto">
         UPDATE expreport

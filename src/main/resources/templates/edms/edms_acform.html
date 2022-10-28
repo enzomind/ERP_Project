@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <th:block layout:fragment="mainHeader">
     <title>결재상신함</title>
@@ -47,7 +48,13 @@
                                 <th>결재자</th>
                             </tr>
                             <tr>
-                                <td>로그인된 사람</td>
+                                <td>[[${empInfo.empName}]]</td>
+                                    <input type="hidden" name="acRequestDtoList[0].empId" th:value="${empInfo.empId}">
+                                    <input type="hidden" name="acRequestDtoList[1].empId" th:value="${empInfo.empId}">
+                                    <input type="hidden" name="acRequestDtoList[2].empId" th:value="${empInfo.empId}">
+                                    <input type="hidden" name="acRequestDtoList[3].empId" th:value="${empInfo.empId}">
+                                    <input type="hidden" name="acRequestDtoList[4].empId" th:value="${empInfo.empId}">
+
                                 <td><div id="apprText"></div>
                                     <input type="hidden" name="acRequestDtoList[0].appr" id="appr1">
                                     <input type="hidden" name="acRequestDtoList[1].appr" id="appr2">
@@ -65,7 +72,7 @@
                                 <thead>
                                 <tr>
                                     <th>소속</th>
-                                    <td>로그인된 사람 부서</td>
+                                    <td>[[${empInfo.hqName}]] [[${empInfo.DepName}]] </td>
                                     <th>상신일자</th>
                                     <td id="date"></td>
                                 </tr>
@@ -183,11 +190,11 @@
                                 <tr>
                                     <th>증빙서류</th>
                                     <td><input type="file" class="form-control-file" name="acRequestDtoList[0].attFile" id="file">
+                                        <img id="preview" width="700" alt="미리보기"/>
                                         <input type="hidden" name="acRequestDtoList[1].attFile" id =file2>
                                         <input type="hidden" name="acRequestDtoList[2].attFile" id =file3>
-                                        <input type="hidden" name="acRequestDtoList[3].attFile" id =filee4>
+                                        <input type="hidden" name="acRequestDtoList[3].attFile" id =file4>
                                         <input type="hidden" name="acRequestDtoList[4].attFile" id =file5>
-
                                     </td>
                                 </tr>
                                 </thead>

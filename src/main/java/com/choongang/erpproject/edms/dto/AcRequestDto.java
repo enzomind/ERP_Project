@@ -20,6 +20,8 @@ public class AcRequestDto {
     private String empName;
     //결재자
     private String appr;
+    private String apprId;
+
 
     //소속
     private String hqName;
@@ -45,9 +47,7 @@ public class AcRequestDto {
 
     //승인상태& 날짜
     private String apprState;
-//    private LocalDate apprDate;
     private String apprDate;
-
     private String majCode;
 
     //insert용 dto
