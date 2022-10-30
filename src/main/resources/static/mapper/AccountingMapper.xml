@@ -29,12 +29,12 @@
 
     <insert id="insertAccInfo" parameterType="AccRequestDto">
         INSERT INTO acv (
-        <include refid="accRequestColumns" />
+        <include refid="accRequestColumns"/>
         ) VALUES (
-                  #{statNum}
-                , NOW()
-                , #{expNum}
-                , #{empId}
+        #{statNum}
+        , NOW()
+        , #{expNum}
+        , #{empId}
         )
     </insert>
 
@@ -44,11 +44,11 @@
              , stat_date
              , sum(expense) AS expense
              , income
-          FROM acv
-               LEFT OUTER JOIN expreport ON acv.exp_num = expreport.exp_num
+        FROM acv
+                 LEFT OUTER JOIN expreport ON acv.exp_num = expreport.exp_num
                <![CDATA[ AND stat_date >= #{startDate} AND stat_date <= #{endDate} ]]>
          GROUP BY com_acc, stat_num, stat_date, income
-         ORDER BY stat_num DESC
+        ORDER BY stat_num DESC
     </select>
 
     <select id="getAccDetail" parameterType="Long" resultType="AccResponseDto">
@@ -59,20 +59,17 @@
              , com_acc
              , expense
         FROM acv
-        INNER JOIN expreport
-        ON acv.exp_num = expreport.exp_num
-        INNER JOIN emp_table
-        ON acv.emp_id = emp_table.emp_id
+                 INNER JOIN expreport
+                            ON acv.exp_num = expreport.exp_num
+                 INNER JOIN emp_table
+                            ON acv.emp_id = emp_table.emp_id
         WHERE acv.stat_num = #{statNum};
     </select>
 
     <select id="listCount" parameterType="AccResponseDto" resultType="int">
-        SELECT
-            COUNT(*)
-        FROM
-            acv
+        SELECT COUNT(*)
+        FROM acv
     </select>
-
 
 
 </mapper>
