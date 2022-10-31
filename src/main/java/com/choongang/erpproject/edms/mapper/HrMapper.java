@@ -12,7 +12,7 @@ import java.util.List;
 public interface HrMapper {
 
     //목록 조회
-    List<HrResponseDto> getLevList();
+    List<HrResponseDto> getLevList(String id);
 
     //상세 조회(결의번호 id)
     //HrResponseDto getLevDetail(Long levId);

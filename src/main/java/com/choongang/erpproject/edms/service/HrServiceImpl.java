@@ -16,11 +16,11 @@ public class HrServiceImpl implements HrService {
     private final HrMapper hrMapper;
 
     @Override
-    public List<HrResponseDto> getLevList() {
+    public List<HrResponseDto> getLevList(String id) {
         List<HrResponseDto> list = Collections.emptyList();
         int listCount = hrMapper.listCount();
         if(listCount > 0) {
-            list = hrMapper.getLevList();
+            list = hrMapper.getLevList(id);
         }
         return list;
     }
