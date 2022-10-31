@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface HrService {
 
-    List<HrResponseDto> getLevList();
+    List<HrResponseDto> getLevList(String id);
 
     List<HrResponseDto> findHr();
 

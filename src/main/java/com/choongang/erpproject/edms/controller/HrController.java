@@ -18,18 +18,22 @@ public class HrController {
     @Autowired
     HrService hrService;
 
+
+
     //결재상신함 : 리스트 확인
    @GetMapping("/levwrite")
-    public String writelist(Model model) {
-       List<HrResponseDto> levlist = hrService.getLevList();
+    public String writelist(Model model, Principal principal) {
+       String id = principal.getName();
+       List<HrResponseDto> levlist = hrService.getLevList(id);
        model.addAttribute("levlist", levlist);
        return "/edms/ec_Y/edms_1";
    }
 
     //결재수신함 : 리스트 확인
     @GetMapping("/levappr")
-    public String apprlist(Model model) {
-        List<HrResponseDto> levlist = hrService.getLevList();
+    public String apprlist(Model model, Principal principal) {
+       String id = principal.getName();
+        List<HrResponseDto> levlist = hrService.getLevList(id);
         model.addAttribute("levlist", levlist);
         return "/edms/ec_Y/edms_2";
     }

@@ -103,10 +103,10 @@
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                   <div class="modal-content">
                     <div class="modal-body">
-                      <div class="input-group mt-3">
-                        <input type="text" id="list" class="form-control bg-light" placeholder="이름을 입력하세요">　
-                        <button type="button" class="btn btn-primary">검색</button>
-                      </div></br>
+<!--                      <div class="input-group mt-3">-->
+<!--                        <input type="text" id="list" class="form-control bg-light" placeholder="이름을 입력하세요">　-->
+<!--                        <button type="button" class="btn btn-primary">검색</button>-->
+<!--                      </div></br>-->
                       <table class="table table-bordered table-hover text-center" id="dataTable"  width="100%" cellspacing="0">
                         <thead>
                         <tr>
@@ -159,6 +159,7 @@
 
         //결재자 입력
         function rowClicked() {
+          $('#dataTable_filter').show();
 
           var table =document.getElementById('dataTable');
           var rowList = table.rows;

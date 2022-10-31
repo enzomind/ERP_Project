@@ -28,6 +28,7 @@
                appl_date,
                appr_state
         FROM lev_table
+        WHERE emp_id = #{empId}
     </select>
 
     <!-- 상세 조회-->
