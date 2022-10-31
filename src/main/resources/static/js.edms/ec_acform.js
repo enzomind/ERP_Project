@@ -12,9 +12,11 @@ $(document).ready(function () {
         //테이블 행 클릭하면 마지막 td를 찾아서 result에 나타내고 모달창을 닫음
         var result = false;
         $('#dataTable tr').click(function () {
-            var tr = $(this).find("td:last");
-            $("#appr1").val(tr.text());
-            $("#apprText").text(tr.text());
+            var tr1= $(this).find("td:first");
+            var tr2= $(this).find("td:last");
+            $("#appr1").val(tr2.text());
+            $("#apprId1").val(tr1.text());
+            $("#apprText").text(tr2.text());
             result = true;
             $('#modal1').modal('hide');
         })
@@ -34,6 +36,12 @@ $(document).ready(function () {
             $('#appr3').val(apprVal);
             $('#appr4').val(apprVal);
             $('#appr5').val(apprVal);
+
+            const apprIdVal = $("#apprId1").val()
+            $('#apprId2').val(apprIdVal);
+            $('#apprId3').val(apprIdVal);
+            $('#apprId4').val(apprIdVal);
+            $('#apprId5').val(apprIdVal);
 
             //file
             const fileVal = $("#file").val()

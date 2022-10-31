@@ -61,6 +61,14 @@
                                     <input type="hidden" name="acRequestDtoList[2].appr" id="appr3">
                                     <input type="hidden" name="acRequestDtoList[3].appr" id="appr4">
                                     <input type="hidden" name="acRequestDtoList[4].appr" id="appr5"></td>
+
+                                <div>
+                                    <input type="hidden" name="acRequestDtoList[0].apprId" id="apprId1">
+                                    <input type="hidden" name="acRequestDtoList[1].apprId" id="apprId2">
+                                    <input type="hidden" name="acRequestDtoList[2].apprId" id="apprId3">
+                                    <input type="hidden" name="acRequestDtoList[3].apprId" id="apprId4">
+                                    <input type="hidden" name="acRequestDtoList[4].apprId" id="apprId5">
+                                </div>
                                                     <!--div input 밖에다 닫았더니 에러났음 -->
 
                             </tr>
@@ -218,6 +226,7 @@
                                         <table class="table table-bordered table-hover text-center" id="dataTable" width="100%" cellspacing="0">
                                             <thead>
                                             <tr>
+                                                <th style="display: none">사번</th>
                                                 <th>본부</th>
                                                 <th>부서</th>
                                                 <th>직급</th>
@@ -226,6 +235,7 @@
                                             </thead>
                                             <tbody>
                                             <tr th:each="ac : ${acList}">
+                                                <td th:text="${ac.empId}" style="display: none"></td>
                                                 <td th:text="${ac.hqName}"></td>
                                                 <td th:text="${ac.depName}"></td>
                                                 <td th:text="${ac.jobName}"></td>

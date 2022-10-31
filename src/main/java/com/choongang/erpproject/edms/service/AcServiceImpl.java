@@ -15,8 +15,14 @@ public class AcServiceImpl implements AcService{
     @Autowired
     private AcMapper acMapper;
     @Override
-    public List<AcResponseDto> findAll() {
-        List<AcResponseDto> list = acMapper.selectList();
+    public List<AcResponseDto> findAllOut(String id) {
+        List<AcResponseDto> list = acMapper.selectListOut(id);
+        return list;
+    }
+
+    @Override
+    public List<AcResponseDto> findAllIn(String id) {
+        List<AcResponseDto> list = acMapper.selectListIn(id);
         return list;
     }
 
@@ -37,12 +43,6 @@ public class AcServiceImpl implements AcService{
         AcResponseDto writerInfo = acMapper.selectWriter(id);
         return writerInfo;
     }
-
-    @Override
-    public void save(AcRequestDto acRequestDto) {
-        acMapper.insert(acRequestDto);
-    }
-
     @Override
     public void saveList(List<AcRequestDto> acRequestDtoList) {
         acMapper.insertList(acRequestDtoList);

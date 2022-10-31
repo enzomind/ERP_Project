@@ -7,12 +7,11 @@ import java.util.List;
 
 public interface AcService {
 
-    List<AcResponseDto> findAll();
+    List<AcResponseDto> findAllOut(String id);
+    List<AcResponseDto> findAllIn(String id);
     List<AcResponseDto> findByNum(String expNum);
     List<AcResponseDto> findAc();
     AcResponseDto findWriter(String id);
-    void save(AcRequestDto acRequestDto);
-
     void saveList(List<AcRequestDto> acRequestDtoList);
 
     void updateNum(List<AcRequestDto> acRequestDtoList);
