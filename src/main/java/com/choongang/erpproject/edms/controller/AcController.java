@@ -24,8 +24,9 @@ public class AcController {
 
     //상신함 리스트
     @GetMapping("/edms/edms_1")
-    public String goEc(Model model){
-        List<AcResponseDto> acResponseDtos = acService.findAll();
+    public String goEc(Model model,Model model2, Principal principal){
+        String id = principal.getName();
+        List<AcResponseDto> acResponseDtos = acService.findAllOut(id);
         model.addAttribute("acResponseDtos",acResponseDtos);
         return "/edms/edms_1";
     }
@@ -46,7 +47,6 @@ public class AcController {
         List<AcResponseDto> acList = acService.findAc();
         model.addAttribute("acList", acList);
         String id = principal.getName();
-        System.out.println(acService.findWriter(id));
         model2.addAttribute("empInfo",acService.findWriter(id));
         return "/edms/edms_acform";
     }
@@ -54,7 +54,13 @@ public class AcController {
     //지결 입력
     @PostMapping("/edms/edms_1")
     public String submitForm(AcRequestDto acRequestDto) {
+
+   /*     AcRequestDto findexpnum = new AcRequestDto();
+        String expNum = findexpnum.setExpNum(섭스 리턴한 값);
+*/
+
         List<AcRequestDto> list = acRequestDto.getAcRequestDtoList();
+//        acRequestDto.setExpNum(expNum);
         List<AcRequestDto> listReal = new ArrayList<>();
 
         for (int i=0; i < 5; i++) {
@@ -64,15 +70,15 @@ public class AcController {
         }
         acService.saveList(listReal);
         acService.updateNum(listReal);
-        System.out.println(listReal);
         return "redirect:/edms/edms_1";
     }
 
 
     //수신함 리스트
     @GetMapping("/edms/edms_2")
-    public String goEc2(Model model){
-        List<AcResponseDto> acResponseDtos = acService.findAll();
+    public String goEc2(Model model,Principal principal){
+        String id = principal.getName();
+        List<AcResponseDto> acResponseDtos = acService.findAllIn(id);
         model.addAttribute("acResponseDtos",acResponseDtos);
         return "/edms/edms_2";
     }

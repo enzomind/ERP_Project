@@ -5,12 +5,24 @@
 
 <mapper namespace="com.choongang.erpproject.edms.mapper.AcMapper">
 
-    <select id="selectList" resultType="AcResponseDto">
+    <!--상신함 조회-->
+    <select id="selectListOut" resultType="AcResponseDto">
         SELECT maj_code, exp_num, exp_title, appl_date, appr_state
         FROM expreport
+        WHERE emp_id = #{empId}
         GROUP BY exp_num ORDER BY exp_num DESC
     </select>
 
+
+    <!--수신함 조회-->
+    <select id="selectListIn" resultType="AcResponseDto">
+        SELECT maj_code, exp_num, exp_title, appl_date, appr_state
+        FROM expreport
+        WHERE appr_id = #{expId}
+        GROUP BY exp_num ORDER BY exp_num DESC
+    </select>
+
+    <!--상세 보기-->
     <select id="selectDetail" parameterType="String" resultType="AcResponseDto">
         select exp_num,emp_table.emp_name, appr, pstn_code.job_name, hdqrt_code.hq_name, dep_code.dep_name , appl_date, exp_title, att_file, appr_state, det_code, remk, com_acc, expense, appr_date
         FROM expreport
@@ -21,8 +33,9 @@
         WHERE exp_num = #{expNum};
     </select>
 
+    <!--회계담당자 리스트(모달)-->
     <select id="selectAcList" resultType="AcResponseDto">
-        SELECT hdqrt_code.hq_name,dep_code.dep_name,pstn_code.job_name, emp_name
+        SELECT emp_id,hdqrt_code.hq_name,dep_code.dep_name,pstn_code.job_name, emp_name
         FROM emp_table as aa
                  INNER JOIN pstn_code ON pstn_code.job_code = aa.job_code
                  INNER JOIN hdqrt_code ON hdqrt_code.hq_code = aa.hq_code
@@ -30,6 +43,7 @@
         WHERE aa.auth_code = "SJAU_0004" and aa.res_yn="n"
     </select>
 
+    <!--입력할때 로그인한 사람 이름& 부서 가져오기-->
     <select id="selectWriter" resultType="AcResponseDto">
         SELECT emp_id, emp_name, hdqrt_code.hq_name, dep_code.dep_name
         FROM emp_table as bb
@@ -38,20 +52,17 @@
         WHERE bb.emp_id = #{empId}
     </select>
 
-    <!--안쓰임-->
-    <insert id="insert" parameterType="AcRequestDto">
-        INSERT INTO expreport (exp_title,det_code, remk, com_acc,expense,exp_num,appr,appl_date,maj_code)
-        VALUES (#{expTitle},#{detCode},#{remk},#{comAcc},#{expense},#{expNum},#{appr},now(),"회계")
-    </insert>
-
+    <!--등록-->
     <insert id="insertList" parameterType="List">
-        INSERT INTO expreport (exp_title,det_code, remk, com_acc,expense,appr,appl_date,maj_code,att_file,emp_id)
+        INSERT INTO expreport (exp_title,det_code, remk, com_acc,expense,appr,appr_id, appl_date,maj_code,att_file,emp_id)
         VALUES
             <foreach collection="list" separator="," item="ac">
-            (#{ac.expTitle},#{ac.detCode},#{ac.remk},#{ac.comAcc},#{ac.expense},#{ac.appr},now(),"회계",#{ac.attFile},#{ac.empId})
+            (#{ac.expTitle},#{ac.detCode},#{ac.remk},#{ac.comAcc},#{ac.expense},#{ac.appr},#{ac.apprId},now(),"회계",#{ac.attFile},#{ac.empId}
+            )
             </foreach>
     </insert>
 
+    <!--결의번호 생성-->
     <update id="updateExpNum" parameterType="List">
         update expreport
         set exp_num  = (SELECT concat("SJCD-",LPAD((MAX(CONVERT(SUBSTRING(exp_num,6,10),signed integer)))+1,4,0)) from
@@ -59,6 +70,17 @@
         where exp_num is null
     </update>
 
+    <!--승인자 아이디 추가-->
+    <update id="updateApprId" parameterType="List">
+        update expreport
+        inner join emp_table on expreport.appr = emp_table.emp_name
+        set expreport.appr_id = emp_table.emp_id
+        where expreport.appr_id is null
+    </update>
+
+
+
+    <!--승인/반려 반영-->
     <update id="update" parameterType="AcRequestDto">
         UPDATE expreport
         SET appr_state = #{apprState}, appr_date = #{apprDate}
