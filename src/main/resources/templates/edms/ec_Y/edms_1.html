@@ -53,13 +53,12 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr onclick="window.location='ec_acform.html'">
+                                            <tr onclick="window.location='/edms/edms_acform'">
                                                 <td>회계</td>
                                                 <td>SJDO-0001</td>
                                                 <td>지출결의서</td>
                                             </tr>
-                                            <tr onclick="window.location='ec_hrform.html'">
-                                            <tr onclick="window.location='/levwrite'">
+                                            <tr onclick="window.location='/levinsert'">
                                                 <td>인사</td>
                                                 <td>SJDO-0003</td>
                                                 <td>휴가신청서</td>
@@ -90,7 +89,7 @@
                             <tr th:each="HrResponseDto : ${levlist}">
                                 <td>인사</td>
                                 <td th:text="${HrResponseDto.levNum}"></td>
-                                <td><a th:href="@{/levreportuser/{levId}(levId= ${HrResponseDto.levId})}">[[${HrResponseDto.levTitle}]]</a>
+                                <td><a th:href="@{/userdetail/{levId}(levId= ${HrResponseDto.levId})}">[[${HrResponseDto.levTitle}]]</a>
                                 </td>
                                 <td th:text="${HrResponseDto.applDate}"></td>
                                 <td th:text="${HrResponseDto.apprState}"></td>

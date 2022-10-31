@@ -28,6 +28,7 @@
       <div style="margin-left: 8%">
         <form action="/levwriteinsert" method="POST" onsubmit="return submitBtn();" >
           <input type="hidden" class="appr_name" name="appr">
+          <input type="hidden" name="empId" th:value="${empInfo.empId}">
           <div class="card shadow col-lg-11 p-0">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary float-left">전자결재 > 결재상신함</h6>
@@ -44,7 +45,7 @@
                   <th>결재자</th>
                 </tr>
                 <tr>
-                  <td name="empId">사원이름</td>
+                  <td>[[${empInfo.empName}]]</td>
                   <td class="appr_view"></td>
                 </tr>
                 </thead>
@@ -136,7 +137,7 @@
 
               <div class="text-center">
                 <button type="submit" id="submit" class="btn btn-primary" style="width: 100px">등록</button>
-                <button type="button" class="btn btn-danger" onclick="location.href='/writelistview'" style="width: 100px">취소</button>
+                <button type="button" class="btn btn-danger" onclick="location.href='/levwrite'" style="width: 100px">취소</button>
               </div>
             </div>
           </div>

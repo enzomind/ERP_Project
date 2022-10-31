@@ -3,17 +3,13 @@ package com.choongang.erpproject.edms.controller;
 import com.choongang.erpproject.edms.dto.AcRequestDto;
 import com.choongang.erpproject.edms.dto.AcResponseDto;
 import com.choongang.erpproject.edms.service.AcService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +24,7 @@ public class AcController {
         String id = principal.getName();
         List<AcResponseDto> acResponseDtos = acService.findAllOut(id);
         model.addAttribute("acResponseDtos",acResponseDtos);
-        return "/edms/edms_1";
+        return "/edms/ec_H/edms_1";
     }
 
     //지결 상신함 상세
@@ -37,7 +33,7 @@ public class AcController {
         List<AcResponseDto> acResponseDto = acService.findByNum(expNum);
         model1.addAttribute("acResponseDto", acResponseDto);
 //        model
-        return "/edms/edms_ac_detail_1";
+        return "/edms/ec_H/edms_ac_detail_1";
     }
 
     //지결 입력폼 이동
@@ -48,7 +44,7 @@ public class AcController {
         model.addAttribute("acList", acList);
         String id = principal.getName();
         model2.addAttribute("empInfo",acService.findWriter(id));
-        return "/edms/edms_acform";
+        return "/edms/ec_H/edms_acform";
     }
 
     //지결 입력
@@ -70,7 +66,7 @@ public class AcController {
         }
         acService.saveList(listReal);
         acService.updateNum(listReal);
-        return "redirect:/edms/edms_1";
+        return "redirect:/edms/ec_H/edms_1";
     }
 
 
@@ -80,7 +76,7 @@ public class AcController {
         String id = principal.getName();
         List<AcResponseDto> acResponseDtos = acService.findAllIn(id);
         model.addAttribute("acResponseDtos",acResponseDtos);
-        return "/edms/edms_2";
+        return "/edms/ec_H/edms_2";
     }
 
     //지결 수신함 상세
@@ -88,7 +84,7 @@ public class AcController {
     public String goDetail2(@PathVariable("expNum") String expNum, Model model){
         List<AcResponseDto> acResponseDto = acService.findByNum(expNum);
         model.addAttribute("acResponseDto", acResponseDto);
-        return "/edms/edms_ac_detail_2";
+        return "/edms/ec_H/edms_ac_detail_2";
     }
 
     //수신함 승인/반려 반영
@@ -96,7 +92,7 @@ public class AcController {
     public String updateAc(AcRequestDto acRequestDto) {
         System.out.println(acRequestDto);
         acService.updateList(acRequestDto);
-        return "redirect:/edms/edms_2";
+        return "redirect:/edms/ec_H/edms_2";
     }
 
 

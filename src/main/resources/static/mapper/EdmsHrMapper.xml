@@ -20,6 +20,7 @@
         , lev_term
     </sql>
 
+    <!-- 목록 조회 -->
     <select id="getLevList" resultType="HrResponseDto">
         SELECT lev_id,
                lev_num,
@@ -29,6 +30,7 @@
         FROM lev_table
     </select>
 
+    <!-- 상세 조회-->
     <select id="getLevDetail" parameterType="Long" resultType="HrResponseDto">
         SELECT lev_id
              , lev_num
@@ -44,6 +46,7 @@
         where lev_id = #{lev_id}
     </select>
 
+    <!-- 결재자 리스트 -->
     <select id="selectDetail" parameterType="Long" resultType="HrResponseDto">
         select lev_id,emp_table.emp_name, appr, pstn_code.job_name, hdqrt_code.hq_name, dep_code.dep_name, appr_state ,appl_date, appr_date, lev_type, lev_title, lev_content, start_date, end_date, lev_term
         FROM lev_table
@@ -54,6 +57,7 @@
         WHERE lev_id = #{levId};
     </select>
 
+
     <select id="selectHrList" resultType="HrResponseDto">
         select hdqrt_code.hq_name,dep_code.dep_name,pstn_code.job_name, emp_name
         from emp_table as et
@@ -62,11 +66,21 @@
                  INNER JOIN dep_code ON dep_code.dep_no = et.dep_no
     </select>
 
+    <select id="selectWriter" resultType="HrResponseDto">
+        SELECT emp_id, emp_name, hdqrt_code.hq_name, dep_code.dep_name
+        FROM emp_table as bb
+                 INNER JOIN hdqrt_code ON hdqrt_code.hq_code = bb.hq_code
+                 INNER JOIN dep_code ON dep_code.dep_no = bb.dep_no
+        WHERE bb.emp_id = #{empId}
+    </select>
+
+    <!-- 작성글 등록 -->
     <insert id="writeSave" parameterType="HrRequestDto">
-        insert into lev_table(appr, appl_date, lev_title, lev_type, start_date, end_date, lev_term, lev_content)
-            values (#{appr}, now(), #{levTitle}, #{levType}, #{startDate}, #{endDate}, #{levTerm}, #{levContent})
+        insert into lev_table(appr, appl_date, lev_title, lev_type, start_date, end_date, lev_term, lev_content, emp_id)
+            values (#{appr}, now(), #{levTitle}, #{levType}, #{startDate}, #{endDate}, #{levTerm}, #{levContent}, #{empId})
     </insert>
 
+    <!-- 수신함 상태 업데이트 -->
     <update id="stateSave" parameterType="HrRequestDto">
         UPDATE lev_table
         SET appr_state = #{apprState}, appr_date = #{apprDate}
