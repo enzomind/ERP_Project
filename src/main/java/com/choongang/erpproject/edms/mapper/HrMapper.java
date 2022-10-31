@@ -21,6 +21,8 @@ public interface HrMapper {
     //담장자 리스트 조회
     List<HrResponseDto> selectHrList();
 
+    HrResponseDto selectWriter(String id);
+
     void writeSave(HrRequestDto hrRequestDto);
 
     void stateSave(HrRequestDto hrRequestDto);

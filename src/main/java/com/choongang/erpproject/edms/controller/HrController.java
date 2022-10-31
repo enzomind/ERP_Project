@@ -5,10 +5,12 @@ import com.choongang.erpproject.edms.dto.HrRequestDto;
 import com.choongang.erpproject.edms.dto.HrResponseDto;
 import com.choongang.erpproject.edms.service.HrService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -17,46 +19,49 @@ public class HrController {
     HrService hrService;
 
     //결재상신함 : 리스트 확인
-   @GetMapping("/levwriteview")
+   @GetMapping("/levwrite")
     public String writelist(Model model) {
        List<HrResponseDto> levlist = hrService.getLevList();
        model.addAttribute("levlist", levlist);
-       return "/edms/ec_yejin/edms_1";
+       return "/edms/ec_Y/edms_1";
    }
 
     //결재수신함 : 리스트 확인
-    @GetMapping("/levapprview")
+    @GetMapping("/levappr")
     public String apprlist(Model model) {
         List<HrResponseDto> levlist = hrService.getLevList();
         model.addAttribute("levlist", levlist);
-        return "/edms/ec_yejin/edms_2";
+        return "/edms/ec_Y/edms_2";
     }
 
 
     //결재상신함 : 작성글 확인
-   @GetMapping("/levreportuser/{levId}")
+   @GetMapping("/userdetail/{levId}")
     public String hrform1(@PathVariable("levId") Long levId, Model model) {
        HrResponseDto numDetail = hrService.findByNum(levId);
        model.addAttribute("numDetail", numDetail);
-       return "/edms/ec_yejin/edms_hr_detail_1";
+       return "/edms/ec_Y/edms_hr_detail_1";
    }
 
 
     //결재수신함 : 작성글 확인
-    @GetMapping("/levreportappr/{levId}")
+    @GetMapping("/apprdetail/{levId}")
     public String hrform2(@PathVariable("levId") Long levId, Model model) {
         HrResponseDto numDetail = hrService.findByNum(levId);
         model.addAttribute("numDetail", numDetail);
-        return "/edms/ec_yejin/edms_hr_detail_2";
+        return "/edms/ec_Y/edms_hr_detail_2";
     }
 
 
     //결재상신함 : 글 작성페이지
-   @GetMapping("/levwrite")
-    public String writeform(Model model) throws Exception {
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/levinsert")
+    public String writeform(Model model, Model model2, Principal principal) {
        List<HrResponseDto> hrList = hrService.findHr();
        model.addAttribute("hrList", hrList);
-       return "/edms/ec_yejin/edms_hrform";
+       String id = principal.getName();
+       model2.addAttribute("empInfo", hrService.findWriter(id));
+       return "/edms/ec_Y/edms_hrform";
    }
 
    //작성글 insert
@@ -64,7 +69,7 @@ public class HrController {
     public String levwriteinsert(HrRequestDto hrRequestDto) {
         System.out.println(hrRequestDto.getAppr());
        hrService.writeSave(hrRequestDto);
-       return "redirect:/levwriteview";
+       return "redirect:/levwrite";
     }
 
     //결재수신함 상태 update
@@ -72,7 +77,7 @@ public class HrController {
     public String levstate( HrRequestDto hrRequestDto) {
         System.out.println(hrRequestDto);
        hrService.stateSave(hrRequestDto);
-       return "redirect:/levapprview";
+       return "redirect:/levappr";
     }
 
 //   @RequestMapping("/levwriteinsert")

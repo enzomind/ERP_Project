@@ -14,7 +14,7 @@ public interface HrService {
 
     //HrResponseDto getLevDetail(Long levId);
     HrResponseDto findByNum(Long levId);
-
+    HrResponseDto findWriter(String id);
 
 
     void writeSave(HrRequestDto hrRequestDto);

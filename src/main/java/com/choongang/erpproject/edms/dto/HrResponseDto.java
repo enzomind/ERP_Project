@@ -21,6 +21,9 @@ public class HrResponseDto {
 
     //작성자
     private String empId;
+    public void setEmpId(String empId) {
+        this.empId = empId;
+    }
     private String empName;
 
     //소속

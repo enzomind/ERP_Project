@@ -49,7 +49,7 @@
                             <tr th:each="HrResponseDto : ${levlist}">
                                 <td>인사</td>
                                 <td th:text="${HrResponseDto.levNum}"></td>
-                                <td><a th:href="@{/levreportappr/{levId}(levId= ${HrResponseDto.levId})}">[[${HrResponseDto.levTitle}]]</a>
+                                <td><a th:href="@{/apprdetail/{levId}(levId= ${HrResponseDto.levId})}">[[${HrResponseDto.levTitle}]]</a>
                                 </td>
                                 <td th:text="${HrResponseDto.applDate}"></td>
                                 <td th:text="${HrResponseDto.apprState}"></td>
