@@ -12,6 +12,7 @@ $(document).ready(function () {
     if($("#state").val() == "미결재"){
         $("#done").hide();
     }
+
     var date = new Date()
     var today= date.toLocaleDateString().slice(0,12).replaceAll('. ','-')
 
