@@ -32,12 +32,20 @@
             <div class="card shadow mb-4">
 
                 <div class="card-header py-3">
-                    <h4 class="m-0 font-weight-bold text-primary">개인정보 변경</h4>
+                    <h4 class="m-0 font-weight-bold text-primary">비밀번호 변경</h4>
                 </div>
 
                 <div class="card-body">
-                    <!-- 개인정보 변경 창 -->
-                    <div id="MyEmpDiv">
+
+                    <!-- 직원조회 테이블 -->
+                    <div id="TestPassWord">
+                        <span sec:authentication="name"></span><span> 님의 암호를 변경합니다.</span><br><br>
+                        <input type="password"  class="form-input checkPassWord"> <button type="button" class="btn btn-primary mb-3 checkPwBtn" th:text="확인"></button>
+                    </div>
+                    <p></p>
+                    <hr>
+                    <!-- 직원조회 테이블 끝 -->
+                    <div id="PassWordUpdateDiv">
                     </div>
                 </div>
             </div>

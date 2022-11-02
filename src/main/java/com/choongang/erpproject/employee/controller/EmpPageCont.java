@@ -6,6 +6,8 @@ import com.choongang.erpproject.employee.service.EmpService;
 import com.choongang.erpproject.employee.service.EmpServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,11 @@ import static org.aspectj.weaver.tools.cache.SimpleCacheFactory.path;
 public class EmpPageCont {
     @Autowired
     EmpService empService;
+    PasswordEncoder passwordEncoder;
+    @Autowired
+    public EmpPageCont(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     //기본 루트
     @GetMapping("hr_emp")
@@ -66,12 +73,14 @@ public class EmpPageCont {
 
         EmpInputDto empInputDto = new EmpInputDto();
 
+
         //주민번호 앞자리 -> 생년월일
         String transBirth = EmpServiceImpl.getBirthday(String.valueOf(map.get("idpNum1")));
         //부서,직급 -> 권한
         String transAuthCode = EmpServiceImpl.getAuthCode(String.valueOf(map.get("depNo")), String.valueOf(map.get("jobCode")));
 
         //pw, totLev, useLev, resYn, vctYn 디폴트 값
+        empInputDto.setPw(passwordEncoder.encode(empInputDto.getPw()));
         empInputDto.setBirth(transBirth);
         empInputDto.setAuthCode(transAuthCode);
         empInputDto.setEmpName(String.valueOf(map.get("empName")));

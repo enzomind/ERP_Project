@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.choongang.erpproject.mypage.mapper.MpMapper">
+    <select id="getUserPw" parameterType="String" resultType="String">
+        SELECT pw
+        FROM erpprojectdb.emp_table
+        WHERE emp_id = #{empId}
+    </select>
+
+    <update id="updateUserPw" parameterType="String" >
+        UPDATE erpprojectdb.emp_table
+        SET pw = #{empPw}
+        WHERE emp_id = #{empId}
+    </update>
+
+    <select id="myEmpSel" parameterType="String" resultType="com.choongang.erpproject.employee.dto.EmpTableDto">
+        SELECT emp_id, res_yn, res_date, emp_name, idp_num, email, tel, hire_date, hq_code, dep_no, job_code, bankname, account, note, filename, filepath
+        FROM erpprojectdb.emp_table
+        WHERE emp_id = #{empId}
+    </select>
+
+    <update id="myPageUpdate" parameterType="com.choongang.erpproject.employee.dto.EmpUpdateDto">
+        UPDATE erpprojectdb.emp_table
+        SET email = #{email}, tel = #{tel}, bankname = #{bankName}, account = #{account}, filename = #{fileName}, filepath = #{filePath}
+        WHERE emp_id = #{empId}
+    </update>
+</mapper>

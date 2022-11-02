@@ -67,7 +67,7 @@ function empGetTable(e) {
                     depNo = "경영관리부";
                     break;
                 case "SJDP_0002" :
-                    depNo = "솔루션관리부";
+                    depNo = "솔루션개발부";
                     break;
                 case "SJDP_0003" :
                     depNo = "SI개발부";
