@@ -34,7 +34,7 @@ function empInputModal() {
                                                            placeholder="enter your email" required="required">
                                                 </div>
                                                 <div class="form-group right">
-                                                    <label class="label-title"></label><span class="ValiVali"></span><br>
+                                                    <label class="label-title my-0">&nbsp;</label><span class="ValiVali"></span><br>
                                                     <input type="email" class="form-email checkVali" name="empInputEmail2" value="@sjht.ac.kr"
                                                            placeholder="@sjht.ac.kr" required="required"><p></p>
                                                 </div>

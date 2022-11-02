@@ -161,7 +161,7 @@ function empGetTable(e) {
                                                    value="${email1}" readonly>
                                         </div>
                                         <div class="form-group right">
-                                            <label class="label-title">　</label>
+                                            <label class="label-title my-0">&nbsp;</label>
                                             <input type="email" class="form-email"
                                                    value="${email2}" readonly>
                                         </div>

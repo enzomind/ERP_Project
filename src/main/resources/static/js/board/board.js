@@ -53,7 +53,7 @@ $(document).ready(function () {
         let pw = $('#password').val()
         if(pw === null || pw === '' ||pw === undefined ) {
             alert("수정하려면 비밀번호를 입력해주세요")
-        } else if (pw === '1234' || pw === 1234) {
+        } else if (pw === password || pw === password) {
             $('#update').removeAttr("disabled");
         }
     })
