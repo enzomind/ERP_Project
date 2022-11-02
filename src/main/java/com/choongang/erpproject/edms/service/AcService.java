@@ -12,6 +12,7 @@ public interface AcService {
     List<AcResponseDto> findByNum(String expNum);
     List<AcResponseDto> findAc();
     AcResponseDto findWriter(String id);
+    String viewExpNum();
     void saveList(List<AcRequestDto> acRequestDtoList);
 
     void updateNum(List<AcRequestDto> acRequestDtoList);
