@@ -20,7 +20,7 @@ public class AcController {
 
     //상신함 리스트
     @GetMapping("/edms/edms_1")
-    public String goEc(Model model,Model model2, Principal principal){
+    public String goEc(Model model,Principal principal){
         String id = principal.getName();
         List<AcResponseDto> acResponseDtos = acService.findAllOut(id);
         model.addAttribute("acResponseDtos",acResponseDtos);
@@ -50,13 +50,7 @@ public class AcController {
     //지결 입력
     @PostMapping("/edms/edms_1")
     public String submitForm(AcRequestDto acRequestDto) {
-
-   /*     AcRequestDto findexpnum = new AcRequestDto();
-        String expNum = findexpnum.setExpNum(섭스 리턴한 값);
-*/
-
         List<AcRequestDto> list = acRequestDto.getAcRequestDtoList();
-//        acRequestDto.setExpNum(expNum);
         List<AcRequestDto> listReal = new ArrayList<>();
 
         for (int i=0; i < 5; i++) {
@@ -66,7 +60,7 @@ public class AcController {
         }
         acService.saveList(listReal);
         acService.updateNum(listReal);
-        return "redirect:/edms/ec_H/edms_1";
+        return "redirect:/edms/edms_1";
     }
 
 
@@ -92,7 +86,7 @@ public class AcController {
     public String updateAc(AcRequestDto acRequestDto) {
         System.out.println(acRequestDto);
         acService.updateList(acRequestDto);
-        return "redirect:/edms/ec_H/edms_2";
+        return "redirect:/edms/edms_2";
     }
 
 
