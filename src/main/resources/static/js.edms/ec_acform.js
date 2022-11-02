@@ -21,6 +21,7 @@ $(document).ready(function () {
             $('#modal1').modal('hide');
         })
 
+
         //입력 하나만 받는애들 value 동일하게 맞추기
         $('#submit').click(function () {
             //title
@@ -51,7 +52,6 @@ $(document).ready(function () {
             $('#file5').val(fileVal);
 
         })
-
 
 
         //경고창 띄우기
@@ -90,4 +90,8 @@ fileInput.onchange = (e) => {
         document.getElementById("preview").src = fileReader.result;
     };
 
+}
+
+function filter(){
+    $('#dataTable_filter').show();
 }

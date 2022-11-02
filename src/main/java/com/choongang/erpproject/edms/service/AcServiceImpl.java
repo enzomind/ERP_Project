@@ -43,6 +43,13 @@ public class AcServiceImpl implements AcService{
         AcResponseDto writerInfo = acMapper.selectWriter(id);
         return writerInfo;
     }
+
+    @Override
+    public String viewExpNum() {
+        String viewExpNum = acMapper.expNumView();
+        return viewExpNum;
+    }
+
     @Override
     public void saveList(List<AcRequestDto> acRequestDtoList) {
         acMapper.insertList(acRequestDtoList);
