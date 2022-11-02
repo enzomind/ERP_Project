@@ -32,11 +32,13 @@
                     <div class="card-body container">
                         <h3 class="text-center mb-3">지출결의서</h3></br>
                         <div class="float-left">결의번호</div>
-                        <input class="form-control col-2 ml-2 float-left" name=acRequestDtoList[0].expNum id="exp_num" type="text" readonly>
+                        <input class="form-control col-2 ml-2 float-left" type="text" th:value="${expNum}" readonly>
+<!--
                             <input type="hidden" name="acRequestDtoList[1].expNum" id="exp_num2">
                             <input type="hidden" name="acRequestDtoList[2].expNum" id="exp_num3">
                             <input type="hidden" name="acRequestDtoList[3].expNum" id="exp_num4">
                             <input type="hidden" name="acRequestDtoList[4].expNum" id="exp_num5">
+-->
 
 
                         <!-- 테이블1 (결재자정보)-->

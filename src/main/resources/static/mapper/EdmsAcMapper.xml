@@ -52,6 +52,11 @@
         WHERE bb.emp_id = #{empId}
     </select>
 
+    <select id="expNumView" resultType="String">
+        SELECT concat("SJCD-",LPAD((MAX(CONVERT(SUBSTRING(exp_num,6,10),signed integer)))+1,4,0))
+        FROM EXPREPORT
+    </select>
+
     <!--등록-->
     <insert id="insertList" parameterType="List">
         INSERT INTO expreport (exp_title,det_code, remk, com_acc,expense,appr,appr_id, appl_date,maj_code,att_file,emp_id)

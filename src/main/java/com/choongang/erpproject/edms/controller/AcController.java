@@ -39,11 +39,12 @@ public class AcController {
     //지결 입력폼 이동
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/edms/edms_acform")
-    public String goAcform(Model model, Model model2,Principal principal){
+    public String goAcform(Model model, Model model2, Model model3, Principal principal){
         List<AcResponseDto> acList = acService.findAc();
         model.addAttribute("acList", acList);
         String id = principal.getName();
         model2.addAttribute("empInfo",acService.findWriter(id));
+        model3.addAttribute("expNum", acService.viewExpNum());
         return "/edms/ec_H/edms_acform";
     }
 

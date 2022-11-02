@@ -24,6 +24,8 @@ public interface AcMapper {
     //상세페이지에서 로그인 정보 조회
     AcResponseDto selectWriter(String id);
 
+    String expNumView();
+
     //지결 여러개 입력
     void insertList(List<AcRequestDto> acRequestDtoList);
 
