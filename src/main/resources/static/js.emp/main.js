@@ -23,10 +23,10 @@ $(document).ready(function () {
                 let promo = '';
                 console.log(data)
                 $('.col-sm-12').css("margin-top", '20px');
-                $('.pagination').remove()
-                $('.dataTables_length').remove()
-                $('#dataTable_info').remove()
-                $('tbody').children().remove();
+
+                $('#dataTable').DataTable().destroy();
+                $('tbody').empty();
+
                 $.each(data, function (index, item) {
                     console.log(item)
                     promo += `
@@ -51,6 +51,9 @@ $(document).ready(function () {
                         `;
                 });
                 $('tbody').append(promo)
+                table = $('#dataTable').DataTable( {
+                    searching: false
+                } );
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) { // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
                 alert("데이터를 불러오는 도중에 오류가 발생하였습니다.")

@@ -26,4 +26,11 @@
         FROM emp_table
         WHERE emp_id = #{empId}
     </select>
+
+
+<!--    <select id="findEmpName" resultType="hashmap">-->
+<!--        select emp_name-->
+<!--        from emp_table-->
+<!--        where emp_id= #{empId}-->
+<!--    </select>-->
 </mapper>
