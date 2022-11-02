@@ -29,7 +29,7 @@
 
     <insert id="insertAccInfo" parameterType="AccRequestDto">
         INSERT INTO acv (
-        <include refid="accRequestColumns"/>
+        <include refid="accRequestColumns" />
         ) VALUES (
         #{statNum}
         , NOW()
@@ -67,9 +67,12 @@
     </select>
 
     <select id="listCount" parameterType="AccResponseDto" resultType="int">
-        SELECT COUNT(*)
-        FROM acv
+        SELECT
+            COUNT(*)
+        FROM
+            acv
     </select>
+
 
 
 </mapper>

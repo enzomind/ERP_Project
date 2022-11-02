@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<th:block layout:fragment="mainHeader">
+
+  <title>전자결제 서브메인</title>
+
+</th:block>
+
+<th:block>
+  <div layout:fragment="content">
+    <div class="container-fluid">
+      <!-- Head -->
+      <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-left-primary shadow h-70 w-421 py-2">
+            <div class="col mr-2">
+              <div class="h5 mb-0 font-weight-bold text-gray-800">EDMS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 글목록 -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h5 class="m-0 font-weight-bold text-primary">전자결재 수신함</h5>
+        </div>
+
+        <!--총 목록 박스-->
+        <div class="card-body">
+          <div class="table-responsive">
+            <div id="listTotal"></div>
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+                <th>구분</th>
+                <th>결의번호</th>
+                <th>제목</th>
+                <th>상신일자</th>
+                <th>결재상태</th>
+              </tr>
+              </thead>
+
+              <tbody>
+              <tr th:each="list : ${edmsOutputList}" >
+                <td th:text="${list.majCode}"></td>
+                <td th:text="${list.num}"></td>
+                <td><a th:text="${list.title}" th:href="@{/edms/edms_ac_detail_2/{expNum}(expNum=${list.num})}"></a></td>
+                <td th:text="${list.applDate}"></td>
+                <td th:text="${list.apprState}"></td>
+              </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+  </div>
+
+</th:block>
+
+</html>
