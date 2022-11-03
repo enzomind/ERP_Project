@@ -22,5 +22,6 @@ public interface HrService {
 
     void stateSave(HrRequestDto hrRequestDto);
 
+    HrResponseDto forOutputDetail(String levNum);
 
 }

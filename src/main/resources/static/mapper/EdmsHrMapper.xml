@@ -99,4 +99,15 @@
         select count(*) from lev_table
     </select>
 
+
+    <select id="forOutputDetail" parameterType="String" resultType="HrResponseDto">
+        SELECT lev_id, lev_num, emp_table.emp_name, appr, pstn_code.job_name, hdqrt_code.hq_name, dep_code.dep_name, appr_state ,appl_date, appr_date, lev_type, lev_title, lev_content, start_date, end_date, lev_term
+        FROM lev_table
+        INNER JOIN emp_table ON lev_table.emp_id = emp_table.emp_id
+        INNER JOIN pstn_code ON pstn_code.job_code = emp_table.job_code
+        INNER JOIN hdqrt_code ON hdqrt_code.hq_code = emp_table.hq_code
+        INNER JOIN dep_code ON dep_code.dep_no = emp_table.dep_no
+        WHERE lev_num = #{levNum};
+    </select>
+
 </mapper>

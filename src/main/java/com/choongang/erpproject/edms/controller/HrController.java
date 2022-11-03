@@ -55,6 +55,15 @@ public class HrController {
         return "/edms/ec_Y/edms_hr_detail_2";
     }
 
+    //결재수신함 : 작성글 확인 <- 11/03 추가 (적용 버전)
+     @GetMapping("/showdetail/{levNum}")
+    public String forShowOutput(@PathVariable("levNum") String levNum, Model model){
+        HrResponseDto numDetail = hrService.forOutputDetail(levNum);
+        System.out.println(numDetail);
+        model.addAttribute("numDetail", numDetail);
+       return "/edms/ec_Y/edms_hr_detail_2";
+    }
+
 
     //결재상신함 : 글 작성페이지
     @PreAuthorize("isAuthenticated()")

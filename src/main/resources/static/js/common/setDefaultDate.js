@@ -11,7 +11,12 @@ function defaultPeriodSet(location) {
         year -= 1
         month = (month + 11) % 12
         sDate = new Date(year, month, 0).getDate() //해당 달 마지막 날짜로 세팅
+    } else if (sDate < 0){
+        sDate = 1
+        eDate = 7
     }
+
+
 
     var formatSDate = year+"-"+(("00"+month.toString()).slice(-2))+"-"+(("00"+sDate.toString()).slice(-2));
     var formatEDate = year+"-"+(("00"+month.toString()).slice(-2))+"-"+(("00"+eDate.toString()).slice(-2));

@@ -34,5 +34,5 @@ public interface HrMapper {
 
     int listCount();
 
-
+    HrResponseDto forOutputDetail(String levNum);
 }

@@ -61,4 +61,13 @@ public class HrServiceImpl implements HrService {
 
     }
 
+    @Override
+    public HrResponseDto forOutputDetail(String levNum) {
+
+        HrResponseDto param = hrMapper.forOutputDetail(levNum);
+
+        return param;
+    }
+
+
 }

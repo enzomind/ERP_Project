@@ -10,7 +10,7 @@ import java.util.List;
 public interface AccMapper {
 
     //전표 생성
-    void insertAccInfo(AccRequestDto params);
+    void insertAccInfo(String param);
 
     //전표 조회
     List<AccResponseDto> getAccList(AccRequestDto params);
