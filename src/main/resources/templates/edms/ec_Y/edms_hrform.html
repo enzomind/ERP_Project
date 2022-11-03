@@ -28,6 +28,7 @@
       <div style="margin-left: 8%">
         <form action="/levwriteinsert" method="POST" onsubmit="return submitBtn();" >
           <input type="hidden" class="appr_name" name="appr">
+          <input type="hidden" id="appr_id" name="apprId">
           <input type="hidden" name="empId" th:value="${empInfo.empId}">
           <div class="card shadow col-lg-11 p-0">
             <div class="card-header py-3">
@@ -112,6 +113,7 @@
                           <th>부서</th>
                           <th>직급</th>
                           <th>성명</th>
+                          <th style="display: none">사번</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -120,6 +122,7 @@
                           <td th:text="${hr.depName}"></td>
                           <td th:text="${hr.jobName}"></td>
                           <td id="td_name" th:text="${hr.empName}"></td>
+                          <td th:text="${hr.empId}" style="display: none"></td>
                         </tr>
                         </tbody>
                       </table>
@@ -171,12 +174,18 @@
               return function(){
 
                 var name = this.cells[3].innerHTML;
+                var apprId = this.cells[4].innerHTML;
                 html = name;
+
 
                 document.querySelector(".appr_view").innerText = html;
                 document.querySelector(".appr_name").value = html;
 
+                //document.querySelector(".appr_view").innerText = apprId;
+                document.querySelector("#appr_id").value = apprId;
+
                 console.log($(".appr_name").val());
+                console.log($("#appr_id").val());
               };
             }(row);
           }
