@@ -13,6 +13,7 @@ public class HrResponseDto {
     private String levNum;
     private String appr;
     private String apprState;
+    private String apprId;
     private LocalDate apprDate;
     private LocalDate applDate;
     private String levType;

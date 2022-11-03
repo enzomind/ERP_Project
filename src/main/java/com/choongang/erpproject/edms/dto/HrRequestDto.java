@@ -13,6 +13,7 @@ public class HrRequestDto {
     private Long levId;
     private String levNum;
     private String appr;
+    private String apprId;
     private String apprState;
     private String apprDate;
     private String applDate;
