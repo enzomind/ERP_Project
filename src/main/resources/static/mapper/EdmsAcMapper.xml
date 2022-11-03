@@ -76,12 +76,12 @@
     </update>
 
     <!--승인자 아이디 추가-->
-    <update id="updateApprId" parameterType="List">
-        update expreport
-        inner join emp_table on expreport.appr = emp_table.emp_name
-        set expreport.appr_id = emp_table.emp_id
-        where expreport.appr_id is null
-    </update>
+<!--    <update id="updateApprId" parameterType="List">-->
+<!--        update expreport-->
+<!--        inner join emp_table on expreport.appr = emp_table.emp_name-->
+<!--        set expreport.appr_id = emp_table.emp_id-->
+<!--        where expreport.appr_id is null-->
+<!--    </update>-->
 
 
 
