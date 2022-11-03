@@ -24,17 +24,20 @@ public class MpPageCont {
     @Autowired
     MpService mpService;
 
+    //마이페이지 개인정보변경 루트
     @GetMapping("/mp1")
     public String mp1Root(){
 
         return "/mypage/mp";
     }
 
+    //마이페이지 패스워드변경 루트
     @GetMapping("/mp2")
     public String mp2Root(){
         return "/mypage/mp2";
     }
 
+    //마이페이지 패스워드변경
     @PostMapping("/UpdatePw")
     @ResponseBody
     public void UpdatePw (@RequestParam("UpdatePw") String pw, Principal principal) {
@@ -80,7 +83,7 @@ public class MpPageCont {
         return dataList;
     }
 
-
+    //마이페이지 업데이트
     @PostMapping("/myPageUpdate")
     @ResponseBody
     public void myPageUpdate(EmpUpdateDto empUpdateDto, Principal principal){

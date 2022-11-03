@@ -29,6 +29,10 @@ function empUpdateModal(e) {
             let note = data[0].note;
             let resYn = data[0].resYn;
             let resDate = data[0].resDate;
+            let salary = data[0].salary;
+            salary = salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            let wage =  data[0].wage;
+            wage = wage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
             // 파일 네임, 파일 패스 널값 대처
             if(data[0].fileName != null) {
@@ -150,12 +154,12 @@ function empUpdateModal(e) {
 
                                     <div class="horizontal-group">
                                         <div class="form-group left">
-                                            <label class="label-title">이름 *</label><span class="ValiVali"></span><br>
+                                            <label class="label-title">이름</label><span class="ValiVali"></span><br>
                                             <input type="text" class="form-input checkVali" name="empUpdateName"
                                                            required="required" value="${empName}"/>
                                         </div>
                                         <div class="form-group right">
-                                            <label class="birth">주민번호 *</label><span class="ValiVali"></span><br>
+                                            <label class="birth">주민번호</label><span class="ValiVali"></span><br>
                                              <input type="text" class="form-input birth checkVali" name="empUpdateIdpNum1"
                                                            required="required" value="${idpNum1}">
                                                     <data class="dash">-</data>
@@ -166,7 +170,7 @@ function empUpdateModal(e) {
 
                                     <div class="horizontal-group">
                                         <div class="form-group left">
-                                            <label class="label-title">이메일 *</label><span class="ValiVali"></span><br>
+                                            <label class="label-title">이메일</label><span class="ValiVali"></span><br>
                                             <input type="email" class="form-email checkVali" name="empUpdateEmail1"
                                                    value="${email1}" required="required">
                                         </div>
@@ -178,7 +182,7 @@ function empUpdateModal(e) {
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="label-title">휴대전화 *</label><span class="ValiVali"></span><br>
+                                        <label class="label-title">휴대전화</label><span class="ValiVali"></span><br>
                                         <input type="email" class="form-input checkVali" name="empUpdateTel"
                                                value="${tel}" required="required">
                                     </div>
@@ -222,7 +226,7 @@ function empUpdateModal(e) {
 
                                     <div class="horizontal-group">
                                         <div class="form-group left">
-                                            <label class="label-title">급여통장</label><span class="ValiVali"></span><br>
+                                            <label class="label-title">급여정보</label><span class="ValiVali"></span><br>
                                             <select class="form-option checkVali" name="empUpdateBankName" >
                                                 <option value="${bankName}">${bankName} (현재)</option>
                                                 <option value="한국은행">한국은행</option>
@@ -246,6 +250,17 @@ function empUpdateModal(e) {
                                             <label class="label-title">&nbsp;</label><span class="ValiVali"></span><br>
                                             <input type="text" min="18" max="80" name="empUpdateAccount"
                                                    class="form-input checkVali" value = "${account}"/>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="horizontal-group">
+                                        <div class="form-group left">
+                                            <label class="label-title">책정 급여(연별)</label>
+                                            <input type="text" class="form-input" value="${salary} 원" readonly>     
+                                        </div>
+                                        <div class="form-group right">
+                                            <label class="label-title">예상 급여(월별)</label>
+                                            <input type="text" class="form-input" value="${wage} 원"readonly>
                                         </div>
                                     </div>
 

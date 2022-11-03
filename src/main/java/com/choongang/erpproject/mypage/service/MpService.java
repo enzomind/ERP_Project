@@ -1,7 +1,7 @@
 package com.choongang.erpproject.mypage.service;
 
+import com.choongang.erpproject.employee.dto.EmpTableDto;
 import com.choongang.erpproject.employee.dto.EmpUpdateDto;
-import com.choongang.erpproject.employee.dto.HrTableDto;
 import com.choongang.erpproject.mypage.mapper.MpMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -33,8 +33,8 @@ public class MpService {
     }
 
     //개인정보 변경창 셀렉트
-    public List<HrTableDto> myEmpSel(String empId){
-        List<HrTableDto> list = mpMapper.myEmpSel(empId);
+    public List<EmpTableDto> myEmpSel(String empId){
+        List<EmpTableDto> list = mpMapper.myEmpSel(empId);
         return list;
     }
 

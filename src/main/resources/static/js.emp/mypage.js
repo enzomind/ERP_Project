@@ -132,6 +132,10 @@ function MyEmpSel() {
             let note = data[0].note;
             let resYn = data[0].resYn;
             let resDate = data[0].resDate;
+            let salary = data[0].salary;
+            salary = salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            let wage =  data[0].wage;
+            wage = wage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
             // 파일 네임, 파일 패스 널값 대처
             if(data[0].fileName != null) {
@@ -237,12 +241,12 @@ function MyEmpSel() {
 
                                     <div class="horizontal-group">
                                         <div class="form-group left">
-                                            <label class="label-title">이름 *</label><br>
+                                            <label class="label-title">이름</label><br>
                                             <input type="text" class="form-input" name="empInputName"
                                                            required="required" value="${empName}" readonly/>
                                         </div>
                                         <div class="form-group right">
-                                            <p class="birth">주민번호 *</p>
+                                            <p class="birth">주민번호</p>
                                              <input type="text" class="form-input birth" name="empInputIdpNum1"
                                                            required="required" value="${idpNum1}" readonly>
                                                     <data class="dash">-</data>
@@ -253,7 +257,7 @@ function MyEmpSel() {
 
                                     <div class="horizontal-group">
                                         <div class="form-group left">
-                                            <label class="label-title">이메일 *</label><span class="ValiVali"></span><br>
+                                            <label class="label-title">이메일</label><span class="ValiVali"></span><br>
                                             <input type="email" class="form-email checkVali" name="myPageEmail1"
                                                    value="${email1}" required="required">
                                         </div>
@@ -265,7 +269,7 @@ function MyEmpSel() {
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="label-title">휴대전화 *</label><span class="ValiVali"></span><br>
+                                        <label class="label-title">휴대전화</label><span class="ValiVali"></span><br>
                                         <input type="email" class="form-input checkVali" name="myPageTel"
                                                value="${tel}" required="required">
                                     </div>
@@ -300,7 +304,7 @@ function MyEmpSel() {
 
                                     <div class="horizontal-group">
                                         <div class="form-group left">
-                                            <label class="label-title">급여통장</label><span class="ValiVali"></span><br>
+                                            <label class="label-title">급여정보</label><span class="ValiVali"></span><br>
                                             <select class="form-option checkVali" name="myPageBankName" >
                                                 <option value="${bankName}">${bankName} (현재)</option>
                                                 <option value="한국은행">한국은행</option>
@@ -326,17 +330,28 @@ function MyEmpSel() {
                                                    class="form-input checkVali" value = "${account}"/>
                                         </div>
                                     </div>
+                                    
+                                    <div class="horizontal-group">
+                                        <div class="form-group left">
+                                            <label class="label-title">책정 급여(연별)</label>
+                                            <input type="text" class="form-input" value="${salary} 원" readonly>     
+                                        </div>
+                                        <div class="form-group right">
+                                            <label class="label-title">예상 급여(월별)</label>
+                                            <input type="text" class="form-input" value="${wage} 원"readonly>
+                                        </div>
+                                    </div>
 
                                     <div class="form-group">
                                        <label class="label-title">서명 파일 업로드</label><span class="ValiVali"></span><br>
-                                       <img class="myPageSignImg" width="180" alt="첨부이미지 미리보기" src="${fileFakePath}"/><br>
+                                       <img class="myPageSignImg mb-1" width="180" alt="첨부이미지 미리보기" src="${fileFakePath}"/><br>
                                        <input type="file" class="myPageSign float-left" size="80" accept="image/*" multiple/> <br>
                                     </div>
 
                                 </div>
                                 <!-- form-footer -->
                                 <div class="modal-footer">
-                                <span>* 이메일, 연락처, 급여통장, 서명파일 외 정보는 인사담당자에게 문의하세요.</span>
+                                <span>* 이메일, 연락처, 급여정보, 서명파일 정보만 변경 가능합니다. 다른 정보 변경은 인사담당자에게 문의해 주세요.</span>
                                     <button type="button" class="btn btn-success" onclick="myPageUpdate()">수정</button>
                                 </div>
 

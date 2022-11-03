@@ -1,7 +1,7 @@
 package com.choongang.erpproject.mypage.mapper;
 
+import com.choongang.erpproject.employee.dto.EmpTableDto;
 import com.choongang.erpproject.employee.dto.EmpUpdateDto;
-import com.choongang.erpproject.employee.dto.HrTableDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -12,7 +12,7 @@ public interface MpMapper {
 
     void updateUserPw(String empId, String empPw);
 
-    List<HrTableDto> myEmpSel(String empId);
+    List<EmpTableDto> myEmpSel(String empId);
 
     void myPageUpdate(EmpUpdateDto empUpdateDto);
 }

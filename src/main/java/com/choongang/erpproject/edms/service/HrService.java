@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface HrService {
 
+    String viewLevNum();
     List<HrResponseDto> getLevList(String id);
 
     List<HrResponseDto> findHr();
@@ -20,5 +21,6 @@ public interface HrService {
     void writeSave(HrRequestDto hrRequestDto);
 
     void stateSave(HrRequestDto hrRequestDto);
+
 
 }

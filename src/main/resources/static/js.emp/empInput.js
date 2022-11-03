@@ -13,12 +13,12 @@ function empInputModal() {
                                             <!-- Firstname and Lastname -->
                                             <div class="horizontal-group">
                                                 <div class="form-group left">
-                                                    <label class="label-title">이름 *</label><span class="ValiVali"></span>
+                                                    <label class="label-title">이름</label><span class="ValiVali"></span>
                                                     <input type="text" class="form-input checkVali" name="empInputName"
                                                            placeholder="enter your name" required="required"/>
                                                 </div>
                                                 <div class="form-group right">
-                                                    <label class="birth">주민번호 *</label><span class="ValiVali"></span><br>
+                                                    <label class="birth">주민번호</label><span class="ValiVali"></span><br>
                                                     <input type="text" class="form-input birth checkVali" name="empInputIdpNum1"
                                                            placeholder="ex) 900101" required="required">
                                                     <data class="dash">-</data>
@@ -29,7 +29,7 @@ function empInputModal() {
 
                                             <div class="horizontal-group">
                                                 <div class="form-group left">
-                                                    <label class="label-title">이메일 *</label><span class="ValiVali"></span><br>
+                                                    <label class="label-title">이메일</label><span class="ValiVali"></span><br>
                                                     <input type="email" class="form-email checkVali" name="empInputEmail1"
                                                            placeholder="enter your email" required="required">
                                                 </div>
@@ -41,7 +41,7 @@ function empInputModal() {
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="label-title">휴대전화 *</label><span class="ValiVali"></span><br>
+                                                <label class="label-title">휴대전화</label><span class="ValiVali"></span><br>
                                                 <input type="tel" class="form-input checkVali" name="empInputTel"
                                                        pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="13"
                                                        placeholder="enter your phone number" required="required">
@@ -94,7 +94,7 @@ function empInputModal() {
                                             </div>
 
                                             <div class="horizontal-group">
-                                                <div class="form-group left">
+                                                <div class="form-group left mb-3">
                                                     <label class="label-title">급여정보</label><span class="ValiVali"></span><br>
                                                     <select class="form-option checkVali" name="empInputBankName" >
                                                         <option value="한국은행">한국은행</option>
@@ -114,13 +114,26 @@ function empInputModal() {
                                                         <option value="카카오뱅크">카카오뱅크</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group right">
+                                                <div class="form-group right mb-0">
                                                     <label class="label-title">&nbsp;</label><span class="ValiVali"></span><br>
                                                     <input type="text" min="18" max="80" name="empInputAccount"
                                                            class="form-input checkVali" /><p></p>
                                                 </div>
                                             </div>
-
+                                            
+                                            <div class="horizontal-group">
+                                                <div class="form-group left">
+                                                    <label class="label-title">책정 급여(연별)</label><span class="ValiVali"></span><br>
+                                                    <input type="text" class="form-input checkVali empInputSalary" name="empInputSalary"
+                                                            required="required" onkeyup="inputNumberFormat(this)">     
+                                                </div>
+                                                <div class="form-group right">
+                                                    <label class="label-title">예상 급여(월별)</label>
+                                                    <input type="text" class="form-input empInputWage"
+                                                            required="required" readonly>
+                                                </div>
+                                            </div>
+                                            
                                             <div class="form-group">
                                                 <label class="label-title">서명 파일 업로드</label><span class="ValiVali"></span><br>
                                                 <img class="empInputSignImg" width="180" alt="첨부이미지 미리보기" src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image"/> <br>
@@ -145,7 +158,13 @@ function empInputModal() {
 
                             `;
     $('.modal-inputEmp').empty().append(html3);
-
+    //월급여 보여주기
+    $('.empInputSalary').on("input", function (e){
+        let exSalary = $('.empInputSalary').val();
+        let exWage = Math.round((exSalary/12)/10)*10;
+        exWage = exWage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        $('.empInputWage').val(exWage+" 원");
+    });
     //파일 입력이 되면 실행되는 함수
     $('.empInputSign').on("input", function (e) {
         let formData = new FormData;
@@ -197,6 +216,8 @@ function readImage(input) {
 
 //empInput 함수 정의 ajax
 function empInput() {
+    let inputSalary = $('input[name=empInputSalary]').val();
+    let inputWage = Math.round((inputSalary/12)/10)*10;
     //여기부터 null 체크
     $('.checkVali').each(function (){
         let thisVal = $(this).val();
@@ -234,6 +255,8 @@ function empInput() {
                 note: $('textarea[name=empInputNote]').val(),
                 inputFileName : fileSaveName,
                 inputFilePath : filePath,
+                salary: inputSalary,
+                wage: inputWage,
             },
             success: function () {
                 console.log("등록 성공")

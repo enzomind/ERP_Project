@@ -20,5 +20,6 @@ public class EmpTableDto {
     String note;
     String fileName;
     String filePath;
-
+    int salary;
+    int wage;
 }

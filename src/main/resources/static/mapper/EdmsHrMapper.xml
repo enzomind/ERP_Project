@@ -20,6 +20,12 @@
         , lev_term
     </sql>
 
+    <!-- 결의번호 생성 -->
+    <select id="levNumView" resultType="String">
+        SELECT concat("SJLD-",LPAD((MAX(CONVERT(SUBSTRING(lev_num,6,10),signed integer)))+1,4,0))
+        FROM lev_table
+    </select>
+
     <!-- 목록 조회 -->
     <select id="getLevList" resultType="HrResponseDto">
         SELECT lev_id,
@@ -31,7 +37,7 @@
         WHERE emp_id = #{empId}
     </select>
 
-    <!-- 상세 조회-->
+    <!-- 상세 조회 -->
     <select id="getLevDetail" parameterType="Long" resultType="HrResponseDto">
         SELECT lev_id
              , lev_num
@@ -44,12 +50,12 @@
              , lev_title
              , lev_content
         FROM lev_table
-        where lev_id = #{lev_id}
+        where lev_num = #{levNum}
     </select>
 
-    <!-- 결재자 리스트 -->
+    <!-- 상세 조회 -->
     <select id="selectDetail" parameterType="Long" resultType="HrResponseDto">
-        select lev_id,emp_table.emp_name, appr, pstn_code.job_name, hdqrt_code.hq_name, dep_code.dep_name, appr_state ,appl_date, appr_date, lev_type, lev_title, lev_content, start_date, end_date, lev_term
+        select lev_id, lev_num, emp_table.emp_name, appr, pstn_code.job_name, hdqrt_code.hq_name, dep_code.dep_name, appr_state ,appl_date, appr_date, lev_type, lev_title, lev_content, start_date, end_date, lev_term
         FROM lev_table
                  INNER JOIN emp_table ON lev_table.emp_id = emp_table.emp_id
                  INNER JOIN pstn_code ON pstn_code.job_code = emp_table.job_code
@@ -58,7 +64,7 @@
         WHERE lev_id = #{levId};
     </select>
 
-
+    <!-- 결재자 리스트 -->
     <select id="selectHrList" resultType="HrResponseDto">
         select hdqrt_code.hq_name,dep_code.dep_name,pstn_code.job_name, emp_name
         from emp_table as et
@@ -67,6 +73,7 @@
                  INNER JOIN dep_code ON dep_code.dep_no = et.dep_no
     </select>
 
+    <!-- 작성자 불러오기 -->
     <select id="selectWriter" resultType="HrResponseDto">
         SELECT emp_id, emp_name, hdqrt_code.hq_name, dep_code.dep_name
         FROM emp_table as bb

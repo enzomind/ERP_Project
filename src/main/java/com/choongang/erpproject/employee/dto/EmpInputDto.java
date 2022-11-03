@@ -25,4 +25,6 @@ public class EmpInputDto {
     String note;
     String fileName;
     String filePath;
+    int salary;
+    int wage;
 }
