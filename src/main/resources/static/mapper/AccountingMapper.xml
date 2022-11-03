@@ -6,9 +6,7 @@
 <mapper namespace="com.choongang.erpproject.accounting.mapper.AccMapper">
 
     <sql id="accRequestColumns">
-        stat_num
-        , stat_date
-        , exp_num
+        exp_num
         , emp_id
     </sql>
 
@@ -27,15 +25,11 @@
         , income
     </sql>
 
-    <insert id="insertAccInfo" parameterType="AccRequestDto">
-        INSERT INTO acv (
+    <insert id="insertAccInfo" parameterType="String">
+        INSERT IGNORE INTO acv (
         <include refid="accRequestColumns" />
-        ) VALUES (
-        #{statNum}
-        , NOW()
-        , #{expNum}
-        , #{empId}
-        )
+        ) SELECT exp_num, emp_id
+        FROM expreport WHERE exp_num = #{expNum}
     </insert>
 
     <select id="getAccList" parameterType="AccRequestDto" resultType="AccResponseDto">

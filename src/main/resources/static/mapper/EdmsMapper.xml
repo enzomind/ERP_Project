@@ -10,6 +10,7 @@
         SELECT *
         FROM view_expreport
         WHERE appr_id = #{apprId}
+        GROUP BY num
         UNION ALL
         SELECT *
         FROM view_lev_table

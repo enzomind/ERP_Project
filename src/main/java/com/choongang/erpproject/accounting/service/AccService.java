@@ -9,5 +9,6 @@ public interface AccService {
     List<AccResponseDto> getAccList(AccRequestDto params);
     List<AccResponseDto> getAccDetail(Long statNum);
 
+    void insertAccInfo(String param);
 
 }

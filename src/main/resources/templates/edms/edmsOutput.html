@@ -47,7 +47,11 @@
               <tr th:each="list : ${edmsOutputList}" >
                 <td th:text="${list.majCode}"></td>
                 <td th:text="${list.num}"></td>
-                <td><a th:text="${list.title}" th:href="@{/edms/edms_ac_detail_2/{expNum}(expNum=${list.num})}"></a></td>
+
+
+                <td th:if="${list.majCode == '회계'}"><a th:text="${list.title}" th:href="@{/edms/edms_ac_detail_2/{expNum}(expNum=${list.num})}"></a></td>
+                <td th:if="${list.majCode == '인사'}"><a th:text="${list.title}" th:href="@{/showdetail/{levNum}(levNum=${list.num})}"></a></td>
+
                 <td th:text="${list.applDate}"></td>
                 <td th:text="${list.apprState}"></td>
               </tr>

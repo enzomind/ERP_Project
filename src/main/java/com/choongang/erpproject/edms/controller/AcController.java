@@ -1,5 +1,6 @@
 package com.choongang.erpproject.edms.controller;
 
+import com.choongang.erpproject.accounting.service.AccService;
 import com.choongang.erpproject.edms.dto.AcRequestDto;
 import com.choongang.erpproject.edms.dto.AcResponseDto;
 import com.choongang.erpproject.edms.service.AcService;
@@ -17,6 +18,8 @@ import java.util.List;
 public class AcController {
     @Autowired
     private AcService acService;
+    @Autowired
+    private AccService accService;
 
     //상신함 리스트
     @GetMapping("/edms/edms_1")
@@ -87,14 +90,10 @@ public class AcController {
     public String updateAc(AcRequestDto acRequestDto) {
         System.out.println(acRequestDto);
         acService.updateList(acRequestDto);
+
+
+        accService.insertAccInfo(acRequestDto.getExpNum());
+
         return "redirect:/edms/edms_2";
     }
-
-
-//    @PostMapping("/edms/edms_1")
-//    public String submitForm(AcRequestDto acRequestDto){
-//        acService.save(acRequestDto);
-//        return "redirect:/edms/edms_1";
-//    }
-
 }

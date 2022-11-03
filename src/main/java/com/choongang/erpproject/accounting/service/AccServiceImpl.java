@@ -40,4 +40,9 @@ public class AccServiceImpl implements AccService {
         return detailList;
     }
 
+    @Override
+    public void insertAccInfo(String param) {
+        accMapper.insertAccInfo(param);
+    }
+
 }
