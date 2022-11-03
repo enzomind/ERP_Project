@@ -22,7 +22,7 @@
 
     <!-- 결의번호 생성 -->
     <select id="levNumView" resultType="String">
-        SELECT concat("SJLD-",LPAD((MAX(CONVERT(SUBSTRING(lev_num,6,10),signed integer)))+1,4,0))
+        SELECT ifnull(concat("SJLD-",LPAD((MAX(CONVERT(SUBSTRING(lev_num,6,10),signed integer)))+1,4,0)),"SJLD-0001")
         FROM lev_table
     </select>
 
