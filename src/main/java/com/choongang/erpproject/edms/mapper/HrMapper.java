@@ -11,11 +11,16 @@ import java.util.List;
 @Mapper
 public interface HrMapper {
 
+    //결의번호 생성
+    String levNumView();
+
     //목록 조회
     List<HrResponseDto> getLevList(String id);
 
     //상세 조회(결의번호 id)
     //HrResponseDto getLevDetail(Long levId);
+
+    //상세 조회
     HrResponseDto selectDetail(Long levId);
 
     //담장자 리스트 조회
@@ -28,5 +33,6 @@ public interface HrMapper {
     void stateSave(HrRequestDto hrRequestDto);
 
     int listCount();
+
 
 }

@@ -19,7 +19,6 @@ public class HrController {
     HrService hrService;
 
 
-
     //결재상신함 : 리스트 확인
    @GetMapping("/levwrite")
     public String writelist(Model model, Principal principal) {
@@ -60,11 +59,12 @@ public class HrController {
     //결재상신함 : 글 작성페이지
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/levinsert")
-    public String writeform(Model model, Model model2, Principal principal) {
+    public String writeform(Model model, Model model2, Model model3, Principal principal) {
        List<HrResponseDto> hrList = hrService.findHr();
        model.addAttribute("hrList", hrList);
        String id = principal.getName();
        model2.addAttribute("empInfo", hrService.findWriter(id));
+       model3.addAttribute("levNumView", hrService.viewLevNum());
        return "/edms/ec_Y/edms_hrform";
    }
 

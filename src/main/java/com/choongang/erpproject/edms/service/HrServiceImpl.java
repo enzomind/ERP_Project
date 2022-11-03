@@ -16,6 +16,12 @@ public class HrServiceImpl implements HrService {
     private final HrMapper hrMapper;
 
     @Override
+    public String viewLevNum() {
+        String viewLevNum = hrMapper.levNumView();
+        return viewLevNum;
+    }
+
+    @Override
     public List<HrResponseDto> getLevList(String id) {
         List<HrResponseDto> list = Collections.emptyList();
         int listCount = hrMapper.listCount();
