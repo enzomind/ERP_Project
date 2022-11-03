@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/layout}" xmlns="http://www.w3.org/1999/html">
+      layout:decorate="~{layout/layout}" xmlns="http://www.w3.org/1999/html" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <th:block layout:fragment="mainHeader">
     <title>공지사항</title>
@@ -81,8 +81,8 @@
                     </div>
                     <div class="writing-footer">
                         <button type="button" class="btn btn-primary" onclick="location.href='/info/info'">목록</button>
-                        <button type="button" class="btn btn-primary"th:onclick="|location.href='@{/info/updateNotice(ntcNum=${view.ntcNum})}'|">수정</button>
-                        <button type="button" class="btn btn-primary" th:onclick="|location.href='@{/info/deleteNotice(ntcNum=${view.ntcNum})}'|">삭제</button>
+                        <button sec:authorize="hasAnyAuthority('SJAU_0005')" type="button" class="btn btn-primary"th:onclick="|location.href='@{/info/updateNotice(ntcNum=${view.ntcNum})}'|">수정</button>
+                        <button sec:authorize="hasAnyAuthority('SJAU_0005')" type="button" class="btn btn-primary" th:onclick="|location.href='@{/info/deleteNotice(ntcNum=${view.ntcNum})}'|">삭제</button>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->

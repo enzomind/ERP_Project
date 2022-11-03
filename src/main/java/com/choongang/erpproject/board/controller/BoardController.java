@@ -33,6 +33,7 @@ public class BoardController {
     @RequestMapping("/board")
     private String GotoBoard(Model model) {
         List<BoardDto> list = boardMapper.selectBoardList();
+        System.out.println(list);
         model.addAttribute("info", list);
         return "/board/board";
     }

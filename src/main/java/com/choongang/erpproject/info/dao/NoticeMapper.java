@@ -10,6 +10,7 @@ public interface NoticeMapper {
     void updateNotice(long ntcNum, String title, String content, String uuid, String fileName);
     void deleteNotice(long ntcNum);
     void insertNotice(String title, String content,String uuid, String fileName);
+    void insertNoticeNoFile(String title, String content);
 
     List<NoticeDto> selectNoticeList();
     void updateViewCnt(long ntcNum);

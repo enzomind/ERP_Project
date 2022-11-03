@@ -28,7 +28,7 @@ public class AccMapperTest {
         accRequestDto.setStartDate(LocalDate.now());
         accRequestDto.setEndDate(LocalDate.now());
 
-        accMapper.insertAccInfo(accRequestDto);
+//        accMapper.insertAccInfo(accRequestDto);
 
         List<AccResponseDto> data = accMapper.getAccList(accRequestDto);
         System.out.println("전체 개시글 수 : " + data.size() + "건");

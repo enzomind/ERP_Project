@@ -1,6 +1,11 @@
 
 
 $(document).ready(function () {
+    $('#dataTable').DataTable({
+        order: [[0, 'desc']],
+        ordering: true,
+        serverSide: false
+    });
 
     $('#search').click(function () {
 
@@ -25,7 +30,7 @@ $(document).ready(function () {
                 $.each(data, function (index, item) {
                     console.log(item)
                     board += `
-                                <tr th:onclick="|location.href='@{/info/viewinfo(ntcNum=${item.boardNum})}'|" style="cursor:pointer;">
+                                <tr onclick="location.href='/board/viewBoard?boardNum=${item.boardNum}'" style="cursor:pointer;">
                                 <td>${item.boardNum}</td>
                                 <td name="title">${item.title}</td>
                                 <td name="writer">${item.writer}</td>

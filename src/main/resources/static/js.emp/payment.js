@@ -1,9 +1,10 @@
-let i = 0;
+
 $(document).ready(function () {
 
-    $('.payname').click(function () {
+    $(document).on('click', '.payname', function(){
 
-        let empId = $(this).parent().siblings('.empId').html();
+        let empId = $(this).parent().siblings('.empId').text();
+        console.log(empId)
         let paydata = {
             empId: empId
         }
@@ -16,7 +17,7 @@ $(document).ready(function () {
             dataType: "json",           //   서버에서 보내줄 데이터의 타입
 
             success: function (data) {  //비동기통신의 성공일경우 success콜백으로 들어옵니다. 'data'는 응답받은 데이터이다.
-
+                let i = 0;
                 console.log(data)
                 JSON.stringify(data)
                 $('.emNum').html(`${data[i].emp_id}`)
@@ -43,7 +44,7 @@ $(document).ready(function () {
         });
     });
 
-    $('.searchMonth').click(function () {
+    $(document).on('click', '.searchMonth', function() {
 
         let PayYear = $("#year").html();
         let PayMonth = $("#month").html();
