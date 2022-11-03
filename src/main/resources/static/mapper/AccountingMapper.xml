@@ -29,7 +29,7 @@
         INSERT IGNORE INTO acv (
         <include refid="accRequestColumns" />
         ) SELECT exp_num, emp_id
-        FROM expreport WHERE exp_num = #{expNum}
+        FROM expreport WHERE exp_num = #{expNum} GROUP BY exp_num, emp_id
     </insert>
 
     <select id="getAccList" parameterType="AccRequestDto" resultType="AccResponseDto">
