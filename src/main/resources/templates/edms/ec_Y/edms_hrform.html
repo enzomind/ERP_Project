@@ -36,7 +36,7 @@
             <div class="card-body container">
               <h3 class="text-center mb-3">휴가신청서</h3></br>
               <div class="float-left">결의번호</div>
-              <input class="form-control col-2 ml-2 float-left" id="exp_num" name="levNum" type="text" readonly>
+              <input class="form-control col-2 ml-2 float-left" th:value="${levNumView}" type="text" readonly>
               <table class="table table-bordered text-center align-middle col-8 ml-2 float-right">
                 <thead>
                 <tr>
@@ -56,7 +56,7 @@
                   <thead>
                   <tr>
                     <th>소속</th>
-                    <td>test</td>
+                    <td>[[${empInfo.hqName}]] [[${empInfo.DepName}]] </td>
                     <th>상신일자</th>
                     <td id="date"></td>
                   </tr>
