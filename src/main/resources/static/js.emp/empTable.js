@@ -29,6 +29,10 @@ function empGetTable(e) {
             let note = data[0].note;
             let resYn = data[0].resYn;
             let resDate = data[0].resDate;
+            let salary = data[0].salary;
+            salary = salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            let wage =  data[0].wage;
+            wage = wage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
             // 파일 네임, 파일 패스 널값 대처
             if(data[0].fileName != null) {
@@ -140,12 +144,12 @@ function empGetTable(e) {
 
                                     <div class="horizontal-group">
                                         <div class="form-group left">
-                                            <label class="label-title">이름 *</label><br>
+                                            <label class="label-title">이름</label><br>
                                             <input type="text" class="form-input" name="empInputName"
                                                            required="required" value="${empName}" readonly/>
                                         </div>
                                         <div class="form-group right">
-                                            <p class="birth">주민번호 *</p>
+                                            <p class="birth">주민번호</p>
                                              <input type="text" class="form-input birth" name="empInputIdpNum1"
                                                            required="required" value="${idpNum1}" readonly>
                                                     <data class="dash">-</data>
@@ -156,7 +160,7 @@ function empGetTable(e) {
 
                                     <div class="horizontal-group">
                                         <div class="form-group left">
-                                            <label class="label-title">이메일 *</label>
+                                            <label class="label-title">이메일</label>
                                             <input type="email" class="form-email"
                                                    value="${email1}" readonly>
                                         </div>
@@ -168,7 +172,7 @@ function empGetTable(e) {
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="label-title">휴대전화 *</label>
+                                        <label class="label-title">휴대전화</label>
                                         <input type="email" class="form-input"
                                                value="${tel}" readonly>
                                     </div>
@@ -203,7 +207,7 @@ function empGetTable(e) {
 
                                     <div class="horizontal-group">
                                         <div class="form-group left">
-                                            <label class="label-title">급여통장</label>
+                                            <label class="label-title">급여정보</label>
                                             <select class="form-option" readonly>
                                                 <option>${bankName}</option>
                                             </select>
@@ -211,7 +215,18 @@ function empGetTable(e) {
                                         <div class="form-group right">
                                             <label class="label-title">　</label>
                                             <input type="text" min="18" max="80"
-                                                   class="form-input" value = "${account}" readonly/>
+                                                   class="form-input" value = "${account}" readonly>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="horizontal-group">
+                                        <div class="form-group left">
+                                            <label class="label-title">책정 급여(연별)</label>
+                                            <input type="text" class="form-input" value="${salary} 원" readonly>     
+                                        </div>
+                                        <div class="form-group right">
+                                            <label class="label-title">예상 급여(월별)</label>
+                                            <input type="text" class="form-input" value="${wage} 원"readonly>
                                         </div>
                                     </div>
 

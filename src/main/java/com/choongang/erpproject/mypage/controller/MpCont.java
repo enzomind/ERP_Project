@@ -1,5 +1,6 @@
 package com.choongang.erpproject.mypage.controller;
 
+import com.choongang.erpproject.employee.dto.EmpTableDto;
 import com.choongang.erpproject.employee.dto.HrTableDto;
 import com.choongang.erpproject.mypage.mapper.MpMapper;
 import com.choongang.erpproject.mypage.service.MpService;
@@ -22,6 +23,8 @@ public class MpCont {
 
     @Autowired
     MpService mpService;
+
+    // 마이페이지 패스워드조회
     @GetMapping("/getUserName")
     public String returnUser(Principal principal){
         String UserCode = principal.getName();
@@ -29,12 +32,11 @@ public class MpCont {
         return UserPw;
     }
 
+    // 마이페이지 정보조회
     @GetMapping("/myEmpUp")
-    public List<HrTableDto> myEmpUp (Principal principal, Model model){
+    public List<EmpTableDto> myEmpUp (Principal principal, Model model){
         String empId = principal.getName();
         return mpService.myEmpSel(empId);
     }
-
-
 
 }

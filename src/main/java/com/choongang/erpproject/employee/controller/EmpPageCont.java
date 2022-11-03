@@ -96,7 +96,8 @@ public class EmpPageCont {
         empInputDto.setNote(String.valueOf(map.get("note")));
         empInputDto.setFileName(String.valueOf(map.get("inputFileName")));
         empInputDto.setFilePath(String.valueOf(map.get("inputFilePath")));
-
+        empInputDto.setSalary(Integer.parseInt(String.valueOf(map.get("salary"))));
+        empInputDto.setWage(Integer.parseInt(String.valueOf(map.get("wage"))));
         empService.empInput(empInputDto);
         return "/employee/employee_1_FilterResult.html";
     }

@@ -17,7 +17,7 @@
     </update>
 
     <select id="myEmpSel" parameterType="String" resultType="com.choongang.erpproject.employee.dto.EmpTableDto">
-        SELECT emp_id, res_yn, res_date, emp_name, idp_num, email, tel, hire_date, hq_code, dep_no, job_code, bankname, account, note, filename, filepath
+        SELECT emp_id, res_yn, res_date, emp_name, idp_num, email, tel, hire_date, hq_code, dep_no, job_code, bankname, account, note, filename, filepath, salary, wage
         FROM erpprojectdb.emp_table
         WHERE emp_id = #{empId}
     </select>
