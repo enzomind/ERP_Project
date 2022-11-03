@@ -22,7 +22,7 @@
         GROUP BY exp_num ORDER BY exp_num DESC
     </select>
 
-    <!--상세 보기-->
+    <!--상세 페이지-->
     <select id="selectDetail" parameterType="String" resultType="AcResponseDto">
         select exp_num,emp_table.emp_name, appr, pstn_code.job_name, hdqrt_code.hq_name, dep_code.dep_name , appl_date, exp_title, att_file, appr_state, det_code, remk, com_acc, expense, appr_date
         FROM expreport
@@ -52,9 +52,10 @@
         WHERE bb.emp_id = #{empId}
     </select>
 
+    <!--입력폼에서 보이는 결의번호-->
     <select id="expNumView" resultType="String">
-        SELECT concat("SJCD-",LPAD((MAX(CONVERT(SUBSTRING(exp_num,6,10),signed integer)))+1,4,0))
-        FROM EXPREPORT
+        SELECT IFNULL(concat("SJCD-",LPAD((MAX(CONVERT(SUBSTRING(exp_num,6,10),signed integer)))+1,4,0)),"SJCD-0001")
+        FROM expreport
     </select>
 
     <!--등록-->
@@ -70,18 +71,18 @@
     <!--결의번호 생성-->
     <update id="updateExpNum" parameterType="List">
         update expreport
-        set exp_num  = (SELECT concat("SJCD-",LPAD((MAX(CONVERT(SUBSTRING(exp_num,6,10),signed integer)))+1,4,0)) from
+        set exp_num  = (SELECT ifnull(concat("SJCD-",LPAD((MAX(CONVERT(SUBSTRING(exp_num,6,10),signed integer)))+1,4,0)),"SJCD-0001") from
                 (SELECT * from expreport) as a)
         where exp_num is null
     </update>
 
     <!--승인자 아이디 추가-->
-<!--    <update id="updateApprId" parameterType="List">-->
-<!--        update expreport-->
-<!--        inner join emp_table on expreport.appr = emp_table.emp_name-->
-<!--        set expreport.appr_id = emp_table.emp_id-->
-<!--        where expreport.appr_id is null-->
-<!--    </update>-->
+<!--    <update id="updateApprId" parameterType="List">
+        update expreport
+        inner join emp_table on expreport.appr = emp_table.emp_name
+        set expreport.appr_id = emp_table.emp_id
+        where expreport.appr_id is null
+    </update>-->
 
 
 

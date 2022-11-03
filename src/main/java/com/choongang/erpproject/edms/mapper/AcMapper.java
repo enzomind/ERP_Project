@@ -21,9 +21,10 @@ public interface AcMapper {
     //모달 회계담당자 조회
     List<AcResponseDto> selectAcList();
 
-    //상세페이지에서 로그인 정보 조회
+    //입력페이지에서 로그인 정보 조회
     AcResponseDto selectWriter(String id);
 
+    //입력페이지에 결의번호 보여줌
     String expNumView();
 
     //지결 여러개 입력
