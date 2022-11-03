@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $('.promotion').click(function () {
+    $(document).on('click', '.promotion', function(){
         let promoWho = $(this).parent().siblings('.empId').html()
 
         let ProData = {
@@ -40,7 +40,7 @@ $(document).ready(function () {
 
         console.log(proPosi)
         if (proPosi =='none') {
-            $('#noInfo').val("직급을 선택해주세요.");
+            $('#noInfo').text("직급을 선택해주세요.")
             $('#noInfo').show()
         } else if (proSal === null || proSal === '' || proSal === undefined) {
             $('#noInfo').show()

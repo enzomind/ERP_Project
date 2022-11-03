@@ -1,5 +1,9 @@
 $(document).ready(function () {
-
+    $('#dataTable').DataTable({
+        order: [[0, 'desc']],
+        ordering: true,
+        serverSide: false
+    });
     $('#search').click(function () {
 
         let noticedata = {
@@ -23,7 +27,7 @@ $(document).ready(function () {
                 $.each(data, function (index, item) {
                     console.log(item)
                     notice += `
-                                <tr th:onclick="|location.href='@{/info/viewinfo(ntcNum=${item.ntcNum})}'|" style="cursor:pointer;">
+                                <tr onclick="location.href='/info/viewinfo?ntcNum=${item.ntcNum}'" style="cursor:pointer;">
                                 <td>${item.ntcNum}</td>
                                 <td name="title">${item.title}</td>
                                 <td name="writer">${item.writer}</td>

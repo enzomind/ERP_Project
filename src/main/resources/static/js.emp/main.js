@@ -28,26 +28,26 @@ $(document).ready(function () {
                 $('tbody').empty();
 
                 $.each(data, function (index, item) {
-                    console.log(item)
                     promo += `
-                                       <tr>
-                                         <td><span>${item.emp_id}</span></td>
-                                         <td><span>${item.auth_name}</span></td>
-                                         <td><span>${item.job_name}</span></td>
-                                         <td>
-                                             <button data-toggle="modal" data-target="#ecmodal4"
-                                                     style="background: none; border: none; color: #4e73df;" id="payname">${item.emp_name}
-                                             </button>
-                                         </td>
-                                         <td><span>${item.birth}</span></td>
-                                         <td><span>${item.hq_name}</span></td>
-                                         <td><span>${item.dep_name}</span></td>
-                                         <td>
-                                             <button class="btn btn-outline-primary" data-toggle="modal"
-                                                    data-target="#ecmodal3">설정
-                                             </button>
-                                         </td>
-                                     </tr>
+                            <tr>
+                                <td class="empId">${item.emp_id}</td>
+                                <td>${item.auth_name}</td>
+                                <td>${item.job_name}</td>
+                                <td>
+                                    <button data-toggle="modal" class="payname" data-target="#ecmodal4"
+                                            style="background: none; border: none; color: #4e73df;"
+                                          >${item.emp_name}
+                                    </button>
+                                </td>
+                                <td>${item.birth}</td>
+                                <td>${item.hq_name}</td>
+                                <td>${item.dep_name}</td>
+                                <td>
+                                    <button class="btn btn-outline-primary promotion" data-toggle="modal"
+                                            data-target="#ecmodal3" >설정
+                                    </button>
+                                </td>
+                            </tr>   
                         `;
                 });
                 $('tbody').append(promo)
@@ -62,5 +62,41 @@ $(document).ready(function () {
 
     });
 
+
 });
 
+// <tr>
+//     // <td className="empId">${item.emp_id}</td>
+//     // <td>${item.auth_name}</td>
+//     // <td>${item.job_name}</td>
+//     // <td>
+//     // <button data-toggle="modal" data-target="#ecmodal4"
+//                 style="background: none; border: none; color: #4e73df;" class="payname">${item.emp_name}
+//         </button>
+//     </td>
+//     <td>${item.birth}</td>
+//     <td>${item.hq_name}</td>
+//     <td>${item.dep_name}</td>
+//     <td>
+//         <button class="btn btn-outline-primary" data-toggle="modal"
+//                data-target="#ecmodal3">설정
+//         </button>
+//     </td>
+// </tr>  <tr>
+//                                      //     <td class="empId">${item.emp_id}</td>
+//                                      //     <td>${item.auth_name}</td>
+//                                      //     <td>${item.job_name}</td>
+//                                      //     <td>
+//                                      //         <button data-toggle="modal" data-target="#ecmodal4"
+//                                      //                 style="background: none; border: none; color: #4e73df;" class="payname">${item.emp_name}
+//                                      //         </button>
+//                                      //     </td>
+//                                      //     <td>${item.birth}</td>
+//                                      //     <td>${item.hq_name}</td>
+//                                      //     <td>${item.dep_name}</td>
+//                                      //     <td>
+//                                      //         <button class="btn btn-outline-primary" data-toggle="modal"
+//                                      //                data-target="#ecmodal3">설정
+//                                      //         </button>
+//                                      //     </td>
+//                                      // </tr>
