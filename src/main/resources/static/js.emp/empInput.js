@@ -125,7 +125,7 @@ function empInputModal() {
                                                 <div class="form-group left">
                                                     <label class="label-title">책정 급여(연별)</label><span class="ValiVali"></span><br>
                                                     <input type="text" class="form-input checkVali empInputSalary" name="empInputSalary"
-                                                            required="required">     
+                                                            required="required" onkeyup="inputNumberFormat(this)">     
                                                 </div>
                                                 <div class="form-group right">
                                                     <label class="label-title">예상 급여(월별)</label>
