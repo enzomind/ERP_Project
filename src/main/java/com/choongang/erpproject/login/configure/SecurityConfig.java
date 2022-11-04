@@ -11,8 +11,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import com.choongang.erpproject.login.configure.JwtFilter;
-import com.choongang.erpproject.login.configure.JwtTokenProvider;
+
 
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -68,6 +67,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/index")
+                .failureHandler(loginFailHandler())
+                //추후에 핸들러 부분 수정
 
                 .and()
                 .exceptionHandling().accessDeniedHandler(new com.choongang.erpproject.login.configure.CustomAccessDeniedHandler())
@@ -84,4 +85,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .ignoring()
                 .antMatchers("/v2/api-docs","/swagger-resources/**", "/swagger-ui.html", "/webjars/**", "/swagger/**");
     }
+
+    @Bean
+    public LoginFailHandler loginFailHandler() {
+        return new LoginFailHandler();
+    }
+
+
 }

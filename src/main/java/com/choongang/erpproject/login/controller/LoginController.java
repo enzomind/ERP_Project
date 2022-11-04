@@ -102,15 +102,18 @@ public class LoginController {
             cookie.setMaxAge(60 * 60);
             respon.addCookie(cookie);
 
-        }catch(LoginFailedException exception){
+        }
+        catch(LoginFailedException exception){
             logger.debug(exception.getMessage());
+
             BaseResponse response = responseService.getBaseResponse(false, exception.getMessage());
 
             responseEntity = ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
 
-        return "redirect:/main";
+        return "redirect:/";
     }
+
 
     //api 방식
 /*    @GetMapping("/users")
