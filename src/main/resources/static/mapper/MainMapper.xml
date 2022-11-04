@@ -13,6 +13,7 @@
         FROM lev_table AS l
                  INNER JOIN emp_table AS e
                             ON l.emp_id = e.emp_id
+                                AND appr_state = '승인'
     </select>
 
     <select id="getCalDetail" parameterType="MainRequestDto" resultType="MainResponseDto">
@@ -23,6 +24,7 @@
                  INNER JOIN dep_code ON dep_code.dep_no = emp_table.dep_no
                  INNER JOIN pstn_code ON pstn_code.job_code = emp_table.job_code
         WHERE start_date = #{startDate};
+        AND appr_state = '승인'
 
     </select>
 
@@ -41,12 +43,13 @@
         SELECT count(*)
         FROM expreport
         WHERE appr_id = #{empId}
-          AND appr_state = 'N'
+          AND appr_state = '미결재'
     </select>
 
     <select id="getNoticeDash" resultType="MainResponseDto">
         SELECT ntc_num, title, SUBSTRING(date, 1, 10) AS date
         FROM notice
+        WHERE del_yn = 'n'
         ORDER BY ntc_num DESC LIMIT 10;
     </select>
 
