@@ -90,7 +90,7 @@ public class HrController {
     public String levstate( HrRequestDto hrRequestDto) {
         System.out.println(hrRequestDto);
        hrService.stateSave(hrRequestDto);
-       return "redirect:/levappr";
+       return "redirect:/edmsoutput";
     }
 
 //   @RequestMapping("/levwriteinsert")
