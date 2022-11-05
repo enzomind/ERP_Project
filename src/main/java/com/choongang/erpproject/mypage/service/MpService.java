@@ -20,9 +20,14 @@ public class MpService {
         this.passwordEncoder = passwordEncoder;
     }
     //비밀번호 변경 시 기존 패스워드 셀렉트
-    public String getUserPw(String empId){
+    public boolean getUserPw(String empId, String pw){
         String UserPw = mpMapper.getUserPw(empId);
-        return UserPw;
+        if (passwordEncoder.matches(pw, UserPw)){
+            System.out.println("성공");
+            return true;
+        } else {
+            return false;
+        }
     }
 
     //비밀번호 변경 업데이트

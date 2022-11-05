@@ -39,13 +39,13 @@
 
                     <!-- 직원조회 테이블 -->
                     <div id="TestPassWord">
-                        <span sec:authentication="name"></span><span> 님의 암호를 변경합니다.</span><br><br>
-                        <input type="password"  class="form-input checkPassWord"> <button type="button" class="btn btn-primary mb-3 checkPwBtn" th:text="확인"></button>
+                        <span sec:authentication="name"></span><span> 님의 암호를 변경합니다.</span><br>
+                        <span>기존 암호를 입력하세요.</span>
                     </div>
-                    <p></p>
                     <hr>
                     <!-- 직원조회 테이블 끝 -->
                     <div id="PassWordUpdateDiv">
+                        <input type="password"  class="form-input checkPassWord"> <button type="button" class="btn btn-primary mx-2 mb-2 checkPwBtn" th:text="확인"></button>
                     </div>
                 </div>
             </div>

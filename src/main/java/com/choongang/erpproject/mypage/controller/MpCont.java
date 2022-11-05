@@ -4,6 +4,7 @@ import com.choongang.erpproject.employee.dto.EmpTableDto;
 import com.choongang.erpproject.employee.dto.HrTableDto;
 import com.choongang.erpproject.mypage.mapper.MpMapper;
 import com.choongang.erpproject.mypage.service.MpService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,10 +27,11 @@ public class MpCont {
 
     // 마이페이지 패스워드조회
     @GetMapping("/getUserName")
-    public String returnUser(Principal principal){
+    @ResponseBody
+    public boolean returnUser(@RequestParam("password")String pw, Principal principal){
         String UserCode = principal.getName();
-        String UserPw = mpService.getUserPw(UserCode);
-        return UserPw;
+        boolean booleanPw = mpService.getUserPw(UserCode, pw);
+        return booleanPw;
     }
 
     // 마이페이지 정보조회
