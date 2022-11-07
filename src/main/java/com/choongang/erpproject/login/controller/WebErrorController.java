@@ -11,24 +11,25 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class WebErrorController implements ErrorController {
 
-    public String getErrorPath(){
+    public String getErrorPath() {
         return null;
     }
 
     @GetMapping("/error")
-    public String handlerError(HttpServletRequest request){
+    public String handlerError(HttpServletRequest request) {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
 
-        if(status!=null){
+        if (status != null) {
             int statusCode = Integer.valueOf(status.toString());
 
-            if(statusCode == HttpStatus.NOT_FOUND.value()) {
+            if (statusCode == HttpStatus.NOT_FOUND.value()) {
                 return "error/404error";
-            }else if(statusCode == 403) {
+            } else if (statusCode == 403) {
                 return "error/403error";
-            }else {
-                    return "error/error";
-
+            } else if (statusCode == 401) {
+                return "error/401error";
+            } else {
+                return "error/error";
             }
         }
 
