@@ -1,7 +1,7 @@
-let listTotalCount=0;
-let detailTotalCount=0;
-let listTotalSum=0;
-let detailTotalSum=0;
+let listTotalCount = 0;
+let detailTotalCount = 0;
+let listTotalSum = 0;
+let detailTotalSum = 0;
 
 let setLocation = 'acc';
 
@@ -34,41 +34,37 @@ function findAccAll(setSDate, setEDate) {
         let html = '';
         let htmlTotal = '';
 
-        if (!json.length) {
-            html = '<td colspan="5"> 해당 기간에 조회된 데이터가 없습니다.</td>';
-        } else {
+        json.forEach((obj, idx) => {
 
+            if (obj.expTitle == null) {
+                console.log("<-- 제외된 데이터 수");
+            } else {
+                listTotalCount = listTotalCount + 1;
+                var tempExpense = obj.expense;
+                listTotalSum = listTotalSum + tempExpense;
+                var formatExpense = tempExpense.toLocaleString();
 
-                json.forEach((obj, idx) => {
-                    var tempComAcc = obj.comAcc;
-
-
-                    if (tempComAcc == null) {
-                        console.log("<-- 제외된 데이터 수");
-                    } else {
-
-                        listTotalCount = listTotalCount + 1;
-                        var tempExpense = obj.expense;
-                        listTotalSum = listTotalSum + tempExpense;
-                        var formatExpense = tempExpense.toLocaleString();
-
-                    html += `
+                html += `
                         <tr style="cursor:pointer;" onclick="findAccDetail(${obj.statNum})" onmouseover="this.style.background='whitesmoke'" onmouseout="this.style.background='white'">
                             <td>${json.length - idx}</td>
-                            <td>${obj.comAcc}</td>
+                            <td>${obj.expTitle}</td>
                             <td>${obj.statDate}</td>
                             <td>${formatExpense}</td>
                             <td>${obj.income}</td>
                             </tr>
                         `;
-                    }
-                });
-        }
+            }
+
+            if (listTotalCount == 0) {
+                html = '<td colspan="5"> 해당 기간에 조회된 데이터가 없습니다.</td>';
+            }
+        });
+
         listTotalView(listTotalCount);
 
         var sum = listTotalSum.toLocaleString();
 
-        if (listTotalSum>0) {
+        if (listTotalSum > 0) {
             htmlTotal = `
                         <th colspan="3">합계</th>
                             <td>${sum}</td>
@@ -80,7 +76,7 @@ function findAccAll(setSDate, setEDate) {
         $("#list").empty().append(html + htmlTotal);
         // document.getElementById('list').innerHTML = html + htmlTotal;
 
-        var tempDetail = `<td colspan="6">전표 리스트에서 상세 조회할 항목을 선택해 주세요.</td>`;
+        var tempDetail = `<td colspan="7">전표 리스트에서 상세 조회할 항목을 선택해 주세요.</td>`;
         document.getElementById('detailList').innerHTML = tempDetail;
         listTotalCount = 0;
         listTotalSum = 0;
@@ -102,7 +98,7 @@ function findAccDetail(statNum) {
 
         console.log(response);
 
-        if(response.ok) {
+        if (response.ok) {
             return response.json();
         }
     }).then(json => {
@@ -120,6 +116,7 @@ function findAccDetail(statNum) {
                 <tr>
                     <td>${obj.expNum}</td>
                     <td>${obj.empName}</td>
+                    <td>${obj.remk}</td>
                     <td>${obj.appr}</td>
                     <td>${obj.apprDate}</td>
                     <td>${obj.comAcc}</td>
@@ -130,10 +127,10 @@ function findAccDetail(statNum) {
         });
 
         if (detailTotalCount < 5) {
-            for(i=detailTotalCount;i<5;i++){
+            for (i = detailTotalCount; i < 5; i++) {
                 detail += `
                 <tr>
-                    <td colspan="6" height="10" style="background: whitesmoke"></td>
+                    <td colspan="7" height="10" style="background: whitesmoke"></td>
                 </tr>
                 `
             }
@@ -143,9 +140,9 @@ function findAccDetail(statNum) {
 
         var sum = detailTotalSum.toLocaleString();
 
-        if (detailTotalSum>0) {
+        if (detailTotalSum > 0) {
             detailTotal = `
-                        <th colspan="5">합계</th>
+                        <th colspan="6">합계</th>
                             <td>${sum}</td>
                             
                     `;

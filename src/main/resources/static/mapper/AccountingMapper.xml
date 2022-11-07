@@ -34,13 +34,13 @@
 
     <select id="getAccList" parameterType="AccRequestDto" resultType="AccResponseDto">
         SELECT stat_num
-             , com_acc
+             , exp_title
              , stat_date
              , sum(expense) AS expense
              , income
         FROM acv
                  LEFT OUTER JOIN expreport ON acv.exp_num = expreport.exp_num
-               <![CDATA[ AND stat_date >= #{startDate} AND stat_date <= #{endDate} ]]>
+               <![CDATA[ AND stat_date >= #{startDate} AND stat_date <= #{endDate} ]]> AND appr_state = '승인' AND exp_title is not NULL
          GROUP BY com_acc, stat_num, stat_date, income
         ORDER BY stat_num DESC
     </select>
@@ -48,6 +48,7 @@
     <select id="getAccDetail" parameterType="Long" resultType="AccResponseDto">
         SELECT expreport.exp_num
              , emp_name
+             , remk
              , appr
              , appr_date
              , com_acc
