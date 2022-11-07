@@ -260,9 +260,10 @@ function empGetTable(e) {
     })
 }
 
-//이중모달 취소버튼 클릭 시 모달 새로고침
+//취소버튼 클릭 시 모달 새로고침
 function dataDismiss2(e) {
     $('#ecmodal2').modal('hide');
+    $('.modal-searchEmp').empty();
     empGetTable(e);
     $('#ecmodal2').modal('show');
 }

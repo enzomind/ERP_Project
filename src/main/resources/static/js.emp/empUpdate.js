@@ -280,7 +280,7 @@ function empUpdateModal(e) {
                                 </div>
                                 <!-- form-footer -->
                                 <div class="modal-footer">
-                                    <button onclick="dataDismiss('${empId}')" type="button" class="btn btn-secondary" >취소</button>
+                                    <button onclick="dataDismiss3('${empId}')" type="button" class="btn btn-secondary" >취소</button>
                                     <button onclick="empUpdate('${empId}')" type="button" class="btn btn-primary hiddenEmpUpdate" >완료</button>
                                 </div>
 
@@ -360,17 +360,7 @@ function empUpdate(e) {
         transResDateVal = attrResDate;
     }
 //여기부터 null 체크
-    $('.checkVali').each(function (){
-        let thisVal = $(this).val();
-        if(thisVal.length == 0){
-            $(this).siblings('.ValiVali').text("재확인 요망");
-            $(this).siblings('.ValiVali').css("color", "red");
-
-        } else {
-            $(this).siblings('.ValiVali').empty();
-            $(this).siblings('.ValiVali').css("color", "black");
-        }
-    })
+    nullCheck();
 
     if($('.ValiVali').text().length != 0){
         alert("빈 칸이 존재합니다.");
@@ -419,9 +409,10 @@ function empUpdate(e) {
 }
 
 //이중모달 취소버튼 클릭 시 모달 새로고침
-function dataDismiss(e) {
+function dataDismiss3(e) {
     $('#ecmodal3').modal('hide');
     $('#ecmodal2').modal('hide');
+    $('.modal-updateEmp').empty();
     empGetTable(e);
     $('#ecmodal3').modal('show');
     $('#ecmodal2').modal('show');

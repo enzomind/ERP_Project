@@ -149,8 +149,8 @@ function empInputModal() {
                                         </div>
                                         <!-- form-footer -->
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">취소
+                                            <button type="button" class="btn btn-secondary" 
+                                                    data-dismiss="modal" onclick="dataDismiss()">취소
                                             </button>
                                             <button onclick="empInput()" type="button" class="btn btn-primary">등록</button>
                                             <input type="hidden" class="checkValidation" value="n">
@@ -219,17 +219,7 @@ function empInput() {
     let inputSalary = $('input[name=empInputSalary]').val();
     let inputWage = Math.round((inputSalary/12)/10)*10;
     //여기부터 null 체크
-    $('.checkVali').each(function (){
-        let thisVal = $(this).val();
-        if(thisVal.length == 0){
-            $(this).siblings('.ValiVali').text("재확인 요망");
-            $(this).siblings('.ValiVali').css("color", "red");
-
-        } else {
-            $(this).siblings('.ValiVali').empty();
-            $(this).siblings('.ValiVali').css("color", "black");
-        }
-    })
+    nullCheck();
 
     if($('.ValiVali').text().length != 0){
     alert("빈 칸이 존재합니다.");
@@ -298,4 +288,11 @@ function formDataAjax(formData){
             console.log("error");
         }
     });
+}
+
+//모달 취소 새로고침
+function dataDismiss() {
+    $('#ecmodal').modal('hide');
+    $('.modal-inputEmp').empty();
+    $('#ecmodal').modal('show');
 }

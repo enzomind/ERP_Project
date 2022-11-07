@@ -94,6 +94,6 @@ public class AcController {
 
         accService.insertAccInfo(acRequestDto.getExpNum());
 
-        return "redirect:/edms/edms_2";
+        return "redirect:/edmsoutput";
     }
 }

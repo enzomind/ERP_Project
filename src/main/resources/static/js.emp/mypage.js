@@ -7,29 +7,31 @@ $(document).ready(function () {
 
     //비밀번호 확인 클릭 시
     $('.checkPwBtn').on("click", function () {
+        let inputPw = $('.checkPassWord').val();
         //에이잭스 시작
         $.ajax({
             type: "GET",
             url: "/mypage/getUserName",
-
+            data : {
+             password : inputPw
+            },
             success: function (data) {
-                let inputPw = $('.checkPassWord').val();
+                //에이잭스 성공 후 암호 일치 시
+                if(data == true) {
+                    let html1 = "";
+                    let html2 = "";
 
-                // 1111 암호화로 바꿔줌. 수정필요
-                if(inputPw == 1111) {
-                    inputPw = "$2a$10$tUwnuaGytQL93EQ744fJHuHXTptG50dRcDC1.qYCxVlqNjPPD1shC";
-                }
-
-                if(inputPw == data) {
-                    let html = "";
-                    html = ` 
-                        <span>새 암호 입력</span><br><br>
-                        <input type="password" class="form-input NewPassWord"> <br>
-                        <input type="password" class="form-input checkNewPassWord"> <button type="button" class="btn btn-primary mb-3 UpdatePwBtn">변경</button>
+                    html1 = `
+                    <span style="color : limegreen"> 기존 암호와 일치합니다. 비밀번호를 변경합니다.</span>
+                            `;
+                    html2 = ` 
+                        <span>변경할 암호를 입력한 뒤 이어서 재입력 해주세요.</span><br><br>
+                        <spans> 새암호 : </spans><input type="password" class="form-input NewPassWord"> <br>
+                        <spans> 재입력 : </spans><input type="password" class="form-input mt-3 checkNewPassWord"> <button type="button" class="btn btn-primary mx-2 mb-2 UpdatePwBtn">변경</button>
                         <p class="checkingPw"></p>
                         `;
-
-                    $('#PassWordUpdateDiv').empty().append(html);
+                    $('#TestPassWord').empty().append(html1)
+                    $('#PassWordUpdateDiv').empty().append(html2);
 
                     //비밀번호 체크해서 밑에 글씨 띄워주기 -1
                     $('.NewPassWord').on("change", function () {
@@ -40,7 +42,7 @@ $(document).ready(function () {
                                 $('.checkingPw').css("color", "red");
                                 $('.checkingPw').text("비밀번호가 일치하지 않습니다.");
                             } else if (NewPw == CheckPw) {
-                                $('.checkingPw').css("color", "green");
+                                $('.checkingPw').css("color", "limegreen");
                                 $('.checkingPw').text("비밀번호가 일치합니다.");
                             }
                         });
@@ -56,7 +58,7 @@ $(document).ready(function () {
                                 $('.checkingPw').css("color", "red");
                                 $('.checkingPw').text("비밀번호가 일치하지 않습니다.");
                             } else if (NewPw == CheckPw) {
-                                $('.checkingPw').css("color", "green");
+                                $('.checkingPw').css("color", "limegreen");
                                 $('.checkingPw').text("비밀번호가 일치합니다.");
                             }
                         });
@@ -66,8 +68,7 @@ $(document).ready(function () {
 
                     //변경 버튼 클릭 시, 비밀번호 일치하면 에이잭스 실행
                     $('.UpdatePwBtn').on("click", function (){
-                        NewPw = $('.NewPassWord').val();
-                        CheckPw = $('.checkNewPassWord').val();
+                        let NewPw = $('.NewPassWord').val();
                         if($('.checkingPw').text() == "비밀번호가 일치하지 않습니다.") {
                             alert("비밀번호가 서로 다릅니다. 다시 확인해 주세요.");
                         } else if ($('.checkingPw').text() == "비밀번호가 일치합니다.") {
@@ -76,7 +77,15 @@ $(document).ready(function () {
                     });
 
                 }
-
+                //에이잭스 성공 후 암호 불일치 시
+                else if(data == false){
+                    let html = "";
+                    html = `
+                    <span style="color : red"> 암호 재입력 바랍니다.</span>
+                    `;
+                    $('#TestPassWord').children('span').empty();
+                    $('#TestPassWord').prepend(html);
+                }
             },
             error: function () {
                 console.log("error");

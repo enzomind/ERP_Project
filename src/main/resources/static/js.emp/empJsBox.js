@@ -78,7 +78,7 @@ $(document).ready(function () {
 
 });
 
-//
+//값 포맷 콤마 찍어주는 정규화
 function inputNumberFormat(obj) {
     obj.value = comma(uncomma(obj.value));
 }
@@ -91,4 +91,19 @@ function comma(str) {
 function uncomma(str) {
     str = String(str);
     return str.replace(/[^\d]+/g, '');
+}
+
+//널 체크 함수
+function nullCheck() {
+    $('.checkVali').each(function (){
+        let thisVal = $(this).val();
+        if(thisVal.length == 0){
+            $(this).siblings('.ValiVali').text("재확인 요망");
+            $(this).siblings('.ValiVali').css("color", "red");
+
+        } else {
+            $(this).siblings('.ValiVali').empty();
+            $(this).siblings('.ValiVali').css("color", "black");
+        }
+    })
 }
