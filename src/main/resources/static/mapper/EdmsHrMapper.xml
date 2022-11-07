@@ -34,7 +34,7 @@
                appl_date,
                appr_state
         FROM lev_table
-        WHERE emp_id = #{empId}
+        WHERE emp_id = #{empId} ORDER BY lev_num DESC
     </select>
 
     <!-- 상세 조회 -->
