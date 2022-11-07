@@ -25,11 +25,9 @@ public class WebErrorController implements ErrorController {
             if (statusCode == HttpStatus.NOT_FOUND.value()) {
                 return "error/404error";
             } else if (statusCode == 403) {
-                return "error/403error";
+                return "redirect:/";
             } else if (statusCode == 401) {
-                return "error/401error";
-            } else {
-                return "error/error";
+                return "redirect:/";
             }
         }
 
