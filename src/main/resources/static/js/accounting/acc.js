@@ -34,17 +34,21 @@ function findAccAll(setSDate, setEDate) {
         let html = '';
         let htmlTotal = '';
 
-        json.forEach((obj, idx) => {
+        if (!json.length) {
+            html = '<td colspan="5"> 해당 기간에 조회된 데이터가 없습니다.</td>';
+        } else {
 
-            if (obj.expTitle == null) {
-                console.log("<-- 제외된 데이터 수");
-            } else {
-                listTotalCount = listTotalCount + 1;
-                var tempExpense = obj.expense;
-                listTotalSum = listTotalSum + tempExpense;
-                var formatExpense = tempExpense.toLocaleString();
+            json.forEach((obj, idx) => {
 
-                html += `
+                if (obj.expTitle == null) {
+                    console.log("<-- 제외된 데이터 수");
+                } else {
+                    listTotalCount = listTotalCount + 1;
+                    var tempExpense = obj.expense;
+                    listTotalSum = listTotalSum + tempExpense;
+                    var formatExpense = tempExpense.toLocaleString();
+
+                    html += `
                         <tr style="cursor:pointer;" onclick="findAccDetail(${obj.statNum})" onmouseover="this.style.background='whitesmoke'" onmouseout="this.style.background='white'">
                             <td>${json.length - idx}</td>
                             <td>${obj.expTitle}</td>
@@ -53,13 +57,13 @@ function findAccAll(setSDate, setEDate) {
                             <td>${obj.income}</td>
                             </tr>
                         `;
-            }
+                }
 
-            if (listTotalCount == 0) {
-                html = '<td colspan="5"> 해당 기간에 조회된 데이터가 없습니다.</td>';
-            }
-        });
-
+                if (listTotalCount == 0) {
+                    html = '<td colspan="5"> 해당 기간에 조회된 데이터가 없습니다.</td>';
+                }
+            });
+        }
         listTotalView(listTotalCount);
 
         var sum = listTotalSum.toLocaleString();
