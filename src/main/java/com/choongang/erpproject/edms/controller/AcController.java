@@ -91,7 +91,6 @@ public class AcController {
         System.out.println(acRequestDto);
         acService.updateList(acRequestDto);
 
-
         accService.insertAccInfo(acRequestDto.getExpNum());
 
         return "redirect:/edmsoutput";

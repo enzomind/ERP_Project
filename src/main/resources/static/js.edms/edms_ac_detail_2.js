@@ -13,8 +13,8 @@ $(document).ready(function () {
         $("#done").hide();
     }
 
-    var date = new Date()
-    var today= date.toLocaleDateString().slice(0,12).replaceAll('. ','-')
+    var today= new Date (+new Date() + 3240 * 10000).toISOString().split("T")[0];
+
 
     $('#ybtn').click(function () {
         $("#state").val("승인");
