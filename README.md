@@ -16,7 +16,7 @@
 
 <h3>T.F ❣️ 총 5명</h3> 
 최성후(팀장) : https://github.com/Sh931125<br>
-성효영(팀원) : https://github.com/Sh931125<br>
+성효영(팀원) : https://github.com/Hyongyi<br>
 박예진(팀원) : https://github.com/October7th<br>
 송한울(팀원) : https://github.com/great-null<br>
 
