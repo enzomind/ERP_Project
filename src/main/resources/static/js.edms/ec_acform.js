@@ -2,11 +2,12 @@
 $(document).ready(function () {
 
         //날짜 화면 표시
-        var date = new Date()
+       /* var date = new Date
         var year = date.getFullYear()
         var month = date.getMonth() + 1
         var day = date.getUTCDate()
-        var today = year + '-' + month + '-' + day
+        var today = year + '-' + month + '-' + day*/
+        today = new Date (+new Date() + 3240 * 10000).toISOString().split("T")[0];
         $('#date').text(today);
 
         //테이블 행 클릭하면 마지막 td를 찾아서 result에 나타내고 모달창을 닫음
@@ -78,19 +79,6 @@ $(document).ready(function () {
     });
 
 //alert 추가 : 비용이 음수일 경우"비용은 음수일 수 없습니다", (2번째행부터) 다안채우고 비용만 채웠을경우, 비용을 비워뒀을경우
-
-
-const fileInput = document.getElementById("file");
-fileInput.onchange = (e) => {
-    const selectFile = fileInput.files[0];
-    const fileReader = new FileReader();
-
-    fileReader.readAsDataURL(selectFile);
-    fileReader.onload = function (){
-        document.getElementById("preview").src = fileReader.result;
-    };
-
-}
 
 function filter(){
     $('#dataTable_filter').show();
