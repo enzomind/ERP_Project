@@ -29,19 +29,20 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <!--검색버튼-->
+                        <!--등록 버튼-->
                         <button type="button" class="btn btn-primary float-right mb-3" data-toggle="modal"
-                                data-target="#ecmodal">결재 등록
+                                data-target="#ecmodal" onclick="window.location='/levinsert'">결재 등록
                         </button>
                         <br>
                         <!-- Modal 모달 -->
+<!--
                         <div class="modal fade" id="ecmodal" data-backdrop="static" data-keyboard="false"
                              tabindex="-1" aria-labelledby="결재등록창띄움" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="staticBackdropLabel">결재 문서 선택</h5>
-                                        <!--x버튼 없앰 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>-->
+                                        &lt;!&ndash;x버튼 없앰 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>&ndash;&gt;
                                     </div>
                                     <div class="modal-body">
                                         <table class="table table-bordered table-hover">
@@ -66,13 +67,14 @@
                                         </table>
                                     </div>
                                     <div class="modal-footer">
-                                        <!--<button type="button" class="btn btn-primary col-2">확인</button> 행 누르면 이동되는 방식으로 바꿈-->
+                                        &lt;!&ndash;<button type="button" class="btn btn-primary col-2">확인</button> 행 누르면 이동되는 방식으로 바꿈&ndash;&gt;
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">취소
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+-->
                         <!--list-->
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>

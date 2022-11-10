@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}" xmlns:sec="http://www.w3.org/1999/xhtml">
-
 <th:block layout:fragment="mainHeader">
     <title>결재상신함</title>
 </th:block>
@@ -9,7 +8,11 @@
 <th:block>
     <div layout:fragment="content">
         <div class="container-fluid">
-
+            <style>
+                input:invalid {
+                    border: 3px solid red;
+                }
+            </style>
             <!-- 콘텐츠 내용 -->
 
             <!-- Head -->
@@ -128,7 +131,7 @@
                                             <option value="기업은행 110-110-111111">기업은행 110-110-111111</option>
                                         </select>
                                     </td>
-                                    <td><input type="text" name="acRequestDtoList[0].expense" id="expense1"
+                                    <td><input type="text" pattern="[0-9]+" name="acRequestDtoList[0].expense" id="expense1"
                                                class="form-control sel4" value="0"></td>
                                 </tr>
                                 <tr id="row2">
@@ -146,7 +149,7 @@
                                             <option value="기업은행 110-110-111111">기업은행 110-110-111111</option>
                                         </select>
                                     </td>
-                                    <td><input type="text" name="acRequestDtoList[1].expense" id="expense2"
+                                    <td><input type="text" pattern="[0-9]+" name="acRequestDtoList[1].expense" id="expense2"
                                                class="form-control" value="0"></td>
                                 </tr>
                                 <tr id="row3">
@@ -164,7 +167,7 @@
                                             <option value="기업은행 110-110-111111">기업은행 110-110-111111</option>
                                         </select>
                                     </td>
-                                    <td><input type="text" name="acRequestDtoList[2].expense" id="expense3"
+                                    <td><input type="text" pattern="[0-9]+" name="acRequestDtoList[2].expense" id="expense3"
                                                class="form-control" value="0"></td>
                                 </tr>
                                 <tr id="row4">
@@ -182,7 +185,7 @@
                                             <option value="기업은행 110-110-111111">기업은행 110-110-111111</option>
                                         </select>
                                     </td>
-                                    <td><input type="text" name="acRequestDtoList[3].expense" id="expense4"
+                                    <td><input type="text" pattern="[0-9]+" name="acRequestDtoList[3].expense" id="expense4"
                                                class="form-control" value="0"></td>
                                 </tr>
                                 <tr id="row5">
@@ -200,7 +203,7 @@
                                             <option value="기업은행 110-110-111111">기업은행 110-110-111111</option>
                                         </select>
                                     </td>
-                                    <td><input type="text" name="acRequestDtoList[4].expense" id="expense5"
+                                    <td><input type="text" pattern="[0-9]+" name="acRequestDtoList[4].expense" id="expense5"
                                                class="form-control" value="0"></td>
                                 </tr>
 
