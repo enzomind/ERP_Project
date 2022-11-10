@@ -20,15 +20,12 @@ public class MainApiCont {
 
     private final MainService mainService;
 
-    @GetMapping("/getHireDash/{month}")
-    public int requestHireDash(@PathVariable final String month) {
+    @GetMapping("/getHireDash")
+    public int requestHireDash() {
 
-        MainRequestDto params = new MainRequestDto();
-        params.setMonth(Integer.parseInt(month));
+        int count = mainService.getHireDash();
 
-        int result = mainService.getHireDash(params);
-
-        return result;
+        return count;
     }
 
     @GetMapping("/getEmpDash")

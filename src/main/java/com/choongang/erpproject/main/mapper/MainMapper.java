@@ -15,7 +15,7 @@ public interface MainMapper {
 
     List<MainResponseDto> getCalDetail(MainRequestDto params);
 
-    int getHireDash(MainRequestDto params);
+    int getHireDash();
 
     Long getEmpDash();
 

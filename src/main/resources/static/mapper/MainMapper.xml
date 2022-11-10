@@ -28,10 +28,10 @@
 
     </select>
 
-    <select id="getHireDash" parameterType="MainRequestDto" resultType="int">
+    <select id="getHireDash" resultType="int">
         SELECT COUNT(*)
-        FROM lev_table
-        WHERE SUBSTRING(end_date, 6, 2) = #{month}
+        FROM emp_table
+        WHERE SUBSTRING(hire_date, 1, 7) = SUBSTRING(now(), 1, 7)
     </select>
 
     <select id="getEmpDash" resultType="Long">
