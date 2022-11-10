@@ -56,4 +56,11 @@ public class MainApiCont {
         return list;
     }
 
+    @GetMapping("/getBirthDash")
+    public int requestBirthDash() {
+        int count = mainService.getBirthDash();
+
+        return count;
+    }
+
 }

@@ -1,11 +1,21 @@
-window.onload = () => {
+function getBirthDash() {
+    fetch('/main/getBirthDash').then(response => {
+        if(response.ok) {
+            return response.json();
+        }
+    }).then(json => {
+        let html = '';
+        if(!json) {
+            html = '<div>-</div>';
+        } else {
+            html = `<div>${json}명</div>`;
+        }
 
-    getCalInfo();
-    getHireDash();
-    getEmpDash();
-    getExpreportDash();
-    getNoticeDash();
+        $("#birthDash").empty().append(html);
+    })
 }
+
+
 
 //결재 대기 현황
 function getExpreportDash() {
@@ -143,4 +153,15 @@ function getNoticeDash() {
 
         $("#noticeDash").empty().append(html);
     })
+}
+
+
+window.onload = () => {
+
+    getCalInfo();
+    getHireDash();
+    getEmpDash();
+    getExpreportDash();
+    getNoticeDash();
+    getBirthDash();
 }

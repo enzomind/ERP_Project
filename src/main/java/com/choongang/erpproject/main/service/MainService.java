@@ -20,4 +20,6 @@ public interface MainService {
 
     List<MainResponseDto> getNoticeDash();
 
+    int getBirthDash();
+
 }

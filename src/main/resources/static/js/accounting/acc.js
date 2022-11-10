@@ -78,10 +78,11 @@ function findAccAll(setSDate, setEDate) {
 
 
         $("#list").empty().append(html + htmlTotal);
-        // document.getElementById('list').innerHTML = html + htmlTotal;
 
         var tempDetail = `<td colspan="7">전표 리스트에서 상세 조회할 항목을 선택해 주세요.</td>`;
-        document.getElementById('detailList').innerHTML = tempDetail;
+
+        $("#detailList").empty().append(tempDetail);
+
         listTotalCount = 0;
         listTotalSum = 0;
     })
@@ -90,8 +91,9 @@ function findAccAll(setSDate, setEDate) {
 
 function listTotalView(listTotalCount) {
 
-    html = `<span>총 ${listTotalCount}건</span>`;
-    document.getElementById('listTotal').innerHTML = html;
+    html = `<span>전체 ${listTotalCount}건</span>`;
+    $("#listTotal").empty().append(html);
+
 }
 
 
@@ -152,7 +154,8 @@ function findAccDetail(statNum) {
                     `;
         }
 
-        document.getElementById('detailList').innerHTML = detail + detailTotal;
+        $("#detailList").empty().append(detail + detailTotal);
+
         detailTotalCount = 0;
         detailTotalSum = 0;
     })
@@ -162,5 +165,6 @@ function findAccDetail(statNum) {
 function detailTotalView(detailTotalCount) {
 
     html = `<span>상세 ${detailTotalCount}건</span>`;
-    document.getElementById('listDetailTotal').innerHTML = html;
+    $("#listDetailTotal").empty().append(html);
+
 }
