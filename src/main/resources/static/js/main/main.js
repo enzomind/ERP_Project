@@ -48,11 +48,8 @@ function getEmpDash() {
         }
     }).then(json => {
         let html = '';
-        if(!json) {
-            html = '<div>0명 뭐임 ㄹㅇ?</div>';
-        } else {
-            html = `<div>${json}명</div>`;
-        }
+
+        html = `<div>${json}명</div>`;
 
         $("#empDash").empty().append(html);
     })
@@ -62,10 +59,7 @@ function getEmpDash() {
 //당월 입사자 현황
 function getHireDash() {
 
-    var instantDate = new Date();
-    var setMonth = instantDate.getMonth() + 1;
-
-    fetch(`/main/getHireDash/${setMonth}`).then(response => {
+    fetch('/main/getHireDash').then(response => {
 
         if(response.ok) {
             return response.json();
@@ -109,7 +103,9 @@ function getCalInfo() {
                 initialView: 'dayGridMonth',
                 locale: "ko",
                 dayMaxEvents: true,
-                events: data
+                events: data,
+                contentHeight: 500
+
 
             });
 
@@ -144,7 +140,7 @@ function getNoticeDash() {
                 html += `
                 <tr style="cursor:pointer;" onclick="location.href='http://localhost:8080/info/viewinfo?ntcNum='+${num}" onmouseover="this.style.background='whitesmoke'" onmouseout="this.style.background='white'" >
                     <td>${num}</td>
-                    <td>${obj.title}</td>
+                    <td align="left">${obj.title}</td>
                     <td>${obj.date}</td>
                 </tr>
             `;

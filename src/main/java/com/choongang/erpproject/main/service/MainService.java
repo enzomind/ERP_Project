@@ -12,7 +12,7 @@ public interface MainService {
     List<Map<String, Object>> getCalAll();
     List<MainResponseDto> getCalDetail(LocalDate selectDate);
 
-    int getHireDash(MainRequestDto params);
+    int getHireDash();
 
     Long getEmpDash();
 

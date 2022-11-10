@@ -27,8 +27,8 @@ public class MainServiceImpl implements MainService{
     }
 
     @Override
-    public int getHireDash(MainRequestDto params) {
-        return mainMapper.getHireDash(params);
+    public int getHireDash() {
+        return mainMapper.getHireDash();
     }
 
     @Override
