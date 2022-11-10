@@ -16,6 +16,8 @@ public class HrResponseDto {
     private String apprId;
     private LocalDate apprDate;
     private LocalDate applDate;
+    private String startDate;
+    private String endDate;
     private String levType;
     private String levTitle;
     private String levContent;
