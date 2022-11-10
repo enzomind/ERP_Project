@@ -7775,9 +7775,12 @@ button.bg-dark:focus {
   margin: 3rem !important;
 }
 
-.mt-5,
-.my-5 {
+.mt-5 {
   margin-top: 3rem !important;
+}
+
+.my-5 {
+  margin-top: 14rem !important;
 }
 
 .mr-5,
@@ -7916,7 +7919,7 @@ button.bg-dark:focus {
 }
 
 .p-5 {
-  padding: 3rem !important;
+  padding: 4rem !important;
 }
 
 .pt-5,
