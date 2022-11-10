@@ -47,7 +47,7 @@ public class MainServiceImpl implements MainService{
     }
 
     @Override
-    public int getBirthDash() {
+    public List<MainResponseDto> getBirthDash() {
         return mainMapper.getBirthDash();
     }
 }

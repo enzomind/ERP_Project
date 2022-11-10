@@ -17,4 +17,7 @@ public class MainResponseDto {
     private int ntcNum;
     private String title;
     private String date;
+
+    //생일자 대시 값
+    private String birthMember;
 }

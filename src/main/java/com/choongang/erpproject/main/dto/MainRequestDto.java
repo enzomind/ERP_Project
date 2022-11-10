@@ -8,4 +8,5 @@ import java.time.LocalDate;
 public class MainRequestDto {
     private String empId;
     private LocalDate startDate;
+    private String members;
 }

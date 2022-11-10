@@ -4,14 +4,23 @@ function getBirthDash() {
             return response.json();
         }
     }).then(json => {
-        let html = '';
-        if(!json) {
-            html = '<div>-</div>';
+
+        let instantDate = new Date();
+        let month = instantDate.getMonth() + 1;
+        let titleHtml = `${month}월 생일자`;
+
+        let dashHtml = '';
+        if (!json) {
+            dashHtml = '-';
+        } else if (json.length > 2){ // 당월 생일자가 3명 이상이라면 아무개 외 N명 <- 으로 노출되도록 처리
+            dashHtml = `${json[0]}외 ${json.length - 1}명`;
         } else {
-            html = `<div>${json}명</div>`;
+            dashHtml = `${json}`;
+
         }
 
-        $("#birthDash").empty().append(html);
+        $("#birthDash").empty().append(dashHtml);
+        $("#birthTitle").empty().append(titleHtml);
     })
 }
 
