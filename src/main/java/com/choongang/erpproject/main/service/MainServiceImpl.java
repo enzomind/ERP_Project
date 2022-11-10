@@ -45,4 +45,9 @@ public class MainServiceImpl implements MainService{
     public List<MainResponseDto> getNoticeDash() {
         return mainMapper.getNoticeDash();
     }
+
+    @Override
+    public int getBirthDash() {
+        return mainMapper.getBirthDash();
+    }
 }

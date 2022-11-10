@@ -53,4 +53,10 @@
         ORDER BY ntc_num DESC LIMIT 10;
     </select>
 
+    <select id="getBirthDash" resultType="int">
+        SELECT COUNT(*)
+        FROM emp_table
+        WHERE SUBSTRING(birth, 6, 5) = SUBSTRING(now(), 6, 5)
+    </select>
+
 </mapper>

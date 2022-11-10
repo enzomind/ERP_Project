@@ -9,4 +9,4 @@
 <script async src="/etc/js/demo/datatables-demo.js"></script>
 
 <!--지출결의서 js-->
-<script src="/js.edms/ec_acform.js"></script>
+<script src="/js/edms/ec_acform.js"></script>
