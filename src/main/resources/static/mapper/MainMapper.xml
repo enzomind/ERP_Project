@@ -53,10 +53,11 @@
         ORDER BY ntc_num DESC LIMIT 10;
     </select>
 
-    <select id="getBirthDash" resultType="int">
-        SELECT COUNT(*)
-        FROM emp_table
-        WHERE SUBSTRING(birth, 6, 5) = SUBSTRING(now(), 6, 5)
+    <select id="getBirthDash" resultType="String">
+        SELECT CONCAT(e.emp_name,' ', p.job_name)
+        FROM emp_table AS e
+                 INNER JOIN pstn_code AS p
+                            ON p.job_code = e.job_code AND SUBSTRING(birth, 6, 2) = SUBSTRING(now(), 6, 2)
     </select>
 
 </mapper>

@@ -23,6 +23,6 @@ public interface MainMapper {
 
     List<MainResponseDto> getNoticeDash();
 
-    int getBirthDash();
+    List<MainResponseDto> getBirthDash();
 
 }

@@ -23,9 +23,9 @@ public class MainApiCont {
     @GetMapping("/getHireDash")
     public int requestHireDash() {
 
-        int count = mainService.getHireDash();
+        int result = mainService.getHireDash();
 
-        return count;
+        return result;
     }
 
     @GetMapping("/getEmpDash")
@@ -54,10 +54,10 @@ public class MainApiCont {
     }
 
     @GetMapping("/getBirthDash")
-    public int requestBirthDash() {
-        int count = mainService.getBirthDash();
+    public List<MainResponseDto> requestBirthDash() {
+        List<MainResponseDto> memberList = mainService.getBirthDash();
 
-        return count;
+        return memberList;
     }
 
 }
