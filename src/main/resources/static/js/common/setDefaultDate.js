@@ -32,7 +32,7 @@ function gateway(sDate, eDate, location) {
 
     switch(location) {
         case 'acc' :
-            findAccAll(sDate, eDate);
+            payInfo(sDate, eDate);
             break;
 
         case 'employee' :

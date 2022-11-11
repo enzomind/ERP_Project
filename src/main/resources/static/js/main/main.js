@@ -37,9 +37,9 @@ function getExpreportDash() {
     }).then(json => {
         let html = '';
         if(!json) {
-            html = '<div>모두 완료!</div>';
+            html = '모두 완료!';
         } else {
-            html = `<div>${json}건</div>`;
+            html = `${json}건`;
         }
 
         $("#expreportDash").empty().append(html);
@@ -58,7 +58,7 @@ function getEmpDash() {
     }).then(json => {
         let html = '';
 
-        html = `<div>${json}명</div>`;
+        html = `${json}명`;
 
         $("#empDash").empty().append(html);
     })
@@ -76,9 +76,9 @@ function getHireDash() {
     }).then(json => {
         let html = '';
         if(!json) {
-            html = '<div>0명</div>';
+            html = '0명';
         } else {
-            html = `<div>${json}명</div>`;
+            html = `${json}명`;
         }
 
         $("#hireDash").empty().append(html);

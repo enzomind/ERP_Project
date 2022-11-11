@@ -14,6 +14,9 @@ public class AccRequestDto {
     private String expNum; //결의번호
     private String empId; //사번
 
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private LocalDate startDate; //기간조회 시작일자
+    private LocalDate endDate; //기간조회 종료일자
+
+    private Double payTotal; //당월 급여금액
+    private LocalDate paymdate; //급여이체일자
 }

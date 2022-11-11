@@ -45,4 +45,9 @@ public class AccServiceImpl implements AccService {
         accMapper.insertAccInfo(param);
     }
 
+    @Override
+    public List<AccResponseDto> getPayInfo(AccRequestDto params) {
+        return accMapper.getPayInfo(params);
+    }
+
 }

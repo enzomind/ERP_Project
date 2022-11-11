@@ -27,8 +27,8 @@ public class accApiCont {
         AccRequestDto params = new AccRequestDto();
         params.setStartDate(sTime);
         params.setEndDate(eTime);
-        List<AccResponseDto> acclist = accService.getAccList(params);
-        return acclist;
+        List<AccResponseDto> accList = accService.getAccList(params);
+        return accList;
     }
 
     @GetMapping("/acc/accapi/accounting/{statNum}")
@@ -37,4 +37,19 @@ public class accApiCont {
         List<AccResponseDto>accDetailList = accService.getAccDetail(statNum);
         return accDetailList;
     }
+
+    @GetMapping("/accapi/accounting/getpaytotal/{startDate}/{endDate}")
+    public List<AccResponseDto> getPayTotal (@PathVariable final String startDate, @PathVariable final String endDate) {
+
+        LocalDate sTime = LocalDate.parse(startDate);
+        LocalDate eTime = LocalDate.parse(endDate);
+
+        AccRequestDto params = new AccRequestDto();
+        params.setStartDate(sTime);
+        params.setEndDate(eTime);
+
+        List<AccResponseDto> payList = accService.getPayInfo(params);
+        return payList;
+    }
+
 }

@@ -11,4 +11,5 @@ public interface AccService {
 
     void insertAccInfo(String param);
 
+    List<AccResponseDto> getPayInfo(AccRequestDto params);
 }
