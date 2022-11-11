@@ -49,13 +49,54 @@
                 </div>
 
 
+                <!--회계 전표 대시-->
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" height="150">
+                            <thead>
+                            <tr bgcolor="#f8f8ff">
+                                <th>총 지출금액</th>
+                                <th>총 수입금액</th>
+                            </tr>
+                            </thead>
+                            <tbody id="dash">
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
+
+                <!--급여 이채내역-->
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <div>월별 급여 이체내역</div>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr bgcolor="#f8f8ff">
+                                <th>구분</th>
+                                <th>급여 이체금액</th>
+                                <th>급여 이체일자</th>
+                            </tr>
+                            </thead>
+                            <tbody id="payroll">
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
+
                 <!--총 목록 박스-->
                 <div class="card-body">
                     <div class="table-responsive">
                         <div id="listTotal"></div>
                         <table class="table table-bordered">
                             <thead>
-                            <tr>
+                            <tr bgcolor="#f8f8ff">
                                 <th>전표번호</th>
                                 <th>결의제목</th>
                                 <th>생성일자</th>
@@ -80,7 +121,7 @@
                         <div id="listDetailTotal"></div>
                         <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
                             <thead>
-                            <tr>
+                            <tr bgcolor="#f8f8ff">
                                 <th>결의번호</th>
                                 <th>기안자</th>
                                 <th>적요</th>

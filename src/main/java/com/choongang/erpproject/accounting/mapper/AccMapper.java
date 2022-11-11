@@ -20,4 +20,6 @@ public interface AccMapper {
 
     int listCount();
 
+    List<AccResponseDto> getPayInfo(AccRequestDto params);
+
 }

@@ -37,4 +37,7 @@ public class AccResponseDto {
     private int income; //수입금액
     private String remk; //적요
 
+    private Double payTotal; //당월 급여금액
+    private LocalDate paymdate; //급여이체일자
+
 }

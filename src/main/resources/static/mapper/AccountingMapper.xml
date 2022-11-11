@@ -27,7 +27,7 @@
 
     <insert id="insertAccInfo" parameterType="String">
         INSERT IGNORE INTO acv (
-        <include refid="accRequestColumns" />
+        <include refid="accRequestColumns"/>
         ) SELECT exp_num, emp_id
         FROM expreport WHERE exp_num = #{expNum} GROUP BY exp_num, emp_id
     </insert>
@@ -41,7 +41,7 @@
         FROM acv
                  LEFT OUTER JOIN expreport ON acv.exp_num = expreport.exp_num
                <![CDATA[ AND stat_date >= #{startDate} AND stat_date <= #{endDate} ]]> AND appr_state = '승인' AND exp_title is not NULL
-         GROUP BY com_acc, stat_num, stat_date, income
+        GROUP BY com_acc, stat_num, stat_date, income
         ORDER BY stat_num DESC
     </select>
 
@@ -62,12 +62,16 @@
     </select>
 
     <select id="listCount" parameterType="AccResponseDto" resultType="int">
-        SELECT
-            COUNT(*)
-        FROM
-            acv
+        SELECT COUNT(*)
+        FROM acv
     </select>
 
-
+    <select id="getPayInfo" parameterType="AccRequestDto" resultType="AccResponseDto">
+        SELECT SUM(Meal_exp + trn_exp + wel_exp - tax) AS payTotal, paymdate
+        FROM payrollhistory
+        <![CDATA[ WHERE paymdate >= #{startDate} AND paymdate <= #{endDate} ]]>
+        GROUP BY paymdate
+        ORDER BY paymdate DESC
+    </select>
 
 </mapper>
