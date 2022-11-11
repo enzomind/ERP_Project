@@ -125,7 +125,7 @@ function empInputModal() {
                                                 <div class="form-group left">
                                                     <label class="label-title">책정 급여(연별)</label><span class="ValiVali"></span><br>
                                                     <input type="text" class="form-input checkVali empInputSalary" name="empInputSalary"
-                                                            required="required" onkeyup="inputNumberFormat(this)">     
+                                                            required="required" onkeyup="inputNumberFormat(this)" >
                                                 </div>
                                                 <div class="form-group right">
                                                     <label class="label-title">예상 급여(월별)</label>
@@ -161,6 +161,7 @@ function empInputModal() {
     //월급여 보여주기
     $('.empInputSalary').on("input", function (e){
         let exSalary = $('.empInputSalary').val();
+        exSalary = uncomma(exSalary);
         let exWage = Math.round((exSalary/12)/10)*10;
         exWage = exWage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         $('.empInputWage').val(exWage+" 원");
@@ -217,12 +218,13 @@ function readImage(input) {
 //empInput 함수 정의 ajax
 function empInput() {
     let inputSalary = $('input[name=empInputSalary]').val();
+    inputSalary = uncomma(inputSalary);
     let inputWage = Math.round((inputSalary/12)/10)*10;
     //여기부터 null 체크
     nullCheck();
 
     if($('.ValiVali').text().length != 0){
-    alert("빈 칸이 존재합니다.");
+        alert("빈 칸이 존재합니다.");
     } else if ($('.ValiVali').text() == 0){
         //여기까지 null 체크
         $.ajax({

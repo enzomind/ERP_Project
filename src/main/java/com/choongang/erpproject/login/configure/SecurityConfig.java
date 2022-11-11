@@ -66,6 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
+
                 .defaultSuccessUrl("/index")
                 .failureHandler(loginFailHandler())
                 //추후에 핸들러 부분 수정
@@ -74,7 +75,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().accessDeniedHandler(new com.choongang.erpproject.login.configure.CustomAccessDeniedHandler())
                 .and()
                 .exceptionHandling().authenticationEntryPoint(new com.choongang.erpproject.login.configure.CustomAuthenticationEntryPoint())
-
                 .and()
                 .addFilterBefore(new JwtFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
     }

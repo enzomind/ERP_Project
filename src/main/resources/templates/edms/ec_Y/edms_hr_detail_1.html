@@ -63,18 +63,19 @@
               <table class="table table-bordered text-center col-auto">
                 <tr>
                   <th class="align-middle">휴가구분</th>
-                  <td class="text-left" th:text="${numDetail.levType}">
-
-                  </td>
+                  <td class="align-middle" th:text="${numDetail.levType}"></td>
+                  <th class="align-middle">날짜</th>
+                  <td class="align-middle" th:text="${numDetail.startDate}"></td>
+                  <td class="align-middle" th:text="${numDetail.endDate}"></td>
                 </tr>
                 <tr>
                   <th class="align-middle" style="width: 150px; height: 300px;">내용</th>
-                  <td class="text-left" th:text="${numDetail.levContent}">
+                  <td colspan="5" class="text-left" th:text="${numDetail.levContent}">
                     <textarea type="text" class="form-control" style="height: 300px"></textarea></td>
                 </tr>
                 <tr>
                   <th class="align-middle">상태</th>
-                  <td class="text-left" th:text="${numDetail.apprState}">
+                  <td colspan="5" class="text-left" th:text="${numDetail.apprState}">
                     <input type="text" class="form-control"></td>
                 </tr>
               </table>

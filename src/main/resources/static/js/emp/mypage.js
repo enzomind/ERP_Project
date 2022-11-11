@@ -1,6 +1,6 @@
 //이미지 가져오기위한 프로젝트 경로 상황맞춰서 수정 필요
-let myPrjPath = "/Users/seonghuchoi/Downloads/erp_Project/";
-
+let myPrjPath = "/Users/seonghuchoi/Downloads/intelliJFolder/erp_Project/";
+// let myPrjPath = "C:\\Users\\user\\erp_Project\\";
 $(document).ready(function () {
     //개인정보 창 띄우기
     MyEmpSel();
