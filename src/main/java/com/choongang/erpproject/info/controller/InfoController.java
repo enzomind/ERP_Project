@@ -62,14 +62,13 @@ public class InfoController {
     public String upload(@RequestParam MultipartFile[] fileName, Model model, @RequestParam String title, @RequestParam String content)
             throws IllegalStateException, IOException {
         if(fileName == null || fileName.length == 0) {
-            List<NoticeDto> list = noticeMapper.selectNoticeList();
-            fileService.upload(fileName, title, content);
-            model.addAttribute("info", list);
-
-            return "redirect:/info/info";
-        } else {
             noticeMapper.insertNoticeNoFile(title,content);
             List<NoticeDto> list = noticeMapper.selectNoticeList();
+            model.addAttribute("info", list);
+            return "redirect:/info/info";
+        } else {
+            List<NoticeDto> list = noticeMapper.selectNoticeList();
+            fileService.upload(fileName, title, content);
             model.addAttribute("info", list);
             return  "redirect:/info/info";
         }
