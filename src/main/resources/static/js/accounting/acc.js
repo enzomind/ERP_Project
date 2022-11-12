@@ -12,6 +12,7 @@ function search() {
     const setStartDate = document.getElementById("searchSDate").value;
     const setEndDate = document.getElementById("searchEDate").value;
 
+    payTotalSum = 0;
     gateway(setStartDate, setEndDate, setLocation);
 }
 
@@ -53,7 +54,7 @@ function payInfo(sDate, eDate) {
             })
             payInfoTbody += `
                         <tr>
-                            <td colspan="2" bgcolor="#f8f8ff">급여 지출합계</td>
+                            <td colspan="2" bgcolor="#f8f8ff"><b>급여 지출합계</b></td>
                             <td>${(payTotalSum).toLocaleString()}</td>
                         </tr>
                     `
@@ -112,7 +113,7 @@ function findAccAll(setSDate, setEDate) {
 
                     listTotalTbody = `
                         <tr>
-                            <td colspan="3" bgcolor="#f8f8ff">합계</td>
+                            <td colspan="3" bgcolor="#f8f8ff"><b>합계</b></td>
                             <td>${(listTotalSum).toLocaleString()}</td>
                             <td>0</td>
                         </tr>
@@ -203,7 +204,7 @@ function findAccDetail(statNum) {
         if (detailTotalSum > 0) {
             detailTotal = `
                         <tr>
-                            <td colspan="6" bgcolor="#f8f8ff">상세 건 합계</td>
+                            <td colspan="6" bgcolor="#f8f8ff"><b>상세 건 합계</b></td>
                             <td>${detailTotalTbody}</td>
                         </tr>    
                     `;
