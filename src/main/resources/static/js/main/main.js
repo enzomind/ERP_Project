@@ -13,7 +13,7 @@ function getBirthDash() {
         if (!json) {
             dashHtml = '-';
         } else if (json.length > 2){ // 당월 생일자가 3명 이상이라면 아무개 외 N명 <- 으로 노출되도록 처리
-            dashHtml = `${json[0]}외 ${json.length - 1}명`;
+            dashHtml = `${json[0]} 외 ${json.length - 1}명`;
         } else {
             dashHtml = `${json}`;
 
@@ -24,7 +24,7 @@ function getBirthDash() {
     })
 }
 
-
+// 처음 인입 시, 토탈 제대로 안나와서 수정필요함.
 
 //결재 대기 현황
 function getExpreportDash() {
