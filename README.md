@@ -49,5 +49,3 @@
 [6] 전자결재(휴가신청서)<br>
 ![휴가신청서](https://user-images.githubusercontent.com/102308415/201522243-6d7fa1fe-615a-4710-b0ef-2b7896a1230c.png)<br>
 
-<h3>포트폴리오 URL</h3>
-Notion에서 바로 보기 👉🏻 https://www.notion.so/ERP-272559f1855f4da1b64312cc5b48a63f<br>
