@@ -1,10 +1,8 @@
 package com.choongang.erpproject.accounting.dto;
 
-import lombok.Data;
 import lombok.Getter;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Getter
 public class AccResponseDto {
