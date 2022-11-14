@@ -31,7 +31,7 @@ function search() {
 function payInfo(sDate, eDate) {
 
     //API호출 > json 전달 > 함수 실행
-    fetch(`/accapi/accounting/getpaytotal/${sDate}/${eDate}`).then(response => {
+    fetch(`/api/accounting/getpaytotal/${sDate}/${eDate}`).then(response => {
         if (response.ok) {
             return response.json();
         }
@@ -80,7 +80,7 @@ function payInfo(sDate, eDate) {
 //지출 결의 조회 데이터를 가져오는 API
 function findAccAll(sDate, eDate, payTotalSum) {
 
-    fetch(`/accapi/accounting/${sDate}/${eDate}`).then(response => {
+    fetch(`/api/accounting/${sDate}/${eDate}`).then(response => {
         if (response.ok) {
             return response.json();
         }
@@ -166,7 +166,7 @@ function findAccAll(sDate, eDate, payTotalSum) {
 //지출 결의 상세 조회 데이터를 가져오는 API
 function findAccDetail(statNum) {
     //전표번호(statNum) 조회
-    fetch(`accapi/accounting/${statNum}`).then(response => {
+    fetch(`api/accounting/${statNum}`).then(response => {
         if (response.ok) {
             return response.json();
         }

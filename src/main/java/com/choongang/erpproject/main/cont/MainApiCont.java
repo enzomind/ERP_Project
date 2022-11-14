@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/main")
+@RequestMapping("/api")
 public class MainApiCont {
 
     private final MainService mainService;

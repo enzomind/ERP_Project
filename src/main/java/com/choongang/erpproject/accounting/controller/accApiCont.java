@@ -19,7 +19,7 @@ public class accApiCont {
     private final AccService accService;
 
     //회계전표 리스트 컨트롤러
-    @GetMapping("/accapi/accounting/{startDate}/{endDate}")
+    @GetMapping("/api/accounting/{startDate}/{endDate}")
     public List<AccResponseDto> accountApiRoot(@PathVariable final String startDate, @PathVariable final String endDate) {
 
         //AccRequestDto 객체 생성 후, 파라미터값 매핑
@@ -31,13 +31,13 @@ public class accApiCont {
     }
 
     //회계전표 상세 리스트 컨트롤러
-    @GetMapping("/acc/accapi/accounting/{statNum}")
+    @GetMapping("/acc/api/accounting/{statNum}")
     public List<AccResponseDto> findDetail(@PathVariable final Long statNum) {
         return accService.getAccDetail(statNum);
     }
 
     //급여 이체내역 컨트롤러
-    @GetMapping("/accapi/accounting/getpaytotal/{startDate}/{endDate}")
+    @GetMapping("/api/accounting/getpaytotal/{startDate}/{endDate}")
     public List<AccResponseDto> getPayTotal (@PathVariable final String startDate, @PathVariable final String endDate) {
 
         AccRequestDto params = new AccRequestDto();

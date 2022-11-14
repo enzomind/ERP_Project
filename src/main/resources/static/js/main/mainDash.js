@@ -3,7 +3,7 @@
 
 //생일자 대시보드 데이터 가져오는 함수
 function getBirthDash() {
-    fetch('/main/getBirthDash').then(response => {
+    fetch('/api/getBirthDash').then(response => {
         if(response.ok) {
             return response.json();
         }
@@ -34,7 +34,7 @@ function getBirthDash() {
 
 //결재 대기 현황 API
 function getExpreportDash() {
-    fetch('/main/getExpreportDash').then(response => {
+    fetch('/api/getExpreportDash').then(response => {
         if(response.ok) {
             return response.json();
         }
@@ -52,7 +52,7 @@ function getExpreportDash() {
 
 //전체 직원 수 현황 API
 function getEmpDash() {
-    fetch('/main/getEmpDash').then(response => {
+    fetch('/api/getEmpDash').then(response => {
         if(response.ok) {
             return response.json();
         }
@@ -64,7 +64,7 @@ function getEmpDash() {
 
 //당월 입사자 현황 API
 function getHireDash() {
-    fetch('/main/getHireDash').then(response => {
+    fetch('/api/getHireDash').then(response => {
         if(response.ok) {
             return response.json();
         }
@@ -118,7 +118,7 @@ function getCalInfo() {
 
 //공지사항 대시 API
 function getNoticeDash() {
-    fetch('/main/getNoticeDash').then(response => {
+    fetch('/api/getNoticeDash').then(response => {
         if(response.ok) {
             return response.json();
         }

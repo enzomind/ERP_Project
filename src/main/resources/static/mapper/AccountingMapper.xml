@@ -38,8 +38,8 @@
              , stat_date
              , sum(expense) AS expense
              , income
-        FROM acv
-                 LEFT OUTER JOIN expreport ON acv.exp_num = expreport.exp_num
+        FROM acv AS a
+                 LEFT OUTER JOIN expreport AS e ON a.exp_num = e.exp_num
                <![CDATA[ AND stat_date >= #{startDate} AND stat_date <= #{endDate} ]]> AND appr_state = '승인' AND exp_title is not NULL
         GROUP BY com_acc, stat_num, stat_date, income
         ORDER BY stat_num DESC
@@ -53,12 +53,12 @@
              , appr_date
              , com_acc
              , expense
-        FROM acv
-                 INNER JOIN expreport
-                            ON acv.exp_num = expreport.exp_num
-                 INNER JOIN emp_table
-                            ON acv.emp_id = emp_table.emp_id
-        WHERE acv.stat_num = #{statNum};
+        FROM acv AS a
+                 INNER JOIN expreport AS e
+                            ON a.exp_num = e.exp_num
+                 INNER JOIN emp_table AS em
+                            ON a.emp_id = em.emp_id
+        WHERE a.stat_num = #{statNum};
     </select>
 
     <select id="listCount" parameterType="AccResponseDto" resultType="int">
