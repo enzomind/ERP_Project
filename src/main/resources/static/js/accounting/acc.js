@@ -119,7 +119,7 @@ function findAccAll(sDate, eDate, payTotalSum) {
                 }
             });
             //요소(데이터) 생성된게 없다면 noData 처리
-            if(listTbody == '') {
+            if(listTbody === '') {
                 listTbody = '<td colspan="5"> 해당 기간에 조회된 데이터가 없습니다.</td>';
             } else {
                 //리스트 합계
@@ -142,6 +142,15 @@ function findAccAll(sDate, eDate, payTotalSum) {
         
                  `;
             }
+            //대시보드 데이터가 없다면 noData 처리
+            if (dashTbody === '') {
+                dashTbody = `
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle" colspan="2"><font size="5">조회 기간 내 데이터가 없습니다.</font></td>
+                    </tr>
+                `;
+            }
+
 
         //리스트 건 수 출력되도록 append
         $("#listTotal").empty().append(`<span>전체 ${listTotalCount}건</span>`);
