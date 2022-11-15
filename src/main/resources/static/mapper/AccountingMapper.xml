@@ -46,7 +46,7 @@
     </select>
 
     <select id="getAccDetail" parameterType="Long" resultType="AccResponseDto">
-        SELECT expreport.exp_num
+        SELECT e.exp_num
              , emp_name
              , remk
              , appr
