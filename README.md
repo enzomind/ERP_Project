@@ -50,7 +50,8 @@
 ![휴가신청서](https://user-images.githubusercontent.com/102308415/201522243-6d7fa1fe-615a-4710-b0ef-2b7896a1230c.png)<br>
 
 <h3>ERD</h3>
-![v1 0_ERPERD_220812](https://user-images.githubusercontent.com/102308415/203071563-e62bb85d-c8a7-40b8-8316-30adee93c40d.png)<br>
+![ERPERD_220812](https://user-images.githubusercontent.com/102308415/203071944-f210c2ed-d6d4-4ea6-8f81-31c26205dbf0.png)
+
 <br>
 - 본부, 부서, 직급을 테이블로 나누어 코드 관리를 할 수 있도록 하여 추후 추가/미사용 처리 가능하도록 확장성 고려<br>
 - 회원 테이블의 emp_id를 기준으로 급여 이체, 전자결재 상신 데이터가 생성되도록 설계.<br>
